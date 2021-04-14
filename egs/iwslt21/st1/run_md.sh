@@ -65,9 +65,9 @@ set -e
 set -u
 set -o pipefail
 
-mkdir -p ${dumpdir}
-rsync -av --progress iwslt_dump/* ${dumpdir}/
-trap 'rm -rf ${dumpdir}' EXIT
+#mkdir -p ${dumpdir}
+#rsync -av --progress iwslt_dump/* ${dumpdir}/
+#trap 'rm -rf ${dumpdir}' EXIT
 
 # data directories
 mustc_dir=../../must_c
