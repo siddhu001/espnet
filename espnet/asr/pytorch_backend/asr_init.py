@@ -37,7 +37,7 @@ def freeze_modules(model, modules):
     return model, model_params
 
 
-def transfer_verification(model_state_dict, partial_state_dict, modules):
+def transfer_verification(model_state_dict, partial_state_dict, modules, ignore_speech_attn=False):
     """Verify tuples (key, shape) for input model modules match specified modules.
 
     Args:
@@ -58,6 +58,8 @@ def transfer_verification(model_state_dict, partial_state_dict, modules):
 
     for key_m, value_m in model_state_dict.items():
         if any(key_m.startswith(m) for m in modules):
+            if ignore_speech_attn and ('speech_attn' in key_m or 'norm4' in key_m):
+                continue
             modules_model += [(key_m, value_m.shape)]
 
     len_match = len(modules_model) == len(partial_modules)
@@ -65,6 +67,13 @@ def transfer_verification(model_state_dict, partial_state_dict, modules):
     module_match = sorted(modules_model, key=lambda x: (x[0], x[1])) == sorted(
         partial_modules, key=lambda x: (x[0], x[1])
     )
+
+    ##debug
+    #ms = sorted(modules_model, key=lambda x: (x[0], x[1]))
+    #ps = sorted(partial_modules, key=lambda x: (x[0], x[1]))
+    #for m, p in zip(ms,ps):
+    #    if m != p:
+    #        import pdb;pdb.set_trace()
 
     return len_match and module_match
 
@@ -339,7 +348,7 @@ def load_trained_modules_for_multidecoder(idim, odim, args, interface=ASRInterfa
                 partial_state_dict = get_partial_state_dict(model_state_dict, modules)
                 if partial_state_dict:
                     if transfer_verification(
-                        main_state_dict, partial_state_dict, modules
+                        main_state_dict, partial_state_dict, modules, part == 'st'
                     ):
                         print_new_keys(partial_state_dict, modules, model_path)
                         main_state_dict.update(partial_state_dict)
