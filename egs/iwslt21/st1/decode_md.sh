@@ -175,6 +175,8 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
         opt="--log"
     fi
 
+    echo $trans_model
+
     if [ ${dec_ngpu} = 1 ]; then
         nj=1
     fi

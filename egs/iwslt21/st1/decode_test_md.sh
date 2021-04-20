@@ -100,6 +100,16 @@ echo "dictionary: ${dict}"
 
 if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ]; then
     echo "stage 5: Decoding Test"
+    if ${use_valbest_average}; then
+        trans_model=model.val${n_average}.avg.best
+        opt="--log ${expdir}/results/log --metric ${metric}"
+    else
+        trans_model=model.last${n_average}.avg.best
+        opt="--log"
+    fi
+    
+    echo $trans_model
+
     if [ ${dec_ngpu} = 1 ]; then
         nj=1
     fi
