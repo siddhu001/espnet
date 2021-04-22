@@ -4,6 +4,7 @@
 """FastSpeech related modules."""
 
 import logging
+import argparse
 
 import torch
 import torch.nn.functional as F
@@ -821,7 +822,12 @@ class FeedForwardTransformer(TTSInterface, torch.nn.Module):
 
     def _load_teacher_model(self, model_path):
         # get teacher model config
-        idim, odim, args = get_model_conf(model_path)
+        confs = get_model_conf(model_path, conf_path)
+        args = argparse.Namespace(**confs[-1])
+        if len(confs[:-1]) == 3:
+            idim, odim, odim_si = confs[:-1]
+        else:
+            idim, odim = confs[:-1]
 
         # assert dimension is the same between teacher and studnet
         assert idim == self.idim

@@ -29,7 +29,7 @@ class CTC(torch.nn.Module):
         # In case of Pytorch >= 1.7.0, CTC will be always builtin
         self.ctc_type = (
             ctc_type
-            if LooseVersion(torch.__version__) < LooseVersion("1.7.0")
+            if LooseVersion(torch.__version__) < LooseVersion("1.4.0")
             else "builtin"
         )
 

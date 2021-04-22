@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import six
+import argparse
 
 # chainer related
 import chainer
@@ -490,7 +491,12 @@ def recog(args):
     set_deterministic_chainer(args)
 
     # read training config
-    idim, odim, train_args = get_model_conf(args.model, args.model_conf)
+    confs = get_model_conf(model_path, conf_path)
+    args = argparse.Namespace(**confs[-1])
+    if len(confs[:-1]) == 3:
+        idim, odim, odim_si = confs[:-1]
+    else:
+        idim, odim = confs[:-1]
 
     for key in sorted(vars(args).keys()):
         logging.info("ARGS: " + key + ": " + str(vars(args)[key]))

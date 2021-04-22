@@ -3,6 +3,7 @@
 import logging
 import os
 import torch
+import argparse
 
 from collections import OrderedDict
 
@@ -156,7 +157,7 @@ def load_trained_model(model_path, training=True):
 
     """
     confs = get_model_conf(
-        model_path, os.path.join(os.path.dirname(model_path), "model.json"), md=md
+        model_path, os.path.join(os.path.dirname(model_path), "model.json")
     )
     train_args = argparse.Namespace(**confs[-1])
 
@@ -208,7 +209,12 @@ def get_trained_model_state_dict(model_path):
 
         return get_lm_state_dict(torch.load(model_path))
 
-    idim, odim, args = get_model_conf(model_path, conf_path)
+    confs = get_model_conf(model_path, conf_path)
+    args = argparse.Namespace(**confs[-1])
+    if len(confs[:-1]) == 3:
+        idim, odim, odim_si = confs[:-1]
+    else:
+        idim, odim = confs[:-1]
 
     logging.warning("reading model parameters from " + model_path)
 
@@ -291,7 +297,7 @@ def load_trained_modules(idim, odim, args, interface=ASRInterface):
 
     return main_model
 
-def load_trained_modules_for_multidecoder(idim, odim, args, interface=ASRInterface):
+def load_trained_modules_for_multidecoder(idim, odim, odim_si, args, interface=ASRInterface):
     """Load model encoder or/and decoder modules with ESPNET pre-trained model(s).
 
     Args:
@@ -329,7 +335,7 @@ def load_trained_modules_for_multidecoder(idim, odim, args, interface=ASRInterfa
     dec_modules = args.dec_init_mods
 
     model_class = dynamic_import(args.model_module)
-    main_model = model_class(idim, odim, args)
+    main_model = model_class(idim, odim, args, odim_si=odim_si)
     assert isinstance(main_model, interface)
 
     main_state_dict = main_model.state_dict()

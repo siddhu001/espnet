@@ -12,6 +12,7 @@ import logging
 import math
 import os
 import time
+import argparse
 
 import chainer
 import kaldiio
@@ -571,7 +572,12 @@ def decode(args):
     """Decode with E2E-TTS model."""
     set_deterministic_pytorch(args)
     # read training config
-    idim, odim, train_args = get_model_conf(args.model, args.model_conf)
+    confs = get_model_conf(model_path, conf_path)
+    args = argparse.Namespace(**confs[-1])
+    if len(confs[:-1]) == 3:
+        idim, odim, odim_si = confs[:-1]
+    else:
+        idim, odim = confs[:-1]
 
     # show arguments
     for key in sorted(vars(args).keys()):

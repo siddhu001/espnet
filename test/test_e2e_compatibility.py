@@ -13,6 +13,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import argparse
 
 import chainer
 import numpy as np
@@ -96,7 +97,12 @@ def test_downloaded_asr_model_decodable(module, download_info):
 
     # load trained model parameters
     m = importlib.import_module(module)
-    idim, odim, train_args = get_model_conf(model_path)
+    confs = get_model_conf(model_path, conf_path)
+    args = argparse.Namespace(**confs[-1])
+    if len(confs[:-1]) == 3:
+        idim, odim, odim_si = confs[:-1]
+    else:
+        idim, odim = confs[:-1]
     model = m.E2E(idim, odim, train_args)
     if "chainer" in module:
         chainer_load(model_path, model)
