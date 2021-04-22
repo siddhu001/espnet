@@ -526,6 +526,7 @@ def train(args):
             trainer.extend(
                 restore_snapshot(
                     model, args.outdir + "/model.loss.best", load_fn=torch_load
+
                 ),
                 trigger=CompareValueTrigger(
                     "validation/main/loss",
@@ -624,7 +625,16 @@ def trans(args):
 
     """
     set_deterministic_pytorch(args)
-    model, train_args = load_trained_model(args.model)
+
+    # read json data
+    with open(args.trans_json, "rb") as f:
+        js = json.load(f)["utts"]
+    new_js = {}
+
+    utts = list(js.keys())
+    odim_si = int(js[utts[0]]["output"][1]["shape"][-1])
+    model, train_args = load_trained_model(args.model, odim_si=odim_si)
+
     assert isinstance(model, STInterface)
     model.trans_args = args
 
@@ -637,10 +647,6 @@ def trans(args):
         logging.info("gpu id: " + str(gpu_id))
         model.cuda()
 
-    # read json data
-    with open(args.trans_json, "rb") as f:
-        js = json.load(f)["utts"]
-    new_js = {}
 
     load_inputs_and_targets = LoadInputsAndTargets(
         mode="asr",
@@ -818,12 +824,12 @@ def md_trans(model, train_args, args):
                         asr_rnnlm=asr_si_rnnlm,
                     )
                     logging.info("ASR SI SUBNET OUTPUT")
-                    new_asr_si_js[name] = add_results_to_json(
-                        js[name],
-                        asr_si_hyps,
-                        train_args.char_list,
-                        intermediate=True,
-                    )
+                    #new_asr_si_js[name] = add_results_to_json(
+                    #    js[name],
+                    #    asr_si_hyps,
+                    #    train_args.char_list,
+                    #    intermediate=True,
+                    #)
 
                 logging.info("ST FINAL OUTPUT")
                 new_js[name] = add_results_to_json(

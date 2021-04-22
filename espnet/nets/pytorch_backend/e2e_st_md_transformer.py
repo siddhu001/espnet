@@ -494,7 +494,10 @@ class E2E(STInterface, torch.nn.Module):
             )
             if not self.training:
                 ys_hat_asr = pred_pad.argmax(dim=-1)
-                cer, wer = self.error_calculator_asr(ys_hat_asr.cpu(), ys_pad.cpu())
+                if self.odim_si == self.odim:
+                    cer, wer = self.error_calculator_asr(ys_hat_asr.cpu(), ys_pad.cpu())
+                else:
+                    cer, wer = None, None
 
         # CTC
         if self.mtlalpha > 0:
@@ -507,9 +510,12 @@ class E2E(STInterface, torch.nn.Module):
                 ys_hat_ctc = self.ctc.argmax(
                     hs_pad.view(batch_size, -1, self.enc_inp_adim)
                 ).data
-                cer_ctc = self.error_calculator_asr(
-                    ys_hat_ctc.cpu(), ys_pad.cpu(), is_ctc=True
-                )
+                if self.odim_si == self.odim:
+                    cer_ctc = self.error_calculator_asr(
+                        ys_hat_ctc.cpu(), ys_pad.cpu(), is_ctc=True
+                    )
+                else:
+                    cer_ctc = None
                 # for visualization
                 self.ctc.softmax(hs_pad)
 
@@ -886,11 +892,11 @@ class E2E(STInterface, torch.nn.Module):
             # sort and get nbest
             hyps = hyps_best_kept
             logging.debug("number of pruned hypothes: " + str(len(hyps)))
-            if char_list is not None:
-                logging.debug(
-                    "best hypo: "
-                    + "".join([char_list[int(x)] for x in hyps[0]["yseq"][1:]])
-                )
+            #if char_list is not None:
+            #    logging.debug(
+            #        "best hypo: "
+            #        + "".join([char_list[int(x)] for x in hyps[0]["yseq"][1:]])
+            #    )
 
             #
             # add ended hypothes to a final list, and removed them from current hypothes
@@ -922,11 +928,11 @@ class E2E(STInterface, torch.nn.Module):
                 logging.info("Decoder 1: no hypothesis. Finish decoding.")
                 break
 
-            if char_list is not None:
-                for hyp in hyps:
-                    logging.debug(
-                        "hypo: " + "".join([char_list[int(x)] for x in hyp["yseq"][1:]])
-                    )
+            #if char_list is not None:
+            #    for hyp in hyps:
+            #        logging.debug(
+            #            "hypo: " + "".join([char_list[int(x)] for x in hyp["yseq"][1:]])
+            #        )
 
             logging.debug("number of ended hypothes: " + str(len(ended_hyps)))
 
