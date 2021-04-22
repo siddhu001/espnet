@@ -28,6 +28,7 @@ from espnet.asr.pytorch_backend.asr_init import load_trained_modules
 from espnet.asr.pytorch_backend.asr_init import load_trained_modules_for_multidecoder
 
 from espnet.nets.pytorch_backend.e2e_asr import pad_list
+from espnet.nets.pytorch_backend.e2e_st_ensemble import E2E as EnsembleE2E
 from espnet.nets.st_interface import STInterface
 from espnet.utils.dataset import ChainerDataLoader
 from espnet.utils.dataset import TransformDataset
@@ -161,9 +162,13 @@ def train(args):
     model_conf = args.outdir + "/model.json"
     with open(model_conf, "wb") as f:
         logging.info("writing a model config file to " + model_conf)
+        if "md" in args.model_module:
+            dumps = (idim, odim, odim_si, vars(args))
+        else:
+            dumps = (idim, odim, vars(args))
         f.write(
             json.dumps(
-                (idim, odim, vars(args)), indent=4, ensure_ascii=False, sort_keys=True
+             dumps , indent=4, ensure_ascii=False, sort_keys=True
             ).encode("utf_8")
         )
     for key in sorted(vars(args).keys()):
@@ -626,17 +631,16 @@ def trans(args):
     """
     set_deterministic_pytorch(args)
 
-    # read json data
-    with open(args.trans_json, "rb") as f:
-        js = json.load(f)["utts"]
-    new_js = {}
-
-    utts = list(js.keys())
-    odim_si = int(js[utts[0]]["output"][1]["shape"][-1])
-    model, train_args = load_trained_model(args.model, odim_si=odim_si)
-
-    assert isinstance(model, STInterface)
-    model.trans_args = args
+    model_list = []
+    if not isinstance(args.model, list):
+        args.model = [args.model]
+    for m in args.model:
+        logging.info("ensemble decoding: add model " + str(m))
+        model, train_args = load_trained_model(m)
+        assert isinstance(model, STInterface)
+        model.trans_args = args
+        model_list.append(model)
+    model = EnsembleE2E(model_list)
 
     if "md" in str(model.__class__):
         return md_trans(model, train_args, args)

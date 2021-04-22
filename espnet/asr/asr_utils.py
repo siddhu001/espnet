@@ -699,8 +699,7 @@ def get_model_conf(model_path, conf_path=None):
         return argparse.Namespace(**args)
     else:
         # for asr, tts, mt
-        idim, odim, args = confs
-        return idim, odim, argparse.Namespace(**args)
+        return confs
 
 
 def chainer_load(path, model):

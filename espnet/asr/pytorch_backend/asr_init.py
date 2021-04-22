@@ -155,9 +155,16 @@ def load_trained_model(model_path, training=True):
         model_path (str): Path to model.***.best
 
     """
-    idim, odim, train_args = get_model_conf(
-        model_path, os.path.join(os.path.dirname(model_path), "model.json")
+    confs = get_model_conf(
+        model_path, os.path.join(os.path.dirname(model_path), "model.json"), md=md
     )
+    train_args = argparse.Namespace(**confs[-1])
+
+    if hasattr(train_args, "model_module") and "md" in train_args.model_module:
+        idim, odim, odim_si = confs[:-1]
+        md=True
+    else:
+        idim, odim = confs[:-1]
 
     logging.warning("reading model parameters from " + model_path)
 
@@ -175,7 +182,10 @@ def load_trained_model(model_path, training=True):
         model = model_class(idim, odim, train_args, training=training)
         custom_torch_load(model_path, model, training=training)
     else:
-        model = model_class(idim, odim, train_args)
+        if md:
+            model = model_class(idim, odim, train_args, odim_si = odim_si)
+        else:
+            model = model_class(idim, odim, train_args)
         torch_load(model_path, model)
 
     return model, train_args
