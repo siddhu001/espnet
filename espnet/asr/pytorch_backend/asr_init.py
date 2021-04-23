@@ -160,8 +160,10 @@ def load_trained_model(model_path, training=True):
         model_path, os.path.join(os.path.dirname(model_path), "model.json")
     )
     train_args = argparse.Namespace(**confs[-1])
+    md = False
 
-    if hasattr(train_args, "model_module") and "md" in train_args.model_module:
+    # FIXME (jiatong): we check the confs length to align with the previous md models
+    if hasattr(train_args, "model_module") and "md" in train_args.model_module and len(confs) == 4:
         idim, odim, odim_si = confs[:-1]
         md=True
     else:
