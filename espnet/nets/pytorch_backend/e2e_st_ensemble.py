@@ -30,9 +30,9 @@ class E2E(STInterface, torch.nn.Module):
         self.eos = self.single_model.eos
         self.models = torch.nn.ModuleList(models)
 
-        if ensemble_temp in self.single_model and self.single_model.ensemble_temp != -1.0:
+        if hasattr(self.single_model.trans_args, 'ensemble_temp') and self.single_model.trans_args.ensemble_temp != -1.0:
             self.weights = torch.nn.functional.log_softmax(
-                    self.single_model.ensemble_temp * torch.tensor(range(len(models),0,-1)).float(), dim=-1)
+                    self.single_model.trans_args.ensemble_temp * torch.tensor(range(len(models),0,-1)).float(), dim=-1)
         else:
             self.weights = torch.tensor(range(len(models),0,-1)).float() * 0.0
         # 5 models
