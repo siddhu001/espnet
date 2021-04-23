@@ -30,6 +30,14 @@ class E2E(STInterface, torch.nn.Module):
         self.eos = self.single_model.eos
         self.models = torch.nn.ModuleList(models)
 
+        if ensemble_temp in self.single_model and self.single_model.ensemble_temp != -1.0:
+            self.weights = torch.nn.functional.log_softmax(
+                    self.single_model.ensemble_temp * torch.tensor(range(len(models),0,-1)).float(), dim=-1)
+        else:
+            self.weights = torch.tensor(range(len(models),0,-1)).float() * 0.0
+        # 5 models
+        # [5,4,3,2,1] -> logsoftmax([5,4,3,2,1])
+
     def translate(
         self,
         x,
@@ -94,7 +102,7 @@ class E2E(STInterface, torch.nn.Module):
             local_scores = []
 
             for m in range(len(h)):
-                local_scores.append(self.models[m].decoder_forward_one_step(h[m], i, hyps))
+                local_scores.append(self.models[m].decoder_forward_one_step(h[m], i, hyps) + self.weights[m])
 
             avg_scores = torch.logsumexp(
                 torch.stack(local_scores, dim=0), dim=0
