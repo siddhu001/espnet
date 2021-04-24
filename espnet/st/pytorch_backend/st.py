@@ -651,6 +651,10 @@ def trans(args):
         logging.info("gpu id: " + str(gpu_id))
         model.cuda()
 
+    # read json data
+    with open(args.trans_json, "rb") as f:
+        js = json.load(f)["utts"]
+    new_js = {}
 
     load_inputs_and_targets = LoadInputsAndTargets(
         mode="asr",
