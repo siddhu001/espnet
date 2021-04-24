@@ -97,6 +97,7 @@ def get_parser():
         action="append",
     )
     # search related
+    parser.add_argument("--ensemble_temp", type=float, default=-1)
     parser.add_argument("--nbest", type=int, default=1, help="Output N-best hypotheses")
     parser.add_argument("--beam-size", type=int, default=1, help="Beam size")
     parser.add_argument("--penalty", type=float, default=0.0, help="Incertion penalty")

@@ -30,6 +30,15 @@ class E2E(STInterface, torch.nn.Module):
         self.eos = self.single_model.eos
         self.models = torch.nn.ModuleList(models)
 
+        if hasattr(self.single_model.trans_args, 'ensemble_temp') and self.single_model.trans_args.ensemble_temp != -1.0:
+            self.weights = torch.nn.functional.log_softmax(
+                    self.single_model.trans_args.ensemble_temp * torch.tensor(range(len(models),0,-1)).float(), dim=-1)
+        else:
+            self.eq_w = True
+            self.weights = torch.tensor(range(len(models),0,-1)).float() * 0.0
+        # 5 models
+        # [5,4,3,2,1] -> logsoftmax([5,4,3,2,1])
+
     def translate(
         self,
         x,
@@ -93,12 +102,19 @@ class E2E(STInterface, torch.nn.Module):
             logging.debug("position " + str(i))
             local_scores = []
 
-            for m in range(len(h)):
-                local_scores.append(self.models[m].decoder_forward_one_step(h[m], i, hyps))
+            if self.eq_w :
+                for m in range(len(h)):
+                    local_scores.append(self.models[m].decoder_forward_one_step(h[m], i, hyps))
+                avg_scores = torch.logsumexp(
+                    torch.stack(local_scores, dim=0), dim=0
+                ) - math.log(self.model_size)
+            else:
+                for m in range(len(h)):
+                    local_scores.append(self.models[m].decoder_forward_one_step(h[m], i, hyps) + self.weights[m])
+                avg_scores = torch.logsumexp(
+                    torch.stack(local_scores, dim=0), dim=0
+                )
 
-            avg_scores = torch.logsumexp(
-                torch.stack(local_scores, dim=0), dim=0
-            ) - math.log(self.model_size)
 
             hyps_best_kept = []
             for j, hyp in enumerate(hyps):
