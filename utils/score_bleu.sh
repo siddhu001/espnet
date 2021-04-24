@@ -13,7 +13,7 @@ bpemodel=""
 filter=""
 case=lc
 set=""
-remove_nonverbal=true
+remove_nonverbal=false
 
 . utils/parse_options.sh
 
@@ -53,13 +53,19 @@ if [ -n "$bpe" ]; then
     fi
 else
     if [ ${remove_nonverbal} ]; then
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/ref.rm.trn > ${dir}/ref.wrd.trn
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/hyp.rm.trn > ${dir}/hyp.wrd.trn
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/src.rm.trn > ${dir}/src.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/ref.rm.trn > ${dir}/ref.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/hyp.rm.trn > ${dir}/hyp.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/src.rm.trn > ${dir}/src.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/ref.rm.trn > ${dir}/ref.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/hyp.rm.trn > ${dir}/hyp.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/src.rm.trn > ${dir}/src.wrd.trn
     else
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/ref.trn > ${dir}/ref.wrd.trn
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/hyp.trn > ${dir}/hyp.wrd.trn
-        sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/src.trn > ${dir}/src.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/ref.trn > ${dir}/ref.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/hyp.trn > ${dir}/hyp.wrd.trn
+        sed -e "s/ //g" -e "s/<space>/ /g" ${dir}/src.trn > ${dir}/src.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/ref.trn > ${dir}/ref.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/hyp.trn > ${dir}/hyp.wrd.trn
+        # sed -e "s/ //g" -e "s/(/ (/" -e "s/<space>/ /g" -e "s/>/> /g" ${dir}/src.trn > ${dir}/src.wrd.trn
     fi
 fi
 
