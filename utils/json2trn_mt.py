@@ -88,9 +88,10 @@ def convert(jsonf, dic, refs, hyps, srcs, dic_src):
             )
 
         # ref
-        seq = [
-            char_list_tgt[int(i)] for i in j["utts"][x]["output"][0]["tokenid"].split()
-        ]
+        # seq = [
+        #      char_list_tgt[int(i)] for i in j["utts"][x]["output"][0]["tokenid"].split()
+        # ]
+        seq = j["utts"][x]["output"][0]["token"]
         ref_file.write(" ".join(seq).replace("<eos>", "")),
         ref_file.write(
             " (" + j["utts"][x]["utt2spk"].replace("-", "_") + "-" + x + ")\n"
