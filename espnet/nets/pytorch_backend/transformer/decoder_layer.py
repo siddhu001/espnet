@@ -127,20 +127,21 @@ class DecoderLayer(nn.Module):
 
         if self.speech_attn_type == "seqspeechattn":
             # add speech encoder context
-            residual = x
-            if self.normalize_before:
-                x = self.norm4(x)
-            if self.concat_after:
-                x_concat = torch.cat(
-                    (x, self.speech_attn(x, speech, speech, speech_mask)), dim=-1
-                )
-                x = residual + self.concat_linear3(x_concat)
-            else:
-                x = residual + self.dropout(
-                    self.speech_attn(x, speech, speech, speech_mask)
-                )
-            if not self.normalize_before:
-                x = self.norm4(x)
+            if speech is not None:
+                residual = x
+                if self.normalize_before:
+                    x = self.norm4(x)
+                if self.concat_after:
+                    x_concat = torch.cat(
+                        (x, self.speech_attn(x, speech, speech, speech_mask)), dim=-1
+                    )
+                    x = residual + self.concat_linear3(x_concat)
+                else:
+                    x = residual + self.dropout(
+                        self.speech_attn(x, speech, speech, speech_mask)
+                    )
+                if not self.normalize_before:
+                    x = self.norm4(x)
 
             residual = x
             if self.normalize_before:

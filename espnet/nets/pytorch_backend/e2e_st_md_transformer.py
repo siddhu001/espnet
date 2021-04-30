@@ -29,6 +29,7 @@ from espnet.nets.pytorch_backend.transformer.argument import (
     add_arguments_md_transformer_common,  # noqa: H301
 )
 from espnet.nets.pytorch_backend.transformer.attention import MultiHeadedAttention
+from espnet.nets.pytorch_backend.transformer.embedding import PositionalEncoding
 from espnet.nets.pytorch_backend.transformer.decoder import Decoder
 from espnet.nets.pytorch_backend.transformer.encoder import Encoder
 from espnet.nets.pytorch_backend.transformer.initializer import initialize
@@ -264,10 +265,17 @@ class E2E(STInterface, torch.nn.Module):
         # submodule for ASR task
         self.mtlalpha = args.mtlalpha
         self.asr_weight = args.asr_weight
-
         if self.asr_weight == 0.0:
             logging.warning("asr_weghts can't be 0: Needs ASR searchable intermediates")
             sys.exit(1)
+
+
+        self.mt_weight = args.mt_weight
+        if self.mt_weight > 0.0:
+            self.mt_embed = torch.nn.Sequential(
+                torch.nn.Embedding(idim, attention_dim, padding_idx=padding_idx),
+                PositionalEncoding(attention_dim, positional_dropout_rate),
+            )
 
         self.reset_parameters(args)  # NOTE: place after the submodule initialization
 
@@ -402,6 +410,15 @@ class E2E(STInterface, torch.nn.Module):
         else:
             pred_pad, pred_mask = self.decoder_st(ys_in_pad, ys_mask, hs_pad, hs_mask)
 
+        acc_mt = None
+        loss_mt_data = None
+        # mt multi-task
+        if self.mt_weight > 0:
+            loss_mt, acc_mt = self.forward_mt(
+                ys_pad_src, ys_in_pad, ys_out_pad, ys_mask
+            )
+            loss_mt_data = float(loss_att)
+
         # 3. compute ST loss
         loss_att = self.criterion_st(pred_pad, ys_out_pad)
 
@@ -419,16 +436,14 @@ class E2E(STInterface, torch.nn.Module):
         # 6. compute auxiliary MT loss
 
         asr_ctc_weight = self.mtlalpha
-        self.loss = (1 - self.asr_weight) * loss_att + self.asr_weight * (
+        self.loss = (1 - self.asr_weight - self.mt_weight) * loss_att + self.asr_weight * (
             asr_ctc_weight * loss_asr_ctc + (1 - asr_ctc_weight) * loss_asr_att
-        )
+        ) + self.mt_weight * loss_mt_data
 
         loss_asr_data = float(
             asr_ctc_weight * loss_asr_ctc + (1 - asr_ctc_weight) * loss_asr_att
         )
 
-        acc_mt = None
-        loss_mt_data = None
         loss_st_data = float(loss_att)
 
         loss_data = float(self.loss)
@@ -450,6 +465,42 @@ class E2E(STInterface, torch.nn.Module):
             logging.warning("loss (=%f) is not correct", loss_data)
 
         return self.loss
+
+    def forward_mt(self, xs_pad, ys_in_pad, ys_out_pad, ys_mask):
+        """Forward pass in the auxiliary MT task.
+
+        :param torch.Tensor xs_pad: batch of padded source sequences (B, Tmax, idim)
+        :param torch.Tensor ys_in_pad: batch of padded target sequences (B, Lmax)
+        :param torch.Tensor ys_out_pad: batch of padded target sequences (B, Lmax)
+        :param torch.Tensor ys_mask: batch of input token mask (B, Lmax)
+        :return: MT loss value
+        :rtype: torch.Tensor
+        :return: accuracy in MT decoder
+        :rtype: float
+        """
+        loss, acc = 0.0, None
+        if self.mt_weight == 0:
+            return loss, acc
+
+        ilens = torch.sum(xs_pad != self.ignore_id, dim=1).cpu().numpy()
+        # NOTE: xs_pad is padded with -1
+        xs = [x[x != self.ignore_id] for x in xs_pad]  # parse padded xs
+        xs_zero_pad = pad_list(xs, self.pad)  # re-pad with zero
+        xs_zero_pad = xs_zero_pad[:, : max(ilens)]  # for data parallel
+        src_mask = (
+            make_non_pad_mask(ilens.tolist()).to(xs_zero_pad.device).unsqueeze(-2)
+        )
+        xs = self.mt_embed(xs_zero_pad)
+
+        hs_pad, hs_mask = self.encoder_st(xs, src_mask)
+
+        pred_pad, _ = self.decoder_st(ys_in_pad, ys_mask, hs_pad, hs_mask)
+
+        loss = self.criterion(pred_pad, ys_out_pad)
+        acc = th_accuracy(
+            pred_pad.view(-1, self.odim), ys_out_pad, ignore_label=self.ignore_id
+        )
+        return loss, acc
 
     def forward_asr(self, hs_pad, hs_mask, ys_pad, get_hidden=True):
         """Forward pass in the auxiliary ASR task.
