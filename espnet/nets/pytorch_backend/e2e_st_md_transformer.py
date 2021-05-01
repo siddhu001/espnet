@@ -273,8 +273,8 @@ class E2E(STInterface, torch.nn.Module):
         self.mt_weight = args.mt_weight
         if self.mt_weight > 0.0:
             self.mt_embed = torch.nn.Sequential(
-                torch.nn.Embedding(idim, attention_dim, padding_idx=padding_idx),
-                PositionalEncoding(attention_dim, positional_dropout_rate),
+                torch.nn.Embedding(self.odim_si, args.enc_si_adim, padding_idx=-1),
+                PositionalEncoding(args.enc_si_adim, args.enc_si_dropout_rate),
             )
 
         self.reset_parameters(args)  # NOTE: place after the submodule initialization
@@ -347,7 +347,8 @@ class E2E(STInterface, torch.nn.Module):
         for n, p in self.decoder_st.named_parameters():
             self._init_like_bert(n, p)
 
-    def forward(self, xs_pad, ilens, ys_pad, ys_pad_src):
+    #def forward(self, xs_pad, ilens, ys_pad, ys_pad_src):
+    def forward(self, args):
         """E2E forward.
 
         :param torch.Tensor xs_pad: batch of padded source sequences (B, Tmax, idim)
@@ -362,6 +363,81 @@ class E2E(STInterface, torch.nn.Module):
         :rtype: float
         """
         # 0. Extract target language ID
+
+        loss_st, reports = self.forward_st(*args[0])
+        if self.training:
+            loss_asr = self.forward_asr_only(*args[1])
+            loss_mt = self.forward_mt_only(*args[2])
+            self.loss = (loss_st+loss_asr+loss_mt)/3.0
+        else:
+            loss_asr = 0.0
+            loss_mt = 0.0
+            self.loss = loss_st
+
+
+        self.reporter.report(
+            float(loss_asr),
+            float(loss_mt),
+            *reports
+        )
+
+        return self.loss
+
+    def forward_asr_only(self, xs_pad, ilens, ys_pad):
+
+        # 1. forward encoder_asr
+        xs_pad = xs_pad[:, : max(ilens)]  # for data parallel
+        src_mask = make_non_pad_mask(ilens.tolist()).to(xs_pad.device).unsqueeze(-2)
+        hs_pad, hs_mask = self.encoder_asr(xs_pad, src_mask)
+
+        ys_in_pad_asr, ys_out_pad_asr = add_sos_eos(
+            ys_pad, self.sos_si, self.eos_si, self.ignore_id
+        )
+
+        ys_mask_asr = target_mask(ys_in_pad_asr, self.ignore_id)
+
+        pred_pad, tgt_mask = self.decoder_asr(
+            ys_in_pad_asr, ys_mask_asr, hs_pad, hs_mask
+        )
+
+        loss_att = self.criterion_asr(pred_pad, ys_out_pad_asr)
+
+        if self.mtlalpha > 0:
+            batch_size = hs_pad.size(0)
+            hs_len = hs_mask.view(batch_size, -1).sum(1)
+            loss_ctc = self.ctc(
+                hs_pad.view(batch_size, -1, self.enc_inp_adim), hs_len, ys_pad
+            )
+
+        asr_ctc_weight = self.mtlalpha
+        loss = asr_ctc_weight * loss_ctc + (1 - asr_ctc_weight) * loss_att
+
+        return loss
+
+
+    def forward_mt_only(self, xs_pad, ilens, ys_pad):
+        
+        # 1. forward encoder
+        xs_pad = xs_pad[:, : max(ilens)]  # for data parallel
+
+        src_mask = make_non_pad_mask(ilens.tolist()).to(xs_pad.device).unsqueeze(-2)
+
+        xs_pad = self.mt_embed(xs_pad)
+
+        hs_pad, hs_mask = self.encoder_st(xs_pad, src_mask)
+
+        # 2. forward decoder
+        ys_in_pad, ys_out_pad = add_sos_eos(ys_pad, self.sos, self.eos, self.ignore_id)
+        ys_mask = target_mask(ys_in_pad, self.ignore_id)
+        pred_pad, _ = self.decoder_st(ys_in_pad, ys_mask, hs_pad, hs_mask)
+
+        # 3. compute attention loss
+        loss = self.criterion_st(pred_pad, ys_out_pad)
+
+        return loss
+
+
+    def forward_st(self, xs_pad, ilens, ys_pad, ys_pad_src):
         tgt_lang_ids = None
         if self.multilingual:
             tgt_lang_ids = ys_pad[:, 0:1]
@@ -417,7 +493,7 @@ class E2E(STInterface, torch.nn.Module):
             loss_mt, acc_mt = self.forward_mt(
                 ys_pad_src, ys_in_pad, ys_out_pad, ys_mask
             )
-            loss_mt_data = float(loss_att)
+            loss_mt_data = float(loss_mt)
 
         # 3. compute ST loss
         loss_att = self.criterion_st(pred_pad, ys_out_pad)
@@ -436,7 +512,8 @@ class E2E(STInterface, torch.nn.Module):
         # 6. compute auxiliary MT loss
 
         asr_ctc_weight = self.mtlalpha
-        self.loss = (1 - self.asr_weight - self.mt_weight) * loss_att + self.asr_weight * (
+
+        final_loss = (1 - self.asr_weight - self.mt_weight) * loss_att + self.asr_weight * (
             asr_ctc_weight * loss_asr_ctc + (1 - asr_ctc_weight) * loss_asr_att
         ) + self.mt_weight * loss_mt_data
 
@@ -446,9 +523,10 @@ class E2E(STInterface, torch.nn.Module):
 
         loss_st_data = float(loss_att)
 
-        loss_data = float(self.loss)
+        loss_data = float(final_loss)
+        reports=[ None, None, None, None, None, None, None, None, None, None, None]
         if loss_data < CTC_LOSS_THRESHOLD and not math.isnan(loss_data):
-            self.reporter.report(
+            reports=[
                 loss_asr_data,
                 loss_mt_data,
                 loss_st_data,
@@ -460,11 +538,11 @@ class E2E(STInterface, torch.nn.Module):
                 wer,
                 self.bleu,
                 loss_data,
-            )
+            ]
         else:
             logging.warning("loss (=%f) is not correct", loss_data)
 
-        return self.loss
+        return final_loss, reports
 
     def forward_mt(self, xs_pad, ys_in_pad, ys_out_pad, ys_mask):
         """Forward pass in the auxiliary MT task.
@@ -496,7 +574,7 @@ class E2E(STInterface, torch.nn.Module):
 
         pred_pad, _ = self.decoder_st(ys_in_pad, ys_mask, hs_pad, hs_mask)
 
-        loss = self.criterion(pred_pad, ys_out_pad)
+        loss = self.criterion_st(pred_pad, ys_out_pad)
         acc = th_accuracy(
             pred_pad.view(-1, self.odim), ys_out_pad, ignore_label=self.ignore_id
         )
@@ -1072,7 +1150,7 @@ class E2E(STInterface, torch.nn.Module):
         """
         self.eval()
         with torch.no_grad():
-            self.forward(xs_pad, ilens, ys_pad, ys_pad_src)
+            self.forward_st(xs_pad, ilens, ys_pad, ys_pad_src)
         ret = dict()
         for name, m in self.named_modules():
             if (
@@ -1099,7 +1177,7 @@ class E2E(STInterface, torch.nn.Module):
 
         self.eval()
         with torch.no_grad():
-            self.forward(xs_pad, ilens, ys_pad, ys_pad_src)
+            self.forward_st(xs_pad, ilens, ys_pad, ys_pad_src)
         ret = None
         for name, m in self.named_modules():
             if isinstance(m, CTC) and m.probs is not None:

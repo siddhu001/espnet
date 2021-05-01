@@ -1,4 +1,6 @@
-# Assumes running on 1 GPU (2080Ti)
+# Trained on 4 16gb gpus (V-100)
+# For other gpu sizes and counts
+# vary accum grad and batchsize accordingly
 # network architecture
 backend: pytorch
 model-module: "espnet.nets.pytorch_backend.e2e_st_md_transformer:E2E"
@@ -17,13 +19,13 @@ lsm-weight: 0.1  # Label Smoothing
 # optimization related
 sortagrad: 0 # 0 disables Feed samples from shortest to longest
 opt: noam
-accum-grad: 2
+accum-grad: 1
 grad-clip: 5
 patience: 0
 epochs: 50
 
 # minibatch related
-batch-size: 2  # for BPE
+batch-size: 48  # for BPE
 maxlen-in: 512  # if input length  > maxlen-in, batchsize is automatically reduced
 maxlen-out: 150 # if output length > maxlen-out, batchsize is automatically reduced
 
@@ -32,7 +34,7 @@ enc-inp-input-layer: conv2d
 enc-inp-layers: 12
 enc-inp-units: 2048
 enc-inp-aheads: 8
-enc-inp-adim: 256
+enc-inp-adim: 512
 enc-inp-dropout-rate: 0.1
 enc-inp-transformer-attn-dropout-rate: 0.1
 
@@ -41,17 +43,17 @@ enc-inp-transformer-attn-dropout-rate: 0.1
 dec-si-layers: 6
 dec-si-units: 2048
 dec-si-aheads: 8
-dec-si-adim: 256
+dec-si-adim: 512
 dec-si-transformer-selfattn-layer-type: selfattn
 dec-si-dropout-rate: 0.1
 dec-si-transformer-attn-dropout-rate: 0.2
 
 # encoder st related
 enc-si-input-layer: nothing
-enc-si-layers: 2
+enc-si-layers: 4
 enc-si-units: 2048
 enc-si-aheads: 8
-enc-si-adim: 256
+enc-si-adim: 512
 enc-si-dropout-rate: 0.1
 enc-si-transformer-attn-dropout-rate: 0.1
 
@@ -59,13 +61,13 @@ enc-si-transformer-attn-dropout-rate: 0.1
 dec-out-layers: 6
 dec-out-units: 2048
 dec-out-aheads: 8
-dec-out-adim: 256
+dec-out-adim: 512
 dec-out-transformer-selfattn-layer-type: selfattn
 dec-out-dropout-rate: 0.2
 dec-out-transformer-attn-dropout-rate: 0.4
 
 # pre-training related
-enc-init-mods: encoder.embed,encoder.encoders,encoder.after_norm
+enc-init-mods: encoder_asr.embed,encoder_asr.encoders,encoder_asr.after_norm,decoder_asr.decoders,decoder_asr.after_norm
 dec-init-mods: decoder.embed,decoder.decoders,decoder.after_norm,decoder.output_layer
 
 # Report CER & WER

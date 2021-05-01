@@ -118,7 +118,31 @@ def get_parser(parser=None, required=True):
         help="Filename of train label data (json)",
     )
     parser.add_argument(
+        "--train-asr-json",
+        type=str,
+        default=None,
+        help="Filename of train label data (json)",
+    )
+    parser.add_argument(
+        "--train-mt-json",
+        type=str,
+        default=None,
+        help="Filename of train label data (json)",
+    )
+    parser.add_argument(
         "--valid-json",
+        type=str,
+        default=None,
+        help="Filename of validation label data (json)",
+    )
+    parser.add_argument(
+        "--valid-asr-json",
+        type=str,
+        default=None,
+        help="Filename of validation label data (json)",
+    )
+    parser.add_argument(
+        "--valid-mt-json",
         type=str,
         default=None,
         help="Filename of validation label data (json)",

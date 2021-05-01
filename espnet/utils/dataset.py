@@ -90,3 +90,85 @@ class ChainerDataLoader(object):
     def finalize(self):
         """Implement finalize function."""
         del self.loader
+
+class EnsembleDataLoader(object):
+    """Pytorch dataloader in chainer style.
+
+    Args:
+        all args for torch.utils.data.dataloader.Dataloader
+
+    """
+
+    def __init__(self, **kwargs):
+        """Init function."""
+        """[asr, mt, st]"""
+
+        self.datasets = kwargs["datasets"]
+        self.loaders=[]
+        self.iters=[]
+        del kwargs["datasets"]
+        for dataset in self.datasets:
+            kwargs["dataset"] = dataset
+            self.loaders.append(torch.utils.data.dataloader.DataLoader(**kwargs))
+            self.iters.append(None)
+
+        self.len = max(len(a) for a in self.datasets)
+        self.current_position = 0
+        self.epoch = 0
+        self.kwargs = kwargs
+
+    def next(self):
+        """Implement next function."""
+
+        rets=[]
+        for idx in range(len(self.loaders)):
+            loader = self.loaders[idx]
+
+            if self.iters[idx] is None:
+                self.iters[idx] = iter(loader)
+
+            try:
+                rets.append(next(self.iters[idx]))
+
+            except StopIteration:
+                self.iters[idx]= None
+                return self.next()
+
+        self.current_position += 1
+        if self.current_position == self.len:
+            self.epoch = self.epoch + 1
+            self.current_position = 0
+
+        return rets
+
+    def __iter__(self):
+        """Implement iter function."""
+        batches=[]
+        for loader in self.loaders:
+            for batch in loader:
+                batches.append(batch)
+        yield batches
+
+    @property
+    def epoch_detail(self):
+        """Epoch_detail required by chainer."""
+        return self.epoch + self.current_position / self.len
+
+    def serialize(self, serializer):
+        """Serialize and deserialize function."""
+        epoch = serializer("epoch", self.epoch)
+        current_position = serializer("current_position", self.current_position)
+        self.epoch = epoch
+        self.current_position = current_position
+
+    def start_shuffle(self):
+        """Shuffle function for sortagrad."""
+        self.kwargs["shuffle"] = True
+        for dataset in self.datasets:
+            kwargs["dataset"] = dataset
+            self.loaders.append(torch.utils.data.dataloader.DataLoader(**kwargs))
+        #self.loader = torch.utils.data.dataloader.DataLoader(**self.kwargs)
+
+    def finalize(self):
+        """Implement finalize function."""
+        del self.loaders

@@ -1,12 +1,11 @@
-# Assumes running on 1 GPU (2080Ti)
-# network architecture
 backend: pytorch
-model-module: "espnet.nets.pytorch_backend.e2e_st_md_transformer:E2E"
+model-module: espnet.nets.pytorch_backend.e2e_st_md_conformer:E2E
 transformer-lr: 12.5
 transformer-warmup-steps: 25000
 transformer-length-normalized-loss: false
 transformer-init: pytorch
 dropout-rate: 0.1
+
 
 # Loss Weighting
 mtlalpha: 0.3  # CTC weight
@@ -14,61 +13,60 @@ asr-weight: 0.3  # ASR subnet weight
 mt-weight: 0.3
 lsm-weight: 0.1  # Label Smoothing
 
-# optimization related
-sortagrad: 0 # 0 disables Feed samples from shortest to longest
+sortagrad: 0
 opt: noam
 accum-grad: 2
 grad-clip: 5
 patience: 0
 epochs: 50
 
-# minibatch related
-batch-size: 2  # for BPE
-maxlen-in: 512  # if input length  > maxlen-in, batchsize is automatically reduced
-maxlen-out: 150 # if output length > maxlen-out, batchsize is automatically reduced
+batch-size: 48
+maxlen-in: 512
+maxlen-out: 150
 
-# encoder asr related
+
 enc-inp-input-layer: conv2d
 enc-inp-layers: 12
 enc-inp-units: 2048
 enc-inp-aheads: 8
-enc-inp-adim: 256
+enc-inp-adim: 512
 enc-inp-dropout-rate: 0.1
 enc-inp-transformer-attn-dropout-rate: 0.1
 
-
-# decoder asr related
 dec-si-layers: 6
 dec-si-units: 2048
 dec-si-aheads: 8
-dec-si-adim: 256
+dec-si-adim: 512
 dec-si-transformer-selfattn-layer-type: selfattn
 dec-si-dropout-rate: 0.1
 dec-si-transformer-attn-dropout-rate: 0.2
 
-# encoder st related
+enc-si-transformer-selfattn-layer-type: selfattn
 enc-si-input-layer: nothing
-enc-si-layers: 2
+enc-si-layers: 4
 enc-si-units: 2048
 enc-si-aheads: 8
-enc-si-adim: 256
+enc-si-adim: 512
 enc-si-dropout-rate: 0.1
 enc-si-transformer-attn-dropout-rate: 0.1
 
-# decoder st related
 dec-out-layers: 6
 dec-out-units: 2048
 dec-out-aheads: 8
-dec-out-adim: 256
-dec-out-transformer-selfattn-layer-type: selfattn
+dec-out-adim: 512
+dec-out-transformer-selfattn-layer-type: seqspeechattn
 dec-out-dropout-rate: 0.2
 dec-out-transformer-attn-dropout-rate: 0.4
 
-# pre-training related
-enc-init-mods: encoder.embed,encoder.encoders,encoder.after_norm
-dec-init-mods: decoder.embed,decoder.decoders,decoder.after_norm,decoder.output_layer
-
-# Report CER & WER
+enc-init-mods: encoder_asr.embed,encoder_asr.encoders,encoder_asr.after_norm,decoder_asr.decoders,decoder_asr.after_norm
+dec-init-mods: decoder_st.embed,decoder_st.decoders,decoder_st.after_norm,decoder_st.output_layer
 report-cer: true
 report-wer: true
 ctc_type: builtin
+transformer-encoder-pos-enc-layer-type: rel_pos
+transformer-encoder-selfattn-layer-type: rel_selfattn
+rel-pos-type: latest
+transformer-encoder-activation-type: swish
+macaron-style: true
+use-cnn-module: true
+cnn-module-kernel: 31

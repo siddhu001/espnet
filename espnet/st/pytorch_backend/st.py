@@ -31,6 +31,7 @@ from espnet.nets.pytorch_backend.e2e_asr import pad_list
 from espnet.nets.pytorch_backend.e2e_st_ensemble import E2E as EnsembleE2E
 from espnet.nets.st_interface import STInterface
 from espnet.utils.dataset import ChainerDataLoader
+from espnet.utils.dataset import EnsembleDataLoader
 from espnet.utils.dataset import TransformDataset
 from espnet.utils.deterministic_utils import set_deterministic_pytorch
 from espnet.utils.dynamic_import import dynamic_import
@@ -42,6 +43,7 @@ from espnet.utils.training.train_utils import check_early_stop
 from espnet.utils.training.train_utils import set_early_stop
 
 from espnet.asr.pytorch_backend.asr import CustomConverter as ASRCustomConverter
+from espnet.mt.pytorch_backend.mt import CustomConverter as MTCustomConverter
 from espnet.asr.pytorch_backend.asr import CustomEvaluator
 from espnet.asr.pytorch_backend.asr import CustomUpdater
 
@@ -256,12 +258,33 @@ def train(args):
         dtype=dtype,
         use_source_text=args.asr_weight > 0 or args.mt_weight > 0,
     )
+    converter_asr = ASRCustomConverter(
+        subsampling_factor=model.subsample[0],
+        dtype=dtype,
+    )
+    converter_mt = MTCustomConverter()
 
     # read json data
     with open(args.train_json, "rb") as f:
         train_json = json.load(f)["utts"]
     with open(args.valid_json, "rb") as f:
         valid_json = json.load(f)["utts"]
+
+    if args.train_asr_json is not None:
+        with open(args.train_asr_json, "rb") as f:
+            train_asr_json = json.load(f)["utts"]
+
+    if args.train_mt_json is not None:
+        with open(args.train_mt_json, "rb") as f:
+            train_mt_json = json.load(f)["utts"]
+
+    if args.valid_asr_json is not None:
+        with open(args.valid_asr_json, "rb") as f:
+            valid_asr_json = json.load(f)["utts"]
+
+    if args.valid_mt_json is not None:
+        with open(args.valid_mt_json, "rb") as f:
+            valid_mt_json = json.load(f)["utts"]
 
     use_sortagrad = args.sortagrad == -1 or args.sortagrad > 0
     # make minibatch list (variable length)
@@ -280,7 +303,43 @@ def train(args):
         batch_frames_inout=args.batch_frames_inout,
         iaxis=0,
         oaxis=0,
-    )
+        )
+    if args.train_asr_json is not None:
+        train_asr = make_batchset(
+            train_asr_json,
+            args.batch_size,
+            args.maxlen_in,
+            args.maxlen_out,
+            args.minibatches,
+            min_batch_size=args.ngpu if args.ngpu > 1 else 1,
+            shortest_first=use_sortagrad,
+            count=args.batch_count,
+            batch_bins=args.batch_bins,
+            batch_frames_in=args.batch_frames_in,
+            batch_frames_out=args.batch_frames_out,
+            batch_frames_inout=args.batch_frames_inout,
+            iaxis=0,
+            oaxis=0,
+        )
+    if args.train_mt_json is not None:
+        train_mt = make_batchset(
+            train_mt_json,
+            args.batch_size,
+            args.maxlen_in,
+            args.maxlen_out,
+            args.minibatches,
+            min_batch_size=args.ngpu if args.ngpu > 1 else 1,
+            shortest_first=use_sortagrad,
+            count=args.batch_count,
+            batch_bins=args.batch_bins,
+            batch_frames_in=args.batch_frames_in,
+            batch_frames_out=args.batch_frames_out,
+            batch_frames_inout=args.batch_frames_inout,
+            mt=True,
+            iaxis=1,
+            oaxis=0,
+        )
+
     valid = make_batchset(
         valid_json,
         args.batch_size,
@@ -303,6 +362,21 @@ def train(args):
         preprocess_conf=args.preprocess_conf,
         preprocess_args={"train": True},  # Switch the mode of preprocessing
     )
+
+    if args.train_mt_json is not None:
+        load_tr_mt = LoadInputsAndTargets(
+            mode="mt",
+            load_output=True,
+        )
+
+    if args.train_asr_json is not None:
+        load_tr_asr = LoadInputsAndTargets(
+            mode="asr",
+            load_output=True,
+            preprocess_conf=args.preprocess_conf,
+            preprocess_args={"train": True},  # Switch the mode of preprocessing
+        )
+
     load_cv = LoadInputsAndTargets(
         mode="asr",
         load_output=True,
@@ -313,20 +387,42 @@ def train(args):
     # actual bathsize is included in a list
     # default collate function converts numpy array to pytorch tensor
     # we used an empty collate function instead which returns list
-    train_iter = ChainerDataLoader(
-        dataset=TransformDataset(train, lambda data: converter([load_tr(data)])),
-        batch_size=1,
-        num_workers=args.n_iter_processes,
-        shuffle=not use_sortagrad,
-        collate_fn=lambda x: x[0],
-    )
-    valid_iter = ChainerDataLoader(
-        dataset=TransformDataset(valid, lambda data: converter([load_cv(data)])),
-        batch_size=1,
-        shuffle=False,
-        collate_fn=lambda x: x[0],
-        num_workers=args.n_iter_processes,
-    )
+    if args.train_asr_json is None and args.train_mt_json is None :
+        train_iter = ChainerDataLoader(
+            dataset=TransformDataset(train, lambda data: converter([load_tr(data)])),
+            batch_size=1,
+            num_workers=args.n_iter_processes,
+            shuffle=not use_sortagrad,
+            collate_fn=lambda x: x[0],
+        )
+        valid_iter = ChainerDataLoader(
+            dataset=TransformDataset(valid, lambda data: converter([load_cv(data)])),
+            batch_size=1,
+            shuffle=False,
+            collate_fn=lambda x: x[0],
+            num_workers=args.n_iter_processes,
+        )
+    else:
+        datasets = [ 
+            TransformDataset(train, lambda data: converter([load_tr(data)])), 
+            TransformDataset(train_asr, lambda data: converter_asr([load_tr_asr(data)])), 
+            TransformDataset(train_mt, lambda data: converter_mt([load_tr_mt(data)]))
+        ]
+        train_iter = EnsembleDataLoader(
+            datasets=datasets,
+            batch_size=1,
+            num_workers=args.n_iter_processes,
+            shuffle=not use_sortagrad,
+            collate_fn=lambda x: x[0],
+        )
+        valid_iter = EnsembleDataLoader(
+            datasets=[TransformDataset(valid, lambda data: converter([load_cv(data)]))],
+            batch_size=1,
+            shuffle=False,
+            collate_fn=lambda x: x[0],
+            num_workers=args.n_iter_processes,
+        )
+
 
     # Set up a trainer
     updater = CustomUpdater(
@@ -556,6 +652,8 @@ def train(args):
         "main/loss",
         "main/loss_st",
         "main/loss_asr",
+        "main/loss_asr_only",
+        "main/loss_mt_only",
         "validation/main/loss",
         "validation/main/loss_st",
         "validation/main/loss_asr",
