@@ -24,12 +24,12 @@ dir_dict = {
 
 
 for x in dir_dict:
-    asr_transcript_file = open("exp/asr_train_asr_hubert_transformer_adam_specaug_raw_en_word/inference_asr_model_valid.acc.ave_5best/"+x+"/score_wer/hyp.trn","r")
+    asr_transcript_file = open("exp/asr_train_asr_raw_en_bpe5000/inference_asr_model_valid.acc.ave_10best/"+x+"/score_wer/hyp.trn","r")
     transcript_arr=[line for line in asr_transcript_file]
     transcript_dict={}
     for line in transcript_arr:
         wav_name = "-".join(line.split("\t")[1].strip()[1:-1].split("-")[1:])
-        transcript = " ".join(line.split("\t")[0].split()[1:]).lower()
+        transcript = " ".join(line.split("\t")[0].split()).lower()
         if transcript=="":
             transcript="blank"
         print(wav_name)

@@ -14,12 +14,17 @@ SECONDS=0
 
 stage=1
 stop_stage=100000
+data_url=www.openslr.org/resources/12
+train_set="train_960"
+train_dev="dev"
 log "$0 $*"
 . utils/parse_options.sh
 
 . ./db.sh
 . ./path.sh
 . ./cmd.sh
+
+FSC=/home/siddhana/fluent_speech_commands_dataset
 
 if [ $# -ne 0 ]; then
     log "Error: No positional arguments are required."
@@ -42,9 +47,9 @@ fi
 if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
     log "stage 2: Data Preparation"
     mkdir -p data/{train,valid,utt_test,spk_test}
-    python3 local/data_prep.py ${FSC}
+    python3 local/data_prep_gigaspeech.py ${FSC}
     for x in utt_test spk_test valid train; do
-        for f in text wav.scp utt2spk; do
+        for f in text wav.scp transcript utt2spk; do
             sort data/${x}/${f} -o data/${x}/${f}
         done
         utils/utt2spk_to_spk2utt.pl data/${x}/utt2spk > "data/${x}/spk2utt"

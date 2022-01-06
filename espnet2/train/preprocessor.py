@@ -103,8 +103,8 @@ def detect_non_silence(
     framed_w *= scipy.signal.get_window(window, frame_length).astype(framed_w.dtype)
     # power: (C, T)
     power = (framed_w ** 2).mean(axis=-1)
-    # mean_power: (C, 1)
-    mean_power = np.mean(power, axis=-1, keepdims=True)
+    # mean_power: (C,)
+    mean_power = power.mean(axis=-1)
     if np.all(mean_power == 0):
         return np.full(x.shape, fill_value=True, dtype=np.bool)
     # detect_frames: (C, T)
@@ -129,6 +129,7 @@ class CommonPreprocessor(AbsPreprocessor):
         train: bool,
         token_type: str = None,
         token_list: Union[Path, str, Iterable[str]] = None,
+        transcript_token_list: Union[Path, str, Iterable[str]] = None,
         bpemodel: Union[Path, str, Iterable[str]] = None,
         text_cleaner: Collection[str] = None,
         g2p_type: str = None,
@@ -170,6 +171,12 @@ class CommonPreprocessor(AbsPreprocessor):
                 token_list=token_list,
                 unk_symbol=unk_symbol,
             )
+            if transcript_token_list is not None:
+                print("using transcript")
+                self.transcript_token_id_converter = TokenIDConverter(
+                    token_list=transcript_token_list,
+                    unk_symbol=unk_symbol,
+                )
         else:
             self.text_cleaner = None
             self.tokenizer = None
@@ -214,7 +221,7 @@ class CommonPreprocessor(AbsPreprocessor):
         assert check_argument_types()
 
         if self.speech_name in data:
-            if self.train and (self.rirs is not None or self.noises is not None):
+            if self.train and self.rirs is not None and self.noises is not None:
                 speech = data[self.speech_name]
                 nsamples = len(speech)
 
@@ -306,6 +313,13 @@ class CommonPreprocessor(AbsPreprocessor):
             tokens = self.tokenizer.text2tokens(text)
             text_ints = self.token_id_converter.tokens2ids(tokens)
             data[self.text_name] = np.array(text_ints, dtype=np.int64)
+
+        if "transcript" in data and self.tokenizer is not None:
+            text = data["transcript"]
+            text = self.text_cleaner(text)
+            tokens = self.tokenizer.text2tokens(text)
+            text_ints = self.transcript_token_id_converter.tokens2ids(tokens)
+            data["transcript"] = np.array(text_ints, dtype=np.int64)
         assert check_return_type(data)
         return data
 
