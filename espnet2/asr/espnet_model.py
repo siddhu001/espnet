@@ -65,6 +65,7 @@ class ESPnetASRModel(AbsESPnetModel):
         sym_space: str = "<space>",
         sym_blank: str = "<blank>",
         extract_feats_in_collect_stats: bool = True,
+        two_pass: bool = False,
     ):
         assert check_argument_types()
         assert 0.0 <= ctc_weight <= 1.0, ctc_weight
@@ -81,6 +82,7 @@ class ESPnetASRModel(AbsESPnetModel):
         if transcript_token_list is not None:
             self.transcript_token_list = transcript_token_list.copy()
         # print(self.transcript_token_list)
+        self.two_pass=two_pass
         self.frontend = frontend
         self.specaug = specaug
         self.normalize = normalize
@@ -148,23 +150,59 @@ class ESPnetASRModel(AbsESPnetModel):
         text = text[:, : text_lengths.max()]
 
         # 1. Encoder
-        encoder_out, encoder_out_lens = self.encode(speech, speech_lengths, transcript, transcript_lengths)
+        if self.two_pass:
+            audio_encoder_out, audio_encoder_out_lens, encoder_out, encoder_out_lens = self.encode(speech, speech_lengths, transcript, transcript_lengths)
+            # 2a. Attention-decoder branch
+            if self.ctc_weight == 1.0:
+                loss_att, acc_att, cer_att, wer_att = None, None, None, None
+            else:
+                loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
+                    audio_encoder_out, audio_encoder_out_lens, text, text_lengths
+                )
+                loss_att2, acc_att2, cer_att2, wer_att2 = self._calc_att_loss(
+                    encoder_out, encoder_out_lens, text, text_lengths
+                )
+                if loss_att is not None:
+                    loss_att=(loss_att+loss_att2)/2
+                if acc_att is not None:
+                    acc_att=(acc_att+acc_att2)/2
+                if cer_att is not None:
+                    cer_att=(cer_att+cer_att2)/2
+                if wer_att is not None:
+                    wer_att=(wer_att+wer_att2)/2
 
-        # 2a. Attention-decoder branch
-        if self.ctc_weight == 1.0:
-            loss_att, acc_att, cer_att, wer_att = None, None, None, None
+            # 2b. CTC branch
+            if self.ctc_weight == 0.0:
+                loss_ctc, cer_ctc = None, None
+            else:
+                loss_ctc, cer_ctc = self._calc_ctc_loss(
+                    audio_encoder_out, audio_encoder_out_lens, text, text_lengths
+                )
+                loss_ctc2, cer_ctc2 = self._calc_ctc_loss(
+                    encoder_out, encoder_out_lens, text, text_lengths
+                )
+                if loss_ctc is not None:
+                    loss_ctc=(loss_ctc+loss_ctc2)/2
+                if cer_ctc is not None:
+                    cer_ctc=(cer_ctc+cer_ctc2)/2
         else:
-            loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
-                encoder_out, encoder_out_lens, text, text_lengths
-            )
+            encoder_out, encoder_out_lens = self.encode(speech, speech_lengths, transcript, transcript_lengths)
 
-        # 2b. CTC branch
-        if self.ctc_weight == 0.0:
-            loss_ctc, cer_ctc = None, None
-        else:
-            loss_ctc, cer_ctc = self._calc_ctc_loss(
-                encoder_out, encoder_out_lens, text, text_lengths
-            )
+            # 2a. Attention-decoder branch
+            if self.ctc_weight == 1.0:
+                loss_att, acc_att, cer_att, wer_att = None, None, None, None
+            else:
+                loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
+                    encoder_out, encoder_out_lens, text, text_lengths
+                )
+
+            # 2b. CTC branch
+            if self.ctc_weight == 0.0:
+                loss_ctc, cer_ctc = None, None
+            else:
+                loss_ctc, cer_ctc = self._calc_ctc_loss(
+                    encoder_out, encoder_out_lens, text, text_lengths
+                )
 
         # 2c. RNN-T branch
         if self.rnnt_decoder is not None:
@@ -296,9 +334,9 @@ class ESPnetASRModel(AbsESPnetModel):
             # print(bert_encoder_out.shape)
             # encoder_out=torch.cat((encoder_out,\
             #         bert_encoder_out),1)
-            encoder_out=encoder_new_out
-            # print(encoder_out.shape)
-            encoder_out_lens=final_encoder_out_lens
+            if not(self.two_pass):
+                encoder_out=encoder_new_out
+                encoder_out_lens=final_encoder_out_lens
             # encoder_out_lens[:]=encoder_out_lens.max()+torch.max(bert_encoder_lens)
             # print(encoder_out_lens)
             # exit()
@@ -314,8 +352,10 @@ class ESPnetASRModel(AbsESPnetModel):
             encoder_out.size(),
             encoder_out_lens.max(),
         )
-
-        return encoder_out, encoder_out_lens
+        if (self.two_pass):
+            return encoder_out, encoder_out_lens, encoder_new_out, final_encoder_out_lens
+        else:
+            return encoder_out, encoder_out_lens
 
     def _extract_feats(
         self, speech: torch.Tensor, speech_lengths: torch.Tensor

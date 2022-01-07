@@ -46,6 +46,9 @@ from espnet2.asr.postencoder.abs_postencoder import AbsPostEncoder
 from espnet2.asr.postencoder.hugging_face_transformers_postencoder import (
     HuggingFaceTransformersPostEncoder,  # noqa: H301
 )
+from espnet2.asr.postencoder.conformer_postencoder import (
+    ConformerPostEncoder,  # noqa: H301
+)
 from espnet2.asr.postdecoder.abs_postdecoder import AbsPostDecoder
 from espnet2.asr.postdecoder.hugging_face_transformers_postdecoder import (
     HuggingFaceTransformersPostDecoder,  # noqa: H301
@@ -128,6 +131,7 @@ postencoder_choices = ClassChoices(
     name="postencoder",
     classes=dict(
         hugging_face_transformers=HuggingFaceTransformersPostEncoder,
+        conformer=ConformerPostEncoder,
     ),
     type_check=AbsPostEncoder,
     default=None,
@@ -204,6 +208,12 @@ class ASRTask(AbsTask):
             type=str_or_none,
             default=None,
             help="A text mapping int-id to token for transcripts",
+        )
+        group.add_argument(
+            "--two_pass",
+            type=str2bool,
+            default=False,
+            help="Run 2-pass SLU",
         )
         group.add_argument(
             "--init",
@@ -496,6 +506,7 @@ class ASRTask(AbsTask):
         if "transcript_token_list" in args:
             if args.transcript_token_list is not None:
                args.model_conf["transcript_token_list"]=transcript_token_list
+               args.model_conf["two_pass"]=args.two_pass
                model = ESPnetASRModel(
                    vocab_size=vocab_size,
                    frontend=frontend,
