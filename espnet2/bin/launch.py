@@ -56,12 +56,19 @@ def get_parser():
         help="Source the shell script before executing command. "
         "This option is used when --host is specified.",
     )
-
     parser.add_argument(
         "--multiprocessing_distributed",
         type=str2bool,
         default=True,
         help="Distributed method is used when single-node mode.",
+    )
+    parser.add_argument(
+        "--debug",
+        type=str2bool,
+        default=False,
+        help="Debug mode for running pdb.set_trace(). Only when running locally. "
+        "For multigpu use 'from espnet2.utils import pdb'. "
+        "It is experimental -- sometimes stdin doesn't behave well.",
     )
     parser.add_argument(
         "--master_port",
@@ -251,15 +258,19 @@ EOF
             # arguments for ${cmd}
             + ["--gpu", str(args.ngpu), args.log]
             # arguments for *_train.py
-            + args.args
-            + [
-                "--ngpu",
-                str(args.ngpu),
-                "--multiprocessing_distributed",
-                str(args.multiprocessing_distributed),
-            ]
         )
-        process = subprocess.Popen(cmd)
+        pycmd = args.args + [
+            "--ngpu",
+            str(args.ngpu),
+            "--multiprocessing_distributed",
+            str(args.multiprocessing_distributed),
+        ]
+        if args.debug:
+            # if debug mode, don't pipe into log file
+            process = subprocess.Popen(pycmd)
+        else:
+            cmd += pycmd
+            process = subprocess.Popen(cmd)
         processes.append(process)
 
     elif Path(args.cmd[0]).name == "run.pl":
@@ -365,20 +376,31 @@ EOF
 
     for process in processes:
         if process.returncode != 0:
-            print(
-                subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd),
-                file=sys.stderr,
-            )
-            p = Path(args.log)
-            if p.exists():
-                with p.open() as f:
-                    lines = list(f)
-                raise RuntimeError(
-                    f"\n################### The last 1000 lines of {args.log} "
-                    f"###################\n" + "".join(lines[-1000:])
+            if args.debug:
+                print(
+                    subprocess.CalledProcessError(
+                        returncode=process.returncode, cmd=" ".join(pycmd)
+                    ),
+                    file=sys.stderr,
                 )
-            else:
                 raise RuntimeError
+            else:
+                print(
+                    subprocess.CalledProcessError(
+                        returncode=process.returncode, cmd=" ".join(cmd)
+                    ),
+                    file=sys.stderr,
+                )
+                p = Path(args.log)
+                if p.exists():
+                    with p.open() as f:
+                        lines = list(f)
+                    raise RuntimeError(
+                        f"\n################### The last 1000 lines of {args.log} "
+                        f"###################\n" + "".join(lines[-1000:])
+                    )
+                else:
+                    raise RuntimeError
 
 
 if __name__ == "__main__":
