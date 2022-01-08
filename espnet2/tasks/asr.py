@@ -137,8 +137,31 @@ postencoder_choices = ClassChoices(
     default=None,
     optional=True,
 )
+deliberationencoder_choices = ClassChoices(
+    name="deliberationencoder",
+    classes=dict(
+        hugging_face_transformers=HuggingFaceTransformersPostEncoder,
+        conformer=ConformerPostEncoder,
+    ),
+    type_check=AbsPostEncoder,
+    default=None,
+    optional=True,
+)
 decoder_choices = ClassChoices(
     "decoder",
+    classes=dict(
+        transformer=TransformerDecoder,
+        lightweight_conv=LightweightConvolutionTransformerDecoder,
+        lightweight_conv2d=LightweightConvolution2DTransformerDecoder,
+        dynamic_conv=DynamicConvolutionTransformerDecoder,
+        dynamic_conv2d=DynamicConvolution2DTransformerDecoder,
+        rnn=RNNDecoder,
+    ),
+    type_check=AbsDecoder,
+    default="rnn",
+)
+decoder2_choices = ClassChoices(
+    "decoder2",
     classes=dict(
         transformer=TransformerDecoder,
         lightweight_conv=LightweightConvolutionTransformerDecoder,
@@ -179,8 +202,12 @@ class ASRTask(AbsTask):
         encoder_choices,
         # --postencoder and --postencoder_conf
         postencoder_choices,
+        # --deliberationencoder and --deliberationencoder_conf
+        deliberationencoder_choices,
         # --decoder and --decoder_conf
         decoder_choices,
+        # --decoder2 and --decoder2_conf
+        decoder2_choices,
         # --postdecoder and --postdecoder_conf
         postdecoder_choices,
     ]
@@ -477,6 +504,15 @@ class ASRTask(AbsTask):
         else:
             postencoder = None
 
+        if getattr(args, "deliberationencoder", None) is not None:
+            deliberationencoder_class = deliberationencoder_choices.get_class(args.deliberationencoder)
+            deliberationencoder = deliberationencoder_class(
+                input_size=encoder_output_size, **args.deliberationencoder_conf
+            )
+            encoder_output_size = deliberationencoder.output_size()
+        else:
+            deliberationencoder = None
+
         if getattr(args, "postdecoder", None) is not None:
             postdecoder_class = postdecoder_choices.get_class(args.postdecoder)
             postdecoder = postdecoder_class( **args.postdecoder_conf
@@ -493,6 +529,16 @@ class ASRTask(AbsTask):
             encoder_output_size=encoder_output_size,
             **args.decoder_conf,
         )
+
+        if getattr(args, "decoder2", None) is not None:
+            decoder2_class = decoder2_choices.get_class(args.decoder2)
+            decoder2 = decoder2_class(
+                vocab_size=vocab_size,
+                encoder_output_size=encoder_output_size,
+                **args.decoder2_conf,
+            )
+        else:
+            decoder2=None
 
         # 6. CTC
         ctc = CTC(
@@ -515,7 +561,9 @@ class ASRTask(AbsTask):
                    preencoder=preencoder,
                    encoder=encoder,
                    postencoder=postencoder,
+                   deliberationencoder=deliberationencoder,
                    decoder=decoder,
+                   decoder2=decoder2,
                    postdecoder=postdecoder,
                    ctc=ctc,
                    rnnt_decoder=rnnt_decoder,
@@ -531,7 +579,9 @@ class ASRTask(AbsTask):
                     preencoder=preencoder,
                     encoder=encoder,
                     postencoder=postencoder,
+                    deliberationencoder=deliberationencoder,
                     decoder=decoder,
+                    decoder2=decoder2,
                     postdecoder=postdecoder,
                     ctc=ctc,
                     rnnt_decoder=rnnt_decoder,
@@ -547,7 +597,9 @@ class ASRTask(AbsTask):
                 preencoder=preencoder,
                 encoder=encoder,
                 postencoder=postencoder,
+                deliberationencoder=deliberationencoder,
                 decoder=decoder,
+                decoder2=decoder2,
                 postdecoder=postdecoder,
                 ctc=ctc,
                 rnnt_decoder=rnnt_decoder,

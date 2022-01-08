@@ -52,7 +52,9 @@ class ESPnetASRModel(AbsESPnetModel):
         encoder: AbsEncoder,
         postencoder: Optional[AbsPostEncoder],
         postdecoder: Optional[AbsPostDecoder],
+        deliberationencoder: Optional[AbsPostEncoder],
         decoder: AbsDecoder,
+        decoder2: AbsDecoder,
         ctc: CTC,
         rnnt_decoder: None,
         transcript_token_list: Union[Tuple[str, ...], List[str]] = None,
@@ -90,6 +92,8 @@ class ESPnetASRModel(AbsESPnetModel):
         self.postencoder = postencoder
         self.postdecoder = postdecoder
         self.encoder = encoder
+        self.decoder2 = decoder2
+        self.deliberationencoder = deliberationencoder
         # we set self.decoder = None in the CTC mode since
         # self.decoder parameters were never used and PyTorch complained
         # and threw an Exception in the multi-GPU experiment.
@@ -159,9 +163,15 @@ class ESPnetASRModel(AbsESPnetModel):
                 loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
                     audio_encoder_out, audio_encoder_out_lens, text, text_lengths
                 )
-                loss_att2, acc_att2, cer_att2, wer_att2 = self._calc_att_loss(
-                    encoder_out, encoder_out_lens, text, text_lengths
-                )
+                if self.decoder2 is None:
+                    loss_att2, acc_att2, cer_att2, wer_att2 = self._calc_att_loss(
+                        encoder_out, encoder_out_lens, text, text_lengths
+                    )
+                else:
+                    print('goo')
+                    loss_att2, acc_att2, cer_att2, wer_att2 = self._calc_att_loss(
+                        encoder_out, encoder_out_lens, text, text_lengths,use_decoder2=True
+                    )
                 if loss_att is not None:
                     loss_att=(loss_att+loss_att2)/2
                 if acc_att is not None:
@@ -334,6 +344,10 @@ class ESPnetASRModel(AbsESPnetModel):
             # print(bert_encoder_out.shape)
             # encoder_out=torch.cat((encoder_out,\
             #         bert_encoder_out),1)
+            if self.deliberationencoder is not None:
+                    encoder_new_out, final_encoder_out_lens = self.deliberationencoder(
+                        encoder_new_out, final_encoder_out_lens
+                    )
             if not(self.two_pass):
                 encoder_out=encoder_new_out
                 encoder_out_lens=final_encoder_out_lens
@@ -382,14 +396,20 @@ class ESPnetASRModel(AbsESPnetModel):
         encoder_out_lens: torch.Tensor,
         ys_pad: torch.Tensor,
         ys_pad_lens: torch.Tensor,
+        use_decoder2=False,
     ):
         ys_in_pad, ys_out_pad = add_sos_eos(ys_pad, self.sos, self.eos, self.ignore_id)
         ys_in_lens = ys_pad_lens + 1
 
         # 1. Forward decoder
-        decoder_out, _ = self.decoder(
-            encoder_out, encoder_out_lens, ys_in_pad, ys_in_lens
-        )
+        if use_decoder2:
+            decoder_out, _ = self.decoder2(
+                encoder_out, encoder_out_lens, ys_in_pad, ys_in_lens
+            )
+        else:
+            decoder_out, _ = self.decoder(
+                encoder_out, encoder_out_lens, ys_in_pad, ys_in_lens
+            )
 
         # 2. Compute attention loss
         loss_att = self.criterion_att(decoder_out, ys_out_pad)
