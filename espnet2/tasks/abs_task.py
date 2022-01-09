@@ -1127,6 +1127,8 @@ class AbsTask(ABC):
             dtype=getattr(torch, args.train_dtype),
             device="cuda" if args.ngpu > 0 else "cpu",
         )
+        import pdb
+        pdb.set_trace()
         for t in args.freeze_param:
             for k, p in model.named_parameters():
                 if k.startswith(t + ".") or k == t:

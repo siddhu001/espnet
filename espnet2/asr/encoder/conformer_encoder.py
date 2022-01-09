@@ -270,6 +270,8 @@ class ConformerEncoder(AbsEncoder):
         xs_pad: torch.Tensor,
         ilens: torch.Tensor,
         prev_states: torch.Tensor = None,
+        return_pos: bool = False,
+        pre_postencoder_norm: bool = False
     ) -> Tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor]]:
         """Calculate forward propagation.
 
@@ -303,11 +305,23 @@ class ConformerEncoder(AbsEncoder):
             xs_pad, masks = self.embed(xs_pad, masks)
         else:
             xs_pad = self.embed(xs_pad)
+        # print("encoder")
+        # print(xs_pad[0].shape)
+        # print(xs_pad[1].shape)
+        # print(masks.shape)
         xs_pad, masks = self.encoders(xs_pad, masks)
-        if isinstance(xs_pad, tuple):
-            xs_pad = xs_pad[0]
-        if self.normalize_before:
-            xs_pad = self.after_norm(xs_pad)
+        if return_pos:
+            # try both
+            if pre_postencoder_norm:
+                xs_pad = self.after_norm(xs_pad[0]), xs_pad[1]
+            else:
+                xs_pad = xs_pad[0], xs_pad[1] 
+            #xs_pad = xs_pad[0], xs_pad[1]
+        else:    
+            if isinstance(xs_pad, tuple):
+                xs_pad = xs_pad[0]
+            if self.normalize_before:
+                xs_pad = self.after_norm(xs_pad)
 
         olens = masks.squeeze(1).sum(1)
         return xs_pad, olens, None

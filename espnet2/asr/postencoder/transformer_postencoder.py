@@ -25,10 +25,11 @@ from espnet.nets.pytorch_backend.transformer.subsampling import Conv2dSubsamplin
 from espnet.nets.pytorch_backend.transformer.subsampling import Conv2dSubsampling6
 from espnet.nets.pytorch_backend.transformer.subsampling import Conv2dSubsampling8
 from espnet.nets.pytorch_backend.transformer.subsampling import TooShortUttError
-from espnet2.asr.encoder.abs_encoder import AbsEncoder
+from espnet2.asr.postencoder.abs_postencoder import AbsPostEncoder
+import copy
 
 
-class TransformerEncoder(AbsEncoder):
+class TransformerPostEncoder(AbsPostEncoder):
     """Transformer encoder module.
 
     Args:
@@ -96,10 +97,8 @@ class TransformerEncoder(AbsEncoder):
                 torch.nn.Embedding(input_size, output_size, padding_idx=padding_idx),
                 pos_enc_class(output_size, positional_dropout_rate),
             )
-        elif input_layer is None:
-            self.embed = torch.nn.Sequential(
-                pos_enc_class(output_size, positional_dropout_rate)
-            )
+        elif input_layer == "None":
+            self.embed = None
         else:
             raise ValueError("unknown input_layer: " + input_layer)
         self.normalize_before = normalize_before
@@ -151,10 +150,7 @@ class TransformerEncoder(AbsEncoder):
         self,
         xs_pad: torch.Tensor,
         ilens: torch.Tensor,
-        return_pos: bool = False,
-        prev_states: torch.Tensor = None,
-        pre_postencoder_norm: bool = False,
-    ) -> Tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor]]:
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
         """Embed positions in tensor.
 
         Args:
@@ -181,6 +177,8 @@ class TransformerEncoder(AbsEncoder):
                     limit_size,
                 )
             xs_pad, masks = self.embed(xs_pad, masks)
+        elif self.embed is None:
+            xs_pad =xs_pad
         else:
             xs_pad = self.embed(xs_pad)
         xs_pad, masks = self.encoders(xs_pad, masks)
@@ -188,4 +186,4 @@ class TransformerEncoder(AbsEncoder):
             xs_pad = self.after_norm(xs_pad)
 
         olens = masks.squeeze(1).sum(1)
-        return xs_pad, olens, None
+        return xs_pad, olens

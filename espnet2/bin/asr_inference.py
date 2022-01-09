@@ -221,6 +221,7 @@ class Speech2Text:
         batch = to_device(batch, device=self.device)
 
         # b. Forward Encoder
+        self.asr_model.two_pass = False
         enc, _ = self.asr_model.encode(**batch)
         assert len(enc) == 1, len(enc)
 

@@ -54,7 +54,7 @@ class ESPnetASRModel(AbsESPnetModel):
         postdecoder: Optional[AbsPostDecoder],
         deliberationencoder: Optional[AbsPostEncoder],
         decoder: AbsDecoder,
-        decoder2: AbsDecoder,
+        decoder2: Optional[AbsDecoder],
         ctc: CTC,
         rnnt_decoder: None,
         transcript_token_list: Union[Tuple[str, ...], List[str]] = None,
@@ -68,6 +68,7 @@ class ESPnetASRModel(AbsESPnetModel):
         sym_blank: str = "<blank>",
         extract_feats_in_collect_stats: bool = True,
         two_pass: bool = False,
+        pre_postencoder_norm: bool = False,
     ):
         assert check_argument_types()
         assert 0.0 <= ctc_weight <= 1.0, ctc_weight
@@ -85,6 +86,7 @@ class ESPnetASRModel(AbsESPnetModel):
             self.transcript_token_list = transcript_token_list.copy()
         # print(self.transcript_token_list)
         self.two_pass=two_pass
+        self.pre_postencoder_norm=pre_postencoder_norm
         self.frontend = frontend
         self.specaug = specaug
         self.normalize = normalize
@@ -290,7 +292,8 @@ class ESPnetASRModel(AbsESPnetModel):
         # 4. Forward encoder
         # feats: (Batch, Length, Dim)
         # -> encoder_out: (Batch, Length2, Dim2)
-        encoder_out, encoder_out_lens, _ = self.encoder(feats, feats_lengths)
+
+        encoder_out, encoder_out_lens, _ = self.encoder(feats, feats_lengths,return_pos = False,pre_postencoder_norm=self.pre_postencoder_norm)
 
         # Post-encoder, e.g. NLU
         # print(encoder_out.shape)

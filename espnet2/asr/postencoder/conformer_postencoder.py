@@ -135,6 +135,8 @@ class ConformerPostEncoder(AbsPostEncoder):
             logging.warning(
                 "Using legacy_rel_pos and it will be deprecated in the future."
             )
+        elif pos_enc_layer_type =="None":
+            pos_enc_class = None
         else:
             raise ValueError("unknown pos_enc_layer: " + pos_enc_layer_type)
 
@@ -180,10 +182,8 @@ class ConformerPostEncoder(AbsPostEncoder):
                 input_layer,
                 pos_enc_class(output_size, positional_dropout_rate),
             )
-        elif input_layer is None:
-            self.embed = torch.nn.Sequential(
-                pos_enc_class(output_size, positional_dropout_rate)
-            )
+        elif input_layer=="None":
+            self.embed = None
         else:
             raise ValueError("unknown input_layer: " + input_layer)
         
@@ -268,10 +268,9 @@ class ConformerPostEncoder(AbsPostEncoder):
         self, input: torch.Tensor, input_lengths: torch.Tensor
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """Forward."""
-
-        masks = (~make_pad_mask(input_lengths)).to(input.device)
-        # print(mask)
         xs_pad=input
+        masks = (~make_pad_mask(input_lengths)).to(input[0].device)
+        # print(mask)
         if (
             isinstance(self.embed, Conv2dSubsampling)
             or isinstance(self.embed, Conv2dSubsampling2)
@@ -287,6 +286,8 @@ class ConformerPostEncoder(AbsPostEncoder):
                     limit_size,
                 )
             xs_pad, masks = self.embed(xs_pad, masks)
+        elif self.embed is None:
+            xs_pad =xs_pad
         else:
             xs_pad = self.embed(xs_pad)
         # print("postencoder")
