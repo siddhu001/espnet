@@ -47,5 +47,6 @@ for x in dir_dict:
             utt_id = path_arr[-2] + "_" + path_arr[-1]
             # print(utt_id + " " + words + "\n")
             text_f.write(utt_id + " " + words + "\n")
+            transcript_f.write(utt_id + " " + row[-3] + "\n")
             wav_scp_f.write(utt_id + " " + stop_root + "/" + row[0].replace("_eval_0","_eval").replace("_test_0","_test") + "\n")
             utt2spk_f.write(utt_id + " "+utt_id+"_1 \n")

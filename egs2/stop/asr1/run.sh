@@ -20,6 +20,7 @@ asr_config=conf/train_asr.yaml
     --feats_type raw\
     --max_wav_duration 30 \
     --feats_normalize utterance_mvn\
+    --bpe_train_text data/train/bpe_text\
     --inference_nj 8 \
     --inference_asr_model valid.acc.ave_10best.pth\
     --asr_config "${asr_config}" \

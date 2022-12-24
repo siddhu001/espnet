@@ -44,12 +44,13 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
     mkdir -p data/{train,valid,test}
     python3 local/prepare_stop_data.py ${STOP}
     for x in test valid train; do
-        for f in text wav.scp utt2spk; do
+        for f in text transcript wav.scp utt2spk; do
             sort data/${x}/${f} -o data/${x}/${f}
         done
         utils/utt2spk_to_spk2utt.pl data/${x}/utt2spk > "data/${x}/spk2utt"
         utils/validate_data_dir.sh --no-feats data/${x} || exit 1
     done
+    cat data/train/text data/train/transcript > data/train/bpe_text
 fi
 
 log "Successfully finished. [elapsed=${SECONDS}s]"
