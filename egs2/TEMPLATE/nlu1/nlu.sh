@@ -1129,99 +1129,110 @@ if ! "${skip_eval}"; then
             _data="${data_feats}/${dset}"
             _dir="${nlu_exp}/${inference_tag}/${dset}"
 
-            # TODO(jiatong): add asr scoring and inference
+            for _type in cer wer; do
+                [ "${_type}" = ter ] && [ ! -f "${bpemodel}" ] && continue
 
-            _scoredir="${_dir}/score_bleu"
-            mkdir -p "${_scoredir}"
+                _scoredir="${_dir}/score_${_type}"
+                mkdir -p "${_scoredir}"
 
-            <"${_data}/text.${tgt_case}.${tgt_type}" \
-                ${python} -m espnet2.bin.tokenize_text  \
-                    -f 2- --input - --output - \
-                    --token_type word \
-                    --non_linguistic_symbols "${nlsyms_txt}" \
-                    --remove_non_linguistic_symbols true \
-                    --cleaner "${cleaner}" \
-            >"${_scoredir}/ref.trn"
-
-            # NOTE(kamo): Don't use cleaner for hyp
-            <"${_dir}/text"  \
-                    ${python} -m espnet2.bin.tokenize_text  \
-                    -f 2- --input - --output - \
-                    --token_type word \
-                    --non_linguistic_symbols "${nlsyms_txt}" \
-                    --remove_non_linguistic_symbols true \
-            >"${_scoredir}/hyp.trn"
-
-            # detokenizer
-            detokenizer.perl -l ${tgt_type} -q < "${_scoredir}/ref.trn" > "${_scoredir}/ref.trn.detok"
-            detokenizer.perl -l ${tgt_type} -q < "${_scoredir}/hyp.trn" > "${_scoredir}/hyp.trn.detok"
-
-            if [ ${tgt_case} = "tc" ]; then
-                echo "Case sensitive BLEU result (single-reference)" >> ${_scoredir}/result.tc.txt
-                sacrebleu "${_scoredir}/ref.trn.detok" \
-                          -i "${_scoredir}/hyp.trn.detok" \
-                          -m bleu chrf ter \
-                          >> ${_scoredir}/result.tc.txt
-                
-                log "Write a case-sensitive BLEU (single-reference) result in ${_scoredir}/result.tc.txt"
-            fi
-
-            # detokenize & remove punctuation except apostrophe
-            remove_punctuation.pl < "${_scoredir}/ref.trn.detok" > "${_scoredir}/ref.trn.detok.lc.rm"
-            remove_punctuation.pl < "${_scoredir}/hyp.trn.detok" > "${_scoredir}/hyp.trn.detok.lc.rm"
-            echo "Case insensitive BLEU result (single-reference)" >> ${_scoredir}/result.lc.txt
-            sacrebleu -lc "${_scoredir}/ref.trn.detok.lc.rm" \
-                      -i "${_scoredir}/hyp.trn.detok.lc.rm" \
-                      -m bleu chrf ter \
-                      >> ${_scoredir}/result.lc.txt
-            log "Write a case-insensitve BLEU (single-reference) result in ${_scoredir}/result.lc.txt"
-
-            # process multi-references cases
-            multi_references=$(ls "${_data}/text.${tgt_case}.${tgt_type}".* || echo "")
-            if [ "${multi_references}" != "" ]; then
-                case_sensitive_refs=""
-                case_insensitive_refs=""
-                for multi_reference in ${multi_references}; do
-                    ref_idx="${multi_reference##*.}"
+                if [ "${_type}" = wer ]; then
+                    # Tokenize text to word level
                     paste \
-                        <(<${multi_reference} \
-                            ${python} -m espnet2.bin.tokenize_text  \
-                                -f 2- --input - --output - \
-                                --token_type word \
-                                --non_linguistic_symbols "${nlsyms_txt}" \
-                                --remove_non_linguistic_symbols true \
-                                --cleaner "${cleaner}" \
-                                ) \
-                        <(<"${_data}/text.${tgt_case}.${tgt_type}" awk '{ print "(" $2 "-" $1 ")" }') \
-                            >"${_scoredir}/ref.trn.org.${ref_idx}"
-                    
-                    # 
-                    perl -pe 's/\([^\)]+\)//g;' "${_scoredir}/ref.trn.org.${ref_idx}" > "${_scoredir}/ref.trn.${ref_idx}"
-                    detokenizer.perl -l ${tgt_type} -q < "${_scoredir}/ref.trn.${ref_idx}" > "${_scoredir}/ref.trn.detok.${ref_idx}"
-                    remove_punctuation.pl < "${_scoredir}/ref.trn.detok.${ref_idx}" > "${_scoredir}/ref.trn.detok.lc.rm.${ref_idx}"
-                    case_sensitive_refs="${case_sensitive_refs} ${_scoredir}/ref.trn.detok.${ref_idx}"
-                    case_insensitive_refs="${case_insensitive_refs} ${_scoredir}/ref.trn.detok.lc.rm.${ref_idx}"
-                done
+                        <(<"${_data}/text.${tgt_case}.${tgt_type}" \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type word \
+                                  --non_linguistic_symbols "${nlsyms_txt}" \
+                                  --remove_non_linguistic_symbols true \
+                                  --cleaner "${cleaner}" \
+                                  ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/ref.trn"
 
-                if [ ${tgt_case} = "tc" ]; then
-                    echo "Case sensitive BLEU result (multi-references)" >> ${_scoredir}/result.tc.txt
-                    sacrebleu ${case_sensitive_refs} \
-                        -i ${_scoredir}/hyp.trn.detok.lc.rm -m bleu chrf ter \
-                        >> ${_scoredir}/result.tc.txt
-                    log "Write a case-sensitve BLEU (multi-reference) result in ${_scoredir}/result.tc.txt"
+                    # NOTE(kamo): Don't use cleaner for hyp
+                    paste \
+                        <(<"${_dir}/text"  \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type word \
+                                  --non_linguistic_symbols "${nlsyms_txt}" \
+                                  --remove_non_linguistic_symbols true \
+                                  ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/hyp.trn"
+
+
+                elif [ "${_type}" = cer ]; then
+                    # Tokenize text to char level
+                    paste \
+                        <(<"${_data}/text.${tgt_case}.${tgt_type}" \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type char \
+                                  --non_linguistic_symbols "${nlsyms_txt}" \
+                                  --remove_non_linguistic_symbols true \
+                                  --cleaner "${cleaner}" \
+                                  ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/ref.trn"
+
+                    # NOTE(kamo): Don't use cleaner for hyp
+                    paste \
+                        <(<"${_dir}/text"  \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type char \
+                                  --non_linguistic_symbols "${nlsyms_txt}" \
+                                  --remove_non_linguistic_symbols true \
+                                  ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/hyp.trn"
+
+                elif [ "${_type}" = ter ]; then
+                    # Tokenize text using BPE
+                    paste \
+                        <(<"${_data}/text.${tgt_case}.${tgt_type}" \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type bpe \
+                                  --bpemodel "${bpemodel}" \
+                                  --cleaner "${cleaner}" \
+                                ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/ref.trn"
+
+                    # NOTE(kamo): Don't use cleaner for hyp
+                    paste \
+                        <(<"${_dir}/text" \
+                              ${python} -m espnet2.bin.tokenize_text  \
+                                  -f 2- --input - --output - \
+                                  --token_type bpe \
+                                  --bpemodel "${bpemodel}" \
+                                  ) \
+                        <(<"data/${dset}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                            >"${_scoredir}/hyp.trn"
+
                 fi
 
-                echo "Case insensitive BLEU result (multi-references)" >> ${_scoredir}/result.lc.txt
-                sacrebleu -lc ${case_insensitive_refs} \
-                    -i ${_scoredir}/hyp.trn.detok.lc.rm -m bleu chrf ter \
-                    >> ${_scoredir}/result.lc.txt
-                log "Write a case-insensitve BLEU (multi-reference) result in ${_scoredir}/result.lc.txt"
-            fi
+                sclite \
+		    ${score_opts} \
+                    -r "${_scoredir}/ref.trn" trn \
+                    -h "${_scoredir}/hyp.trn" trn \
+                    -i rm -o all stdout > "${_scoredir}/result.txt"
+
+                log "Write ${_type} result in ${_scoredir}/result.txt"
+                grep -e Avg -e SPKR -m 2 "${_scoredir}/result.txt"
+            done
         done
 
         # Show results in Markdown syntax
-        scripts/utils/show_nlu_result.sh --case $tgt_case "${nlu_exp}" > "${nlu_exp}"/RESULTS.md
-        cat "${cat_exp}"/RESULTS.md
+        [ -f local/score.sh ] && local/score.sh ${local_score_opts} "${nlu_exp}"
+
+        # Show results in Markdown syntax
+        scripts/utils/show_asr_result.sh "${nlu_exp}" > "${nlu_exp}"/RESULTS.md
+        cat "${nlu_exp}"/RESULTS.md
+        # scripts/utils/show_nlu_result.sh --case $tgt_case "${nlu_exp}" > "${nlu_exp}"/RESULTS.md
+        # cat "${cat_exp}"/RESULTS.md
     fi
 else
     log "Skip the evaluation stages"
