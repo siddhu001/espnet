@@ -26,3 +26,22 @@
 |dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
 |---|---|---|---|---|---|---|---|---|
 |inference_asr_model_valid.acc.ave_10best/test|75636|883272|96.6|2.2|1.2|0.8|4.2|20.6|
+
+## asr_train_asr2_wavlm_lr0.002_raw_en_bpe500_sp
+### WER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|inference_asr_model_valid.acc.ave_10best/test|75636|591434|97.2|2.3|0.4|0.5|3.3|17.5|
+
+### CER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|inference_asr_model_valid.acc.ave_10best/test|75636|2979262|99.2|0.4|0.5|0.5|1.3|17.5|
+
+### TER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|inference_asr_model_valid.acc.ave_10best/test|75636|883272|97.3|1.7|1.0|0.7|3.4|17.5|
