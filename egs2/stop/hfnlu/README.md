@@ -36,10 +36,9 @@ python local/score.py exp/bart_base/generated_predictions.txt
 
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
-| bart_base | --- |  |
-| bart_base_v2 | --- |  |
-| bart_large | --- |  |
-| bart_large_v2 | --- |  |
+| bart_base | --- | 81.6 |
+| bart_base_v2 | --- | 81.1 |
+| bart_large | --- | 84.9 |
 | bart_base (old) | --- | 81.5 |
 | bart_large (old) | 74.7 | 85.0 |
 
