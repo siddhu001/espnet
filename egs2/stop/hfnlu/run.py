@@ -23,6 +23,7 @@ import os
 import sys
 from dataclasses import dataclass, field
 from typing import Optional
+import json
 
 import datasets
 import nltk  # Here to have a nice missing dependency error message early on
@@ -157,27 +158,6 @@ class DataTrainingArguments:
             )
         },
     )
-    val_max_target_length: Optional[int] = field(
-        default=None,
-        metadata={
-            "help": (
-                "The maximum total sequence length for validation target text after tokenization. Sequences longer "
-                "than this will be truncated, sequences shorter will be padded. Will default to `max_target_length`."
-                "This argument is also used to override the ``max_length`` param of ``model.generate``, which is used "
-                "during ``evaluate`` and ``predict``."
-            )
-        },
-    )
-    pad_to_max_length: bool = field(
-        default=False,
-        metadata={
-            "help": (
-                "Whether to pad all samples to model maximum sentence length. "
-                "If False, will pad the samples dynamically when batching to the maximum length in the batch. More "
-                "efficient on GPU but very bad for TPU."
-            )
-        },
-    )
     max_train_samples: Optional[int] = field(
         default=None,
         metadata={
@@ -206,7 +186,7 @@ class DataTrainingArguments:
         },
     )
     num_beams: Optional[int] = field(
-        default=None,
+        default=4,
         metadata={
             "help": (
                 "Number of beams to use for evaluation. This argument will be passed to ``model.generate``, "
@@ -230,6 +210,8 @@ class DataTrainingArguments:
 
     add_special_vocab: bool = field(default=False)
 
+    load_best_checkpoint: bool = field(default=False)
+
     def __post_init__(self):
         if (
             self.dataset_name is None
@@ -252,8 +234,6 @@ class DataTrainingArguments:
                     "csv",
                     "json",
                 ], "`validation_file` should be a csv or a json file."
-        if self.val_max_target_length is None:
-            self.val_max_target_length = self.max_target_length
 
 
 def main():
@@ -277,11 +257,17 @@ def main():
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
+    os.makedirs(training_args.output_dir, exist_ok=True)
+    if training_args.do_train:
+        logpath = os.path.join(training_args.output_dir, "train.log")
+    else:
+        logpath = os.path.join(training_args.output_dir, "eval.log")
+
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
         datefmt="%m/%d/%Y %H:%M:%S",
-        handlers=[logging.StreamHandler(sys.stdout)],
+        handlers=[logging.StreamHandler(sys.stdout), logging.FileHandler(logpath)],
     )
     log_level = training_args.get_process_log_level()
     logger.setLevel(log_level)
@@ -289,6 +275,7 @@ def main():
     transformers.utils.logging.set_verbosity(log_level)
     transformers.utils.logging.enable_default_handler()
     transformers.utils.logging.enable_explicit_format()
+    transformers.utils.logging.add_handler(logging.FileHandler(logpath))
 
     # Log on each process the small summary:
     logger.warning(
@@ -298,25 +285,47 @@ def main():
     logger.info(f"Training/evaluation parameters {training_args}")
 
     # Detecting last checkpoint.
-    last_checkpoint = None
+    load_checkpoint = None
     if (
         os.path.isdir(training_args.output_dir)
         and not training_args.overwrite_output_dir
     ):
-        last_checkpoint = get_last_checkpoint(training_args.output_dir)
-        logger.info(f"last_checkpoint: {last_checkpoint}")
-        if last_checkpoint is None and len(os.listdir(training_args.output_dir)) > 0:
+        load_checkpoint = get_last_checkpoint(training_args.output_dir)
+        if load_checkpoint is None and len(os.listdir(training_args.output_dir)) > 0:
             raise ValueError(
                 f"Output directory ({training_args.output_dir}) already exists and is not empty. "
                 "Use --overwrite_output_dir to overcome."
             )
         elif (
-            last_checkpoint is not None and training_args.resume_from_checkpoint is None
+            load_checkpoint is not None and training_args.resume_from_checkpoint is None
         ):
             logger.info(
-                f"Checkpoint detected, resuming training at {last_checkpoint}. To avoid this behavior, change "
+                f"Checkpoint detected, resuming training at {load_checkpoint}. To avoid this behavior, change "
                 "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
             )
+
+        if data_args.load_best_checkpoint:
+            with open(os.path.join(load_checkpoint, "trainer_state.json")) as f:
+                trainer_state = json.load(f)
+            log_history = trainer_state["log_history"]
+            logger.info(log_history)
+
+            best_em = 0
+            best_steps = 0
+            for h in log_history:
+                if "eval_em" in h and h["eval_em"] > best_em:
+                    best_em = h["eval_em"]
+                    best_steps = h["step"]
+            logger.info(f"best steps: {best_steps} eval_em: {best_em}")
+
+            best_checkpoint = (
+                f"{'-'.join(load_checkpoint.split('-')[:-1])}-{best_steps}"
+            )
+            if os.path.exists(best_checkpoint):
+                logger.info(f"best checkpoint: {load_checkpoint}")
+                load_checkpoint = best_checkpoint
+            else:
+                logger.warning(f"best checkpoint: {load_checkpoint} not found")
 
     # Set seed before initializing model.
     set_seed(training_args.seed)
@@ -359,9 +368,9 @@ def main():
         use_fast=True,
     )
 
-    if last_checkpoint is not None:
-        logger.info(f"Load tokenizer at {last_checkpoint}")
-        tokenizer = AutoTokenizer.from_pretrained(last_checkpoint)
+    if load_checkpoint is not None:
+        logger.info(f"Load tokenizer at {load_checkpoint}")
+        tokenizer = AutoTokenizer.from_pretrained(load_checkpoint)
     elif data_args.add_special_vocab:
         # NOTE: Add IN/SL labels as special vocaburary.
         sp_vocab_list = get_sp_vocab(data_args.train_file)
@@ -381,9 +390,12 @@ def main():
 
     # NOTE: Decoding parameter `no_repeat_ngram_size` must be 0 to allow to decode pattern "] ] ] ]"
     model.config.no_repeat_ngram_size = 0
+    # NOTE: max_length = 20 is too short (used in validation during training)
+    model.config.max_length = data_args.max_target_length
+    # NOTE: set to 1 for fast training
+    model.config.num_beams = 1
 
-    if data_args.num_beams is not None:
-        model.config.num_beams = data_args.num_beams
+    logger.info(model.config)
 
     if model.config.decoder_start_token_id is None:
         raise ValueError(
@@ -416,10 +428,6 @@ def main():
         )
         return
 
-    # Temporarily set max_target_length for training.
-    max_target_length = data_args.max_target_length
-    padding = "max_length" if data_args.pad_to_max_length else False
-
     if training_args.label_smoothing_factor > 0 and not hasattr(
         model, "prepare_decoder_input_ids_from_labels"
     ):
@@ -444,25 +452,17 @@ def main():
         model_inputs = tokenizer(
             inputs,
             max_length=data_args.max_source_length,
-            padding=padding,
+            padding=False,
             truncation=True,
         )
 
         # Tokenize targets with the `text_target` keyword argument
         labels = tokenizer(
             text_target=targets,
-            max_length=max_target_length,
-            padding=padding,
+            max_length=data_args.max_target_length,
+            padding=False,
             truncation=True,
         )
-
-        # If we are padding here, replace all tokenizer.pad_token_id in the labels by -100 when we want to ignore
-        # padding in the loss.
-        if padding == "max_length" and data_args.ignore_pad_token_for_loss:
-            labels["input_ids"] = [
-                [(l if l != tokenizer.pad_token_id else -100) for l in label]
-                for label in labels["input_ids"]
-            ]
 
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
@@ -486,7 +486,6 @@ def main():
 
     # Prepare eval dataset
     if training_args.do_eval:
-        max_target_length = data_args.val_max_target_length
         if "validation" not in raw_datasets:
             raise ValueError("--do_eval requires a validation dataset")
         eval_dataset = raw_datasets["validation"]
@@ -505,7 +504,6 @@ def main():
             )
 
     if training_args.do_predict:
-        max_target_length = data_args.val_max_target_length
         if "test" not in raw_datasets:
             raise ValueError("--do_predict requires a test dataset")
         predict_dataset = raw_datasets["test"]
@@ -575,8 +573,8 @@ def main():
         checkpoint = None
         if training_args.resume_from_checkpoint is not None:
             checkpoint = training_args.resume_from_checkpoint
-        elif last_checkpoint is not None:
-            checkpoint = last_checkpoint
+        elif load_checkpoint is not None:
+            checkpoint = load_checkpoint
 
         logger.info(f"checkpoint: {checkpoint}")
         train_result = trainer.train(resume_from_checkpoint=checkpoint)
@@ -597,29 +595,22 @@ def main():
 
     # Evaluation
     results = {}
-    max_length = (
-        training_args.generation_max_length
-        if training_args.generation_max_length is not None
-        else data_args.val_max_target_length
-    )
-    num_beams = (
-        data_args.num_beams
-        if data_args.num_beams is not None
-        else training_args.generation_num_beams
-    )
+    max_length = data_args.max_target_length
+    num_beams = data_args.num_beams
     if training_args.do_eval:
         # NOTE: Set trainer with the last checkpoint loaded
         if not training_args.do_train:
             checkpoint = None
             if training_args.resume_from_checkpoint is not None:
                 checkpoint = training_args.resume_from_checkpoint
-            elif last_checkpoint is not None:
-                checkpoint = last_checkpoint
+            elif load_checkpoint is not None:
+                checkpoint = load_checkpoint
 
             logger.info(f"checkpoint: {checkpoint}")
             trainer._load_from_checkpoint(checkpoint)
 
         logger.info("*** Evaluate ***")
+        logger.info(f"max_length: {max_length}, num_beams: {num_beams}")
         metrics = trainer.evaluate(
             max_length=max_length, num_beams=num_beams, metric_key_prefix="eval"
         )
@@ -639,8 +630,8 @@ def main():
             checkpoint = None
             if training_args.resume_from_checkpoint is not None:
                 checkpoint = training_args.resume_from_checkpoint
-            elif last_checkpoint is not None:
-                checkpoint = last_checkpoint
+            elif load_checkpoint is not None:
+                checkpoint = load_checkpoint
 
             logger.info(f"checkpoint: {checkpoint}")
             trainer._load_from_checkpoint(checkpoint)
@@ -652,6 +643,7 @@ def main():
             max_length=max_length,
             num_beams=num_beams,
         )
+
         metrics = predict_results.metrics
         max_predict_samples = (
             data_args.max_predict_samples
