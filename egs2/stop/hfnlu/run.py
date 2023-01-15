@@ -392,7 +392,6 @@ def main():
     model.config.no_repeat_ngram_size = 0
     # NOTE: max_length = 20 is too short (used in validation during training)
     model.config.max_length = data_args.max_target_length
-    # NOTE: set to 1 for fast training
     model.config.num_beams = data_args.num_beams
 
     logger.info(model.config)
