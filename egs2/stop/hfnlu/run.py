@@ -393,7 +393,7 @@ def main():
     # NOTE: max_length = 20 is too short (used in validation during training)
     model.config.max_length = data_args.max_target_length
     # NOTE: set to 1 for fast training
-    model.config.num_beams = 1
+    model.config.num_beams = data_args.num_beams
 
     logger.info(model.config)
 
@@ -597,6 +597,7 @@ def main():
     results = {}
     max_length = data_args.max_target_length
     num_beams = data_args.num_beams
+
     if training_args.do_eval:
         # NOTE: Set trainer with the last checkpoint loaded
         if not training_args.do_train:
