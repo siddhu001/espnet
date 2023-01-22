@@ -2,11 +2,13 @@
 
 1. (Optional) Set up conda enviroment for huggingface `transformers` (`setup_conda.sh`).
 
+The following steps are done by `run.sh`
+
 2. Copy `text` (output) and `transcript` (input) from `../asr1/data/{train/valid/test}` to `data/{train/valid/test}`
 
 3. Generate json file
 ```
-python local/preprocess.py
+python local/prepare_data.py data/train
 ```
 The json file will be like:
 ```
@@ -15,22 +17,18 @@ The json file will be like:
 ...
 ```
 
-4. Train BART-base
+4. Train BART-Large
 ```
-python run.py conf/bart_base.yaml
+python run.py conf/bart_large_v7.yaml
 ```
 
 `run.py` is derived from `run_summarization.py` [here](https://github.com/huggingface/transformers/tree/main/examples/pytorch/summarization).
 
-5. (Optional) Predict only
+5. Predict
 ```
-python run.py conf/pred_bart_base.yaml
+python run.py conf/pred_bart_large_v7.yaml
 ```
 
-6. Calculate EM score
-```
-python local/score.py exp/bart_base/generated_predictions.txt
-```
 
 ## Results:
 
@@ -38,8 +36,8 @@ python local/score.py exp/bart_base/generated_predictions.txt
 |:---:|:---:|:---:|
 | bart_base | --- | 81.6 |
 | bart_base_v2 | --- | 81.1 |
-| bart_large | --- | 84.9 |
-| bart_base (old) | --- | 81.5 |
-| bart_large (old) | 74.7 | 85.0 |
+| bart_large** | --- | 84.9 |
+| bart_large_v7 | 78.1 | 85.8 |
 
-*WER: 3.4
+*WavLM WER: 2.7
+**Training curve looks unstable

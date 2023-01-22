@@ -30,6 +30,7 @@ import nltk  # Here to have a nice missing dependency error message early on
 import numpy as np
 from datasets import load_dataset
 
+import torch
 import transformers
 from filelock import FileLock
 from transformers import (
@@ -50,6 +51,7 @@ from transformers.utils import (
 from transformers.utils.versions import require_version
 
 from custom_vocab import get_sp_vocab
+from custom_predict import predict_with_score
 
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
@@ -105,17 +107,6 @@ class DataTrainingArguments:
         default=None, metadata={"help": "Language id for summarization."}
     )
 
-    dataset_name: Optional[str] = field(
-        default=None,
-        metadata={"help": "The name of the dataset to use (via the datasets library)."},
-    )
-    dataset_config_name: Optional[str] = field(
-        default=None,
-        metadata={
-            "help": "The configuration name of the dataset to use (via the datasets library)."
-        },
-    )
-
     train_file: Optional[str] = field(
         default=None,
         metadata={"help": "The input training data file (a jsonlines or csv file)."},
@@ -134,7 +125,9 @@ class DataTrainingArguments:
             "help": "An optional input test data file to evaluate the metrics (rouge) on (a jsonlines or csv file)."
         },
     )
-    output_file: Optional[str] = field(default="generated_predictions.txt")
+
+    # TODO: use config name for output_file
+    output_file: Optional[str] = field(default="output.txt")
 
     overwrite_cache: bool = field(
         default=False,
@@ -185,6 +178,8 @@ class DataTrainingArguments:
             )
         },
     )
+
+    # NOTE: used only during ``evaluate`` and ``predict``
     num_beams: Optional[int] = field(
         default=4,
         metadata={
@@ -212,28 +207,9 @@ class DataTrainingArguments:
 
     load_best_checkpoint: bool = field(default=False)
 
-    def __post_init__(self):
-        if (
-            self.dataset_name is None
-            and self.train_file is None
-            and self.validation_file is None
-        ):
-            raise ValueError(
-                "Need either a dataset name or a training/validation file."
-            )
-        else:
-            if self.train_file is not None:
-                extension = self.train_file.split(".")[-1]
-                assert extension in [
-                    "csv",
-                    "json",
-                ], "`train_file` should be a csv or a json file."
-            if self.validation_file is not None:
-                extension = self.validation_file.split(".")[-1]
-                assert extension in [
-                    "csv",
-                    "json",
-                ], "`validation_file` should be a csv or a json file."
+    output_score: bool = field(default=False)
+
+    num_gpus_train: int = field(default=None)
 
 
 def main():
@@ -244,13 +220,13 @@ def main():
     parser = HfArgumentParser(
         (ModelArguments, DataTrainingArguments, Seq2SeqTrainingArguments)
     )
-    if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
+    if sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
         model_args, data_args, training_args = parser.parse_json_file(
             json_file=os.path.abspath(sys.argv[1])
         )
-    elif len(sys.argv) == 2 and sys.argv[1].endswith(".yaml"):
+    elif sys.argv[1].endswith(".yaml"):
         model_args, data_args, training_args = parser.parse_yaml_file(
             yaml_file=os.path.abspath(sys.argv[1])
         )
@@ -258,16 +234,12 @@ def main():
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
     os.makedirs(training_args.output_dir, exist_ok=True)
-    if training_args.do_train:
-        logpath = os.path.join(training_args.output_dir, "train.log")
-    else:
-        logpath = os.path.join(training_args.output_dir, "eval.log")
 
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
         datefmt="%m/%d/%Y %H:%M:%S",
-        handlers=[logging.StreamHandler(sys.stdout), logging.FileHandler(logpath)],
+        handlers=[logging.StreamHandler(sys.stdout)],
     )
     log_level = training_args.get_process_log_level()
     logger.setLevel(log_level)
@@ -275,7 +247,6 @@ def main():
     transformers.utils.logging.set_verbosity(log_level)
     transformers.utils.logging.enable_default_handler()
     transformers.utils.logging.enable_explicit_format()
-    transformers.utils.logging.add_handler(logging.FileHandler(logpath))
 
     # Log on each process the small summary:
     logger.warning(
@@ -330,23 +301,22 @@ def main():
     # Set seed before initializing model.
     set_seed(training_args.seed)
 
-    if data_args.dataset_name is not None:
-        # Downloading and loading a dataset from the hub.
-        raw_datasets = load_dataset(
-            data_args.dataset_name, data_args.dataset_config_name,
-        )
-    else:
-        data_files = {}
-        if data_args.train_file is not None:
-            data_files["train"] = data_args.train_file
-            extension = data_args.train_file.split(".")[-1]
-        if data_args.validation_file is not None:
-            data_files["validation"] = data_args.validation_file
-            extension = data_args.validation_file.split(".")[-1]
-        if data_args.test_file is not None:
-            data_files["test"] = data_args.test_file
-            extension = data_args.test_file.split(".")[-1]
-        raw_datasets = load_dataset(extension, data_files=data_files,)
+    # For reproducibility, check number of GPUs used in training.
+    if training_args.do_train and (data_args.num_gpus_train is not None):
+        assert torch.cuda.device_count() == data_args.num_gpus_train
+
+    data_files = {}
+    if data_args.train_file is not None:
+        data_files["train"] = data_args.train_file
+        extension = data_args.train_file.split(".")[-1]
+    if data_args.validation_file is not None:
+        data_files["validation"] = data_args.validation_file
+        extension = data_args.validation_file.split(".")[-1]
+    if data_args.test_file is not None:
+        data_files["test"] = data_args.test_file
+        extension = data_args.test_file.split(".")[-1]
+    raw_datasets = load_dataset(extension, data_files=data_files,)
+
     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at
     # https://huggingface.co/docs/datasets/loading_datasets.html.
 
@@ -392,7 +362,6 @@ def main():
     model.config.no_repeat_ngram_size = 0
     # NOTE: max_length = 20 is too short (used in validation during training)
     model.config.max_length = data_args.max_target_length
-    model.config.num_beams = data_args.num_beams
 
     logger.info(model.config)
 
@@ -596,6 +565,7 @@ def main():
     results = {}
     max_length = data_args.max_target_length
     num_beams = data_args.num_beams
+    model.config.num_beams = data_args.num_beams
 
     if training_args.do_eval:
         # NOTE: Set trainer with the last checkpoint loaded
@@ -637,6 +607,34 @@ def main():
             trainer._load_from_checkpoint(checkpoint)
 
         logger.info("*** Predict ***")
+
+        if data_args.output_score:
+            logger.info("Predict with score")
+            preds, scores = predict_with_score(
+                trainer, predict_dataset, max_length=max_length, num_beams=num_beams
+            )
+
+            if trainer.is_world_process_zero():
+                if training_args.predict_with_generate:
+                    texts = tokenizer.batch_decode(
+                        preds,
+                        skip_special_tokens=True,
+                        clean_up_tokenization_spaces=True,
+                    )
+
+                    outputs = [
+                        f"{text.strip()}\t{str(score.item())}\n"
+                        for text, score in zip(texts, scores)
+                    ]
+
+                    output_prediction_file = os.path.join(
+                        training_args.output_dir, data_args.output_file
+                    )
+                    with open(output_prediction_file, "w") as writer:
+                        writer.writelines(outputs)
+
+            return
+
         predict_results = trainer.predict(
             predict_dataset,
             metric_key_prefix="predict",
@@ -662,12 +660,12 @@ def main():
                     skip_special_tokens=True,
                     clean_up_tokenization_spaces=True,
                 )
-                predictions = [pred.strip() for pred in predictions]
+                outputs = [f"{pred.strip()}\n" for pred in predictions]
                 output_prediction_file = os.path.join(
                     training_args.output_dir, data_args.output_file
                 )
                 with open(output_prediction_file, "w") as writer:
-                    writer.write("\n".join(predictions))
+                    writer.writelines(outputs)
 
     return results
 
