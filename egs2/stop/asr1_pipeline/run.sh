@@ -22,7 +22,9 @@ asr_config=conf/train_asr_whisper_full_correct.yaml
     --max_wav_duration 30 \
     --feats_normalize utterance_mvn\
     --inference_nj 8 \
-    --inference_asr_model valid.acc.ave_10best.pth\
+    --speed_perturb_factors "0.9 1.0 1.1"\
+    --inference_asr_model valid.acc.ave.pth\
+    --inference_config conf/decode_asr_whisper_noctc_greedy.yaml\
     --asr_config "${asr_config}" \
     --train_set "${train_set}" \
     --valid_set "${valid_set}" \
