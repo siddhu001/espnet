@@ -40,7 +40,7 @@ for x in dir_dict:
             if str(row[-1])=="nan":
                 continue
             words = (
-                row[-1]
+                row[-1].lower()
             )
             # print(words)
             path_arr = row[0]. split("/")

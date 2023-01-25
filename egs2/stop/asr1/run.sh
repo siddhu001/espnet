@@ -9,14 +9,14 @@ train_set="train"
 valid_set="valid"
 test_sets="test valid"
 
-asr_config=conf/train_asr.yaml
+asr_config=conf/train_asr_whisper_full_correct.yaml
 
 ./asr.sh \
     --lang en \
     --ngpu 1 \
     --use_lm false \
-    --nbpe 500 \
-    --token_type bpe\
+    --token_type whisper_multilingual \
+    --feats_normalize '' \
     --feats_type raw\
     --max_wav_duration 30 \
     --feats_normalize utterance_mvn\
