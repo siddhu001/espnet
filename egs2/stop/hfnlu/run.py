@@ -205,11 +205,15 @@ class DataTrainingArguments:
 
     add_special_vocab: bool = field(default=False)
 
+    checkpoint_to_load: Optional[str] = field(default="")
     load_best_checkpoint: bool = field(default=False)
 
     output_score: bool = field(default=False)
 
     num_gpus_train: int = field(default=None)
+
+    attention_dropout_rate: float = field(default=None)
+    dropout_rate: float = field(default=None)
 
 
 def main():
@@ -275,28 +279,30 @@ def main():
                 "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
             )
 
-        if data_args.load_best_checkpoint:
-            with open(os.path.join(load_checkpoint, "trainer_state.json")) as f:
-                trainer_state = json.load(f)
-            log_history = trainer_state["log_history"]
-            logger.info(log_history)
+    if data_args.checkpoint_to_load:
+        load_checkpoint = data_args.checkpoint_to_load
+        logger.info(f"specified checkpoint: {load_checkpoint}")
 
-            best_em = 0
-            best_steps = 0
-            for h in log_history:
-                if "eval_em" in h and h["eval_em"] > best_em:
-                    best_em = h["eval_em"]
-                    best_steps = h["step"]
-            logger.info(f"best steps: {best_steps} eval_em: {best_em}")
+    if data_args.load_best_checkpoint:
+        with open(os.path.join(load_checkpoint, "trainer_state.json")) as f:
+            trainer_state = json.load(f)
+        log_history = trainer_state["log_history"]
+        logger.info(log_history)
 
-            best_checkpoint = (
-                f"{'-'.join(load_checkpoint.split('-')[:-1])}-{best_steps}"
-            )
-            if os.path.exists(best_checkpoint):
-                logger.info(f"best checkpoint: {load_checkpoint}")
-                load_checkpoint = best_checkpoint
-            else:
-                logger.warning(f"best checkpoint: {load_checkpoint} not found")
+        best_em = 0
+        best_steps = 0
+        for h in log_history:
+            if "eval_em" in h and h["eval_em"] > best_em:
+                best_em = h["eval_em"]
+                best_steps = h["step"]
+        logger.info(f"best steps: {best_steps} eval_em: {best_em}")
+
+        best_checkpoint = f"{'-'.join(load_checkpoint.split('-')[:-1])}-{best_steps}"
+        if os.path.exists(best_checkpoint):
+            logger.info(f"best checkpoint: {best_checkpoint}")
+            load_checkpoint = best_checkpoint
+        else:
+            logger.warning(f"best checkpoint: {best_checkpoint} not found")
 
     # Set seed before initializing model.
     set_seed(training_args.seed)
@@ -341,12 +347,19 @@ def main():
     if load_checkpoint is not None:
         logger.info(f"Load tokenizer at {load_checkpoint}")
         tokenizer = AutoTokenizer.from_pretrained(load_checkpoint)
-    elif data_args.add_special_vocab:
-        # NOTE: Add IN/SL labels as special vocaburary.
-        sp_vocab_list = get_sp_vocab(data_args.train_file)
-        len_tokenizer = len(tokenizer)
-        tokenizer.add_tokens(sp_vocab_list)
-        logger.warning(f"Vocaburary extended: {len_tokenizer} -> {len(tokenizer)}")
+    else:
+        if data_args.add_special_vocab:
+            # NOTE: Add IN/SL labels as special vocaburary.
+            sp_vocab_list = get_sp_vocab(data_args.train_file)
+            len_tokenizer = len(tokenizer)
+            tokenizer.add_tokens(sp_vocab_list)
+            logger.warning(f"Vocaburary extended: {len_tokenizer} -> {len(tokenizer)}")
+
+    if data_args.attention_dropout_rate is not None:
+        config.attention_dropout = data_args.attention_dropout_rate
+
+    if data_args.dropout_rate is not None:
+        config.dropout = data_args.dropout_rate
 
     model = AutoModelForSeq2SeqLM.from_pretrained(
         model_args.model_name_or_path,

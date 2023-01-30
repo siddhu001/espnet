@@ -6,15 +6,16 @@ def main(args):
     output_dir = os.path.splitext(args.result_path)[0]
     os.makedirs(output_dir, exist_ok=True)
 
+    ref_path = f"data/{args.dset}/text"
+
     wavnames = []
-    with open(args.ref) as f:
+    with open(ref_path) as f:
         results = []
         for line in f:
             wavname = line.strip().split()[0]
             wavnames.append(wavname)
             text = " ".join(line.strip().split()[1:])
             result = f"{text}\t({wavname})\n"
-            # print(result, end="")
             results.append(result)
 
     with open(os.path.join(output_dir, "ref.trn"), "w") as f:
@@ -24,9 +25,10 @@ def main(args):
         results = []
         for index, line in enumerate(f):
             wavname = wavnames[index]
-            text = line.strip().upper()
+            text = line.strip().upper()  # compare with uppercase
+            # 'S -> _'S if not converted
+            text = text.replace("'S", " 'S").replace("  ", " ")
             result = f"{text}\t({wavname})\n"
-            # print(result, end="")
             results.append(result)
 
     with open(os.path.join(output_dir, "hyp.trn"), "w") as f:
@@ -38,6 +40,6 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("result_path", type=str)
-    parser.add_argument("--ref", type=str, default="data/test/text")
+    parser.add_argument("--dset", type=str, default="test")
     args = parser.parse_args()
     main(args)

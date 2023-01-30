@@ -1,15 +1,16 @@
+""" Add ASR result from `text` (utt_id+transcript)
+"""
+
 import argparse
 import json
-import os
 
 
 def main(args):
-    with open(os.path.join(args.asr_dir, "text")) as f:
+    with open(args.asr_text) as f:
         input_lines = [line.strip() for line in f]
 
-    # Reference
-    dset_name = args.asr_dir.rstrip("/").split("/")[-1]
-    with open(f"data/{dset_name}/text") as f:
+    ref_path = f"data/{args.dset}/text"
+    with open(ref_path) as f:
         output_lines = [line.strip() for line in f]
 
     jsonls = []
@@ -33,7 +34,7 @@ def main(args):
         jsonls.append({"index": index, "input": input, "output": output})
 
     with open(
-        f"data/{dset_name}/data_asr{args.tag}.json", mode="w", encoding="utf-8",
+        f"data/{args.dset}/data_asr{args.tag}.json", mode="w", encoding="utf-8",
     ) as f:
         for jsonl in jsonls:
             json.dump(
@@ -44,7 +45,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("asr_dir", type=str)
+    parser.add_argument("asr_text", type=str)
+    parser.add_argument("--dset", type=str, default="test")
     parser.add_argument("--tag", type=str, default="")
     args = parser.parse_args()
     main(args)

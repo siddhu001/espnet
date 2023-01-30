@@ -9,7 +9,12 @@ def get_sp_vocab(data_path):
         for line in f:
             obj = json.loads(line.strip())
             for token in obj["output"].split():
-                if token.startswith("[in:") or token.startswith("[sl:"):
+                if (
+                    token.startswith("[in:")
+                    or token.startswith("[sl:")
+                    or token.startswith("[IN:")
+                    or token.startswith("[SL:")
+                ):
                     sp_vocab_list.append(token)
 
     sp_vocab_list = list(set(sp_vocab_list))
@@ -27,6 +32,7 @@ if __name__ == "__main__":
     train_sp_vocab = get_sp_vocab(args.train_path)
     print(train_sp_vocab)
 
+    # check tag not included in valid/test set
     print("valid")
     valid_sp_vocab = get_sp_vocab(args.valid)
     for v in valid_sp_vocab:
