@@ -7,7 +7,7 @@ set -o pipefail
 
 train_set="train"
 valid_set="valid"
-test_sets="test valid"
+test_sets="test"
 
 asr_config=conf/train_asr_whisper_full_correct.yaml
 
@@ -17,7 +17,6 @@ asr_config=conf/train_asr_whisper_full_correct.yaml
     --use_lm false \
     --token_type whisper_multilingual \
     --feats_normalize '' \
-    --cleaner whisper_en \
     --feats_type raw\
     --max_wav_duration 30 \
     --feats_normalize utterance_mvn\
