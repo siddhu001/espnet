@@ -38,15 +38,12 @@ bash score.sh exp/bart_large_v7_norms/output.txt
 
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
-| bart_large_v7 | 79.0 | 85.8 |
-| bart_large_v7_norms | 79.8 | 87.1 |
+| bart_large_v7 (fixed) | 79.9 | 87.1 |
 
 *Whisper ASR (WER=2.4)
 
 ## For Track3
 
-```
-python run.py conf/bart_large_tr3.yaml
-```
+See `run_track3.sh`
 
-
+## Results (Track3)

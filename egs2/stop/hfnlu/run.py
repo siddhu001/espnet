@@ -529,7 +529,9 @@ def main():
 
         cnt_em = 0
         for decoded_pred, decoded_label in zip(decoded_preds, decoded_labels):
-            if decoded_pred == decoded_label:
+            # if decoded_pred == decoded_label:
+            # NOTE: 'S -> _'S if not converted
+            if decoded_pred.replace("'s", " 's").replace("  ", " ") == decoded_label:
                 cnt_em += 1
 
         result = {"em": (cnt_em / len(decoded_labels))}
