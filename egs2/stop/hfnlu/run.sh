@@ -1,5 +1,4 @@
-stage=2
-#stage=4
+stage=1
 stop_stage=10000
 
 data=../asr1/data

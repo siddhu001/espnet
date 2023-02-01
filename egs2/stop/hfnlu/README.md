@@ -40,10 +40,26 @@ bash score.sh exp/bart_large_v7_norms/output.txt
 |:---:|:---:|:---:|
 | bart_large_v7 (fixed) | 79.9 | 87.1 |
 
-*Whisper ASR (WER=2.4)
+*Whisper ASR (fine-tuned on STOP, WER=2.4)
 
 ## For Track3
 
 See `run_track3.sh`
 
 ## Results (Track3)
+
+### Reminder
+
+|  | EM on ASR* | EM on GT |
+|:---:|:---:|:---:|
+| bart_large_tr3r_v2 | 57.1 | 67.5 |
+| bart_large_tr3r_v2_aug10x1m0.2th0 | ... | 69.9 |
+
+### Weather
+
+|  | EM on ASR* | EM on GT |
+|:---:|:---:|:---:|
+| bart_large_tr3w_v2 | 75.3 | 79.7 |
+| bart_large_tr3w_v2_aug10x1m0.2th0 | ... | 80.3 |
+
+*Whisper ASR (zero-shot)
