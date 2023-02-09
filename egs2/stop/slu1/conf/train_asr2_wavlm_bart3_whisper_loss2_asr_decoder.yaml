@@ -1,0 +1,95 @@
+normalize: null
+
+encoder: whisper
+encoder_conf:
+    whisper_model: medium
+    dropout_rate: 0.0
+    use_specaug: true
+    specaug_conf:
+        apply_time_warp: true
+        time_warp_window: 5
+        time_warp_mode: bicubic
+        apply_freq_mask: true
+        freq_mask_width_range:
+        - 0
+        - 40
+        num_freq_mask: 2
+        apply_time_mask: true
+        time_mask_width_ratio_range:
+        - 0.
+        - 0.12
+        num_time_mask: 5
+asr_decoder: whisper
+asr_decoder_conf:
+    whisper_model: medium
+    dropout_rate: 0.0
+    vocab_size: 51865
+deliberationencoder: conformer
+deliberationencoder_conf:
+    output_size: 1024
+    attention_heads: 8
+    linear_units: 2048
+    num_blocks: 4
+    dropout_rate: 0.1
+    positional_dropout_rate: 0.1
+    attention_dropout_rate: 0.1
+    input_layer: linear
+    normalize_before: true
+    macaron_style: true
+    pos_enc_layer_type: "rel_pos"
+    selfattention_layer_type: "rel_selfattn"
+    activation_type: "swish"
+    use_cnn_module:  true
+    cnn_module_kernel: 31
+decoder: transformer
+decoder_conf:
+    attention_heads: 8
+    linear_units: 2048
+    num_blocks: 6
+    dropout_rate: 0.1
+    positional_dropout_rate: 0.1
+    self_attention_dropout_rate: 0.1
+    src_attention_dropout_rate: 0.1
+postdecoder: hugging_face_lm_transformers
+postdecoder_conf:
+    # pick up a model from https://huggingface.co/models?filter=transformers
+    # most of models should work, but maybe some don't
+    # known to work: bert, gpt2, xlnet, roberta, mpnet, t5, bart
+    # xlnet currently works for single gpu only
+    model_name_or_path: "/projects/bbjs/arora1/bart_large_v7/checkpoint-13688/"
+    output_size: 1024
+    decoder_input: true
+    decoder_loss: true
+
+init_param:
+    - "/projects/bbjs/arora1/new_download/espnet/egs2/stop/asr1_pipeline/exp/asr_train_asr_whisper_full_correct_raw_en_whisper_multilingual_sp/valid.acc.ave.pth:encoder:encoder"
+    - "/projects/bbjs/arora1/new_download/espnet/egs2/stop/asr1_pipeline/exp/asr_train_asr_whisper_full_correct_raw_en_whisper_multilingual_sp/valid.acc.ave.pth:decoder:asr_decoder"
+frontend: null
+freeze_param:
+    - "encoder"
+    - "asr_decoder"
+    - "postdecoder.model"
+
+optim: adam
+optim_conf:
+    lr: 0.0001
+    weight_decay: 0.000001
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 25000
+input_size: 1 
+batch_type: folded
+batch_size: 256
+accum_grad: 1
+max_epoch: 25
+best_model_criterion:
+-   - valid
+    - acc
+    - max
+keep_nbest_models: 10
+
+model_conf:
+    ctc_weight: 0.0
+    lsm_weight: 0.1
+    length_normalized_loss: false
+    extract_feats_in_collect_stats: false   # Note: "False" means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend.

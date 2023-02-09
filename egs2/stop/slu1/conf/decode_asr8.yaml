@@ -1,0 +1,5 @@
+maxlenratio: 0.7
+ctc_weight: 0.0
+lm_weight: 0.0
+penalty: 0.0
+beam_size: 1
