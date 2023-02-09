@@ -23,6 +23,11 @@ from espnet.nets.e2e_asr_common import ErrorCalculator
 from espnet.nets.pytorch_backend.transformer.label_smoothing_loss import (  # noqa: H301
     LabelSmoothingLoss,
 )
+from espnet.nets.pytorch_backend.transformer.add_sos_eos import add_sos_eos
+from espnet2.text.build_tokenizer import build_tokenizer
+from espnet2.text.cleaner import TextCleaner
+from espnet2.text.token_id_converter import TokenIDConverter
+from espnet2.text.whisper_token_id_converter import OpenAIWhisperTokenIDConverter
 
 if V(torch.__version__) >= V("1.6.0"):
     from torch.cuda.amp import autocast
@@ -49,6 +54,7 @@ class ESPnetSLUModel(ESPnetASRModel):
         decoder: AbsDecoder,
         ctc: CTC,
         joint_network: Optional[torch.nn.Module],
+        asr_decoder: Optional[AbsDecoder] = None,
         postdecoder: Optional[AbsPostDecoder] = None,
         deliberationencoder: Optional[AbsPostEncoder] = None,
         transcript_token_list: Union[Tuple[str, ...], List[str]] = None,
@@ -89,13 +95,39 @@ class ESPnetSLUModel(ESPnetASRModel):
         self.preencoder = preencoder
         self.postencoder = postencoder
         self.postdecoder = postdecoder
+        self.asr_decoder = asr_decoder
         self.encoder = encoder
-        if self.postdecoder is not None:
-            if self.encoder._output_size != self.postdecoder.output_size_dim:
-                self.uniform_linear = torch.nn.Linear(
-                    self.encoder._output_size, self.postdecoder.output_size_dim
+        if self.asr_decoder is not None:
+            token_type="whisper_multilingual"
+            bpemodel="whisper_multilingual"
+            self.asr_decoder_tokenizer = build_tokenizer(
+                token_type=token_type,
+                bpemodel=bpemodel,
+                delimiter=None,
+                space_symbol= "<space>",
+                non_linguistic_symbols=None,
+                g2p_type=None,
+            )
+            self.asr_decoder_token_id_converter = OpenAIWhisperTokenIDConverter(
+                    model_type=bpemodel
                 )
+            self.asr_decoder_criterion_att = LabelSmoothingLoss(
+                size=51865,
+                padding_idx=ignore_id,
+                smoothing=lsm_weight,
+                normalize_length=length_normalized_loss,
+            )
+        # if self.postdecoder is not None:
+        #     if self.encoder._output_size != self.postdecoder.output_size_dim:
+        #         self.uniform_linear = torch.nn.Linear(
+        #             self.encoder._output_size, self.postdecoder.output_size_dim
+        #         )
+        self.is_encoder_whisper = "Whisper" in type(self.encoder).__name__
 
+        if self.is_encoder_whisper:
+            assert (
+                self.frontend is None
+            ), "frontend should be None when using full Whisper model"
         self.deliberationencoder = deliberationencoder
         # we set self.decoder = None in the CTC mode since
         # self.decoder parameters were never used and PyTorch complained
@@ -201,9 +233,19 @@ class ESPnetSLUModel(ESPnetASRModel):
         text = text[:, : text_lengths.max()]
 
         # 1. Encoder
-        encoder_out, encoder_out_lens = self.encode(
-            speech, speech_lengths, transcript, transcript_lengths
-        )
+        if getattr(self.postdecoder, "decoder_input", False) is not False:
+            if getattr(self.postdecoder, "decoder_loss", False) is not False:
+                postdecoder_loss, encoder_out, encoder_out_lens = self.encode(
+                    speech, speech_lengths, transcript, transcript_lengths,text,text_lengths,
+                )
+            else:
+                encoder_out, encoder_out_lens = self.encode(
+                    speech, speech_lengths, transcript, transcript_lengths,text,text_lengths,
+                )
+        else:
+            encoder_out, encoder_out_lens = self.encode(
+                speech, speech_lengths, transcript, transcript_lengths
+            )
         intermediate_outs = None
         if isinstance(encoder_out, tuple):
             intermediate_outs = encoder_out[1]
@@ -286,6 +328,9 @@ class ESPnetSLUModel(ESPnetASRModel):
                 loss = loss_ctc
             else:
                 loss = self.ctc_weight * loss_ctc + (1 - self.ctc_weight) * loss_att
+            if getattr(self.postdecoder, "decoder_loss", False) is not False:
+                loss=0.7*loss+0.3*postdecoder_loss
+                stats["postdecoder_loss"] = postdecoder_loss.detach() if postdecoder_loss is not None else None
 
             # Collect Attn branch stats
             stats["loss_att"] = loss_att.detach() if loss_att is not None else None
@@ -327,6 +372,8 @@ class ESPnetSLUModel(ESPnetASRModel):
         speech_lengths: torch.Tensor,
         transcript_pad: torch.Tensor = None,
         transcript_pad_lens: torch.Tensor = None,
+        text: torch.Tensor = None,
+        text_lengths: torch.Tensor = None,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """Frontend + Encoder. Note that this method is used by asr_inference.py
 
@@ -372,14 +419,60 @@ class ESPnetSLUModel(ESPnetASRModel):
             encoder_out, encoder_out_lens = self.postencoder(
                 encoder_out, encoder_out_lens
             )
-
+        
+        if self.asr_decoder is not None:
+            transcript_list = [
+                " ".join([self.transcript_token_list[int(k)] for k in k1 if k != -1]).lower()
+                for k1 in transcript_pad
+            ]
+            asr_decoder_text_len=[]
+            asr_decoder_text_ints_arr=[]
+            for transcript_given in transcript_list:
+                asr_decoder_tokens = self.asr_decoder_tokenizer.text2tokens(transcript_given)
+                asr_decoder_text_ints = self.asr_decoder_token_id_converter.tokens2ids(asr_decoder_tokens)
+                asr_decoder_text_ints_arr.append(asr_decoder_text_ints)
+                asr_decoder_text_len.append(len(asr_decoder_text_ints))
+            # import pdb;pdb.set_trace()
+            max_asr_decoder_text_len=max(asr_decoder_text_len)
+            for text_count in range(len(asr_decoder_text_ints_arr)):
+                asr_decoder_text_ints_arr[text_count]=asr_decoder_text_ints_arr[text_count]+[self.ignore_id]*(max_asr_decoder_text_len-asr_decoder_text_len[text_count])
+            import numpy as np
+            asr_decoder_text_ints_arr=torch.LongTensor(np.array(asr_decoder_text_ints_arr)).to(transcript_pad.device)
+            asr_decoder_text_len=torch.LongTensor(asr_decoder_text_len).to(transcript_pad.device)
+            # import pdb;pdb.set_trace()
+            asr_decoder_in_pad, asr_decoder_out_pad = add_sos_eos(asr_decoder_text_ints_arr, 50258, 50257, self.ignore_id)
+            asr_decoder_in_lens = asr_decoder_text_len + 1
+            asr_decoder_out, _, hs_dec_asr = self.asr_decoder(
+                encoder_out, encoder_out_lens, asr_decoder_in_pad, asr_decoder_out_pad, return_hidden=True
+            )
+            # loss_att_asr = self.asr_decoder_criterion_att(asr_decoder_out, asr_decoder_out_pad)
+            # import pdb;pdb.set_trace()
+            final_encoder_out_lens = encoder_out_lens + asr_decoder_in_lens
+            max_lens = torch.max(final_encoder_out_lens)
+            encoder_new_out = torch.zeros(
+                (encoder_out.shape[0], max_lens, encoder_out.shape[2])
+            ).to(device=speech.device)
+            for k in range(len(encoder_out)):
+                encoder_new_out[k] = torch.cat(
+                    (
+                        encoder_out[k, : encoder_out_lens[k]],
+                        hs_dec_asr[k, : asr_decoder_in_lens[k]],
+                        torch.zeros(
+                            (max_lens - final_encoder_out_lens[k], encoder_out.shape[2])
+                        ).to(device=speech.device),
+                    ),
+                    0,
+                )
+            encoder_out = encoder_new_out
+            encoder_out_lens = final_encoder_out_lens
         if self.postdecoder is not None:
-            if self.encoder._output_size != self.postdecoder.output_size_dim:
-                encoder_out = self.uniform_linear(encoder_out)
+            # if self.encoder._output_size != self.postdecoder.output_size_dim:
+            #     encoder_out = self.uniform_linear(encoder_out)
             transcript_list = [
                 " ".join([self.transcript_token_list[int(k)] for k in k1 if k != -1])
                 for k1 in transcript_pad
             ]
+            # import pdb;pdb.set_trace()
             (
                 transcript_input_id_features,
                 transcript_input_mask_features,
@@ -387,19 +480,251 @@ class ESPnetSLUModel(ESPnetASRModel):
                 transcript_position_ids_feature,
                 input_id_length,
             ) = self.postdecoder.convert_examples_to_features(transcript_list, 128)
-            bert_encoder_out = self.postdecoder(
-                torch.LongTensor(transcript_input_id_features).to(device=speech.device),
-                torch.LongTensor(transcript_input_mask_features).to(
-                    device=speech.device
-                ),
-                torch.LongTensor(transcript_segment_ids_feature).to(
-                    device=speech.device
-                ),
-                torch.LongTensor(transcript_position_ids_feature).to(
-                    device=speech.device
-                ),
-            )
+            if getattr(self.postdecoder, "decoder_input", False) is not False:
+                text_list = [
+                    text_normalizer([self.token_list[int(k)] for k in k1 if k != -1])
+                    for k1 in text
+                ]
+                # import pdb;pdb.set_trace()
+                (
+                    decoder_input_id_features,
+                    decoder_input_mask_features,
+                    decoder_segment_ids_feature,
+                    decoder_position_ids_feature,
+                    input_id_length,
+                ) = self.postdecoder.convert_examples_to_features(text_list, 128, label_decoding=True)
+                if getattr(self.postdecoder, "decoder_loss", False) is not False:
+                    postdecoder_loss, bert_encoder_out = self.postdecoder(
+                        torch.LongTensor(transcript_input_id_features).to(device=speech.device),
+                        torch.LongTensor(transcript_input_mask_features).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(transcript_segment_ids_feature).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(transcript_position_ids_feature).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(decoder_input_id_features).to(device=speech.device),
+                        torch.LongTensor(decoder_input_mask_features).to(
+                            device=speech.device
+                        ),
+                    )
+                else:
+                    bert_encoder_out = self.postdecoder(
+                        torch.LongTensor(transcript_input_id_features).to(device=speech.device),
+                        torch.LongTensor(transcript_input_mask_features).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(transcript_segment_ids_feature).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(transcript_position_ids_feature).to(
+                            device=speech.device
+                        ),
+                        torch.LongTensor(decoder_input_id_features).to(device=speech.device),
+                        torch.LongTensor(decoder_input_mask_features).to(
+                            device=speech.device
+                        ),
+                    )
+            else:
+                bert_encoder_out = self.postdecoder(
+                    torch.LongTensor(transcript_input_id_features).to(device=speech.device),
+                    torch.LongTensor(transcript_input_mask_features).to(
+                        device=speech.device
+                    ),
+                    torch.LongTensor(transcript_segment_ids_feature).to(
+                        device=speech.device
+                    ),
+                    torch.LongTensor(transcript_position_ids_feature).to(
+                        device=speech.device
+                    ),
+                )
             bert_encoder_lens = torch.LongTensor(input_id_length).to(
+                device=speech.device
+            )
+            bert_encoder_out = bert_encoder_out[:, : torch.max(bert_encoder_lens)]
+            final_encoder_out_lens = encoder_out_lens + bert_encoder_lens
+            max_lens = torch.max(final_encoder_out_lens)
+            encoder_new_out = torch.zeros(
+                (encoder_out.shape[0], max_lens, encoder_out.shape[2])
+            ).to(device=speech.device)
+            for k in range(len(encoder_out)):
+                encoder_new_out[k] = torch.cat(
+                    (
+                        encoder_out[k, : encoder_out_lens[k]],
+                        bert_encoder_out[k, : bert_encoder_lens[k]],
+                        torch.zeros(
+                            (max_lens - final_encoder_out_lens[k], encoder_out.shape[2])
+                        ).to(device=speech.device),
+                    ),
+                    0,
+                )
+            if self.deliberationencoder is not None:
+                encoder_new_out, final_encoder_out_lens = self.deliberationencoder(
+                    encoder_new_out, final_encoder_out_lens
+                )
+            encoder_out = encoder_new_out
+            encoder_out_lens = final_encoder_out_lens
+
+        assert encoder_out.size(0) == speech.size(0), (
+            encoder_out.size(),
+            speech.size(0),
+        )
+        if (
+            getattr(self.encoder, "selfattention_layer_type", None) != "lf_selfattn"
+            and not self.is_encoder_whisper
+        ):
+            assert encoder_out.size(1) <= encoder_out_lens.max(), (
+                encoder_out.size(),
+                encoder_out_lens.max(),
+            )
+        if intermediate_outs is not None:
+            return (encoder_out, intermediate_outs), encoder_out_lens
+        if getattr(self.postdecoder, "decoder_loss", False) is not False:
+            return postdecoder_loss, encoder_out, encoder_out_lens
+        else:
+            return encoder_out, encoder_out_lens
+
+    def encode_lm_pass(
+        self,
+        speech: torch.Tensor,
+        speech_lengths: torch.Tensor,
+        transcript_pad: torch.Tensor = None,
+        transcript_pad_lens: torch.Tensor = None,
+        text: torch.Tensor = None,
+        text_lengths: torch.Tensor = None,
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Frontend + Encoder. Note that this method is used by asr_inference.py
+
+        Args:
+            speech: (Batch, Length, ...)
+            speech_lengths: (Batch, )
+        """
+        with autocast(False):
+            # 1. Extract feats
+            feats, feats_lengths = self._extract_feats(speech, speech_lengths)
+
+            # 2. Data augmentation
+            if self.specaug is not None and self.training:
+                feats, feats_lengths = self.specaug(feats, feats_lengths)
+
+            # 3. Normalization for feature: e.g. Global-CMVN, Utterance-CMVN
+            if self.normalize is not None:
+                feats, feats_lengths = self.normalize(feats, feats_lengths)
+
+        # Pre-encoder, e.g. used for raw input data
+        if self.preencoder is not None:
+            feats, feats_lengths = self.preencoder(feats, feats_lengths)
+
+        # 4. Forward encoder
+        # feats: (Batch, Length, Dim)
+        # -> encoder_out: (Batch, Length2, Dim2)
+        if self.encoder.interctc_use_conditioning:
+            encoder_out, encoder_out_lens, _ = self.encoder(
+                feats, feats_lengths, ctc=self.ctc
+            )
+        else:
+            encoder_out, encoder_out_lens, _ = self.encoder(
+                feats,
+                feats_lengths,
+            )
+        intermediate_outs = None
+        if isinstance(encoder_out, tuple):
+            intermediate_outs = encoder_out[1]
+            encoder_out = encoder_out[0]
+
+        # Post-encoder, e.g. NLU
+        if self.postencoder is not None:
+            encoder_out, encoder_out_lens = self.postencoder(
+                encoder_out, encoder_out_lens
+            )
+        if self.asr_decoder is not None:
+            transcript_list = [
+                " ".join([self.transcript_token_list[int(k)] for k in k1 if k != -1]).lower()
+                for k1 in transcript_pad
+            ]
+            asr_decoder_text_len=[]
+            asr_decoder_text_ints_arr=[]
+            for transcript_given in transcript_list:
+                asr_decoder_tokens = self.asr_decoder_tokenizer.text2tokens(transcript_given)
+                asr_decoder_text_ints = self.asr_decoder_token_id_converter.tokens2ids(asr_decoder_tokens)
+                asr_decoder_text_ints_arr.append(asr_decoder_text_ints)
+                asr_decoder_text_len.append(len(asr_decoder_text_ints))
+            # import pdb;pdb.set_trace()
+            max_asr_decoder_text_len=max(asr_decoder_text_len)
+            for text_count in range(len(asr_decoder_text_ints_arr)):
+                asr_decoder_text_ints_arr[text_count]=asr_decoder_text_ints_arr[text_count]+[self.ignore_id]*(max_asr_decoder_text_len-asr_decoder_text_len[text_count])
+            import numpy as np
+            asr_decoder_text_ints_arr=torch.LongTensor(np.array(asr_decoder_text_ints_arr)).to(transcript_pad.device)
+            asr_decoder_text_len=torch.LongTensor(asr_decoder_text_len).to(transcript_pad.device)
+            # import pdb;pdb.set_trace()
+            asr_decoder_in_pad, asr_decoder_out_pad = add_sos_eos(asr_decoder_text_ints_arr, 50258, 50257, self.ignore_id)
+            asr_decoder_in_lens = asr_decoder_text_len + 1
+            asr_decoder_out, _, hs_dec_asr = self.asr_decoder(
+                encoder_out, encoder_out_lens, asr_decoder_in_pad, asr_decoder_out_pad, return_hidden=True
+            )
+            # loss_att_asr = self.asr_decoder_criterion_att(asr_decoder_out, asr_decoder_out_pad)
+            # import pdb;pdb.set_trace()
+            final_encoder_out_lens = encoder_out_lens + asr_decoder_in_lens
+            max_lens = torch.max(final_encoder_out_lens)
+            encoder_new_out = torch.zeros(
+                (encoder_out.shape[0], max_lens, encoder_out.shape[2])
+            ).to(device=speech.device)
+            for k in range(len(encoder_out)):
+                encoder_new_out[k] = torch.cat(
+                    (
+                        encoder_out[k, : encoder_out_lens[k]],
+                        hs_dec_asr[k, : asr_decoder_in_lens[k]],
+                        torch.zeros(
+                            (max_lens - final_encoder_out_lens[k], encoder_out.shape[2])
+                        ).to(device=speech.device),
+                    ),
+                    0,
+                )
+            encoder_out = encoder_new_out
+            encoder_out_lens = final_encoder_out_lens
+        if self.postdecoder is not None:
+            # if self.encoder._output_size != self.postdecoder.output_size_dim:
+            #     encoder_out = self.uniform_linear(encoder_out)
+            transcript_list = [
+                " ".join([self.transcript_token_list[int(k)] for k in k1 if k != -1])
+                for k1 in transcript_pad
+            ]
+            # import pdb;pdb.set_trace()
+            (
+                transcript_input_id_features,
+                transcript_input_mask_features,
+                transcript_segment_ids_feature,
+                transcript_position_ids_feature,
+                input_id_length,
+            ) = self.postdecoder.convert_examples_to_features(transcript_list, 128)
+            if text is not None:
+                text_list = [
+                    text_normalizer([self.token_list[int(k)] for k in k1 if k != -1])
+                    for k1 in text
+                ]
+                # import pdb;pdb.set_trace()
+                (
+                    decoder_input_id_features,
+                    decoder_input_mask_features,
+                    decoder_segment_ids_feature,
+                    decoder_position_ids_feature,
+                    input_id_length,
+                ) = self.postdecoder.convert_examples_to_features(text_list, 128, label_decoding=True, do_padding=False)
+                postdecoder_output, bert_encoder_out = self.postdecoder.inference(
+                    torch.LongTensor(transcript_input_id_features).to(device=speech.device),
+                    torch.LongTensor(transcript_input_mask_features).to(device=speech.device),
+                    torch.LongTensor(decoder_input_id_features).to(device=speech.device),
+                    text_list
+                )
+            else:
+                postdecoder_output, bert_encoder_out = self.postdecoder.inference(
+                    torch.LongTensor(transcript_input_id_features).to(device=speech.device),
+                    torch.LongTensor(transcript_input_mask_features).to(device=speech.device),
+                )
+            # bert_encoder_out=bert_encoder_out.reshape(1,bert_encoder_out.shape[0],bert_encoder_out.shape[1])
+            bert_encoder_lens = torch.LongTensor([bert_encoder_out.shape[1]]).to(
                 device=speech.device
             )
             bert_encoder_out = bert_encoder_out[:, : torch.max(bert_encoder_lens)]
@@ -436,5 +761,14 @@ class ESPnetSLUModel(ESPnetASRModel):
         )
         if intermediate_outs is not None:
             return (encoder_out, intermediate_outs), encoder_out_lens
+        return postdecoder_output, encoder_out, encoder_out_lens
+        
 
-        return encoder_out, encoder_out_lens
+def text_normalizer(sub_word_transcript):
+    transcript = sub_word_transcript[0].replace("▁", "")
+    for sub_word in sub_word_transcript[1:]:
+        if "▁" in sub_word:
+            transcript = transcript + " " + sub_word.replace("▁", "")
+        else:
+            transcript = transcript + sub_word
+    return transcript

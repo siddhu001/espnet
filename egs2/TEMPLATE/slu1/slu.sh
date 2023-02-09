@@ -124,6 +124,7 @@ lm_train_text=   # Text file path of language model training set.
 lm_dev_text=     # Text file path of language model development set.
 lm_test_text=    # Text file path of language model evaluation set.
 use_transcript=false # Use transcripts to incorporate sematic information
+enc_dec_lm=false # Encoder decoder LM
 two_pass=false # Use transcripts to incorporate sematic information
 pre_postencoder_norm=false
 bpe_train_transcript=  # transcript file path of bpe training set.
@@ -146,7 +147,8 @@ Options:
     # General configuration
     --stage          # Processes starts from the specified stage (default="${stage}").
     --stop_stage     # Processes is stopped at the specified stage (default="${stop_stage}").
-    --use_transcript    # Processes is stopped at the specified stage (default="${use_transcript}").
+    --use_transcript    # Use transcript (default="${use_transcript}").
+    --enc_dec_lm    # Encoder decoder LM (default="${enc_dec_lm}").
     --two_pass    # Performs two-pass SLU (default="${two_pass}").
     --skip_data_prep # Skip data preparation stages (default="${skip_data_prep}").
     --skip_train     # Skip training stages (default="${skip_train}").
@@ -1208,7 +1210,7 @@ if ! "${skip_train}"; then
                     --valid_shape_file "${slu_stats_dir}/valid/text_shape.${token_type}" \
                     --valid_shape_file "${slu_stats_dir}/valid/transcript_shape.${token_type}" \
                     --resume true \
-                    --init_param ${pretrained_model} \
+                    ${pretrained_model:+--init_param $pretrained_model} \
                     --ignore_init_mismatch ${ignore_init_mismatch} \
                     --fold_length "${_fold_length}" \
                     --fold_length "${slu_text_fold_length}" \
@@ -1237,7 +1239,7 @@ if ! "${skip_train}"; then
                     --valid_shape_file "${slu_stats_dir}/valid/speech_shape" \
                     --valid_shape_file "${slu_stats_dir}/valid/text_shape.${token_type}" \
                     --resume true \
-                    --init_param ${pretrained_model} \
+                    ${pretrained_model:+--init_param $pretrained_model} \
                     --ignore_init_mismatch ${ignore_init_mismatch} \
                     --fold_length "${_fold_length}" \
                     --fold_length "${slu_text_fold_length}" \
@@ -1352,36 +1354,59 @@ if ! "${skip_eval}"; then
             log "Decoding started... log: '${_logdir}/slu_inference.*.log'"
             # shellcheck disable=SC2086
             if "${use_transcript}"; then
-                ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/slu_inference.JOB.log \
-                    ${python} -m ${slu_inference_tool} \
-                        --batch_size ${batch_size} \
-                        --ngpu "${_ngpu}" \
-                        --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
-                        --data_path_and_name_and_type "${_data}/transcript,transcript,text" \
-                        --key_file "${_logdir}"/keys.JOB.scp \
-                        --slu_train_config "${slu_exp}"/config.yaml \
-                        --slu_model_file "${slu_exp}"/"${inference_slu_model}" \
-                        --output_dir "${_logdir}"/output.JOB \
-                        ${_opts} ${inference_args}
+                if "${enc_dec_lm}"; then
+                    ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/slu_inference.JOB.log \
+                        ${python} -m ${slu_inference_tool} \
+                            --batch_size ${batch_size} \
+                            --ngpu "${_ngpu}" \
+                            --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
+                            --data_path_and_name_and_type "${_data}/transcript,transcript,text" \
+                            --data_path_and_name_and_type "${_data}/text_slu,text,text" \
+                            --key_file "${_logdir}"/keys.JOB.scp \
+                            --slu_train_config "${slu_exp}"/config.yaml \
+                            --slu_model_file "${slu_exp}"/"${inference_slu_model}" \
+                            --output_dir "${_logdir}"/output.JOB \
+                            ${_opts} ${inference_args}
+                else
+                    ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/slu_inference.JOB.log \
+                        ${python} -m ${slu_inference_tool} \
+                            --batch_size ${batch_size} \
+                            --ngpu "${_ngpu}" \
+                            --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
+                            --data_path_and_name_and_type "${_data}/transcript,transcript,text" \
+                            --key_file "${_logdir}"/keys.JOB.scp \
+                            --slu_train_config "${slu_exp}"/config.yaml \
+                            --slu_model_file "${slu_exp}"/"${inference_slu_model}" \
+                            --output_dir "${_logdir}"/output.JOB \
+                            ${_opts} ${inference_args}
+                fi
             else
-                ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/slu_inference.JOB.log \
-                ${python} -m ${slu_inference_tool} \
-                    --batch_size ${batch_size} \
-                    --ngpu "${_ngpu}" \
-                    --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
-                    --key_file "${_logdir}"/keys.JOB.scp \
-                    --slu_train_config "${slu_exp}"/config.yaml \
-                    --slu_model_file "${slu_exp}"/"${inference_slu_model}" \
-                    --output_dir "${_logdir}"/output.JOB \
-                    ${_opts} ${inference_args}
+               ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/slu_inference.JOB.log \
+               ${python} -m ${slu_inference_tool} \
+                   --batch_size ${batch_size} \
+                   --ngpu "${_ngpu}" \
+                   --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
+                   --key_file "${_logdir}"/keys.JOB.scp \
+                   --slu_train_config "${slu_exp}"/config.yaml \
+                   --slu_model_file "${slu_exp}"/"${inference_slu_model}" \
+                   --output_dir "${_logdir}"/output.JOB \
+                   ${_opts} ${inference_args}
             fi
 
             # 3. Concatenates the output files from each jobs
-            for f in token token_int score text; do
-                for i in $(seq "${_nj}"); do
-                    cat "${_logdir}/output.${i}/1best_recog/${f}"
-                done | LC_ALL=C sort -k1 >"${_dir}/${f}"
-            done
+            if "${use_transcript}"; then
+                for f in token token_int score text postdec_out; do
+                    for i in $(seq "${_nj}"); do
+                        cat "${_logdir}/output.${i}/1best_recog/${f}"
+                    done | LC_ALL=C sort -k1 >"${_dir}/${f}"
+                done
+            else
+                for f in token token_int score text; do
+                    for i in $(seq "${_nj}"); do
+                        cat "${_logdir}/output.${i}/1best_recog/${f}"
+                    done | LC_ALL=C sort -k1 >"${_dir}/${f}"
+                done
+            fi
         done
     fi
 
@@ -1397,7 +1422,7 @@ if ! "${skip_eval}"; then
             _data="${data_feats}/${dset}"
             _dir="${slu_exp}/${inference_tag}/${dset}"
 
-            for _type in cer wer ter; do
+            for _type in wer; do
                 [ "${_type}" = ter ] && [ ! -f "${bpemodel}" ] && continue
 
                 _scoredir="${_dir}/score_${_type}"
@@ -1428,6 +1453,18 @@ if ! "${skip_eval}"; then
                                   ) \
                         <(<"${_data}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
                             >"${_scoredir}/hyp.trn"
+                    if "${use_transcript}"; then
+                        paste \
+                            <(<"${_dir}/postdec_out"  \
+                                ${python} -m espnet2.bin.tokenize_text  \
+                                    -f 2- --input - --output - \
+                                    --token_type word \
+                                    --non_linguistic_symbols "${nlsyms_txt}" \
+                                    --remove_non_linguistic_symbols true \
+                                    ) \
+                            <(<"${_data}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                                >"${_scoredir}/hyp_postdec.trn"
+                    fi
 
 
                 elif [ "${_type}" = cer ]; then
@@ -1455,6 +1492,18 @@ if ! "${skip_eval}"; then
                                   ) \
                         <(<"${_data}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
                             >"${_scoredir}/hyp.trn"
+                    if "${use_transcript}"; then
+                        paste \
+                            <(<"${_dir}/postdec_out"  \
+                                ${python} -m espnet2.bin.tokenize_text  \
+                                    -f 2- --input - --output - \
+                                    --token_type char \
+                                    --non_linguistic_symbols "${nlsyms_txt}" \
+                                    --remove_non_linguistic_symbols true \
+                                    ) \
+                            <(<"${_data}/utt2spk" awk '{ print "(" $2 "-" $1 ")" }') \
+                                >"${_scoredir}/hyp_postdec.trn"
+                    fi
 
                 elif [ "${_type}" = ter ]; then
                     # Tokenize text using BPE
@@ -1490,6 +1539,16 @@ if ! "${skip_eval}"; then
 
                 log "Write ${_type} result in ${_scoredir}/result.txt"
                 grep -e Avg -e SPKR -m 2 "${_scoredir}/result.txt"
+                if "${use_transcript}"; then
+                    sclite \
+                ${score_opts} \
+                        -r "${_scoredir}/ref.trn" trn \
+                        -h "${_scoredir}/hyp_postdec.trn" trn \
+                        -i rm -o all stdout > "${_scoredir}/result_postdec.txt"
+
+                    log "Write ${_type} result in ${_scoredir}/result_postdec.txt"
+                    grep -e Avg -e SPKR -m 2 "${_scoredir}/result_postdec.txt"
+                fi
             done
         done
 

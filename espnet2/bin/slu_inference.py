@@ -239,9 +239,10 @@ class Speech2Understand:
 
     @torch.no_grad()
     def __call__(
-        self, speech: Union[torch.Tensor, np.ndarray], transcript: torch.Tensor = None
+        self, speech: Union[torch.Tensor, np.ndarray], transcript: torch.Tensor = None, text: torch.Tensor = None
     ) -> List[
         Tuple[
+            Optional[str],
             Optional[str],
             List[str],
             List[int],
@@ -275,20 +276,38 @@ class Speech2Understand:
             transcript_lengths = transcript.new_full(
                 [1], dtype=torch.long, fill_value=transcript.size(1)
             )
-            # print(text)
-            # print(text_lengths)
-            batch = {
-                "speech": speech,
-                "speech_lengths": lengths,
-                "transcript_pad": transcript,
-                "transcript_pad_lens": transcript_lengths,
-            }
+            if text is not None:
+                text = text.unsqueeze(0).to(getattr(torch, self.dtype))
+                # lengths: (1,)
+                text_lengths = text.new_full(
+                    [1], dtype=torch.long, fill_value=text.size(1)
+                )
+                batch = {
+                    "speech": speech,
+                    "speech_lengths": lengths,
+                    "transcript_pad": transcript,
+                    "transcript_pad_lens": transcript_lengths,
+                    "text": text,
+                    "text_lengths": text_lengths,
+                }
+            else:
+                # print(text)
+                # print(text_lengths)
+                batch = {
+                    "speech": speech,
+                    "speech_lengths": lengths,
+                    "transcript_pad": transcript,
+                    "transcript_pad_lens": transcript_lengths,
+                }
 
         # a. To device
         batch = to_device(batch, device=self.device)
 
         # b. Forward Encoder
-        enc, _ = self.asr_model.encode(**batch)
+        if getattr(self.asr_model.postdecoder, "decoder_loss", False) is not False:
+            postdec_out, enc, _ = self.asr_model.encode_lm_pass(**batch)
+        else:
+            enc, _ = self.asr_model.encode(**batch)
         if isinstance(enc, tuple):
             enc = enc[0]
         assert len(enc) == 1, len(enc)
@@ -333,7 +352,10 @@ class Speech2Understand:
                 text = self.tokenizer.tokens2text(token)
             else:
                 text = None
-            results.append((text, token, token_int, hyp))
+            if getattr(self.asr_model.postdecoder, "decoder_loss", False) is not False:
+                results.append((" ".join(postdec_out).upper(), text, token, token_int, hyp))
+            else:
+                results.append((text, token, token_int, hyp))
 
         assert check_return_type(results)
         return results
@@ -492,17 +514,32 @@ def inference(
 
             # Only supporting batch_size==1
             key = keys[0]
-            for n, (text, token, token_int, hyp) in zip(range(1, nbest + 1), results):
-                # Create a directory: outdir/{n}best_recog
-                ibest_writer = writer[f"{n}best_recog"]
+            if getattr(speech2understand.asr_model.postdecoder, "decoder_loss", False) is not False:
+                for n, (postdec_out,text, token, token_int, hyp) in zip(range(1, nbest + 1), results):
+                    # Create a directory: outdir/{n}best_recog
+                    ibest_writer = writer[f"{n}best_recog"]
 
-                # Write the result to each file
-                ibest_writer["token"][key] = " ".join(token)
-                ibest_writer["token_int"][key] = " ".join(map(str, token_int))
-                ibest_writer["score"][key] = str(hyp.score)
+                    # Write the result to each file
+                    ibest_writer["token"][key] = " ".join(token)
+                    ibest_writer["token_int"][key] = " ".join(map(str, token_int))
+                    ibest_writer["score"][key] = str(hyp.score)
 
-                if text is not None:
-                    ibest_writer["text"][key] = text
+                    if text is not None:
+                        ibest_writer["text"][key] = text
+                    if postdec_out is not None:
+                        ibest_writer["postdec_out"][key] = postdec_out
+            else:
+                for n, (text, token, token_int, hyp) in zip(range(1, nbest + 1), results):
+                    # Create a directory: outdir/{n}best_recog
+                    ibest_writer = writer[f"{n}best_recog"]
+
+                    # Write the result to each file
+                    ibest_writer["token"][key] = " ".join(token)
+                    ibest_writer["token_int"][key] = " ".join(map(str, token_int))
+                    ibest_writer["score"][key] = str(hyp.score)
+
+                    if text is not None:
+                        ibest_writer["text"][key] = text
 
 
 def get_parser():

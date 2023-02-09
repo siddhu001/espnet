@@ -17,6 +17,7 @@ from espnet2.asr.decoder.transformer_decoder import (
     LightweightConvolutionTransformerDecoder,
     TransformerDecoder,
 )
+from espnet2.asr.decoder.whisper_decoder import OpenAIWhisperDecoder
 from espnet2.asr.encoder.abs_encoder import AbsEncoder
 from espnet2.asr.encoder.branchformer_encoder import BranchformerEncoder
 from espnet2.asr.encoder.conformer_encoder import ConformerEncoder
@@ -35,10 +36,12 @@ from espnet2.asr.encoder.rnn_encoder import RNNEncoder
 from espnet2.asr.encoder.transformer_encoder import TransformerEncoder
 from espnet2.asr.encoder.vgg_rnn_encoder import VGGRNNEncoder
 from espnet2.asr.encoder.wav2vec2_encoder import FairSeqWav2Vec2Encoder
+from espnet2.asr.encoder.whisper_encoder import OpenAIWhisperEncoder
 from espnet2.asr.frontend.abs_frontend import AbsFrontend
 from espnet2.asr.frontend.default import DefaultFrontend
 from espnet2.asr.frontend.fused import FusedFrontends
 from espnet2.asr.frontend.s3prl import S3prlFrontend
+from espnet2.asr.frontend.whisper import WhisperFrontend
 from espnet2.asr.frontend.windowing import SlidingWindow
 from espnet2.asr.postencoder.abs_postencoder import AbsPostEncoder
 from espnet2.asr.postencoder.hugging_face_transformers_postencoder import (
@@ -57,6 +60,9 @@ from espnet2.slu.espnet_model import ESPnetSLUModel
 from espnet2.slu.postdecoder.abs_postdecoder import AbsPostDecoder
 from espnet2.slu.postdecoder.hugging_face_transformers_postdecoder import (
     HuggingFaceTransformersPostDecoder,
+)
+from espnet2.slu.postdecoder.hugging_face_lm_head_postdecoder import (
+    HuggingFaceLMHeadPostDecoder,
 )
 from espnet2.slu.postencoder.conformer_postencoder import ConformerPostEncoder
 from espnet2.slu.postencoder.transformer_postencoder import TransformerPostEncoder
@@ -78,6 +84,7 @@ frontend_choices = ClassChoices(
         sliding_window=SlidingWindow,
         s3prl=S3prlFrontend,
         fused=FusedFrontends,
+        whisper=WhisperFrontend,
     ),
     type_check=AbsFrontend,
     default="default",
@@ -131,6 +138,7 @@ encoder_choices = ClassChoices(
         hubert_pretrain=FairseqHubertPretrainEncoder,
         longformer=LongformerEncoder,
         branchformer=BranchformerEncoder,
+        whisper=OpenAIWhisperEncoder,
     ),
     type_check=AbsEncoder,
     default="rnn",
@@ -168,6 +176,7 @@ decoder_choices = ClassChoices(
         rnn=RNNDecoder,
         transducer=TransducerDecoder,
         mlm=MLMDecoder,
+        whisper=OpenAIWhisperDecoder,
     ),
     type_check=AbsDecoder,
     default="rnn",
@@ -176,8 +185,26 @@ postdecoder_choices = ClassChoices(
     name="postdecoder",
     classes=dict(
         hugging_face_transformers=HuggingFaceTransformersPostDecoder,
+        hugging_face_lm_transformers=HuggingFaceLMHeadPostDecoder,
     ),
     type_check=AbsPostDecoder,
+    default=None,
+    optional=True,
+)
+asr_decoder_choices = ClassChoices(
+    name="asr_decoder",
+    classes=dict(
+        transformer=TransformerDecoder,
+        lightweight_conv=LightweightConvolutionTransformerDecoder,
+        lightweight_conv2d=LightweightConvolution2DTransformerDecoder,
+        dynamic_conv=DynamicConvolutionTransformerDecoder,
+        dynamic_conv2d=DynamicConvolution2DTransformerDecoder,
+        rnn=RNNDecoder,
+        transducer=TransducerDecoder,
+        mlm=MLMDecoder,
+        whisper=OpenAIWhisperDecoder,
+    ),
+    type_check=AbsDecoder,
     default=None,
     optional=True,
 )
@@ -209,6 +236,8 @@ class SLUTask(ASRTask):
         decoder_choices,
         # --postdecoder and --postdecoder_conf
         postdecoder_choices,
+        # --asr_decoder and --asr_decoder_conf
+        asr_decoder_choices,
     ]
 
     # If you need to modify train() or eval() procedures, change Trainer class here
@@ -426,7 +455,10 @@ class SLUTask(ASRTask):
     def optional_data_names(
         cls, train: bool = True, inference: bool = False
     ) -> Tuple[str, ...]:
-        retval = ("transcript",)
+        if not inference:
+            retval = ("transcript",)
+        else:
+            retval = ("transcript", "text")
         assert check_return_type(retval)
         return retval
 
@@ -527,6 +559,16 @@ class SLUTask(ASRTask):
             encoder_output_size = encoder_output_size
         else:
             postdecoder = None
+        
+        if getattr(args, "asr_decoder", None) is not None:
+            asr_decoder_class = asr_decoder_choices.get_class(args.asr_decoder)
+            asr_decoder = asr_decoder_class(
+                encoder_output_size=encoder_output_size,
+                **args.asr_decoder_conf
+            )
+            encoder_output_size = encoder_output_size
+        else:
+            asr_decoder = None
 
         # 5. Decoder
         decoder_class = decoder_choices.get_class(args.decoder)
@@ -579,6 +621,7 @@ class SLUTask(ASRTask):
             deliberationencoder=deliberationencoder,
             decoder=decoder,
             postdecoder=postdecoder,
+            asr_decoder=asr_decoder,
             ctc=ctc,
             joint_network=joint_network,
             token_list=token_list,

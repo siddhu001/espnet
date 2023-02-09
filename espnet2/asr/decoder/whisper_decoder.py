@@ -68,6 +68,7 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
         hlens: torch.Tensor,
         ys_in_pad: torch.Tensor,
         ys_in_lens: torch.Tensor,
+        return_hidden: bool = False,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """Forward decoder.
 
@@ -101,9 +102,14 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
                 x = self.dropout(x)
 
         x = self.decoders.ln(x)
+        if return_hidden:
+            hs_asr = x
         x = (
             x @ torch.transpose(self.decoders.token_embedding.weight.to(x.dtype), 0, 1)
         ).float()
+
+        if return_hidden:
+            return x, ys_in_lens, hs_asr
 
         return x, ys_in_lens
 
