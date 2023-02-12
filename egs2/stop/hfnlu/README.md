@@ -19,19 +19,19 @@ The json file will be like:
 
 4. Train BART-Large
 ```
-python run.py conf/bart_large_v7_norms.yaml
+python run.py conf/bart_large_v7.yaml
 ```
 
 `run.py` is derived from `run_summarization.py` [here](https://github.com/huggingface/transformers/tree/main/examples/pytorch/summarization).
 
 5. Predict
 ```
-python run.py conf/pred_bart_large_v7_norms.yaml
+python run.py conf/pred_bart_large_v7.yaml
 ```
 
 6. Scoring
 ```
-bash score.sh exp/bart_large_v7_norms/output.txt
+bash score.sh exp/bart_large_v7/output.txt
 ```
 
 ## Results:
@@ -52,14 +52,14 @@ See `run_track3.sh`
 
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
-| bart_large_tr3r_v2 | 57.1 | 67.5 |
+| bart_large_tr3r_v2 | - | 67.5 |
 | bart_large_tr3r_v2_aug10x1m0.2th0 | ... | 69.9 |
 
 ### Weather
 
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
-| bart_large_tr3w_v2 | 75.3 | 79.7 |
+| bart_large_tr3w_v2 | - | 79.7 |
 | bart_large_tr3w_v2_aug10x1m0.2th0 | ... | 80.3 |
 
 *Whisper ASR (zero-shot)
