@@ -1,0 +1,11 @@
+model_name_or_path: facebook/bart-large
+do_predict: true
+output_dir: exp/bart_large_v7_norms/
+per_device_eval_batch_size: 16
+predict_with_generate: true
+test_file: data/test/data_asrwhftv2_norms.json
+output_file: "output_asrwhftv2.txt"
+evaluation_strategy: "no"
+add_special_vocab: true
+num_beams: 20
+load_best_checkpoint: true

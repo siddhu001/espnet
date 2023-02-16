@@ -1,0 +1,12 @@
+model_name_or_path: t5-large
+do_predict: true
+output_dir: exp/t5_large_v5/
+per_device_eval_batch_size: 16
+predict_with_generate: true
+# test_file: data/test/data.json
+# output_file: "output.txt"
+test_file: data/test/data_asrwhftv2.json
+output_file: "output_asrwhftv2.txt"
+evaluation_strategy: "no"
+add_special_vocab: true
+num_beams: 20

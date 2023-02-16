@@ -1,0 +1,17 @@
+model_name_or_path: facebook/bart-base
+do_predict: true
+output_dir: exp/bart_base/
+per_device_train_batch_size: 16
+per_device_eval_batch_size: 16
+gradient_accumulation_steps: 2
+predict_with_generate: true
+train_file: data/train/data.json
+validation_file: data/valid/data.json
+test_file: data/test/data.json
+evaluation_strategy: "no"
+num_train_epochs: 50
+add_special_vocab: true
+learning_rate: 0.0005
+warmup_steps: 10000
+label_smoothing_factor: 0.1
+num_beams: 20

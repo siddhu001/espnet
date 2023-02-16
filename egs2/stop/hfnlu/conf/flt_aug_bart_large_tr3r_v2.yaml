@@ -1,0 +1,10 @@
+model_name_or_path: facebook/bart-large
+do_predict: true
+output_dir: exp/bart_large_tr3r_v2/
+per_device_eval_batch_size: 16
+predict_with_generate: true
+test_file: data/train-reminder-25spis/data_aug10x1m0.20.json
+output_file: "output_flt.txt"
+evaluation_strategy: "no"
+add_special_vocab: true
+num_beams: 20

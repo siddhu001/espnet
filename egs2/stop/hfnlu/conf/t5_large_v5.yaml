@@ -1,0 +1,22 @@
+model_name_or_path: t5-large
+do_train: true
+do_eval: true
+output_dir: exp/t5_large_v5/
+per_device_train_batch_size: 64
+per_device_eval_batch_size: 32
+gradient_accumulation_steps: 4
+# per_device_train_batch_size: 32
+# per_device_eval_batch_size: 16
+# gradient_accumulation_steps: 8
+overwrite_output_dir: true
+predict_with_generate: true
+train_file: data/train/data.json
+validation_file: data/valid/data.json
+save_strategy: epoch
+evaluation_strategy: epoch
+num_train_epochs: 30
+add_special_vocab: true
+learning_rate: 0.0005
+warmup_steps: 5000
+label_smoothing_factor: 0.1
+save_total_limit: 1
