@@ -53,13 +53,17 @@ See `run_track3.sh`
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
 | bart_large_tr3r_v2 | - | 67.5 |
-| bart_large_tr3r_v2_aug10x1m0.2th0 | ... | 69.9 |
+| bart_large_tr3r_v2_aug10x1m0.2th0 | - | 69.9 |
+| bart_large_tr3r_retro_aug10x1m0.2th0_v2_fix | 63.3 | 73.8 |
+
+*Whisper ASR (fine-tuned on STOP Track3 data, WER=2.8)
 
 ### Weather
 
 |  | EM on ASR* | EM on GT |
 |:---:|:---:|:---:|
 | bart_large_tr3w_v2 | - | 79.7 |
-| bart_large_tr3w_v2_aug10x1m0.2th0 | ... | 80.3 |
+| bart_large_tr3w_v2_aug10x1m0.2th0 | - | 80.3 |
+| bart_large_tr3w_retro_aug10x1m0.2th0_v2_fix | 75.0 | 79.7 |
 
-*Whisper ASR (zero-shot)
+*Whisper ASR (fine-tuned on STOP Track3 data, WER=2.3)
