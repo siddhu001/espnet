@@ -26,7 +26,7 @@ from espnet2.tts.espnet_model import ESPnetTTSModel
 from espnet2.tts.fastspeech import FastSpeech
 from espnet2.tts.fastspeech2 import FastSpeech2
 from espnet2.tts.feats_extract.abs_feats_extract import AbsFeatsExtract
-from espnet2.tts.feats_extract.dio import Dio
+# from espnet2.tts.feats_extract.dio import Dio
 from espnet2.tts.feats_extract.energy import Energy
 from espnet2.tts.feats_extract.linear_spectrogram import LinearSpectrogram
 from espnet2.tts.feats_extract.log_mel_fbank import LogMelFbank
@@ -52,7 +52,7 @@ feats_extractor_choices = ClassChoices(
 )
 pitch_extractor_choices = ClassChoices(
     "pitch_extract",
-    classes=dict(dio=Dio),
+    classes=dict(dio=AbsFeatsExtract),
     type_check=AbsFeatsExtract,
     default=None,
     optional=True,
