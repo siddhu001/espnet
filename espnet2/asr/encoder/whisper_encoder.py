@@ -9,6 +9,7 @@ from espnet2.asr.encoder.abs_encoder import AbsEncoder
 from espnet2.asr.specaug.specaug import SpecAug
 
 
+
 class OpenAIWhisperEncoder(AbsEncoder):
     """Transformer-based Speech Encoder from OpenAI's Whisper Model:
 
@@ -24,6 +25,7 @@ class OpenAIWhisperEncoder(AbsEncoder):
         use_specaug: bool = False,
         specaug_conf: Union[dict, None] = None,
         do_pad_trim: bool = False,
+        train_from_scratch: bool = False,
     ):
         try:
             import whisper
@@ -50,11 +52,19 @@ class OpenAIWhisperEncoder(AbsEncoder):
         self.dropout = torch.nn.Dropout(dropout_rate)
 
         assert whisper_model in whisper.available_models()
+        
         _model = whisper.load_model(whisper_model, download_root=download_dir)
         self.encoders = copy.deepcopy(_model.encoder)
-        self.encoders.train()
-
         del _model
+        if train_from_scratch:
+            def init_params(m):
+              if type(m)==whisper.model.Linear or type(m)==whisper.model.Conv1d or type(m)==whisper.model.LayerNorm:
+                print(type(m))
+                m.weight.data=torch.randn(m.weight.size())*.01#Random weight initialisation
+                if m.bias is not None:
+                   m.bias.data=torch.zeros(m.bias.size())
+            self.encoders=self.encoders.apply(init_params)
+        self.encoders.train()
 
         if use_specaug:
             self.specaug = SpecAug(**specaug_conf)
@@ -171,12 +181,14 @@ class OpenAIWhisperEncoder(AbsEncoder):
     ) -> Tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor]]:
         if self.do_pad_trim:
             xs_pad = self.pad_or_trim(xs_pad, self.pad_samples)
-
+        print(xs_pad.shape)
         feats, feats_lens = self.log_mel_spectrogram(xs_pad, ilens)
-
+        print(feats.shape)
         if self.specaug is not None and self.encoders.training:
+            feats=torch.transpose(feats, 1,2)
             feats, feats_lens = self.specaug(feats, feats_lens)
-
+            feats=torch.transpose(feats, 1,2)
+        print(feats.shape)
         xs_pad, olens = self.whisper_encode(feats, feats_lens)
 
         return xs_pad, olens, None

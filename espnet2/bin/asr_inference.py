@@ -3,8 +3,9 @@ import argparse
 import logging
 import sys
 from distutils.version import LooseVersion
+from itertools import groupby
 from pathlib import Path
-from typing import Any, List, Optional, Sequence, Tuple, Union
+from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
 import numpy as np
 import torch
@@ -32,6 +33,7 @@ from espnet.nets.batch_beam_search import BatchBeamSearch
 from espnet.nets.batch_beam_search_online_sim import BatchBeamSearchOnlineSim
 from espnet.nets.beam_search import BeamSearch, Hypothesis
 from espnet.nets.beam_search_timesync import BeamSearchTimeSync
+from espnet.nets.pytorch_backend.transformer.add_sos_eos import add_sos_eos
 from espnet.nets.pytorch_backend.transformer.subsampling import TooShortUttError
 from espnet.nets.scorer_interface import BatchScorerInterface
 from espnet.nets.scorers.ctc import CTCPrefixScorer
@@ -45,6 +47,16 @@ try:
     is_transformers_available = True
 except ImportError:
     is_transformers_available = False
+
+# Alias for typing
+ListOfHypothesis = List[
+    Tuple[
+        Optional[str],
+        List[str],
+        List[int],
+        Union[Hypothesis, ExtTransHypothesis, TransHypothesis],
+    ]
+]
 
 
 class Speech2Text:
@@ -91,6 +103,12 @@ class Speech2Text:
         hugging_face_decoder_max_length: int = 256,
         time_sync: bool = False,
         multi_asr: bool = False,
+        ic_prompt: bool = False,
+        data_prompt: bool =False,
+        ner_prompt: bool = False,
+        sp_prompt: bool = False,
+        string_token_prompt: bool =False,
+        prompt_token_file: str = "/projects/bbjs/arora1/new_download/espnet/egs2/stop/asr2_combined/add_tokens-Copy1.txt",
     ):
         assert check_argument_types()
 
@@ -113,6 +131,7 @@ class Speech2Text:
         asr_model, asr_train_args = task.build_model_from_file(
             asr_train_config, asr_model_file, device
         )
+
         if enh_s2t_task:
             asr_model.inherite_attributes(
                 inherite_s2t_attrs=[
@@ -175,12 +194,27 @@ class Speech2Text:
 
         # 4. Build BeamSearch object
         if asr_model.use_transducer_decoder:
+            # In multi-blank RNNT, we assume all big blanks are
+            # just before the standard blank in token_list
+            multi_blank_durations = getattr(
+                asr_model, "transducer_multi_blank_durations", []
+            )[::-1] + [1]
+            multi_blank_indices = [
+                asr_model.blank_id - i + 1
+                for i in range(len(multi_blank_durations), 0, -1)
+            ]
+
+            if transducer_conf is None:
+                transducer_conf = {}
+
             beam_search_transducer = BeamSearchTransducer(
                 decoder=asr_model.decoder,
                 joint_network=asr_model.joint_network,
                 beam_size=beam_size,
                 lm=scorers["lm"] if "lm" in scorers else None,
                 lm_weight=lm_weight,
+                multi_blank_durations=multi_blank_durations,
+                multi_blank_indices=multi_blank_indices,
                 token_list=token_list,
                 **transducer_conf,
             )
@@ -310,7 +344,10 @@ class Speech2Text:
             or "whisper" in token_type
         ):
             if bpemodel is not None:
-                tokenizer = build_tokenizer(token_type=token_type, bpemodel=bpemodel)
+                if "whisper" in token_type:
+                    tokenizer = build_tokenizer(token_type=token_type, bpemodel=bpemodel,non_linguistic_symbols=prompt_token_file)
+                else:
+                    tokenizer = build_tokenizer(token_type=token_type, bpemodel=bpemodel)
             else:
                 tokenizer = None
         else:
@@ -319,10 +356,170 @@ class Speech2Text:
         if bpemodel not in ["whisper_en", "whisper_multilingual"]:
             converter = TokenIDConverter(token_list=token_list)
         else:
-            converter = OpenAIWhisperTokenIDConverter(model_type=bpemodel)
-            beam_search.set_hyp_primer(
-                list(converter.tokenizer.sot_sequence_including_notimestamps)
-            )
+            ic=ic_prompt
+            # import pdb;pdb.set_trace()
+            converter = OpenAIWhisperTokenIDConverter(model_type=bpemodel,added_tokens_txt=prompt_token_file)
+            if ic:
+                a1=converter.tokenizer.tokenizer.convert_ids_to_tokens(converter.tokenizer.sot_sequence_including_notimestamps)
+                # a1[2]="<|ic|>"
+                if data_prompt:
+                    a1=a1[:2]+["<|ic|>","<|SNIPS|>"]+a1[3:]
+                else:
+                    a1[2]="<|ic|>"
+                beam_search.set_hyp_primer(
+                    list(converter.tokenizer.tokenizer.convert_tokens_to_ids(a1))
+                )
+            elif ner_prompt:
+                a1=converter.tokenizer.tokenizer.convert_ids_to_tokens(converter.tokenizer.sot_sequence_including_notimestamps)
+                if data_prompt:
+                    a1=a1[:2]+["<|ner|>","<|SLURP|>"]+a1[3:]
+                elif string_token_prompt:
+                    slurp_arr=[
+                        "in:music_likeness",
+                        "in:music_settings",
+                        "in:play_music",
+                        "in:iot_hue_lightoff",
+                        "in:play_radio",
+                        "in:weather_query",
+                        "in:cooking_recipe",
+                        "in:email_sendemail",
+                        "in:calendar_set",
+                        "in:lists_remove",
+                        "in:play_podcasts",
+                        "in:qa_definition",
+                        "in:audio_volume_up",
+                        "in:news_query",
+                        "in:general_quirky",
+                        "in:email_query",
+                        "in:audio_volume_down",
+                        "in:takeaway_query",
+                        "in:general_joke",
+                        "in:iot_hue_lightup",
+                        "in:takeaway_order",
+                        "in:audio_volume_mute",
+                        "in:iot_hue_lightdim",
+                        "in:calendar_query",
+                        "in:transport_query",
+                        "in:transport_taxi",
+                        "in:general_greet",
+                        "in:music_query",
+                        "in:iot_coffee",
+                        "in:qa_maths",
+                        "in:email_querycontact",
+                        "in:recommendation_movies",
+                        "in:alarm_remove",
+                        "in:calendar_remove",
+                        "in:datetime_query",
+                        "in:iot_hue_lightchange",
+                        "in:iot_wemo_off",
+                        "in:transport_ticket",
+                        "in:alarm_query",
+                        "in:transport_traffic",
+                        "in:recommendation_events",
+                        "in:lists_createoradd",
+                        "in:social_query",
+                        "in:social_post",
+                        "in:qa_stock",
+                        "in:lists_query",
+                        "in:qa_factoid",
+                        "in:recommendation_locations",
+                        "in:audio_volume_other",
+                        "in:qa_currency",
+                        "in:iot_cleaning",
+                        "in:play_audiobook",
+                        "in:alarm_set",
+                        "in:datetime_convert",
+                        "in:play_game",
+                        "in:iot_wemo_on",
+                        "in:music_dislikeness",
+                        "in:email_addcontact",
+                        "in:iot_hue_lighton",
+                        "in:cooking_query",
+                        "in:qa_query",
+                        "in:general_negate",
+                        "in:general_dontcare",
+                        "in:general_repeat",
+                        "in:general_affirm",
+                        "in:general_commandstop",
+                        "in:general_confirm",
+                        "in:general_explain",
+                        "in:general_praise",
+                        "sl:player_setting",
+                        "sl:song_name",
+                        "sl:house_place",
+                        "sl:timeofday",
+                        "sl:weather_descriptor",
+                        "sl:device_type",
+                        "sl:relation",
+                        "sl:event_name",
+                        "sl:general_frequency",
+                        "sl:definition_word",
+                        "sl:date",
+                        "sl:time",
+                        "sl:person",
+                        "sl:food_type",
+                        "sl:order_type",
+                        "sl:business_type",
+                        "sl:change_amount",
+                        "sl:place_name",
+                        "sl:transport_type",
+                        "sl:personal_info",
+                        "sl:radio_name",
+                        "sl:ingredient",
+                        "sl:music_genre",
+                        "sl:artist_name",
+                        "sl:music_descriptor",
+                        "sl:playlist_name",
+                        "sl:news_topic",
+                        "sl:color_type",
+                        "sl:podcast_descriptor",
+                        "sl:list_name",
+                        "sl:media_type",
+                        "sl:transport_name",
+                        "sl:cooking_type",
+                        "sl:joke_type",
+                        "sl:currency_name",
+                        "sl:email_folder",
+                        "sl:app_name",
+                        "sl:audiobook_name",
+                        "sl:business_name",
+                        "sl:meal_type",
+                        "sl:podcast_name",
+                        "sl:drink_type",
+                        "sl:game_name",
+                        "sl:transport_agency",
+                        "sl:sport_type",
+                        "sl:movie_name",
+                        "sl:email_address",
+                        "sl:transport_descriptor",
+                        "sl:alarm_type",
+                        "sl:coffee_type",
+                        "sl:movie_type",
+                        "sl:audiobook_author",
+                        "sl:game_type",
+                        "sl:music_album",
+                        "sl:query_detail",
+                    ]
+                    prompt_str="<|ner|> "+" ".join(slurp_arr)
+                    a1=a1[:2]+prompt_str.split()+a1[3:]
+                else:
+                    a1[2]="<|ner|>"
+                beam_search.set_hyp_primer(
+                    list(converter.tokenizer.tokenizer.convert_tokens_to_ids(a1))
+                )
+            elif sp_prompt:
+                a1=converter.tokenizer.tokenizer.convert_ids_to_tokens(converter.tokenizer.sot_sequence_including_notimestamps)
+                if data_prompt:
+                    a1=a1[:2]+["<|sp|>","<|STOP|>"]+a1[3:]
+                else:
+                    a1[2]="<|sp|>"
+                beam_search.set_hyp_primer(
+                    list(converter.tokenizer.tokenizer.convert_tokens_to_ids(a1))
+                )
+            else:
+                beam_search.set_hyp_primer(
+                    list(converter.tokenizer.sot_sequence_including_notimestamps)
+                )
         logging.info(f"Text tokenizer: {tokenizer}")
 
         self.asr_model = asr_model
@@ -346,13 +543,12 @@ class Speech2Text:
     @torch.no_grad()
     def __call__(
         self, speech: Union[torch.Tensor, np.ndarray]
-    ) -> List[
+    ) -> Union[
+        ListOfHypothesis,
         Tuple[
-            Optional[str],
-            List[str],
-            List[int],
-            Union[Hypothesis, ExtTransHypothesis, TransHypothesis],
-        ]
+            ListOfHypothesis,
+            Optional[Dict[int, List[str]]],
+        ],
     ]:
         """Inference
 
@@ -379,7 +575,7 @@ class Speech2Text:
         batch = to_device(batch, device=self.device)
 
         # b. Forward Encoder
-        enc, _ = self.asr_model.encode(**batch)
+        enc, enc_olens = self.asr_model.encode(**batch)
         if self.multi_asr:
             enc = enc.unbind(dim=1)  # (batch, num_inf, ...) -> num_inf x [batch, ...]
         if self.enh_s2t_task or self.multi_asr:
@@ -403,17 +599,41 @@ class Speech2Text:
                 results.append(ret)
 
         else:
-
             # Normal ASR
+            intermediate_outs = None
             if isinstance(enc, tuple):
+                intermediate_outs = enc[1]
                 enc = enc[0]
             assert len(enc) == 1, len(enc)
 
             # c. Passed the encoder result and the beam search
             results = self._decode_single_sample(enc[0])
+
+            # Encoder intermediate CTC predictions
+            if intermediate_outs is not None:
+                encoder_interctc_res = self._decode_interctc(intermediate_outs)
+                results = (results, encoder_interctc_res)
             assert check_return_type(results)
 
         return results
+
+    def _decode_interctc(
+        self, intermediate_outs: List[Tuple[int, torch.Tensor]]
+    ) -> Dict[int, List[str]]:
+        assert check_argument_types()
+
+        exclude_ids = [self.asr_model.blank_id, self.asr_model.sos, self.asr_model.eos]
+        res = {}
+        token_list = self.beam_search.token_list
+
+        for layer_idx, encoder_out in intermediate_outs:
+            y = self.asr_model.ctc.argmax(encoder_out)[0]  # batch_size = 1
+            y = [x[0] for x in groupby(y) if x[0] not in exclude_ids]
+            y = [token_list[x] for x in y]
+
+            res[layer_idx] = y
+
+        return res
 
     def _decode_single_sample(self, enc: torch.Tensor):
         if self.beam_search_transducer:
@@ -556,6 +776,12 @@ def inference(
     hugging_face_decoder_max_length: int,
     time_sync: bool,
     multi_asr: bool,
+    ic_prompt: bool,
+    data_prompt: bool,
+    string_token_prompt: bool,
+    ner_prompt: bool,
+    sp_prompt:bool,
+    prompt_token_file:str,
 ):
     assert check_argument_types()
     if batch_size > 1:
@@ -608,6 +834,12 @@ def inference(
         hugging_face_decoder=hugging_face_decoder,
         hugging_face_decoder_max_length=hugging_face_decoder_max_length,
         time_sync=time_sync,
+        ic_prompt=ic_prompt,
+        data_prompt=data_prompt,
+        string_token_prompt=string_token_prompt,
+        ner_prompt=ner_prompt,
+        sp_prompt=sp_prompt,
+        prompt_token_file=prompt_token_file,
     )
     speech2text = Speech2Text.from_pretrained(
         model_tag=model_tag,
@@ -670,8 +902,11 @@ def inference(
                             ibest_writer[f"text_spk{spk}"][key] = text
 
             else:
-
                 # Normal ASR
+                encoder_interctc_res = None
+                if isinstance(results, tuple):
+                    results, encoder_interctc_res = results
+
                 for n, (text, token, token_int, hyp) in zip(
                     range(1, nbest + 1), results
                 ):
@@ -685,6 +920,15 @@ def inference(
 
                     if text is not None:
                         ibest_writer["text"][key] = text
+
+                # Write intermediate predictions to
+                # encoder_interctc_layer<layer_idx>.txt
+                ibest_writer = writer[f"1best_recog"]
+                if encoder_interctc_res is not None:
+                    for idx, text in encoder_interctc_res.items():
+                        ibest_writer[f"encoder_interctc_layer{idx}.txt"][
+                            key
+                        ] = " ".join(text)
 
 
 def get_parser():
@@ -887,7 +1131,42 @@ def get_parser():
         default=False,
         help="Time synchronous beam search.",
     )
-
+    group.add_argument(
+        "--ic_prompt",
+        type=str2bool,
+        default=False,
+        help="Prompt using ic",
+    )
+    group.add_argument(
+        "--data_prompt",
+        type=str2bool,
+        default=False,
+        help="Prompt using dataset token",
+    )
+    group.add_argument(
+        "--string_token_prompt",
+        type=str2bool,
+        default=False,
+        help="Prompt using string token as tags",
+    )
+    group.add_argument(
+        "--ner_prompt",
+        type=str2bool,
+        default=False,
+        help="Prompt using ner",
+    )
+    group.add_argument(
+        "--sp_prompt",
+        type=str2bool,
+        default=False,
+        help="Prompt using sp",
+    )
+    group.add_argument(
+        "--prompt_token_file",
+        type=str,
+        default="/projects/bbjs/arora1/new_download/espnet/egs2/stop/asr2_combined/add_tokens-Copy1.txt",
+        help="N-gram parameter file",
+    )
     return parser
 
 

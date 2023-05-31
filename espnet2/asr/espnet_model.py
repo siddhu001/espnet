@@ -197,6 +197,7 @@ class ESPnetASRModel(AbsESPnetModel):
             text_lengths: (Batch,)
             kwargs: "utt_id" is among the input.
         """
+        # import pdb; pdb.set_trace()
         assert text_lengths.dim() == 1, text_lengths.shape
         # Check that batch_size is unified
         assert (

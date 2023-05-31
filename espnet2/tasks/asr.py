@@ -183,7 +183,7 @@ decoder_choices = ClassChoices(
         s4=S4Decoder,
     ),
     type_check=AbsDecoder,
-    default="rnn",
+    default=None,
     optional=True,
 )
 preprocessor_choices = ClassChoices(
@@ -373,6 +373,13 @@ class ASRTask(AbsTask):
             help="If len(noise) / len(speech) is smaller than this threshold during "
             "dynamic mixing, a warning will be displayed.",
         )
+        group.add_argument(
+            "--aux_ctc_tasks",
+            type=str,
+            nargs="+",
+            default=[],
+            help="Auxillary tasks to train on using CTC loss. ",
+        )
 
         for class_choices in cls.class_choices_list:
             # Append --<name> and --<name>_conf.
@@ -396,7 +403,6 @@ class ASRTask(AbsTask):
     ) -> Optional[Callable[[str, Dict[str, np.array]], Dict[str, np.ndarray]]]:
         assert check_argument_types()
         if args.use_preprocessor:
-
             try:
                 _ = getattr(args, "preprocessor")
             except AttributeError:
@@ -406,6 +412,8 @@ class ASRTask(AbsTask):
                 raise e
 
             preprocessor_class = preprocessor_choices.get_class(args.preprocessor)
+            # import pdb;pdb.set_trace()
+            
             retval = preprocessor_class(
                 train=train,
                 token_type=args.token_type,
@@ -432,6 +440,9 @@ class ASRTask(AbsTask):
                 speech_volume_normalize=args.speech_volume_normalize
                 if hasattr(args, "rir_scp")
                 else None,
+                aux_task_names=args.aux_ctc_tasks
+                if hasattr(args, "aux_ctc_tasks")
+                else None,
                 **args.preprocessor_conf,
             )
         else:
@@ -455,9 +466,12 @@ class ASRTask(AbsTask):
         cls, train: bool = True, inference: bool = False
     ) -> Tuple[str, ...]:
         MAX_REFERENCE_NUM = 4
-        retval = []
-        retval += ["text_spk{}".format(n) for n in range(2, MAX_REFERENCE_NUM + 1)]
+
+        retval = ["text_spk{}".format(n) for n in range(2, MAX_REFERENCE_NUM + 1)]
+        retval=retval+["prompt"]
         retval = tuple(retval)
+
+        logging.info(f"Optional Data Names: {retval }")
         assert check_return_type(retval)
         return retval
 
@@ -474,6 +488,17 @@ class ASRTask(AbsTask):
             token_list = list(args.token_list)
         else:
             raise RuntimeError("token_list must be str or list")
+
+        # If use multi-blank transducer criterion,
+        # big blank symbols are added just before the standard blank
+        if args.model_conf.get("transducer_multi_blank_durations", None) is not None:
+            sym_blank = args.model_conf.get("sym_blank", "<blank>")
+            blank_idx = token_list.index(sym_blank)
+            for dur in args.model_conf.get("transducer_multi_blank_durations"):
+                if f"<blank{dur}>" not in token_list:  # avoid this during inference
+                    token_list.insert(blank_idx, f"<blank{dur}>")
+            args.token_list = token_list
+
         vocab_size = len(token_list)
         logging.info(f"Vocabulary size: {vocab_size }")
 

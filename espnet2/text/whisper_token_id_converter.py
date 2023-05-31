@@ -2,7 +2,8 @@ from typing import Iterable, List, Union
 
 import numpy as np
 from typeguard import check_argument_types
-
+import os
+dirname = os.path.dirname(__file__)
 # <sos> and <eos> for Whisper multilingual ---
 # '<|startoftranscript|>': 50258
 # '<|endoftext|>':         50257
@@ -16,6 +17,7 @@ class OpenAIWhisperTokenIDConverter:
     def __init__(
         self,
         model_type: str = "whisper_multilingual",
+        added_tokens_txt: str = None,
     ):
         assert check_argument_types()
 
@@ -37,6 +39,14 @@ class OpenAIWhisperTokenIDConverter:
             self.tokenizer = whisper.tokenizer.get_tokenizer(
                 multilingual=True, language=None
             )
+            # import pdb;pdb.set_trace()
+            if added_tokens_txt is not None:
+                _added_tokens = []
+                with open(added_tokens_txt) as f:
+                    lines = f.readlines()
+                    for l in lines:
+                        _added_tokens.append(l.rstrip())
+                self.tokenizer.tokenizer.add_tokens(_added_tokens)
         else:
             raise ValueError("tokenizer unsupported:", model_type)
 

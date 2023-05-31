@@ -7,9 +7,10 @@ from pathlib import Path
 from typeguard import check_argument_types
 
 from espnet.utils.cli_utils import get_commandline_args
+import os
+dirname = os.path.dirname(__file__)
 
-
-def export_vocabulary(output: str, whisper_model: str, log_level: str):
+def export_vocabulary(output: str, whisper_model: str, log_level: str, add_token_file_name: str):
     try:
         import whisper.tokenizer
     except Exception as e:
@@ -39,6 +40,14 @@ def export_vocabulary(output: str, whisper_model: str, log_level: str):
     #                  different languages (default is en)
     elif whisper_model == "whisper_multilingual":
         tokenizer = whisper.tokenizer.get_tokenizer(multilingual=True, language=None)
+        # import pdb;pdb.set_trace()
+        if add_token_file_name!="none":
+            _added_tokens = []
+            with open(add_token_file_name) as f:
+                lines = f.readlines()
+                for l in lines:
+                    _added_tokens.append(l.rstrip())
+            tokenizer.tokenizer.add_tokens(_added_tokens)
     else:
         raise ValueError("tokenizer unsupported:", whisper_model)
 
@@ -79,6 +88,12 @@ def get_parser() -> argparse.ArgumentParser:
         type=str,
         required=True,
         help="Whisper model type",
+    )
+    parser.add_argument(
+        "--add_token_file_name",
+        type=str,
+        default=None,
+        help="File name for added tokens",
     )
 
     return parser

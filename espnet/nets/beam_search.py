@@ -368,6 +368,8 @@ class BeamSearch(torch.nn.Module):
             maxlen = -1 * int(maxlenratio)
         else:
             maxlen = max(1, int(maxlenratio * x.size(0)))
+        if maxlen>440:
+            maxlen = 440
         minlen = int(minlenratio * x.size(0))
         logging.info("decoder input length: " + str(x.shape[0]))
         logging.info("max output length: " + str(maxlen))

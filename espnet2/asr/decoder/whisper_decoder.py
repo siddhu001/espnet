@@ -21,6 +21,7 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
         dropout_rate: float = 0.0,
         whisper_model: str = "small",
         download_dir: str = None,
+        train_from_scratch: bool = False,
     ):
         try:
             import whisper
@@ -36,8 +37,19 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
         super().__init__()
 
         assert whisper_model in whisper.available_models()
+        
         _model = whisper.load_model(whisper_model, download_root=download_dir)
         self.decoders = copy.deepcopy(_model.decoder)
+        del _model
+        
+        if train_from_scratch:
+            def init_params(m):
+              if type(m)==whisper.model.Linear or type(m)==whisper.model.Conv1d or type(m)==whisper.model.LayerNorm:
+                print(type(m))
+                m.weight.data=torch.randn(m.weight.size())*.01#Random weight initialisation
+                if m.bias is not None:
+                   m.bias.data=torch.zeros(m.bias.size())
+            self.decoders=self.decoders.apply(init_params)
         attention_dim = self.decoders.token_embedding.embedding_dim
 
         # note that originally Whisper doesn't use dropouts
@@ -60,7 +72,7 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
             )
 
         self.decoders.train()
-        del _model
+        
 
     def forward(
         self,
@@ -130,6 +142,7 @@ class OpenAIWhisperDecoder(AbsDecoder, BatchScorerInterface):
             cache implementation is ignored for now
             for simplicity & correctness
         """
+        # import pdb;pdb.set_trace()
         x = (
             self.decoders.token_embedding(tgt)
             + self.decoders.positional_embedding[: tgt.size(1)]
