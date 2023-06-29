@@ -1,0 +1,1672 @@
+say the list
+lists_query
+PRED
+lists_createoradd
+give me some health tips
+general_quirky
+PRED
+recommendation_events
+find me info on cars
+news_query
+PRED
+qa_factoid
+how do i make a turkey
+cooking_recipe
+PRED
+general_quirky
+i would like it to be able to compute answer from search results like wolfram alpha does
+general_quirky
+PRED
+qa_factoid
+i would like it to be able to compute answer from search results like wolfram alpha does
+general_quirky
+PRED
+by_
+please tell me the score of the game
+general_quirky
+PRED
+play_game
+is there a groomer in town for cats only
+general_quirky
+PRED
+play_game
+is there a groomer in town for cats only
+general_quirky
+PRED
+recommendation_locations
+clear haircut today
+calendar_remove
+PRED
+general_quirky
+clear haircut today
+calendar_remove
+PRED
+general_quirky
+am i free at four pm
+calendar_query
+PRED
+calendar_set
+health
+general_quirky
+PRED
+news_query
+in how many hours will it be midnight in london england
+datetime_query
+PRED
+datetime_convert
+in how many hours will it be midnight in london england
+datetime_query
+PRED
+datetime_convert
+in how many hours will it be midnight in london england
+datetime_query
+PRED
+transport_query
+play me an upbeat song through your speakers
+play_music
+PRED
+audio_volume_up
+start the vacuum cleaner
+iot_cleaning
+PRED
+iot_wemo_on
+currency converter please
+qa_currency
+PRED
+iot_cleaning
+confirm a travel ticket to german
+transport_ticket
+PRED
+transport_query
+confirm a travel ticket to german
+transport_ticket
+PRED
+transport_query
+add podcast favourites to playlist and start
+play_podcasts
+PRED
+play_music
+replay the musics
+music_settings
+PRED
+play_music
+replay the musics
+music_settings
+PRED
+play_music
+will it be a sticky night
+weather_query
+PRED
+general_quirky
+i want to know more about the fair this weekend
+general_quirky
+PRED
+calendar_query
+what is the minimum temperature of london
+weather_query
+PRED
+general_quirky
+and the darkness has fallen
+iot_hue_lighton
+PRED
+general_quirky
+and the darkness has fallen
+iot_hue_lighton
+PRED
+iot_hue_lightdim
+and the darkness has fallen
+iot_hue_lighton
+PRED
+general_quirky
+and the darkness has fallen
+iot_hue_lighton
+PRED
+general_quirky
+and the darkness has fallen
+iot_hue_lighton
+PRED
+iot_hue_lightoff
+and the darkness has fallen
+iot_hue_lighton
+PRED
+iot_hue_lightoff
+when will the world end
+general_quirky
+PRED
+qa_factoid
+make my usual
+iot_coffee
+PRED
+general_quirky
+what 's happening around the world
+news_query
+PRED
+recommendation_events
+what 's happening around the world
+news_query
+PRED
+recommendation_events
+please turn lights off
+iot_hue_lightoff
+PRED
+iot_hue_lightdim
+how much mehta willing to invest in my company in meeting which held today at five hundred and twenty pm
+calendar_query
+PRED
+ie_
+clean the floor
+iot_cleaning
+PRED
+general_quirky
+read that back
+play_audiobook
+PRED
+qa_definition
+cancel dinner tonight
+calendar_remove
+PRED
+general_quirky
+what is the difference between bake and broil
+cooking_recipe
+PRED
+general_quirky
+what is the difference between bake and broil
+cooking_recipe
+PRED
+general_quirky
+thirteenth june is a day of election result please set it
+calendar_set
+PRED
+calendar_query
+thirteenth june is a day of election result please set it
+calendar_set
+PRED
+datetime_query
+bring up papa pear saga
+play_game
+PRED
+takeaway_order
+what 's for today
+calendar_query
+PRED
+datetime_query
+what 's for today
+calendar_query
+PRED
+datetime_query
+what 's for today
+calendar_query
+PRED
+datetime_query
+what do you think
+music_likeness
+PRED
+general_quirky
+will it rain tomorrow
+weather_query
+PRED
+general_quirky
+where is the pharmacy in leavenworth
+recommendation_locations
+PRED
+qa_factoid
+where is the pharmacy in leavenworth
+recommendation_locations
+PRED
+qa_factoid
+where is the pharmacy in leavenworth
+recommendation_locations
+PRED
+qa_factoid
+show me latest notifications
+social_query
+PRED
+news_query
+show me latest notifications
+social_query
+PRED
+news_query
+how much is one dollar in pounds
+qa_currency
+PRED
+qa_factoid
+yesterday at noontime in times square what was the protest about
+news_query
+PRED
+general_quirky
+turn off my wifi
+iot_wemo_off
+PRED
+audio_volume_up
+where does kate middleton buy her kids clothes
+general_quirky
+PRED
+qa_factoid
+where does kate middleton buy her kids clothes
+general_quirky
+PRED
+qa_factoid
+where does kate middleton buy her kids clothes
+general_quirky
+PRED
+qa_factoid
+erase my appointment for march seven
+calendar_remove
+PRED
+calendar_set
+i want to know what supermarket near me has the best price on gluten free bread
+recommendation_locations
+PRED
+general_quirky
+please schedule a meeting with derrick in haysi at noon
+calendar_set
+PRED
+[unsupported_event_SLURP
+please begin clash of clans
+play_game
+PRED
+general_quirky
+please begin clash of clans
+play_game
+PRED
+general_quirky
+please begin clash of clans
+play_game
+PRED
+general_quirky
+play netflix on my ps four
+play_radio
+PRED
+play_audiobook
+play netflix on my ps four
+play_radio
+PRED
+play_audiobook
+add song to running list
+music_likeness
+PRED
+lists_createoradd
+are there any free events on in my area today
+recommendation_events
+PRED
+calendar_query
+which teams are playing today in the premier league
+news_query
+PRED
+recommendation_events
+california
+transport_query
+PRED
+qa_factoid
+california
+transport_query
+PRED
+qa_factoid
+change the lights to dim
+iot_hue_lightdim
+PRED
+iot_hue_lightchange
+what are converse shoes
+qa_definition
+PRED
+news_query
+what are converse shoes
+qa_definition
+PRED
+qa_factoid
+should i open the sun roof
+weather_query
+PRED
+music_query
+please tweet on dell service for delay services
+social_post
+PRED
+calendar_remove
+set lunch every day at twelve thirty
+calendar_set
+PRED
+alarm_set
+set lunch every day at twelve thirty
+calendar_set
+PRED
+alarm_set
+android
+lists_query
+PRED
+news_query
+android
+lists_query
+PRED
+news_query
+brighter
+iot_hue_lightup
+PRED
+iot_hue_lightdim
+shall i change my car tyres to snow tyres soon
+weather_query
+PRED
+iot_hue_lightchange
+play my soundtrack
+play_music
+PRED
+play_radio
+pause the book
+play_audiobook
+PRED
+qa_factoid
+technology
+general_quirky
+PRED
+news_query
+check time of ten thousand eight hundred and eighty seven train from luni station on tuesday
+transport_query
+PRED
+rain_
+here is a new email address to be added to the contacts
+email_sendemail
+PRED
+email_addcontact
+here is a new email address to be added to the contacts
+email_sendemail
+PRED
+email_addcontact
+can you do nine plus two
+qa_maths
+PRED
+lists_createoradd
+olly there 's a good band playing tonight at nine at jazz bar i want to go
+calendar_set
+PRED
+recommendation_events
+put on
+play_radio
+PRED
+iot_wemo_on
+put on
+play_radio
+PRED
+play_music
+put on
+play_radio
+PRED
+play_music
+why is nt adam sandler funny
+qa_factoid
+PRED
+general_quirky
+why is nt adam sandler funny
+qa_factoid
+PRED
+general_quirky
+why is nt adam sandler funny
+qa_factoid
+PRED
+general_quirky
+why is nt adam sandler funny
+qa_factoid
+PRED
+general_quirky
+tell me something i can do to help my community today
+general_quirky
+PRED
+calendar_set
+tell me something i can do to help my community today
+general_quirky
+PRED
+recommendation_events
+tell me something i can do to help my community today
+general_quirky
+PRED
+recommendation_events
+tell me something i can do to help my community today
+general_quirky
+PRED
+calendar_set
+send me an alert and hour before my next appointment
+calendar_set
+PRED
+alarm_set
+discontinue use of lights
+iot_hue_lightoff
+PRED
+iot_hue_lightdim
+discontinue use of lights
+iot_hue_lightoff
+PRED
+iot_hue_lightdim
+discontinue use of lights
+iot_hue_lightoff
+PRED
+play_audiobook
+discontinue use of lights
+iot_hue_lightoff
+PRED
+qa_definition
+erase that from my calendar
+calendar_remove
+PRED
+lists_remove
+what is the temperature in indianapolis indiana
+qa_factoid
+PRED
+weather_query
+can you open my itunes
+play_music
+PRED
+audio_volume_up
+can you make dinner for me
+general_quirky
+PRED
+cooking_recipe
+can you make dinner for me
+general_quirky
+PRED
+cooking_recipe
+can you make dinner for me
+general_quirky
+PRED
+cooking_recipe
+can you make dinner for me
+general_quirky
+PRED
+cooking_recipe
+instructions to make a meal
+cooking_recipe
+PRED
+calendar_query
+is today st patricks day
+calendar_query
+PRED
+datetime_query
+play sleepyhead by passion pit
+play_music
+PRED
+general_quirky
+within the past three months how many meetings did i have with mr richards
+calendar_query
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+how much is the average house
+qa_factoid
+PRED
+general_quirky
+rate five
+music_likeness
+PRED
+play_music
+what ingredient can be used instead of saffron
+cooking_recipe
+PRED
+qa_definition
+who sings the song about a long black train
+music_query
+PRED
+qa_factoid
+pink is all we need
+iot_hue_lightchange
+PRED
+play_music
+pink is all we need
+iot_hue_lightchange
+PRED
+play_music
+pink is all we need
+iot_hue_lightchange
+PRED
+lists_createoradd
+pink is all we need
+iot_hue_lightchange
+PRED
+play_music
+pink is all we need
+iot_hue_lightchange
+PRED
+play_music
+tell me a place that has snow now
+general_quirky
+PRED
+weather_query
+what are the top stories on cnn
+news_query
+PRED
+general_quirky
+what is the dollar price in inr
+qa_currency
+PRED
+news_query
+where i went today
+general_quirky
+PRED
+weather_query
+where i went today
+general_quirky
+PRED
+weather_query
+what 's on your mind
+general_quirky
+PRED
+email_query
+hello my item which i bought from some one has gone out of order
+social_post
+PRED
+general_quirky
+what time should i go for a hike
+weather_query
+PRED
+calendar_query
+what time should i go for a hike
+weather_query
+PRED
+calendar_query
+what are some theme parks nearby
+recommendation_events
+PRED
+recommendation_locations
+what are some theme parks nearby
+recommendation_events
+PRED
+recommendation_locations
+tell me the recipe of
+cooking_recipe
+PRED
+qa_factoid
+knock knock
+general_joke
+PRED
+music_likeness
+what do you do with my data and information
+general_quirky
+PRED
+calendar_query
+do n't make any sounds
+audio_volume_mute
+PRED
+music_dislikeness
+does allearsnet have a new podcast
+play_podcasts
+PRED
+news_query
+does allearsnet have a new podcast
+play_podcasts
+PRED
+news_query
+low cooling condition
+weather_query
+PRED
+cooking_recipe
+please look up local restaurants that are open now
+recommendation_locations
+PRED
+takeaway_order
+turn the light off in the living room
+iot_hue_lightoff
+PRED
+iot_hue_lightup
+tell me when it is five pm
+alarm_set
+PRED
+calendar_set
+please modify my calendar with this event
+calendar_set
+PRED
+calendar_remove
+please modify my calendar with this event
+calendar_set
+PRED
+calendar_remove
+please modify my calendar with this event
+calendar_set
+PRED
+calendar_remove
+play next episode of harry potter by j. k. rowling
+play_audiobook
+PRED
+ama_
+play next episode of harry potter by j. k. rowling
+play_audiobook
+PRED
+ama_
+find a train ticket to philadelphia
+transport_ticket
+PRED
+transport_query
+find a train ticket to philadelphia
+transport_ticket
+PRED
+transport_query
+who is the contact that last called me
+email_querycontact
+PRED
+email_query
+plants
+general_quirky
+PRED
+play_music
+i want sweet potato pie from a local bakery
+lists_createoradd
+PRED
+takeaway_order
+title
+music_query
+PRED
+email_query
+title
+music_query
+PRED
+email_query
+what day does my birthday fall on this year june twenty seventh
+datetime_query
+PRED
+calendar_query
+what 's the easiest way to cook pasta
+cooking_recipe
+PRED
+cooking_query
+keep playing secret garden
+play_audiobook
+PRED
+play_podcasts
+what is the chance of precipitation in todays weather
+weather_query
+PRED
+general_quirky
+what is the chance of precipitation in todays weather
+weather_query
+PRED
+general_quirky
+how have megatel shares done last week
+qa_stock
+PRED
+social_query
+how have megatel shares done last week
+qa_stock
+PRED
+general_quirky
+start a gossip
+general_quirky
+PRED
+play_game
+start a gossip
+general_quirky
+PRED
+play_game
+enter song suggestion
+music_likeness
+PRED
+play_music
+play reggae music
+play_music
+PRED
+play_radio
+replace
+lists_remove
+PRED
+music_settings
+tell me if i have any unread new emails
+email_query
+PRED
+calendar_query
+take that off there
+lists_remove
+PRED
+calendar_remove
+off all type of active devices
+iot_wemo_off
+PRED
+general_quirky
+could you please create a pandora channel for adele
+music_settings
+PRED
+play_radio
+how the to do list for today
+lists_query
+PRED
+lists_createoradd
+tell me about mary s.
+email_querycontact
+PRED
+general_quirky
+tell me about mary s.
+email_querycontact
+PRED
+qa_factoid
+make a list about selena gomez concert schedule
+lists_createoradd
+PRED
+qa_factoid
+where is the nearest walmart
+recommendation_locations
+PRED
+qa_factoid
+please turn off the lights in patio
+iot_hue_lightoff
+PRED
+iot_hue_lightup
+meeting reminders from three to five
+calendar_query
+PRED
+calendar_set
+how many tornadoes have there been this month
+general_quirky
+PRED
+qa_factoid
+how many tornadoes have there been this month
+general_quirky
+PRED
+calendar_query
+how many tornadoes have there been this month
+general_quirky
+PRED
+qa_factoid
+why does sofia vergara look so young
+general_quirky
+PRED
+qa_factoid
+why does sofia vergara look so young
+general_quirky
+PRED
+qa_factoid
+i want to hear a joke
+general_joke
+PRED
+play_music
+check mail for anything from shelly
+email_query
+PRED
+email_querycontact
+math
+general_quirky
+PRED
+qa_maths
+take out available louies
+takeaway_query
+PRED
+takeaway_order
+play the beatles
+play_music
+PRED
+play_audiobook
+web searches
+general_quirky
+PRED
+qa_factoid
+web searches
+general_quirky
+PRED
+news_query
+web searches
+general_quirky
+PRED
+news_query
+sticking to diet
+general_quirky
+PRED
+cooking_recipe
+song info
+music_query
+PRED
+qa_factoid
+can you change the volume at
+audio_volume_other
+PRED
+audio_volume_up
+show me the events in my work calendar for next week
+calendar_set
+PRED
+calendar_query
+please add my pay days
+calendar_set
+PRED
+lists_createoradd
+who wrote this song
+music_query
+PRED
+play_music
+current time in
+datetime_query
+PRED
+music_query
+go backward thirty seconds
+play_podcasts
+PRED
+general_quirky
+go backward thirty seconds
+play_podcasts
+PRED
+general_quirky
+what do you know about fringe in edinburgh next year
+general_quirky
+PRED
+calendar_query
+important house information
+lists_query
+PRED
+general_quirky
+important house information
+lists_query
+PRED
+general_quirky
+what is a neutral density filter and would i want a gradient one or a solid one also which would be better in style between the screw on one and the square ones
+qa_factoid
+PRED
+clock_
+what was the last movie will smith was in
+qa_factoid
+PRED
+general_quirky
+what store is having sales tomorrow
+general_quirky
+PRED
+recommendation_locations
+tell me my options for a train to los angles next wednesday or thursday
+transport_query
+PRED
+ago_
+did charlotte responded
+email_query
+PRED
+email_sendemail
+set the default audio setting
+audio_volume_other
+PRED
+play_audiobook
+it must be taste
+cooking_recipe
+PRED
+transport_taxi
+turn the smart plug on
+iot_wemo_on
+PRED
+iot_wemo_off
+turn the smart plug on
+iot_wemo_on
+PRED
+iot_wemo_off
+read some more of the daisy goodwin book for me
+play_audiobook
+PRED
+qa_factoid
+knowledge about food processing
+cooking_recipe
+PRED
+general_quirky
+did I set an alarm to have tablets in the noon
+alarm_query
+PRED
+calendar_query
+what 's the best way to sheffield
+transport_query
+PRED
+general_quirky
+hey send email to john
+email_sendemail
+PRED
+email_query
+compose a new email to ray
+email_sendemail
+PRED
+email_query
+where is the public library
+transport_query
+PRED
+calendar_query
+play ping pong
+play_game
+PRED
+play_music
+do not make any noise until morning alarm
+audio_volume_mute
+PRED
+alarm_remove
+do not make any noise until morning alarm
+audio_volume_mute
+PRED
+alarm_remove
+update to current time
+datetime_query
+PRED
+datetime_convert
+update to current time
+datetime_query
+PRED
+datetime_convert
+why is the earth round
+general_quirky
+PRED
+qa_factoid
+why is the earth round
+general_quirky
+PRED
+qa_factoid
+play duncan trussel 's latest podcast
+play_podcasts
+PRED
+play_radio
+how we can get credit
+email_sendemail
+PRED
+general_quirky
+tell me about trump
+news_query
+PRED
+qa_factoid
+tell me about trump
+news_query
+PRED
+qa_factoid
+tell me about trump
+news_query
+PRED
+qa_factoid
+can you show me a list of all my recent commands
+general_quirky
+PRED
+lists_query
+is there a sporting event tomorrow in chicago
+recommendation_events
+PRED
+calendar_set
+more lights please
+iot_hue_lightup
+PRED
+iot_hue_lightdim
+mute please
+audio_volume_mute
+PRED
+iot_hue_lightoff
+open meeting time
+calendar_query
+PRED
+calendar_set
+open meeting time
+calendar_query
+PRED
+calendar_set
+what should i watch today
+recommendation_movies
+PRED
+general_quirky
+what should i watch today
+recommendation_movies
+PRED
+general_quirky
+what should i watch today
+recommendation_movies
+PRED
+general_quirky
+what should i watch today
+recommendation_movies
+PRED
+general_quirky
+dollar rate at present
+qa_currency
+PRED
+general_quirky
+dollar rate at present
+qa_currency
+PRED
+general_quirky
+hot topic
+news_query
+PRED
+email_query
+decrease twenty percent
+audio_volume_down
+PRED
+audio_volume_up
+compose email
+email_sendemail
+PRED
+email_query
+navigation search
+transport_query
+PRED
+qa_factoid
+where is the venue in which the marriage of tom is going to take place
+calendar_query
+PRED
+calendar_set
+yes i like to save opinion on song playing and which player support that song
+music_likeness
+PRED
+general_quirky
+yes i like to save opinion on song playing and which player support that song
+music_likeness
+PRED
+you_
+have you heard any good music lately
+general_quirky
+PRED
+music_query
+have you heard any good music lately
+general_quirky
+PRED
+music_query
+have you heard any good music lately
+general_quirky
+PRED
+music_query
+what is elvis favorite ride
+qa_factoid
+PRED
+general_quirky
+i need some details about bruce lee please assist
+qa_factoid
+PRED
+general_quirky
+please play clash of clans
+play_game
+PRED
+play_audiobook
+please play clash of clans
+play_game
+PRED
+play_audiobook
+please play clash of clans
+play_game
+PRED
+play_audiobook
+search the item
+lists_createoradd
+PRED
+lists_query
+search the item
+lists_createoradd
+PRED
+lists_query
+search the item
+lists_createoradd
+PRED
+lists_query
+search the item
+lists_createoradd
+PRED
+lists_query
+search the item
+lists_createoradd
+PRED
+lists_query
+search the item
+lists_createoradd
+PRED
+lists_query
+tell me all about hurricane
+qa_definition
+PRED
+general_quirky
+tell me all about hurricane
+qa_definition
+PRED
+general_quirky
+can you cook something special for me and my wife
+general_quirky
+PRED
+cooking_recipe
+it 's dirty here make some noise
+iot_cleaning
+PRED
+weather_query
+what sound does a dog make
+general_quirky
+PRED
+music_query
+what sound does a dog make
+general_quirky
+PRED
+music_query
+play a game of contra as a second player
+play_game
+PRED
+qa_factoid
+friend updates
+general_quirky
+PRED
+social_query
+friend updates
+general_quirky
+PRED
+social_query
+i want you to play bohemian raphsody for me
+play_music
+PRED
+play_radio
+i want you to play bohemian raphsody for me
+play_music
+PRED
+play_radio
+initialize the robot vacuum
+iot_cleaning
+PRED
+general_quirky
+hey order two wings with french fries from the chinese food store
+takeaway_order
+PRED
+takeaway_query
+what is the trending now
+news_query
+PRED
+transport_query
+mute the music
+audio_volume_mute
+PRED
+music_settings
+turn off the sounds
+audio_volume_mute
+PRED
+music_settings
+change volume level to maximum
+audio_volume_other
+PRED
+audio_volume_up
+mark today as the start of my diet
+calendar_set
+PRED
+general_quirky
+mark today as the start of my diet
+calendar_set
+PRED
+general_quirky
+both young drivers and provisional drivers crash more often than other drivers because they have not yet had the wide range of experiences they need to drive safely by themselves research has shown that driving experience is a major factor in reducing road crashes and that the safest time for young drivers is when they are driving under supervision while learning
+recommendation_events
+PRED
+general_quirky
+both young drivers and provisional drivers crash more often than other drivers because they have not yet had the wide range of experiences they need to drive safely by themselves research has shown that driving experience is a major factor in reducing road crashes and that the safest time for young drivers is when they are driving under supervision while learning
+recommendation_events
+PRED
+qa_factoid
+both young drivers and provisional drivers crash more often than other drivers because they have not yet had the wide range of experiences they need to drive safely by themselves research has shown that driving experience is a major factor in reducing road crashes and that the safest time for young drivers is when they are driving under supervision while learning
+recommendation_events
+PRED
+general_quirky
+both young drivers and provisional drivers crash more often than other drivers because they have not yet had the wide range of experiences they need to drive safely by themselves research has shown that driving experience is a major factor in reducing road crashes and that the safest time for young drivers is when they are driving under supervision while learning
+recommendation_events
+PRED
+general_quirky
+cancel the breakfast at tiffany 's house
+calendar_remove
+PRED
+lists_remove
+play romantic music in nash fm ninety two point seven
+play_radio
+PRED
+play_music
+recite the schedules of the list
+lists_query
+PRED
+lists_remove
+recite the schedules of the list
+lists_query
+PRED
+lists_createoradd
+tell me all events for today in my city
+recommendation_events
+PRED
+calendar_query
+does louie 's do take out
+takeaway_query
+PRED
+takeaway_order
+do i have a date on friday
+calendar_query
+PRED
+datetime_query
+reset my locations list
+lists_remove
+PRED
+lists_createoradd
+raise volume
+audio_volume_up
+PRED
+audio_volume_other
+one thousand two hundred and thirty pm already you will have a meeting in ten mins
+calendar_query
+PRED
+calendar_set
+one thousand two hundred and thirty pm already you will have a meeting in ten mins
+calendar_query
+PRED
+calendar_set
+next
+play_podcasts
+PRED
+general_quirky
+alarm settings
+alarm_query
+PRED
+alarm_set
+how is the stock going in general
+qa_stock
+PRED
+qa_factoid
+what going on
+social_query
+PRED
+recommendation_events
+what else is missing in the diary
+lists_query
+PRED
+qa_factoid
+what else is missing in the diary
+lists_query
+PRED
+qa_factoid
+what else is missing in the diary
+lists_query
+PRED
+calendar_query
+from now on mute
+audio_volume_mute
+PRED
+audio_volume_up
+from now on mute
+audio_volume_mute
+PRED
+audio_volume_up
+turn my bedroom lights off
+iot_hue_lightoff
+PRED
+general_quirky
+tell me about the cheapest flight fares to nj today
+transport_ticket
+PRED
+transport_query
+tell me about the cheapest flight fares to nj today
+transport_ticket
+PRED
+transport_query
+to compare in people
+qa_factoid
+PRED
+general_quirky
+to compare in people
+qa_factoid
+PRED
+general_quirky
+to compare in people
+qa_factoid
+PRED
+general_quirky
+play me in tic tac toe
+play_game
+PRED
+play_radio
+what is a good iranian film from two thousand and sixteen
+recommendation_movies
+PRED
+general_quirky
+what is a good iranian film from two thousand and sixteen
+recommendation_movies
+PRED
+qa_factoid
+what is a good iranian film from two thousand and sixteen
+recommendation_movies
+PRED
+general_quirky
+what is a good iranian film from two thousand and sixteen
+recommendation_movies
+PRED
+general_quirky
+movies with good reviews
+recommendation_movies
+PRED
+general_quirky
+movies with good reviews
+recommendation_movies
+PRED
+general_quirky
+movies with good reviews
+recommendation_movies
+PRED
+general_quirky
+movies with good reviews
+recommendation_movies
+PRED
+general_quirky
+movies with good reviews
+recommendation_movies
+PRED
+general_quirky
+play scrabble with me
+play_game
+PRED
+general_quirky
+google train tickets to washington dc
+transport_ticket
+PRED
+transport_query
+google train tickets to washington dc
+transport_ticket
+PRED
+transport_query
+google train tickets to washington dc
+transport_ticket
+PRED
+transport_query
+google train tickets to washington dc
+transport_ticket
+PRED
+transport_query
+how long until my order is ready
+takeaway_query
+PRED
+calendar_query
+what movie can i watch tonight on the theater here in boston
+recommendation_events
+PRED
+recommendation_movies
+what movie can i watch tonight on the theater here in boston
+recommendation_events
+PRED
+recommendation_movies
+new updates
+social_query
+PRED
+news_query
+what are my pending tasks
+calendar_query
+PRED
+lists_query
+i 've cancelled the order placed at mcd did it go through
+takeaway_query
+PRED
+social_post
+what mistakes do you usually make
+general_quirky
+PRED
+qa_factoid
+what mistakes do you usually make
+general_quirky
+PRED
+qa_factoid
+let me know when you hear about france
+news_query
+PRED
+general_quirky
+start celine dion songs
+play_music
+PRED
+play_radio
+please check my mails
+email_query
+PRED
+email_sendemail
+can you make the lights go out
+iot_hue_lightoff
+PRED
+iot_hue_lightup
+i 'm going to sleep now
+iot_hue_lightoff
+PRED
+general_quirky
+help me start my kitchen list
+lists_createoradd
+PRED
+lists_query
+vitaly channel
+play_podcasts
+PRED
+play_radio
+play the song title
+play_music
+PRED
+music_query
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+can they provide takeaway
+takeaway_query
+PRED
+takeaway_order
+open contacts
+email_addcontact
+PRED
+email_querycontact
+open contacts
+email_addcontact
+PRED
+email_querycontact
+suffering consequences
+qa_definition
+PRED
+general_quirky
+swimming
+recommendation_events
+PRED
+general_quirky
+swimming
+recommendation_events
+PRED
+general_quirky
+please book a ticket of rajdhani express train from jaipur
+transport_ticket
+PRED
+ago_
+can you really see russia from alaska
+qa_factoid
+PRED
+general_quirky
+silently adjust
+audio_volume_mute
+PRED
+audio_volume_other
+please change time zone to canada
+datetime_convert
+PRED
+transport_ticket
+play it again please
+play_music
+PRED
+general_repeat
+play it again please
+play_music
+PRED
+general_repeat
+play it again please
+play_music
+PRED
+general_repeat
+details on person
+qa_factoid
+PRED
+general_quirky
+can you book an uber after i left for office
+transport_taxi
+PRED
+general_quirky
+keep me up to date with today 's nba scores
+news_query
+PRED
+general_quirky
+please put all the lights
+iot_hue_lightup
+PRED
+iot_hue_lightdim
+throw away my to do list please
+lists_remove
+PRED
+lists_query
+i want to hear purple haze
+play_music
+PRED
+general_quirky
+which contact have n't i called in twelve months
+email_querycontact
+PRED
+qa_factoid
+how cold will it get each night this week
+weather_query
+PRED
+datetime_query
+can you erase the haircut i have scheduled for friday
+calendar_remove
+PRED
+general_quirky
+remove next monday 's meeting
+calendar_remove
+PRED
+calendar_set
+cease operating lights
+iot_hue_lightoff
+PRED
+iot_hue_lightdim
+i want the light to be a little more red ish
+iot_hue_lightchange
+PRED
+iot_hue_lightup
+play silent song
+play_music
+PRED
+play_audiobook
+if there is event of show then remove it
+lists_remove
+PRED
+calendar_remove
+what all goes into a red velvet cake
+cooking_recipe
+PRED
+qa_factoid
+power on wemo
+iot_wemo_on
+PRED
+qa_maths
+music third day
+play_music
+PRED
+play_audiobook
+please turn my speakers on google
+audio_volume_up
+PRED
+audio_volume_mute
+please turn my speakers on google
+audio_volume_up
+PRED
+audio_volume_mute
+please turn my speakers on google
+audio_volume_up
+PRED
+audio_volume_mute
+find an oscar nominee movie
+recommendation_movies
+PRED
+qa_factoid
+clear my calendar for saturday
+calendar_remove
+PRED
+calendar_set
+let 's play global thermonuclear war
+play_game
+PRED
+play_
+it 's my mother 's birthday today send me a notification every year on this date
+calendar_set
+PRED
+calendar_query
+it 's my mother 's birthday today send me a notification every year on this date
+calendar_set
+PRED
+calendar_query
+may i have a list of five star hotels in paris
+qa_factoid
+PRED
+recommendation_locations
+may i have a list of five star hotels in paris
+qa_factoid
+PRED
+recommendation_locations
+clear my activities list for today
+lists_remove
+PRED
+lists_query
+clear my activities list for today
+lists_remove
+PRED
+lists_query
+how much will be the world population after twenty years
+general_quirky
+PRED
+qa_factoid
+how much will be the world population after twenty years
+general_quirky
+PRED
+qa_factoid
+retrieve the light for me
+iot_hue_lightup
+PRED
+iot_hue_lightoff
+retrieve the light for me
+iot_hue_lightup
+PRED
+iot_hue_lightoff
+is the time currently correct for where i am located
+datetime_query
+PRED
+datetime_convert
+what is the least tornado prone state in the entire us
+qa_factoid
+PRED
+(slurp_MO-156-slurp_MO-156_1490955378)
+what about new mail
+email_query
+PRED
+news_query
+new event
+calendar_set
+PRED
+news_query
+any special events on my list
+lists_query
+PRED
+calendar_query
+any special events on my list
+lists_query
+PRED
+social_query
+play the weekend
+play_music
+PRED
+play_audiobook
+play the weekend
+play_music
+PRED
+play_radio

@@ -1,0 +1,429 @@
+[in:create_alarm [sl:date_time for two pm ] ]	(alarm_test_00000007.wav_1-alarm_test_00000007.wav)
+[in:create_alarm [sl:alarm_name my nephew nap time ] [sl:date_time for two pm ] ]	(alarm_test_00000007.wav_1-alarm_test_00000007.wav)
+NEXT
+[in:create_alarm [sl:date_time at eleven am ] ]	(alarm_test_00000560.wav_1-alarm_test_00000560.wav)
+[in:create_alarm [sl:alarm_name mail pickup ] [sl:date_time at eleven am ] ]	(alarm_test_00000560.wav_1-alarm_test_00000560.wav)
+NEXT
+[in:unsupported_alarm ]	(alarm_test_00001368.wav_1-alarm_test_00001368.wav)
+[in:silence_alarm [sl:alarm_name voice reminder ] ]	(alarm_test_00001368.wav_1-alarm_test_00001368.wav)
+NEXT
+[in:delete_alarm [sl:date_time_recurring for eight fifty five pm weekdaily ] ]	(alarm_test_00001410.wav_1-alarm_test_00001410.wav)
+[in:delete_alarm [sl:alarm_name [in:get_time [sl:date_time for eight fifty five pm weekday ] ] ] ]	(alarm_test_00001410.wav_1-alarm_test_00001410.wav)
+NEXT
+[in:update_alarm [sl:period daily ] [sl:alarm_name morning ] [sl:date_time to seven am ] ]	(alarm_test_00002569.wav_1-alarm_test_00002569.wav)
+[in:update_alarm [sl:alarm_name [in:get_time [sl:date_time daily morning ] ] ] [sl:date_time to seven am ] ]	(alarm_test_00002569.wav_1-alarm_test_00002569.wav)
+NEXT
+[in:create_alarm [sl:date_time six pm ] ]	(alarm_test_00004840.wav_1-alarm_test_00004840.wav)
+[in:create_reminder [sl:person_reminded me ] [sl:date_time six pm ] ]	(alarm_test_00004840.wav_1-alarm_test_00004840.wav)
+NEXT
+[in:silence_alarm ]	(alarm_test_00005591.wav_1-alarm_test_00005591.wav)
+[in:send_message [sl:content_exact yeah yeah i hear you ] ]	(alarm_test_00005591.wav_1-alarm_test_00005591.wav)
+NEXT
+[in:create_alarm ]	(alarm_test_00005693.wav_1-alarm_test_00005693.wav)
+[in:create_alarm [sl:date_time noon ] ]	(alarm_test_00005693.wav_1-alarm_test_00005693.wav)
+NEXT
+[in:create_alarm [sl:date_time at eleven am ] ]	(alarm_test_0_00000560.wav_1-alarm_test_0_00000560.wav)
+[in:create_alarm [sl:alarm_name mail pickup ] [sl:date_time at eleven am ] ]	(alarm_test_0_00000560.wav_1-alarm_test_0_00000560.wav)
+NEXT
+[in:create_alarm [sl:date_time at five pm ] ]	(alarm_test_0_00001064.wav_1-alarm_test_0_00001064.wav)
+[in:create_alarm [sl:alarm_name start dinner ] [sl:date_time at five pm ] ]	(alarm_test_0_00001064.wav_1-alarm_test_0_00001064.wav)
+NEXT
+[in:update_alarm [sl:alarm_name [in:get_time [sl:date_time two pm ] ] ] [sl:date_time today to two pm tomorrow ] ]	(alarm_test_0_00001862.wav_1-alarm_test_0_00001862.wav)
+[in:update_alarm [sl:alarm_name [in:get_time [sl:date_time two pm ] ] ] [sl:date_time today ] [sl:date_time to two pm tomorrow ] ]	(alarm_test_0_00001862.wav_1-alarm_test_0_00001862.wav)
+NEXT
+[in:update_alarm [sl:period daily ] [sl:alarm_name morning ] [sl:date_time to seven am ] ]	(alarm_test_0_00002569.wav_1-alarm_test_0_00002569.wav)
+[in:update_alarm [sl:alarm_name [in:get_time [sl:date_time daily morning ] ] ] [sl:date_time to seven am ] ]	(alarm_test_0_00002569.wav_1-alarm_test_0_00002569.wav)
+NEXT
+[in:create_alarm [sl:date_time at seven am ] ]	(alarm_test_0_00003835.wav_1-alarm_test_0_00003835.wav)
+[in:create_alarm [sl:date_time sunday ] [sl:date_time at seven am ] ]	(alarm_test_0_00003835.wav_1-alarm_test_0_00003835.wav)
+NEXT
+[in:get_event [sl:category_event concerts ] [sl:location wilkes barre ] [sl:date_time this weekend ] ]	(event_test_00000337.wav_1-event_test_00000337.wav)
+[in:get_event [sl:category_event concerts ] [sl:location [in:get_location [sl:point_on_map wilkes barre ] ] ] [sl:date_time this weekend ] ]	(event_test_00000337.wav_1-event_test_00000337.wav)
+NEXT
+[in:unsupported_event ]	(event_test_00000946.wav_1-event_test_00000946.wav)
+[in:get_event [sl:attribute_event friends ] ]	(event_test_00000946.wav_1-event_test_00000946.wav)
+NEXT
+[in:unsupported_event ]	(event_test_00002053.wav_1-event_test_00002053.wav)
+[in:get_event [sl:category_event cell phone plans ] ]	(event_test_00002053.wav_1-event_test_00002053.wav)
+NEXT
+[in:get_event [sl:date_time holiday ] [sl:location edwardsville illinois ] [sl:date_time today and tomorrow ] ]	(event_test_00002308.wav_1-event_test_00002308.wav)
+[in:get_event [sl:date_time holiday ] [sl:location edwardsville illinois ] [sl:date_time today ] [sl:date_time tomorrow ] ]	(event_test_00002308.wav_1-event_test_00002308.wav)
+NEXT
+[in:get_event [sl:category_event disney on ice events ] [sl:date_time this month ] ]	(event_test_0_00000164.wav_1-event_test_0_00000164.wav)
+[in:get_event [sl:location [in:get_location [sl:point_on_map disney on ice ] ] ] [sl:date_time this month ] ]	(event_test_0_00000164.wav_1-event_test_0_00000164.wav)
+NEXT
+[in:get_event [sl:location central valley ] [sl:category_event food festivals ] ]	(event_test_0_00000534.wav_1-event_test_0_00000534.wav)
+[in:get_event [sl:location [in:get_location [sl:point_on_map central valley food festivals ] ] ] ]	(event_test_0_00000534.wav_1-event_test_0_00000534.wav)
+NEXT
+[in:get_event [sl:category_event concerts ] [sl:location los angeles ] ]	(event_test_0_00000564.wav_1-event_test_0_00000564.wav)
+[in:get_event [sl:category_event concerts ] [sl:date_time soon ] [sl:location los angeles ] ]	(event_test_0_00000564.wav_1-event_test_0_00000564.wav)
+NEXT
+[in:get_event [sl:attribute_event family friendly ] [sl:date_time next weekend ] ]	(event_test_0_00000643.wav_1-event_test_0_00000643.wav)
+[in:get_event [sl:attribute_event family friendly ] [sl:category_event activities ] [sl:date_time next weekend ] ]	(event_test_0_00000643.wav_1-event_test_0_00000643.wav)
+NEXT
+[in:unsupported_event ]	(event_test_0_00000673.wav_1-event_test_0_00000673.wav)
+[in:get_event [sl:category_event a country thing party ] ]	(event_test_0_00000673.wav_1-event_test_0_00000673.wav)
+NEXT
+[in:get_event [sl:category_event ugly sweater parties ] ]	(event_test_0_00000901.wav_1-event_test_0_00000901.wav)
+[in:get_event [sl:attribute_event ugly ] [sl:category_event sweater parties ] ]	(event_test_0_00000901.wav_1-event_test_0_00000901.wav)
+NEXT
+[in:unsupported_event ]	(event_test_0_00000946.wav_1-event_test_0_00000946.wav)
+[in:get_event [sl:attribute_event friends ] ]	(event_test_0_00000946.wav_1-event_test_0_00000946.wav)
+NEXT
+[in:get_event [sl:date_time this holiday season ] [sl:location dallas ] ]	(event_test_0_00001963.wav_1-event_test_0_00001963.wav)
+[in:get_event [sl:date_time this holiday ] [sl:category_event season ] [sl:location dallas ] ]	(event_test_0_00001963.wav_1-event_test_0_00001963.wav)
+NEXT
+[in:get_event [sl:category_event masquerade parties ] [sl:location [in:get_location_home ] ] [sl:date_time next month ] ]	(event_test_0_00002009.wav_1-event_test_0_00002009.wav)
+[in:get_event [sl:category_event masquerade parties ] [sl:location [in:get_location [sl:location_user the area ] ] ] [sl:date_time next month ] ]	(event_test_0_00002009.wav_1-event_test_0_00002009.wav)
+NEXT
+[in:unsupported_event ]	(event_test_0_00002053.wav_1-event_test_0_00002053.wav)
+[in:get_event [sl:category_event cell phone plans ] ]	(event_test_0_00002053.wav_1-event_test_0_00002053.wav)
+NEXT
+[in:get_event [sl:date_time holiday ] [sl:location edwardsville illinois ] [sl:date_time today and tomorrow ] ]	(event_test_0_00002308.wav_1-event_test_0_00002308.wav)
+[in:get_event [sl:date_time holiday ] [sl:location edwardsville illinois ] [sl:date_time today ] [sl:date_time tomorrow ] ]	(event_test_0_00002308.wav_1-event_test_0_00002308.wav)
+NEXT
+[in:react_message [sl:type_reaction thumbs down ] ]	(messaging_test_00002006.wav_1-messaging_test_00002006.wav)
+[in:react_message [sl:type_reaction thumbs down ] [sl:resource sms ] ]	(messaging_test_00002006.wav_1-messaging_test_00002006.wav)
+NEXT
+[in:get_message [sl:group alice 's party ] ]	(messaging_test_00002312.wav_1-messaging_test_00002312.wav)
+[in:get_message [sl:sender alice ] [sl:group party ] ]	(messaging_test_00002312.wav_1-messaging_test_00002312.wav)
+NEXT
+[in:get_message [sl:resource facebook ] ]	(messaging_test_00002555.wav_1-messaging_test_00002555.wav)
+[in:get_message [sl:tag_message private ] [sl:resource facebook ] ]	(messaging_test_00002555.wav_1-messaging_test_00002555.wav)
+NEXT
+[in:send_message [sl:recipient home ] ]	(messaging_test_00002881.wav_1-messaging_test_00002881.wav)
+[in:send_message [sl:recipient [in:get_contact [sl:type_relation home ] ] ] ]	(messaging_test_00002881.wav_1-messaging_test_00002881.wav)
+NEXT
+[in:send_message [sl:type_content video ] [sl:recipient tanya ] ]	(messaging_test_0_00001251.wav_1-messaging_test_0_00001251.wav)
+[in:send_message [sl:type_content video ] [sl:recipient tanya ] [sl:content_exact the concert ] ]	(messaging_test_0_00001251.wav_1-messaging_test_0_00001251.wav)
+NEXT
+[in:send_message [sl:type_content picture ] ]	(messaging_test_0_00001326.wav_1-messaging_test_0_00001326.wav)
+[in:send_message [sl:type_content picture ] [sl:recipient me ] ]	(messaging_test_0_00001326.wav_1-messaging_test_0_00001326.wav)
+NEXT
+[in:get_message [sl:date_time from sunday ] ]	(messaging_test_0_00001904.wav_1-messaging_test_0_00001904.wav)
+[in:get_message [sl:sender kimmy ] [sl:date_time from sunday ] ]	(messaging_test_0_00001904.wav_1-messaging_test_0_00001904.wav)
+NEXT
+[in:react_message [sl:type_reaction thumbs down ] ]	(messaging_test_0_00002006.wav_1-messaging_test_0_00002006.wav)
+[in:react_message [sl:type_reaction thumbs down ] [sl:resource sms ] ]	(messaging_test_0_00002006.wav_1-messaging_test_0_00002006.wav)
+NEXT
+[in:get_message [sl:group alice 's party ] ]	(messaging_test_0_00002312.wav_1-messaging_test_0_00002312.wav)
+[in:get_message [sl:sender alice ] [sl:group party ] ]	(messaging_test_0_00002312.wav_1-messaging_test_0_00002312.wav)
+NEXT
+[in:get_message [sl:type_content video ] ]	(messaging_test_0_00002324.wav_1-messaging_test_0_00002324.wav)
+[in:get_message [sl:group center ] [sl:type_content video ] ]	(messaging_test_0_00002324.wav_1-messaging_test_0_00002324.wav)
+NEXT
+[in:play_music [sl:music_playlist_title my favorite ] ]	(music_test_00000041.wav_1-music_test_00000041.wav)
+[in:play_music [sl:music_playlist_title my favorite ] [sl:music_type list ] ]	(music_test_00000041.wav_1-music_test_00000041.wav)
+NEXT
+[in:play_music [sl:music_provider_name spotify ] ]	(music_test_00000107.wav_1-music_test_00000107.wav)
+[in:play_music [sl:music_provider_name spotify ] [sl:music_type releases ] ]	(music_test_00000107.wav_1-music_test_00000107.wav)
+NEXT
+[in:skip_track_music [sl:ordinal last ] [sl:music_type tracks ] ]	(music_test_00000648.wav_1-music_test_00000648.wav)
+[in:skip_track_music [sl:ordinal last ] [sl:music_type tracks ] [sl:music_type cd ] ]	(music_test_00000648.wav_1-music_test_00000648.wav)
+NEXT
+[in:create_playlist_music [sl:music_type playlist ] ]	(music_test_00000734.wav_1-music_test_00000734.wav)
+[in:create_playlist_music [sl:music_type playlist ] [sl:music_playlist_title grandma 's birthday party ] ]	(music_test_00000734.wav_1-music_test_00000734.wav)
+NEXT
+[in:play_music [sl:music_artist_name hank williams ] [sl:music_type channel ] ]	(music_test_00000759.wav_1-music_test_00000759.wav)
+[in:play_music [sl:music_artist_name hank williams ] [sl:music_provider_name pandora ] [sl:music_type channel ] ]	(music_test_00000759.wav_1-music_test_00000759.wav)
+NEXT
+[in:unsupported_music ]	(music_test_00001211.wav_1-music_test_00001211.wav)
+[in:play_music [sl:music_type podcast ] ]	(music_test_00001211.wav_1-music_test_00001211.wav)
+NEXT
+[in:play_music [sl:music_type music ] ]	(music_test_00001669.wav_1-music_test_00001669.wav)
+[in:play_music [sl:music_genre popular ] [sl:music_type music ] ]	(music_test_00001669.wav_1-music_test_00001669.wav)
+NEXT
+[in:play_music [sl:music_type songs ] ]	(music_test_00002128.wav_1-music_test_00002128.wav)
+[in:play_music [sl:music_genre church ] [sl:music_type songs ] ]	(music_test_00002128.wav_1-music_test_00002128.wav)
+NEXT
+[in:play_music [sl:music_playlist_title rap music ] [sl:music_type channel ] ]	(music_test_00002567.wav_1-music_test_00002567.wav)
+[in:play_music [sl:music_genre rap ] [sl:music_type music ] [sl:music_type channel ] ]	(music_test_00002567.wav_1-music_test_00002567.wav)
+NEXT
+[in:play_music [sl:music_track_title let it go ] ]	(music_test_00003233.wav_1-music_test_00003233.wav)
+[in:play_music [sl:music_track_title let it go ] [sl:music_artist_name vocals ] ]	(music_test_00003233.wav_1-music_test_00003233.wav)
+NEXT
+[in:start_shuffle_music [sl:music_provider_name pandora ] ]	(music_test_00004101.wav_1-music_test_00004101.wav)
+[in:start_shuffle_music [sl:music_provider_name pandora ] [sl:music_type play ] ]	(music_test_00004101.wav_1-music_test_00004101.wav)
+NEXT
+[in:unsupported_music ]	(music_test_00004165.wav_1-music_test_00004165.wav)
+[in:play_music [sl:music_genre bass ] ]	(music_test_00004165.wav_1-music_test_00004165.wav)
+NEXT
+[in:play_music [sl:music_playlist_title my favorite ] ]	(music_test_0_00000041.wav_1-music_test_0_00000041.wav)
+[in:play_music [sl:music_playlist_title favorite ] [sl:music_type list ] ]	(music_test_0_00000041.wav_1-music_test_0_00000041.wav)
+NEXT
+[in:play_music [sl:music_provider_name spotify ] ]	(music_test_0_00000107.wav_1-music_test_0_00000107.wav)
+[in:play_music [sl:music_provider_name spotify ] [sl:music_type releases ] ]	(music_test_0_00000107.wav_1-music_test_0_00000107.wav)
+NEXT
+[in:play_music [sl:music_artist_name trey songz ] ]	(music_test_0_00000658.wav_1-music_test_0_00000658.wav)
+[in:play_music [sl:music_artist_name trey ] [sl:music_type songs ] ]	(music_test_0_00000658.wav_1-music_test_0_00000658.wav)
+NEXT
+[in:create_playlist_music [sl:music_type playlist ] ]	(music_test_0_00000734.wav_1-music_test_0_00000734.wav)
+[in:create_playlist_music [sl:music_type playlist ] [sl:music_playlist_title grandma 's birthday party ] ]	(music_test_0_00000734.wav_1-music_test_0_00000734.wav)
+NEXT
+[in:play_music [sl:music_type music ] ]	(music_test_0_00001669.wav_1-music_test_0_00001669.wav)
+[in:play_music [sl:music_genre popular ] [sl:music_type music ] ]	(music_test_0_00001669.wav_1-music_test_0_00001669.wav)
+NEXT
+[in:remove_from_playlist_music ]	(music_test_0_00002159.wav_1-music_test_0_00002159.wav)
+[in:remove_from_playlist_music [sl:music_type artist ] ]	(music_test_0_00002159.wav_1-music_test_0_00002159.wav)
+NEXT
+[in:play_music [sl:music_type songs ] ]	(music_test_0_00002322.wav_1-music_test_0_00002322.wav)
+[in:play_music [sl:music_type songs ] [sl:music_playlist_title my favorites ] ]	(music_test_0_00002322.wav_1-music_test_0_00002322.wav)
+NEXT
+[in:play_music [sl:music_playlist_title rap music ] [sl:music_type channel ] ]	(music_test_0_00002567.wav_1-music_test_0_00002567.wav)
+[in:play_music [sl:music_genre rap ] [sl:music_type music ] [sl:music_type channel ] ]	(music_test_0_00002567.wav_1-music_test_0_00002567.wav)
+NEXT
+[in:dislike_music [sl:music_artist_name beyonce ] ]	(music_test_0_00003410.wav_1-music_test_0_00003410.wav)
+[in:react_message [sl:type_reaction dislike ] [sl:recipient beyonce ] ]	(music_test_0_00003410.wav_1-music_test_0_00003410.wav)
+NEXT
+[in:unsupported_music ]	(music_test_0_00003773.wav_1-music_test_0_00003773.wav)
+[in:play_music [sl:music_genre bass ] ]	(music_test_0_00003773.wav_1-music_test_0_00003773.wav)
+NEXT
+[in:start_shuffle_music [sl:music_provider_name pandora ] ]	(music_test_0_00004101.wav_1-music_test_0_00004101.wav)
+[in:start_shuffle_music [sl:music_provider_name pandora ] [sl:music_type play ] ]	(music_test_0_00004101.wav_1-music_test_0_00004101.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00000304.wav_1-navigation_test_00000304.wav)
+[in:get_estimated_duration [sl:path route nine ] ]	(navigation_test_00000304.wav_1-navigation_test_00000304.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00001698.wav_1-navigation_test_00001698.wav)
+[in:get_event [sl:category_event games ] ]	(navigation_test_00001698.wav_1-navigation_test_00001698.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] ]	(navigation_test_00002249.wav_1-navigation_test_00002249.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time today ] ]	(navigation_test_00002249.wav_1-navigation_test_00002249.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00003119.wav_1-navigation_test_00003119.wav)
+[in:get_directions [sl:obstruction_avoid miles ] ]	(navigation_test_00003119.wav_1-navigation_test_00003119.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00003268.wav_1-navigation_test_00003268.wav)
+[in:get_distance [sl:destination the moon ] ]	(navigation_test_00003268.wav_1-navigation_test_00003268.wav)
+NEXT
+[in:get_info_traffic [sl:path my commute ] [sl:destination [in:get_location_school ] ] ]	(navigation_test_00003362.wav_1-navigation_test_00003362.wav)
+[in:get_info_traffic [sl:path the detour ] [sl:path my commute ] [sl:destination [in:get_location_school ] ] ]	(navigation_test_00003362.wav_1-navigation_test_00003362.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00003443.wav_1-navigation_test_00003443.wav)
+[in:get_info_traffic [sl:location albany street ] ]	(navigation_test_00003443.wav_1-navigation_test_00003443.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00003792.wav_1-navigation_test_00003792.wav)
+[in:get_timer [sl:ordinal next ] ]	(navigation_test_00003792.wav_1-navigation_test_00003792.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_00004877.wav_1-navigation_test_00004877.wav)
+[in:get_info_traffic [sl:destination woodruff ] ]	(navigation_test_00004877.wav_1-navigation_test_00004877.wav)
+NEXT
+[in:get_estimated_duration [sl:source boston ] [sl:destination rhode island ] ]	(navigation_test_0_00000261.wav_1-navigation_test_0_00000261.wav)
+[in:get_estimated_duration [sl:method_travel ride ] [sl:source boston ] [sl:destination rhode island ] ]	(navigation_test_0_00000261.wav_1-navigation_test_0_00000261.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00000304.wav_1-navigation_test_0_00000304.wav)
+[in:get_estimated_duration [sl:path route nine ] ]	(navigation_test_0_00000304.wav_1-navigation_test_0_00000304.wav)
+NEXT
+[in:get_estimated_arrival ]	(navigation_test_0_00000616.wav_1-navigation_test_0_00000616.wav)
+[in:get_estimated_arrival [sl:destination eta ] ]	(navigation_test_0_00000616.wav_1-navigation_test_0_00000616.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00000765.wav_1-navigation_test_0_00000765.wav)
+[in:get_info_traffic [sl:location northbound a hundred sixty nine ] ]	(navigation_test_0_00000765.wav_1-navigation_test_0_00000765.wav)
+NEXT
+[in:get_estimated_duration [sl:source wisconsin ] [sl:destination washington ] ]	(navigation_test_0_00001911.wav_1-navigation_test_0_00001911.wav)
+[in:get_estimated_duration [sl:method_travel ride ] [sl:source wisconsin ] [sl:destination washington ] ]	(navigation_test_0_00001911.wav_1-navigation_test_0_00001911.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00002325.wav_1-navigation_test_0_00002325.wav)
+[in:get_info_traffic [sl:location usa ] ]	(navigation_test_0_00002325.wav_1-navigation_test_0_00002325.wav)
+NEXT
+[in:get_info_traffic [sl:location xyz ] ]	(navigation_test_0_00003071.wav_1-navigation_test_0_00003071.wav)
+[in:get_info_traffic [sl:location [in:get_location [sl:point_on_map xyz ] ] ] ]	(navigation_test_0_00003071.wav_1-navigation_test_0_00003071.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00003268.wav_1-navigation_test_0_00003268.wav)
+[in:get_distance [sl:destination the moon ] ]	(navigation_test_0_00003268.wav_1-navigation_test_0_00003268.wav)
+NEXT
+[in:get_info_traffic [sl:path my commute ] [sl:destination [in:get_location_school ] ] ]	(navigation_test_0_00003362.wav_1-navigation_test_0_00003362.wav)
+[in:get_info_traffic [sl:path the detour ] [sl:path my commute ] [sl:destination [in:get_location_school ] ] ]	(navigation_test_0_00003362.wav_1-navigation_test_0_00003362.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00003478.wav_1-navigation_test_0_00003478.wav)
+[in:create_reminder [sl:person_reminded me ] [sl:todo leave ] [sl:date_time at nine am ] ]	(navigation_test_0_00003478.wav_1-navigation_test_0_00003478.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00003792.wav_1-navigation_test_0_00003792.wav)
+[in:get_timer [sl:ordinal next ] ]	(navigation_test_0_00003792.wav_1-navigation_test_0_00003792.wav)
+NEXT
+[in:unsupported_navigation ]	(navigation_test_0_00004802.wav_1-navigation_test_0_00004802.wav)
+[in:get_info_traffic [sl:location i ninety south ] ]	(navigation_test_0_00004802.wav_1-navigation_test_0_00004802.wav)
+NEXT
+[in:get_reminder [sl:amount all ] [sl:date_time for next week ] ]	(reminder_test_00000142.wav_1-reminder_test_00000142.wav)
+[in:get_reminder [sl:method_retrieval_reminder bring to the screen ] [sl:amount all ] [sl:date_time for next week ] ]	(reminder_test_00000142.wav_1-reminder_test_00000142.wav)
+NEXT
+[in:update_reminder_date_time [sl:todo my doctor ] [sl:date_time from tuesday ] [sl:date_time_new to thursday at one pm ] ]	(reminder_test_00000686.wav_1-reminder_test_00000686.wav)
+[in:update_reminder_date_time [sl:person_reminded my ] [sl:todo doctor ] [sl:date_time from tuesday ] [sl:date_time_new to thursday at one pm ] ]	(reminder_test_00000686.wav_1-reminder_test_00000686.wav)
+NEXT
+[in:get_reminder [sl:amount all ] [sl:person_reminded my ] [sl:todo apartment ] ]	(reminder_test_00002438.wav_1-reminder_test_00002438.wav)
+[in:get_reminder [sl:method_retrieval_reminder bring up ] [sl:amount all ] [sl:person_reminded my ] [sl:todo apartment ] ]	(reminder_test_00002438.wav_1-reminder_test_00002438.wav)
+NEXT
+[in:help_reminder ]	(reminder_test_00003461.wav_1-reminder_test_00003461.wav)
+[in:get_reminder [sl:person_reminded i ] ]	(reminder_test_00003461.wav_1-reminder_test_00003461.wav)
+NEXT
+[in:create_reminder [sl:todo get a mammogram ] ]	(reminder_test_00003911.wav_1-reminder_test_00003911.wav)
+[in:create_reminder [sl:date_time for a year from now ] [sl:todo get a mammogram ] ]	(reminder_test_00003911.wav_1-reminder_test_00003911.wav)
+NEXT
+[in:get_reminder [sl:amount all ] [sl:date_time for october ] ]	(reminder_test_00004222.wav_1-reminder_test_00004222.wav)
+[in:get_reminder [sl:method_retrieval_reminder list ] [sl:amount all ] [sl:date_time for october ] ]	(reminder_test_00004222.wav_1-reminder_test_00004222.wav)
+NEXT
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:person_reminded my ] ]	(reminder_test_00004330.wav_1-reminder_test_00004330.wav)
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:person_reminded my ] [sl:ordinal new ] ]	(reminder_test_00004330.wav_1-reminder_test_00004330.wav)
+NEXT
+[in:delete_reminder ]	(reminder_test_00004384.wav_1-reminder_test_00004384.wav)
+[in:update_reminder [sl:todo trash ] ]	(reminder_test_00004384.wav_1-reminder_test_00004384.wav)
+NEXT
+[in:delete_reminder [sl:todo pay the mortgage ] ]	(reminder_test_00005256.wav_1-reminder_test_00005256.wav)
+[in:delete_reminder [sl:person_reminded i ] [sl:todo pay the mortgage ] ]	(reminder_test_00005256.wav_1-reminder_test_00005256.wav)
+NEXT
+[in:delete_reminder [sl:date_time for all of this weekend ] ]	(reminder_test_00005378.wav_1-reminder_test_00005378.wav)
+[in:delete_reminder [sl:amount all ] [sl:date_time this weekend ] ]	(reminder_test_00005378.wav_1-reminder_test_00005378.wav)
+NEXT
+[in:get_reminder [sl:amount all ] [sl:date_time for next week ] ]	(reminder_test_0_00000142.wav_1-reminder_test_0_00000142.wav)
+[in:get_reminder [sl:method_retrieval_reminder bring to the screen ] [sl:amount all ] [sl:date_time for next week ] ]	(reminder_test_0_00000142.wav_1-reminder_test_0_00000142.wav)
+NEXT
+[in:create_reminder [sl:todo my hair appointment ] [sl:date_time the night before ] ]	(reminder_test_0_00000178.wav_1-reminder_test_0_00000178.wav)
+[in:create_reminder [sl:person_reminded my ] [sl:todo hair appointment ] [sl:date_time the night before ] ]	(reminder_test_0_00000178.wav_1-reminder_test_0_00000178.wav)
+NEXT
+[in:create_reminder [sl:person_reminded myself ] [sl:todo get milk ] ]	(reminder_test_0_00000265.wav_1-reminder_test_0_00000265.wav)
+[in:create_reminder [sl:person_reminded myself ] [sl:todo get milk ] [sl:date_time for days from now at eleven am ] ]	(reminder_test_0_00000265.wav_1-reminder_test_0_00000265.wav)
+NEXT
+[in:update_reminder_date_time [sl:todo my doctor ] [sl:date_time from tuesday ] [sl:date_time_new to thursday at one pm ] ]	(reminder_test_0_00000686.wav_1-reminder_test_0_00000686.wav)
+[in:update_reminder_date_time [sl:person_reminded my ] [sl:todo doctor ] [sl:date_time from tuesday ] [sl:date_time_new to thursday at one pm ] ]	(reminder_test_0_00000686.wav_1-reminder_test_0_00000686.wav)
+NEXT
+[in:create_reminder [sl:person_reminded me ] [sl:todo tell larry that i can't go this sunday ] ]	(reminder_test_0_00001126.wav_1-reminder_test_0_00001126.wav)
+[in:create_reminder [sl:person_reminded me ] [sl:todo tell larry that i can't go ] [sl:date_time this sunday ] ]	(reminder_test_0_00001126.wav_1-reminder_test_0_00001126.wav)
+NEXT
+[in:get_reminder [sl:todo my hair appointment ] [sl:date_time next saturday ] ]	(reminder_test_0_00001278.wav_1-reminder_test_0_00001278.wav)
+[in:get_reminder [sl:person_reminded my ] [sl:todo hair appointment ] [sl:date_time next saturday ] ]	(reminder_test_0_00001278.wav_1-reminder_test_0_00001278.wav)
+NEXT
+[in:update_reminder_date_time [sl:todo meeting ] [sl:date_time next monday ] [sl:date_time_new to nine pm ] [sl:date_time from eight pm ] ]	(reminder_test_0_00003007.wav_1-reminder_test_0_00003007.wav)
+[in:update_reminder_date_time [sl:person_reminded i ] [sl:todo meeting ] [sl:date_time next monday ] [sl:date_time_new to nine pm ] [sl:date_time from eight pm ] ]	(reminder_test_0_00003007.wav_1-reminder_test_0_00003007.wav)
+NEXT
+[in:delete_reminder [sl:todo melissa 's engagement party ] ]	(reminder_test_0_00003931.wav_1-reminder_test_0_00003931.wav)
+[in:delete_reminder [sl:person_reminded my ] [sl:todo lisa 's engagement party ] ]	(reminder_test_0_00003931.wav_1-reminder_test_0_00003931.wav)
+NEXT
+[in:create_reminder [sl:todo [in:get_todo [sl:todo oil change ] [sl:date_time on saturday ] ] ] ]	(reminder_test_0_00004927.wav_1-reminder_test_0_00004927.wav)
+[in:create_reminder [sl:todo [in:get_todo [sl:todo oil change ] [sl:date_time on saturday ] [sl:todo new appointment needed ] ] ] ]	(reminder_test_0_00004927.wav_1-reminder_test_0_00004927.wav)
+NEXT
+[in:delete_reminder [sl:date_time for all of this weekend ] ]	(reminder_test_0_00005378.wav_1-reminder_test_0_00005378.wav)
+[in:delete_reminder [sl:amount all ] [sl:date_time of this weekend ] ]	(reminder_test_0_00005378.wav_1-reminder_test_0_00005378.wav)
+NEXT
+[in:create_timer [sl:method_timer timer ] ]	(timer_test_00001119.wav_1-timer_test_00001119.wav)
+[in:create_timer [sl:method_timer timer ] [sl:timer_name boil water ] ]	(timer_test_00001119.wav_1-timer_test_00001119.wav)
+NEXT
+[in:create_timer [sl:date_time for the next twenty minutes ] ]	(timer_test_00001160.wav_1-timer_test_00001160.wav)
+[in:create_timer [sl:method_timer time ] [sl:date_time for the next twenty minutes ] ]	(timer_test_00001160.wav_1-timer_test_00001160.wav)
+NEXT
+[in:unsupported_timer ]	(timer_test_00002287.wav_1-timer_test_00002287.wav)
+[in:get_event [sl:category_event my food ] ]	(timer_test_00002287.wav_1-timer_test_00002287.wav)
+NEXT
+[in:unsupported_timer ]	(timer_test_00002302.wav_1-timer_test_00002302.wav)
+[in:create_alarm [sl:period every hour ] [sl:duration for one week ] ]	(timer_test_00002302.wav_1-timer_test_00002302.wav)
+NEXT
+[in:get_timer ]	(timer_test_00002372.wav_1-timer_test_00002372.wav)
+[in:get_timer [sl:method_timer time ] ]	(timer_test_00002372.wav_1-timer_test_00002372.wav)
+NEXT
+[in:get_timer ]	(timer_test_00002472.wav_1-timer_test_00002472.wav)
+[in:get_timer [sl:method_timer time ] ]	(timer_test_00002472.wav_1-timer_test_00002472.wav)
+NEXT
+[in:unsupported_timer ]	(timer_test_00002509.wav_1-timer_test_00002509.wav)
+[in:get_weather [sl:date_time tomorrow ] ]	(timer_test_00002509.wav_1-timer_test_00002509.wav)
+NEXT
+[in:get_timer ]	(timer_test_00002527.wav_1-timer_test_00002527.wav)
+[in:get_timer [sl:method_timer time ] ]	(timer_test_00002527.wav_1-timer_test_00002527.wav)
+NEXT
+[in:get_timer [sl:method_timer timer ] ]	(timer_test_00002733.wav_1-timer_test_00002733.wav)
+[in:get_timer [sl:ordinal third ] [sl:method_timer timer ] ]	(timer_test_00002733.wav_1-timer_test_00002733.wav)
+NEXT
+[in:create_timer [sl:method_timer timer ] ]	(timer_test_0_00001119.wav_1-timer_test_0_00001119.wav)
+[in:create_timer [sl:method_timer timer ] [sl:timer_name boil water ] ]	(timer_test_0_00001119.wav_1-timer_test_0_00001119.wav)
+NEXT
+[in:get_timer ]	(timer_test_0_00002472.wav_1-timer_test_0_00002472.wav)
+[in:get_timer [sl:method_timer time ] ]	(timer_test_0_00002472.wav_1-timer_test_0_00002472.wav)
+NEXT
+[in:get_timer ]	(timer_test_0_00002500.wav_1-timer_test_0_00002500.wav)
+[in:get_timer [sl:method_timer time ] ]	(timer_test_0_00002500.wav_1-timer_test_0_00002500.wav)
+NEXT
+[in:get_weather [sl:weather_attribute jackets ] [sl:date_time in the morning ] ]	(weather_test_00000673.wav_1-weather_test_00000673.wav)
+[in:get_weather [sl:weather_attribute jackets ] [sl:location bus stop ] [sl:date_time in the morning ] ]	(weather_test_00000673.wav_1-weather_test_00000673.wav)
+NEXT
+[in:get_weather [sl:date_time today ] ]	(weather_test_00001009.wav_1-weather_test_00001009.wav)
+[in:get_weather [sl:weather_attribute over ninety ] [sl:date_time today ] ]	(weather_test_00001009.wav_1-weather_test_00001009.wav)
+NEXT
+[in:get_weather ]	(weather_test_00001683.wav_1-weather_test_00001683.wav)
+[in:get_weather [sl:date_time one week from now ] ]	(weather_test_00001683.wav_1-weather_test_00001683.wav)
+NEXT
+[in:get_weather [sl:date_time today ] ]	(weather_test_00002140.wav_1-weather_test_00002140.wav)
+[in:get_weather [sl:weather_attribute above seventy ] [sl:date_time today ] ]	(weather_test_00002140.wav_1-weather_test_00002140.wav)
+NEXT
+[in:get_weather [sl:weather_attribute cold winter ] ]	(weather_test_00002529.wav_1-weather_test_00002529.wav)
+[in:get_weather [sl:weather_attribute cold ] [sl:date_time winter ] ]	(weather_test_00002529.wav_1-weather_test_00002529.wav)
+NEXT
+[in:get_weather ]	(weather_test_00002863.wav_1-weather_test_00002863.wav)
+[in:get_weather [sl:date_time one week from now ] ]	(weather_test_00002863.wav_1-weather_test_00002863.wav)
+NEXT
+[in:unsupported_weather [sl:date_time this week ] ]	(weather_test_00003312.wav_1-weather_test_00003312.wav)
+[in:get_weather [sl:date_time this week ] [sl:location arizona ] ]	(weather_test_00003312.wav_1-weather_test_00003312.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute tropical storm ] ]	(weather_test_00003341.wav_1-weather_test_00003341.wav)
+[in:get_weather [sl:weather_attribute tropical storm ] [sl:location franklin ] ]	(weather_test_00003341.wav_1-weather_test_00003341.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute coldest ] ]	(weather_test_00003436.wav_1-weather_test_00003436.wav)
+[in:get_weather [sl:weather_attribute coldest ] [sl:location wyoming ] ]	(weather_test_00003436.wav_1-weather_test_00003436.wav)
+NEXT
+[in:get_weather ]	(weather_test_00003536.wav_1-weather_test_00003536.wav)
+[in:get_weather [sl:location phoenix ] ]	(weather_test_00003536.wav_1-weather_test_00003536.wav)
+NEXT
+[in:unsupported_weather [sl:date_time for august ] ]	(weather_test_00003743.wav_1-weather_test_00003743.wav)
+[in:get_weather [sl:date_time for august ] [sl:location bloomingfield hills michigan ] ]	(weather_test_00003743.wav_1-weather_test_00003743.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute hottest ] ]	(weather_test_00003772.wav_1-weather_test_00003772.wav)
+[in:get_weather [sl:weather_attribute hottest ] [sl:location arizona ] ]	(weather_test_00003772.wav_1-weather_test_00003772.wav)
+NEXT
+[in:get_weather [sl:weather_temperature_unit fahrenheit ] ]	(weather_test_00004924.wav_1-weather_test_00004924.wav)
+[in:get_weather [sl:weather_attribute hot ] [sl:weather_temperature_unit fahrenheit ] ]	(weather_test_00004924.wav_1-weather_test_00004924.wav)
+NEXT
+[in:get_weather [sl:weather_attribute cold ] [sl:date_time today ] ]	(weather_test_00005085.wav_1-weather_test_00005085.wav)
+[in:get_weather [sl:weather_attribute cold ] [sl:weather_attribute short ] [sl:date_time today ] ]	(weather_test_00005085.wav_1-weather_test_00005085.wav)
+NEXT
+[in:get_weather [sl:weather_attribute umbrella ] [sl:date_time today ] ]	(weather_test_00005116.wav_1-weather_test_00005116.wav)
+[in:get_weather [sl:weather_attribute umbrella ] [sl:location work ] [sl:date_time today ] ]	(weather_test_00005116.wav_1-weather_test_00005116.wav)
+NEXT
+[in:get_weather [sl:date_time of tomorrow and next day ] ]	(weather_test_00005386.wav_1-weather_test_00005386.wav)
+[in:get_weather [sl:date_time tomorrow ] [sl:date_time next day ] ]	(weather_test_00005386.wav_1-weather_test_00005386.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute rain ] ]	(weather_test_00005401.wav_1-weather_test_00005401.wav)
+[in:get_weather [sl:weather_attribute rain ] [sl:date_time today ] ]	(weather_test_00005401.wav_1-weather_test_00005401.wav)
+NEXT
+[in:get_weather [sl:weather_attribute jackets ] [sl:date_time in the morning ] ]	(weather_test_0_00000673.wav_1-weather_test_0_00000673.wav)
+[in:get_weather [sl:weather_attribute jackets ] [sl:location bus stop ] [sl:date_time in the morning ] ]	(weather_test_0_00000673.wav_1-weather_test_0_00000673.wav)
+NEXT
+[in:get_weather [sl:date_time today ] ]	(weather_test_0_00000805.wav_1-weather_test_0_00000805.wav)
+[in:get_weather [sl:weather_attribute sweat ] [sl:date_time today ] ]	(weather_test_0_00000805.wav_1-weather_test_0_00000805.wav)
+NEXT
+[in:get_weather ]	(weather_test_0_00001683.wav_1-weather_test_0_00001683.wav)
+[in:get_weather [sl:date_time one week from now ] ]	(weather_test_0_00001683.wav_1-weather_test_0_00001683.wav)
+NEXT
+[in:get_weather [sl:date_time today ] ]	(weather_test_0_00002140.wav_1-weather_test_0_00002140.wav)
+[in:get_weather [sl:weather_attribute above seventy ] [sl:date_time today ] ]	(weather_test_0_00002140.wav_1-weather_test_0_00002140.wav)
+NEXT
+[in:get_weather ]	(weather_test_0_00002863.wav_1-weather_test_0_00002863.wav)
+[in:get_weather [sl:date_time one week from now ] ]	(weather_test_0_00002863.wav_1-weather_test_0_00002863.wav)
+NEXT
+[in:unsupported_weather [sl:date_time this week ] ]	(weather_test_0_00003312.wav_1-weather_test_0_00003312.wav)
+[in:get_weather [sl:date_time this week ] [sl:location arizona ] ]	(weather_test_0_00003312.wav_1-weather_test_0_00003312.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute hottest ] ]	(weather_test_0_00003772.wav_1-weather_test_0_00003772.wav)
+[in:get_weather [sl:weather_attribute hottest ] [sl:location arizona ] ]	(weather_test_0_00003772.wav_1-weather_test_0_00003772.wav)
+NEXT
+[in:unsupported_weather [sl:date_time tonight ] ]	(weather_test_0_00003790.wav_1-weather_test_0_00003790.wav)
+[in:get_weather [sl:weather_attribute plants ] [sl:date_time tonight ] ]	(weather_test_0_00003790.wav_1-weather_test_0_00003790.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute hottest ] ]	(weather_test_0_00004019.wav_1-weather_test_0_00004019.wav)
+[in:get_weather [sl:weather_attribute hottest ] [sl:location spain ] ]	(weather_test_0_00004019.wav_1-weather_test_0_00004019.wav)
+NEXT
+[in:get_weather [sl:weather_attribute cold ] [sl:date_time today ] ]	(weather_test_0_00005085.wav_1-weather_test_0_00005085.wav)
+[in:get_weather [sl:weather_attribute cold ] [sl:weather_attribute shorts ] [sl:date_time today ] ]	(weather_test_0_00005085.wav_1-weather_test_0_00005085.wav)
+NEXT
+[in:get_weather [sl:weather_attribute umbrella ] [sl:date_time today ] ]	(weather_test_0_00005116.wav_1-weather_test_0_00005116.wav)
+[in:get_weather [sl:weather_attribute umbrella ] [sl:location work ] [sl:date_time today ] ]	(weather_test_0_00005116.wav_1-weather_test_0_00005116.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute rain ] ]	(weather_test_0_00005401.wav_1-weather_test_0_00005401.wav)
+[in:get_weather [sl:weather_attribute rain ] [sl:date_time today ] ]	(weather_test_0_00005401.wav_1-weather_test_0_00005401.wav)
+NEXT

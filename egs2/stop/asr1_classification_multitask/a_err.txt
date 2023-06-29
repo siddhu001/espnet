@@ -1,0 +1,2068 @@
+[{'type': 'event_name', 'filler': 'important'}, {'type': 'event_name', 'filler': 'meetings with my boss'}, {'type': 'time', 'filler': 'over the week'}]
+just let me know the important meetings with my boss over the week
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'boss'}, {'type': 'time', 'filler': 'week'}]
+[{'type': 'house_place', 'filler': 'bedroom'}, {'type': 'time', 'filler': 'nine thirty pm'}]
+turn off bedroom light at nine thirty pm
+PRED
+[{'type': 'house_place', 'filler': 'bedroom'}, {'type': 'time', 'filler': 'nine hundred and thirty pm'}]
+[{'type': 'house_place', 'filler': 'bedroom'}, {'type': 'time', 'filler': 'nine thirty pm'}]
+turn off bedroom light at nine thirty pm
+PRED
+[{'type': 'house_place', 'filler': 'bedroom'}, {'type': 'time', 'filler': 'nine hundred and thirty pm'}]
+[{'type': 'house_place', 'filler': 'study room'}]
+light colour for study room
+PRED
+[{'type': 'color_type', 'filler': 'study room'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+post to facebook i 'm hungry
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'time', 'filler': 'another hour'}]
+[]
+is there a groomer in town for cats only
+PRED
+[{'type': 'game_name', 'filler': 'cats only'}]
+[]
+is there a groomer in town for cats only
+PRED
+[{'type': 'business_type', 'filler': 'cats only'}]
+[{'type': 'media_type', 'filler': 'insta'}]
+anything new on insta
+PRED
+[{'type': 'media_type', 'filler': 'instagram'}]
+[{'type': 'place_name', 'filler': 'new york city'}]
+what time is it in new york city
+PRED
+[{'type': 'place_name', 'filler': 'new york'}]
+[{'type': 'place_name', 'filler': 'new york city'}]
+what time is it in new york city
+PRED
+[{'type': 'place_name', 'filler': 'new york'}]
+[{'type': 'timeofday', 'filler': 'this afternoon'}]
+tell me my schedule for later this afternoon
+PRED
+[{'type': 'timeofday', 'filler': 'this afternoon'}, {'type': 'time', 'filler': 'night'}]
+[{'type': 'joke_type', 'filler': 'funniest'}]
+what 's the funniest joke you know
+PRED
+[]
+[{'type': 'movie_type', 'filler': 'action'}]
+do you have any suggestion action movies
+PRED
+[{'type': 'movie_type', 'filler': 'action movies'}]
+[{'type': 'movie_type', 'filler': 'action'}]
+do you have any suggestion action movies
+PRED
+[{'type': 'movie_name', 'filler': 'action movies'}]
+[{'type': 'movie_type', 'filler': 'action'}]
+do you have any suggestion action movies
+PRED
+[{'type': 'movie_type', 'filler': 'action movies'}]
+[{'type': 'device_type', 'filler': 'vacuum cleaner'}]
+start the vacuum cleaner
+PRED
+[{'type': 'event_name', 'filler': 'vacuum'}]
+[{'type': 'event_name', 'filler': 'winter solstice'}, {'type': 'time', 'filler': 'two years'}]
+what 's the date of the winter solstice two years from now
+PRED
+[{'type': 'event_name', 'filler': 'winter solstice'}, {'type': 'time', 'filler': 'two years from now'}]
+[{'type': 'food_type', 'filler': 'spaghetti'}]
+show me the best recipe for spaghetti
+PRED
+[{'type': 'drink_type', 'filler': 'spaghetti'}]
+[{'type': 'definition_word', 'filler': 'smartphone circuit'}]
+give me the description of a smartphone circuit
+PRED
+[{'type': 'definition_word', 'filler': 'smartphone socket'}]
+[{'type': 'event_name', 'filler': 'brunch'}, {'type': 'person', 'filler': 'jennifer'}]
+when is my brunch with jennifer
+PRED
+[{'type': 'person', 'filler': 'jennifer'}]
+[{'type': 'player_setting', 'filler': 'replay'}]
+replay the musics
+PRED
+[]
+[{'type': 'player_setting', 'filler': 'replay'}]
+replay the musics
+PRED
+[]
+[{'type': 'place_name', 'filler': 'china'}]
+what s the currency exchange rate for china
+PRED
+[{'type': 'currency_name', 'filler': 'china'}]
+[{'type': 'place_name', 'filler': 'china'}]
+what s the currency exchange rate for china
+PRED
+[{'type': 'currency_name', 'filler': 'china'}]
+[{'type': 'date', 'filler': 'this weekend'}]
+i want to know more about the fair this weekend
+PRED
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'event_name', 'filler': 'fair'}]
+[{'type': 'song_name', 'filler': 'atmosphere'}]
+play atmosphere next
+PRED
+[{'type': 'song_name', 'filler': 'i must feel next'}]
+[{'type': 'song_name', 'filler': 'atmosphere'}]
+play atmosphere next
+PRED
+[{'type': 'song_name', 'filler': 'i most feel next'}]
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+olly does shibaru sushi deliver
+PRED
+[{'type': 'business_name', 'filler': 'shibari'}, {'type': 'order_type', 'filler': 'deliver'}]
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+olly does shibaru sushi deliver
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}, {'type': 'order_type', 'filler': 'deliver'}]
+[{'type': 'place_name', 'filler': 'california'}]
+i want to know everything that breaks about the dam breaking in california
+PRED
+[{'type': 'news_topic', 'filler': 'dam breaking in california'}]
+[{'type': 'radio_name', 'filler': 'classic hits'}]
+tune to classic hits
+PRED
+[{'type': 'music_genre', 'filler': 'classic'}]
+[{'type': 'radio_name', 'filler': 'classic hits'}]
+tune to classic hits
+PRED
+[{'type': 'music_genre', 'filler': 'classic'}]
+[{'type': 'house_place', 'filler': 'bedroom'}]
+olly turn the lights off in the bedroom
+PRED
+[{'type': 'house_place', 'filler': 'bathroom'}]
+[]
+open stock price for name
+PRED
+[{'type': 'business_name', 'filler': 'nike'}]
+[]
+tag this song with five stars
+PRED
+[{'type': 'music_descriptor', 'filler': 'five stars'}]
+[]
+tag this song with five stars
+PRED
+[{'type': 'song_name', 'filler': 'five stars'}]
+[]
+tag this song with five stars
+PRED
+[{'type': 'music_descriptor', 'filler': 'five star'}]
+[]
+turn my lights down to a lower level of brightness
+PRED
+[{'type': 'music_descriptor', 'filler': 'lower level practice'}]
+[{'type': 'meal_type', 'filler': 'dinner'}, {'type': 'timeofday', 'filler': 'tonight'}]
+find a recipe for dinner tonight
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[{'type': 'place_name', 'filler': 'world'}]
+what 's happening around the world
+PRED
+[]
+[{'type': 'place_name', 'filler': 'california'}, {'type': 'place_name', 'filler': 'georgia'}]
+how far is california from georgia
+PRED
+[{'type': 'place_name', 'filler': 'california'}, {'type': 'place_name', 'filler': 'york city'}]
+[]
+please turn lights off
+PRED
+[{'type': 'house_place', 'filler': 'joe'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'coffee without sweetener'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'coffee'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'coffee'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'coffee'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'sweetener'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'coffee'}]
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+please make me coffee without sweetener
+PRED
+[{'type': 'coffee_type', 'filler': 'sweetener'}]
+[{'type': 'game_name', 'filler': 'chess'}]
+open chess app and begin game
+PRED
+[{'type': 'game_name', 'filler': 'cheese app'}]
+[{'type': 'game_name', 'filler': 'chess'}]
+open chess app and begin game
+PRED
+[{'type': 'game_name', 'filler': 'cheese app'}]
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+play next podcast
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'match highlights'}]
+get me match highlights
+PRED
+[]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'time', 'filler': 'two pm'}]
+will you mark that i am busy for an event tomorrow at two pm
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'person', 'filler': 'mark'}, {'type': 'time', 'filler': 'two pm'}]
+[]
+i want to hear the bob cesca show
+PRED
+[{'type': 'radio_name', 'filler': 'bob saskar show'}]
+[{'type': 'house_place', 'filler': 'floor'}]
+clean the floor
+PRED
+[]
+[{'type': 'house_place', 'filler': 'floor'}]
+clean the floor
+PRED
+[]
+[{'type': 'artist_name', 'filler': 'david bowie'}]
+play track one from my david bowie playlist
+PRED
+[{'type': 'artist_name', 'filler': 'david bowie'}, {'type': 'playlist_name', 'filler': 'track one'}]
+[{'type': 'artist_name', 'filler': 'david bowie'}]
+play track one from my david bowie playlist
+PRED
+[{'type': 'artist_name', 'filler': 'david bowie'}, {'type': 'playlist_name', 'filler': 'track one'}]
+[{'type': 'artist_name', 'filler': 'david bowie'}]
+play track one from my david bowie playlist
+PRED
+[{'type': 'artist_name', 'filler': 'david bowie'}, {'type': 'playlist_name', 'filler': 'track one'}]
+[{'type': 'date', 'filler': 'august fifteenth'}]
+august fifteenth is what day of the week
+PRED
+[{'type': 'date', 'filler': 'august fifteen'}]
+[{'type': 'house_place', 'filler': 'shed'}]
+turn off the shed light
+PRED
+[]
+[{'type': 'media_type', 'filler': 'tweet'}]
+tweet mcdonald 's down reseda has terrible service
+PRED
+[{'type': 'business_name', 'filler': 'mcdonalds'}, {'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'podcast_name', 'filler': 'sports podcast'}]
+i want to listen to a sports podcast
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'sports podcast'}]
+[{'type': 'music_genre', 'filler': 'smooth jazz'}]
+find some smooth jazz for me
+PRED
+[{'type': 'music_descriptor', 'filler': 'smooth jazz'}]
+[{'type': 'playlist_name', 'filler': 'wacky'}]
+hi google play me playlist wacky in my gaana application
+PRED
+[{'type': 'music_descriptor', 'filler': 'wacky'}]
+[{'type': 'game_name', 'filler': 'papa pear saga'}]
+bring up papa pear saga
+PRED
+[{'type': 'business_name', 'filler': 'papa pear salad'}]
+[{'type': 'date', 'filler': 'today'}]
+do i have anything scheduled for today
+PRED
+[]
+[{'type': 'currency_name', 'filler': 'dollar'}, {'type': 'currency_name', 'filler': 'pounds'}]
+how much is one dollar in pounds
+PRED
+[{'type': 'currency_name', 'filler': 'dollar'}]
+[{'type': 'currency_name', 'filler': 'dollar'}, {'type': 'currency_name', 'filler': 'pounds'}]
+how much is one dollar in pounds
+PRED
+[]
+[{'type': 'media_type', 'filler': 'tweet'}]
+tweet to google costumer service my new nexus phone stop working help please
+PRED
+[{'type': 'business_name', 'filler': 'google customer service'}, {'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'food_type', 'filler': 'stuffed peppers'}]
+i need to know how to make stuffed peppers
+PRED
+[{'type': 'food_type', 'filler': 'disturbed peppers'}]
+[{'type': 'person', 'filler': 'angelina jolie'}, {'type': 'person', 'filler': 'brad pitt'}]
+did angelina jolie leave brad pitt
+PRED
+[{'type': 'person', 'filler': 'angelina jolie'}]
+[{'type': 'date', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+please remove the alarm that is set for weekdays at nine
+PRED
+[{'type': 'time', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+[{'type': 'date', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+please remove the alarm that is set for weekdays at nine
+PRED
+[{'type': 'time', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+[{'type': 'date', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+please remove the alarm that is set for weekdays at nine
+PRED
+[{'type': 'time', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+[{'type': 'date', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+please remove the alarm that is set for weekdays at nine
+PRED
+[{'type': 'time', 'filler': 'weekdays'}, {'type': 'time', 'filler': 'nine'}]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please begin clash of clans
+PRED
+[]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please begin clash of clans
+PRED
+[]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please begin clash of clans
+PRED
+[]
+[{'type': 'date', 'filler': 'today'}]
+are there any free events on in my area today
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'free events'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'news_topic', 'filler': 'premier league'}]
+which teams are playing today in the premier league
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'place_name', 'filler': 'premier league'}]
+[{'type': 'place_name', 'filler': 'new york'}]
+how many hours distance is between my location and new york
+PRED
+[]
+[{'type': 'list_name', 'filler': 'old music'}]
+remove the old music list
+PRED
+[{'type': 'list_name', 'filler': 'music'}]
+[{'type': 'podcast_descriptor', 'filler': 'rock songs having good rating'}]
+show me the best podcast of rock songs having good rating
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'rock'}]
+[{'type': 'definition_word', 'filler': 'converse shoes'}]
+what are converse shoes
+PRED
+[]
+[]
+what is leonardo dicaprio 's networth
+PRED
+[{'type': 'person', 'filler': "leonardo dicaprio's"}]
+[]
+what is leonardo dicaprio 's networth
+PRED
+[{'type': 'person', 'filler': 'leonardo'}]
+[]
+is it afternoon yet
+PRED
+[{'type': 'time', 'filler': 'afternoon'}]
+[{'type': 'place_name', 'filler': 'world'}]
+what is the highest building in the world
+PRED
+[]
+[{'type': 'place_name', 'filler': 'world'}]
+what is the highest building in the world
+PRED
+[]
+[{'type': 'business_name', 'filler': 'twitter'}]
+open twitter send message
+PRED
+[{'type': 'media_type', 'filler': 'twitter'}]
+[{'type': 'business_name', 'filler': 'twitter'}]
+open twitter send message
+PRED
+[{'type': 'media_type', 'filler': 'twitter'}]
+[{'type': 'weather_descriptor', 'filler': 'open the sun roof'}]
+should i open the sun roof
+PRED
+[{'type': 'weather_descriptor', 'filler': 'sun roof'}]
+[{'type': 'weather_descriptor', 'filler': 'open the sun roof'}]
+should i open the sun roof
+PRED
+[]
+[{'type': 'movie_name', 'filler': 'swat'}]
+how is the new movie swat
+PRED
+[]
+[{'type': 'meal_type', 'filler': 'lunch'}, {'type': 'general_frequency', 'filler': 'every day'}, {'type': 'time', 'filler': 'twelve thirty'}]
+set lunch every day at twelve thirty
+PRED
+[{'type': 'date', 'filler': 'every day'}, {'type': 'time', 'filler': 'twelve thirty'}]
+[{'type': 'meal_type', 'filler': 'lunch'}, {'type': 'general_frequency', 'filler': 'every day'}, {'type': 'time', 'filler': 'twelve thirty'}]
+set lunch every day at twelve thirty
+PRED
+[{'type': 'date', 'filler': 'everyday'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'time', 'filler': 'twelve thirty'}]
+[{'type': 'meal_type', 'filler': 'lunch'}, {'type': 'general_frequency', 'filler': 'every day'}, {'type': 'time', 'filler': 'twelve thirty'}]
+set lunch every day at twelve thirty
+PRED
+[{'type': 'date', 'filler': 'everyday'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'time', 'filler': 'twelve thirty'}]
+[{'type': 'date', 'filler': 'everyday'}]
+i want coffee everyday
+PRED
+[{'type': 'general_frequency', 'filler': 'every day'}]
+[{'type': 'media_type', 'filler': 'newest provider'}]
+could you please give me up to date news headlines from my newest provider
+PRED
+[]
+[{'type': 'business_name', 'filler': 'mr pizza'}, {'type': 'order_type', 'filler': 'delivers'}]
+i need to know if mr pizza delivers
+PRED
+[{'type': 'business_name', 'filler': 'mr pizza'}]
+[{'type': 'weather_descriptor', 'filler': 'snow tyres'}]
+shall i change my car tyres to snow tyres soon
+PRED
+[{'type': 'weather_descriptor', 'filler': 'snow tires'}]
+[{'type': 'podcast_name', 'filler': 'library'}]
+play a podcast from my library
+PRED
+[]
+[{'type': 'podcast_name', 'filler': 'library'}]
+play a podcast from my library
+PRED
+[]
+[{'type': 'podcast_name', 'filler': 'library'}]
+play a podcast from my library
+PRED
+[]
+[{'type': 'player_setting', 'filler': 'pause'}]
+pause the book
+PRED
+[]
+[]
+here is a new email address to be added to the contacts
+PRED
+[{'type': 'person', 'filler': 'alex'}]
+[]
+list
+PRED
+[{'type': 'list_name', 'filler': 'name'}]
+[{'type': 'food_type', 'filler': 'risotto'}]
+do you know recipe for risotto
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+please skip to the next podcast episode
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+please skip to the next podcast episode
+PRED
+[{'type': 'player_setting', 'filler': 'skip'}, {'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+please skip to the next podcast episode
+PRED
+[]
+[{'type': 'place_name', 'filler': 'earth'}]
+what is the largest active volcano on earth
+PRED
+[]
+[{'type': 'place_name', 'filler': 'earth'}]
+what is the largest active volcano on earth
+PRED
+[]
+[{'type': 'business_type', 'filler': 'restaurant'}]
+can i carry out with this restaurant
+PRED
+[{'type': 'business_type', 'filler': 'restaurant'}, {'type': 'order_type', 'filler': 'carryout'}]
+[]
+please find the radio station currently playing howard stern
+PRED
+[{'type': 'radio_name', 'filler': 'howard stern'}]
+[{'type': 'time_zone', 'filler': 'this time zone'}]
+tell me the time in this time zone
+PRED
+[]
+[{'type': 'person', 'filler': 'j. k. rowling'}]
+how old is j. k. rowling
+PRED
+[{'type': 'person', 'filler': 'j. k. rock'}]
+[{'type': 'place_name', 'filler': 'madison st'}]
+olly i need directions to madison st
+PRED
+[{'type': 'place_name', 'filler': 'madison'}]
+[{'type': 'date', 'filler': 'this year'}]
+what day is new year 's eve this year
+PRED
+[{'type': 'date', 'filler': 'this year'}, {'type': 'event_name', 'filler': "new year's eve"}]
+[{'type': 'date', 'filler': 'this year'}]
+what day is new year 's eve this year
+PRED
+[{'type': 'date', 'filler': 'this year'}, {'type': 'event_name', 'filler': "new year's eve"}]
+[{'type': 'date', 'filler': 'this year'}]
+what day is new year 's eve this year
+PRED
+[{'type': 'date', 'filler': 'this year'}, {'type': 'event_name', 'filler': "new year's eve"}]
+[{'type': 'date', 'filler': 'this year'}]
+what day is new year 's eve this year
+PRED
+[{'type': 'date', 'filler': 'this year'}, {'type': 'event_name', 'filler': "new year's eve"}]
+[]
+give me the latest updates
+PRED
+[{'type': 'news_topic', 'filler': 'utes'}]
+[]
+give me the latest updates
+PRED
+[{'type': 'news_topic', 'filler': 'utes'}]
+[{'type': 'joke_type', 'filler': 'good'}]
+say a good joke for me right now
+PRED
+[]
+[{'type': 'person', 'filler': 'obama'}]
+what does obama do in his day to day life
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'person', 'filler': 'obama'}]
+[]
+discontinue use of lights
+PRED
+[{'type': 'player_setting', 'filler': 'continue'}]
+[]
+discontinue use of lights
+PRED
+[{'type': 'definition_word', 'filler': 'music lights'}]
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipsterhood'}]
+move to the next episode of hipsterhood
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipster food'}]
+[{'type': 'house_place', 'filler': 'overhead'}]
+lower the overhead lights
+PRED
+[{'type': 'device_type', 'filler': 'overhead'}]
+[{'type': 'list_name', 'filler': 'groceries'}]
+delete list for groceries
+PRED
+[{'type': 'list_name', 'filler': 'grocery'}]
+[]
+can you open my itunes
+PRED
+[{'type': 'radio_name', 'filler': 'itunes'}]
+[]
+can you open my itunes
+PRED
+[{'type': 'app_name', 'filler': 'itunes'}]
+[]
+can you open my itunes
+PRED
+[{'type': 'radio_name', 'filler': 'itunes'}]
+[]
+can you make dinner for me
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+can you make dinner for me
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+can you make dinner for me
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+can you make dinner for me
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+instructions to make a meal
+PRED
+[{'type': 'food_type', 'filler': 'meal'}]
+[]
+instructions to make a meal
+PRED
+[{'type': 'food_type', 'filler': 'meal'}]
+[]
+instructions to make a meal
+PRED
+[{'type': 'food_type', 'filler': 'meal'}]
+[{'type': 'place_name', 'filler': 'downtown'}, {'type': 'timeofday', 'filler': 'tonight'}]
+are there any events going on downtown tonight
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'place_name', 'filler': 'downtown'}, {'type': 'timeofday', 'filler': 'tonight'}]
+[{'type': 'person', 'filler': 'emma watson'}]
+what movies has emma watson acted in
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+play the next show on podcast
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next show on'}]
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+play the next show on podcast
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next show on'}]
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+play the next show on podcast
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+play the next show on podcast
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+play the next show on podcast
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next show on'}]
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'egg'}]
+how long should i boil an egg
+PRED
+[{'type': 'food_type', 'filler': 'egg'}]
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'egg'}]
+how long should i boil an egg
+PRED
+[{'type': 'food_type', 'filler': 'egg'}]
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'egg'}]
+how long should i boil an egg
+PRED
+[{'type': 'food_type', 'filler': 'egg'}]
+[{'type': 'place_name', 'filler': 'jaipur'}]
+tell me about jaipur
+PRED
+[{'type': 'person', 'filler': 'jaipur'}]
+[{'type': 'place_name', 'filler': 'my place'}]
+what is the current weather condition in my place
+PRED
+[]
+[{'type': 'place_name', 'filler': 'my place'}]
+what is the current weather condition in my place
+PRED
+[]
+[{'type': 'place_name', 'filler': 'my place'}]
+what is the current weather condition in my place
+PRED
+[]
+[{'type': 'place_name', 'filler': 'my place'}]
+what is the current weather condition in my place
+PRED
+[{'type': 'place_name', 'filler': 'netflix'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'nineties'}, {'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'music_genre', 'filler': 'nineties rap'}]
+please play my nineties rap hits
+PRED
+[{'type': 'music_genre', 'filler': 'nineties'}, {'type': 'music_genre', 'filler': 'rap'}]
+[{'type': 'food_type', 'filler': 'thanksgiving turkey'}]
+thanksgiving turkey cooking procedure in five sentences is what
+PRED
+[{'type': 'food_type', 'filler': 'turkey'}]
+[{'type': 'person', 'filler': 'amazon'}]
+check any mail from amazon
+PRED
+[{'type': 'business_name', 'filler': 'amazon'}]
+[{'type': 'business_name', 'filler': 'comcastcom'}]
+i need an email to be sent to comcastcom about my service issues
+PRED
+[{'type': 'email_address', 'filler': 'comcastcom'}]
+[{'type': 'color_type', 'filler': 'pink'}]
+pink is all we need
+PRED
+[]
+[{'type': 'color_type', 'filler': 'pink'}]
+pink is all we need
+PRED
+[{'type': 'music_genre', 'filler': 'pink'}]
+[{'type': 'color_type', 'filler': 'pink'}]
+pink is all we need
+PRED
+[{'type': 'music_genre', 'filler': 'pink'}]
+[{'type': 'color_type', 'filler': 'pink'}]
+pink is all we need
+PRED
+[]
+[{'type': 'color_type', 'filler': 'pink'}]
+pink is all we need
+PRED
+[{'type': 'song_name', 'filler': 'pink'}]
+[{'type': 'date', 'filler': 'saturdays are in march'}]
+how many saturdays are in march
+PRED
+[{'type': 'date', 'filler': 'saturdays'}, {'type': 'date', 'filler': 'march'}]
+[{'type': 'date', 'filler': 'saturdays are in march'}]
+how many saturdays are in march
+PRED
+[{'type': 'date', 'filler': 'saturdays'}, {'type': 'date', 'filler': 'march'}]
+[]
+tell me a place that has snow now
+PRED
+[{'type': 'weather_descriptor', 'filler': 'snow'}]
+[{'type': 'cooking_type', 'filler': 'bake'}, {'type': 'food_type', 'filler': 'cake'}]
+what ingredients do i need to bake a large cake
+PRED
+[{'type': 'food_type', 'filler': 'cake'}]
+[{'type': 'cooking_type', 'filler': 'bake'}, {'type': 'food_type', 'filler': 'cake'}]
+what ingredients do i need to bake a large cake
+PRED
+[{'type': 'food_type', 'filler': 'cake'}]
+[{'type': 'playlist_name', 'filler': 'summer jams playlist'}]
+play my summer jams playlist
+PRED
+[{'type': 'music_genre', 'filler': 'summer jams'}]
+[{'type': 'person', 'filler': 'yulia'}]
+create email to yulia
+PRED
+[{'type': 'person', 'filler': 'yudia'}]
+[{'type': 'person', 'filler': 'yulia'}]
+create email to yulia
+PRED
+[{'type': 'person', 'filler': 'unia'}]
+[{'type': 'radio_name', 'filler': 'bbc'}]
+start bbc radio
+PRED
+[{'type': 'radio_name', 'filler': 'bbc radio'}]
+[]
+my choice to play an audio from first
+PRED
+[{'type': 'media_type', 'filler': 'audio'}]
+[]
+my choice to play an audio from first
+PRED
+[{'type': 'media_type', 'filler': 'audio'}]
+[{'type': 'event_name', 'filler': 'theme parks'}]
+what are some theme parks nearby
+PRED
+[{'type': 'business_type', 'filler': 'theme parks'}]
+[{'type': 'event_name', 'filler': 'theme parks'}]
+what are some theme parks nearby
+PRED
+[{'type': 'business_type', 'filler': 'theme parks'}]
+[]
+tell me the recipe of
+PRED
+[{'type': 'food_type', 'filler': 'pesto'}]
+[]
+tell me the recipe of
+PRED
+[{'type': 'food_type', 'filler': 'pesto'}]
+[{'type': 'house_place', 'filler': 'hallway'}]
+hoover the hallway
+PRED
+[]
+[{'type': 'house_place', 'filler': 'hallway'}]
+hoover the hallway
+PRED
+[]
+[{'type': 'house_place', 'filler': 'hallway'}]
+hoover the hallway
+PRED
+[]
+[{'type': 'device_type', 'filler': 'robot roomba'}]
+start the robot roomba
+PRED
+[]
+[{'type': 'device_type', 'filler': 'robot roomba'}]
+start the robot roomba
+PRED
+[{'type': 'device_type', 'filler': 'robot room'}]
+[{'type': 'device_type', 'filler': 'robot roomba'}]
+start the robot roomba
+PRED
+[{'type': 'device_type', 'filler': 'robot room bath'}]
+[{'type': 'place_name', 'filler': 'new york city'}, {'type': 'transport_type', 'filler': 'train'}]
+purchase ticket to new york city on train
+PRED
+[{'type': 'place_name', 'filler': 'new york'}, {'type': 'transport_type', 'filler': 'train'}]
+[{'type': 'place_name', 'filler': 'new york city'}, {'type': 'transport_type', 'filler': 'train'}]
+purchase ticket to new york city on train
+PRED
+[{'type': 'place_name', 'filler': 'new york'}, {'type': 'transport_type', 'filler': 'train'}]
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+play only all music released between the year one thousand nine hundred and ninety and two thousand
+PRED
+[]
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+play only all music released between the year one thousand nine hundred and ninety and two thousand
+PRED
+[]
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+play only all music released between the year one thousand nine hundred and ninety and two thousand
+PRED
+[]
+[{'type': 'date', 'filler': 'right now'}]
+please scan the am dial on the radio right now
+PRED
+[]
+[{'type': 'date', 'filler': 'right now'}]
+please scan the am dial on the radio right now
+PRED
+[]
+[{'type': 'business_name', 'filler': 'motorolla'}]
+give the stock price details of motorolla
+PRED
+[{'type': 'business_name', 'filler': 'motorola'}]
+[{'type': 'date', 'filler': 'fifteenth march'}]
+i need to set reminder on fifteenth march
+PRED
+[{'type': 'date', 'filler': 'thirteenth march'}]
+[{'type': 'date', 'filler': 'fifteenth march'}]
+i need to set reminder on fifteenth march
+PRED
+[{'type': 'date', 'filler': 'third fifteenth march'}]
+[{'type': 'relation', 'filler': 'boss'}]
+send email to boss saying i will be late
+PRED
+[{'type': 'person', 'filler': 'bob'}]
+[{'type': 'event_name', 'filler': 'water my plants'}, {'type': 'general_frequency', 'filler': 'every tuesday thursday and saturday'}]
+remind me to water my plants every tuesday thursday and saturday
+PRED
+[{'type': 'date', 'filler': 'thursday'}, {'type': 'date', 'filler': 'saturday'}, {'type': 'event_name', 'filler': 'water my plants'}]
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+could you please confirm if paradise does takeaway
+PRED
+[{'type': 'food_type', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+could you please confirm if paradise does takeaway
+PRED
+[{'type': 'food_type', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+could you please confirm if paradise does takeaway
+PRED
+[{'type': 'food_type', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'weather_descriptor', 'filler': 'nice weather'}]
+post a new status on facebook saying that i am enjoying the nice weather
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}]
+[{'type': 'radio_name', 'filler': 'hot one hundred and five'}]
+i want you to go to hot one hundred and five on the radio
+PRED
+[{'type': 'radio_name', 'filler': 'hot one'}]
+[{'type': 'time_zone', 'filler': 'g. m. t.'}, {'type': 'time_zone', 'filler': 'est'}]
+convert current time from g. m. t. to est
+PRED
+[{'type': 'time_zone', 'filler': 'g. eighty'}, {'type': 'time_zone', 'filler': 'est'}]
+[{'type': 'person', 'filler': 'bill gates'}]
+how much money did bill gates make
+PRED
+[{'type': 'person', 'filler': 'bill gatesman'}]
+[{'type': 'business_type', 'filler': 'a gift'}, {'type': 'business_type', 'filler': 'stores'}, {'type': 'place_name', 'filler': 'within a one mile radius'}]
+i need to find a gift what stores are within a one mile radius
+PRED
+[]
+[]
+i want sweet potato pie from a local bakery
+PRED
+[{'type': 'list_name', 'filler': 'local bakery'}, {'type': 'food_type', 'filler': 'sweet potato pie'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'concert'}]
+i 'm so happy today i got tickets for the concert
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'food_type', 'filler': 'pasta'}]
+what 's the easiest way to cook pasta
+PRED
+[]
+[{'type': 'time', 'filler': 'an hour'}]
+do n't speak for an hour
+PRED
+[{'type': 'time', 'filler': 'one hour'}]
+[{'type': 'time', 'filler': 'an hour'}]
+do n't speak for an hour
+PRED
+[{'type': 'time', 'filler': 'one hour'}]
+[{'type': 'time', 'filler': 'an hour'}]
+do n't speak for an hour
+PRED
+[{'type': 'time', 'filler': 'one hour'}]
+[{'type': 'time', 'filler': 'an hour'}]
+do n't speak for an hour
+PRED
+[{'type': 'time', 'filler': 'one hour'}]
+[{'type': 'business_name', 'filler': 'megatel'}, {'type': 'date', 'filler': 'last week'}]
+how have megatel shares done last week
+PRED
+[{'type': 'date', 'filler': 'last week'}, {'type': 'person', 'filler': 'megatel'}]
+[{'type': 'business_name', 'filler': 'megatel'}, {'type': 'date', 'filler': 'last week'}]
+how have megatel shares done last week
+PRED
+[{'type': 'date', 'filler': 'last week'}]
+[{'type': 'media_type', 'filler': 'facebook live'}]
+who is doing facebook live right now
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}]
+[{'type': 'media_type', 'filler': 'facebook live'}]
+who is doing facebook live right now
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}]
+[{'type': 'media_type', 'filler': 'facebook live'}]
+who is doing facebook live right now
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}]
+[]
+is there anything new in my mailbox
+PRED
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+[]
+start a gossip
+PRED
+[{'type': 'game_name', 'filler': 'gossip'}]
+[]
+put this event in a repeating pattern on my calendar
+PRED
+[{'type': 'event_name', 'filler': 'repeating pattern'}]
+[{'type': 'business_name', 'filler': 'aircel'}]
+forward a complaint to aircel for network related issues
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}, {'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'house_place', 'filler': 'house'}]
+clean my house
+PRED
+[]
+[]
+tell me if i have any unread new emails
+PRED
+[{'type': 'time', 'filler': 'five am'}]
+[{'type': 'relation', 'filler': 'bosses'}]
+respond to my bosses email with the word that i will be in at four in the evening
+PRED
+[{'type': 'relation', 'filler': "boss's"}]
+[{'type': 'relation', 'filler': 'bosses'}]
+respond to my bosses email with the word that i will be in at four in the evening
+PRED
+[{'type': 'relation', 'filler': "boss's"}]
+[{'type': 'relation', 'filler': 'bosses'}]
+respond to my bosses email with the word that i will be in at four in the evening
+PRED
+[{'type': 'relation', 'filler': "boss's"}]
+[{'type': 'relation', 'filler': 'bosses'}]
+respond to my bosses email with the word that i will be in at four in the evening
+PRED
+[{'type': 'relation', 'filler': "boss's"}]
+[{'type': 'relation', 'filler': 'bosses'}]
+respond to my bosses email with the word that i will be in at four in the evening
+PRED
+[{'type': 'relation', 'filler': "boss's"}]
+[]
+color of light should be dimmed bright
+PRED
+[{'type': 'color_type', 'filler': 'dimmed'}]
+[{'type': 'artist_name', 'filler': 'adele'}]
+could you please create a pandora channel for adele
+PRED
+[{'type': 'app_name', 'filler': 'pandora'}, {'type': 'person', 'filler': 'adele'}]
+[{'type': 'artist_name', 'filler': 'adele'}]
+could you please create a pandora channel for adele
+PRED
+[{'type': 'app_name', 'filler': 'adele'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+siri open twitter tweet @potus sucks
+PRED
+[{'type': 'business_name', 'filler': 'poterek'}, {'type': 'media_type', 'filler': 'twitter'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+siri open twitter tweet @potus sucks
+PRED
+[{'type': 'business_name', 'filler': '@potox'}]
+[{'type': 'time', 'filler': 'week'}]
+what was the weather for the week
+PRED
+[{'type': 'date', 'filler': 'week'}]
+[{'type': 'time', 'filler': 'week'}]
+what was the weather for the week
+PRED
+[{'type': 'date', 'filler': 'week'}]
+[{'type': 'date', 'filler': 'december four one thousand nine hundred and eighty two'}]
+what day of the week was december four one thousand nine hundred and eighty two
+PRED
+[{'type': 'date', 'filler': 'december fourth one thousand nine hundred and eighty two'}]
+[{'type': 'time', 'filler': 'fifteen minutes'}]
+have any emails arrived in the last fifteen minutes
+PRED
+[{'type': 'time', 'filler': 'last fifteen minutes'}]
+[]
+i want to hear a joke
+PRED
+[{'type': 'song_name', 'filler': 'angel'}]
+[]
+top model car
+PRED
+[{'type': 'definition_word', 'filler': 'car'}]
+[]
+any new email since last time
+PRED
+[{'type': 'date', 'filler': 'last month'}]
+[]
+any new email since last time
+PRED
+[{'type': 'time', 'filler': 'last time'}]
+[]
+search for local shops
+PRED
+[{'type': 'business_type', 'filler': 'shops'}]
+[{'type': 'definition_word', 'filler': 'pontificate'}]
+give me the definition for the word pontificate
+PRED
+[{'type': 'definition_word', 'filler': 'the world pontificate'}]
+[{'type': 'definition_word', 'filler': 'pontificate'}]
+give me the definition for the word pontificate
+PRED
+[{'type': 'definition_word', 'filler': 'world politics'}]
+[{'type': 'business_name', 'filler': 'louies'}]
+take out available louies
+PRED
+[{'type': 'business_name', 'filler': 'louise'}]
+[{'type': 'person', 'filler': 'jake'}]
+send an email to jake to tell him thank you
+PRED
+[{'type': 'person', 'filler': 'jay'}]
+[{'type': 'artist_name', 'filler': 'beatles'}]
+play the beatles
+PRED
+[]
+[]
+sticking to diet
+PRED
+[{'type': 'food_type', 'filler': 'steak'}]
+[{'type': 'list_name', 'filler': 'shopping'}]
+i need a recipe that is from ingredients on my shopping list
+PRED
+[]
+[{'type': 'media_type', 'filler': 'newsource'}]
+what is the news from that newsource
+PRED
+[]
+[{'type': 'media_type', 'filler': 'newsource'}]
+what is the news from that newsource
+PRED
+[]
+[{'type': 'media_type', 'filler': 'newsource'}]
+what is the news from that newsource
+PRED
+[]
+[{'type': 'media_type', 'filler': 'newsource'}]
+what is the news from that newsource
+PRED
+[]
+[{'type': 'player_setting', 'filler': 'resume'}]
+resume the playback of a child called it
+PRED
+[{'type': 'audiobook_name', 'filler': 'the playback of a child'}, {'type': 'player_setting', 'filler': 'resume'}]
+[]
+pandora
+PRED
+[{'type': 'app_name', 'filler': 'pandora'}]
+[]
+why are whales big
+PRED
+[{'type': 'place_name', 'filler': 'wales beach'}]
+[]
+why are whales big
+PRED
+[{'type': 'place_name', 'filler': 'wales beach'}]
+[]
+why are whales big
+PRED
+[{'type': 'place_name', 'filler': 'wales beach'}]
+[]
+why are whales big
+PRED
+[{'type': 'place_name', 'filler': 'wales'}]
+[]
+why are whales big
+PRED
+[{'type': 'place_name', 'filler': 'wales'}]
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+i want to see the next podcast available
+PRED
+[]
+[{'type': 'place_name', 'filler': 'home'}, {'type': 'time', 'filler': 'five'}]
+what is the traffic like on my commute home at five
+PRED
+[{'type': 'time', 'filler': 'five'}]
+[{'type': 'place_name', 'filler': 'home'}, {'type': 'time', 'filler': 'five'}]
+what is the traffic like on my commute home at five
+PRED
+[{'type': 'time', 'filler': 'five'}]
+[{'type': 'place_name', 'filler': 'home'}, {'type': 'time', 'filler': 'five'}]
+what is the traffic like on my commute home at five
+PRED
+[{'type': 'time', 'filler': 'five'}]
+[{'type': 'player_setting', 'filler': 'go backward'}, {'type': 'time', 'filler': 'thirty seconds'}]
+go backward thirty seconds
+PRED
+[]
+[{'type': 'player_setting', 'filler': 'go backward'}, {'type': 'time', 'filler': 'thirty seconds'}]
+go backward thirty seconds
+PRED
+[]
+[{'type': 'person', 'filler': 'marian carey'}]
+how old is marian carey
+PRED
+[{'type': 'person', 'filler': 'mary curry'}]
+[{'type': 'artist_name', 'filler': 'imogen heap'}]
+can you please play imogen heap
+PRED
+[{'type': 'artist_name', 'filler': 'imagine heap'}]
+[{'type': 'artist_name', 'filler': 'imogen heap'}]
+can you please play imogen heap
+PRED
+[{'type': 'artist_name', 'filler': 'imagine heat'}]
+[{'type': 'time', 'filler': 'eight pm'}]
+create reminder for laundry at eight pm
+PRED
+[{'type': 'event_name', 'filler': 'laundry'}, {'type': 'time', 'filler': 'eight pm'}]
+[{'type': 'time', 'filler': 'eight pm'}]
+create reminder for laundry at eight pm
+PRED
+[{'type': 'event_name', 'filler': 'laundry'}, {'type': 'time', 'filler': 'eight pm'}]
+[]
+i 'd like you to turn turn on the tv
+PRED
+[{'type': 'device_type', 'filler': 'tv'}]
+[{'type': 'person', 'filler': 'trump'}, {'type': 'place_name', 'filler': 'russia'}]
+will trump visit russia anytime soon
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[{'type': 'person', 'filler': 'trump'}, {'type': 'place_name', 'filler': 'russia'}]
+will trump visit russia anytime soon
+PRED
+[{'type': 'person', 'filler': 'trump'}]
+[]
+change the lights to a different hue
+PRED
+[{'type': 'color_type', 'filler': 'different'}]
+[]
+set the default audio setting
+PRED
+[{'type': 'device_type', 'filler': 'default audio'}]
+[]
+it must be taste
+PRED
+[{'type': 'transport_type', 'filler': 'taxi'}]
+[{'type': 'event_name', 'filler': 'birthday'}]
+birthday
+PRED
+[]
+[{'type': 'event_name', 'filler': 'birthday'}]
+birthday
+PRED
+[]
+[{'type': 'order_type', 'filler': 'deliver'}]
+do they deliver home
+PRED
+[]
+[{'type': 'order_type', 'filler': 'deliver'}]
+do they deliver home
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[{'type': 'place_name', 'filler': 'a city'}]
+what time is it in a city
+PRED
+[{'type': 'place_name', 'filler': 'this city'}]
+[{'type': 'player_setting', 'filler': 'skip'}]
+please skip two songs
+PRED
+[]
+[{'type': 'device_type', 'filler': 'smart plug'}]
+turn the smart plug on
+PRED
+[{'type': 'device_type', 'filler': 'smart robot'}]
+[{'type': 'music_genre', 'filler': 'techno'}]
+play techno music
+PRED
+[{'type': 'music_genre', 'filler': 'taco'}]
+[{'type': 'place_name', 'filler': 'largo'}]
+report weather for largo
+PRED
+[{'type': 'place_name', 'filler': 'lagos'}]
+[]
+wanna netflix and chill
+PRED
+[{'type': 'radio_name', 'filler': 'netflix'}]
+[{'type': 'definition_word', 'filler': 'cylinder'}]
+please tell me what is the definition of cylinder
+PRED
+[{'type': 'definition_word', 'filler': 'calendar'}]
+[{'type': 'place_name', 'filler': 'disney land'}]
+directions to disney land
+PRED
+[{'type': 'place_name', 'filler': 'disneyland'}]
+[{'type': 'color_type', 'filler': 'red'}]
+make it red in here
+PRED
+[{'type': 'color_type', 'filler': 'red'}, {'type': 'house_place', 'filler': 'here'}]
+[{'type': 'definition_word', 'filler': 'computer hard disk'}]
+describe about the computer hard disk
+PRED
+[{'type': 'definition_word', 'filler': 'computer practice'}]
+[{'type': 'definition_word', 'filler': 'forensic'}]
+what is the definition of forensic
+PRED
+[{'type': 'definition_word', 'filler': 'frantic'}]
+[{'type': 'definition_word', 'filler': 'forensic'}]
+what is the definition of forensic
+PRED
+[{'type': 'definition_word', 'filler': 'currency'}]
+[{'type': 'business_type', 'filler': 'public library'}]
+where is the public library
+PRED
+[{'type': 'place_name', 'filler': 'public library'}]
+[{'type': 'news_topic', 'filler': 'trump'}]
+show me news about trump
+PRED
+[{'type': 'person', 'filler': 'trump'}]
+[{'type': 'news_topic', 'filler': 'trump'}]
+show me news about trump
+PRED
+[{'type': 'person', 'filler': 'trump'}]
+[{'type': 'news_topic', 'filler': 'trump'}]
+show me news about trump
+PRED
+[{'type': 'person', 'filler': 'trump'}]
+[{'type': 'game_name', 'filler': 'ping pong'}]
+play ping pong
+PRED
+[{'type': 'playlist_name', 'filler': 'ping pong'}]
+[{'type': 'radio_name', 'filler': 'i heart radio'}]
+start my playlist on i heart radio
+PRED
+[{'type': 'radio_name', 'filler': 'i heard'}]
+[{'type': 'definition_word', 'filler': 'resin tooth filling'}]
+what exactly is a resin tooth filling
+PRED
+[{'type': 'definition_word', 'filler': 'resigned tooth feeling'}]
+[{'type': 'playlist_name', 'filler': 'themes'}]
+can you loop the playlist themes
+PRED
+[]
+[{'type': 'radio_name', 'filler': 'nine hundred and ninety nine fm'}]
+only nine hundred and ninety nine fm is to be played on the radio
+PRED
+[{'type': 'radio_name', 'filler': 'fm'}]
+[{'type': 'news_topic', 'filler': 'trump'}]
+tell me about trump
+PRED
+[{'type': 'person', 'filler': 'trump'}]
+[{'type': 'food_type', 'filler': 'welsh rarebit'}]
+hey robot give me a list of ingredients for welsh rarebit
+PRED
+[{'type': 'food_type', 'filler': 'welsh rabbit'}]
+[{'type': 'food_type', 'filler': 'welsh rarebit'}]
+hey robot give me a list of ingredients for welsh rarebit
+PRED
+[{'type': 'food_type', 'filler': 'welsh rabbit'}]
+[{'type': 'place_name', 'filler': 'boston'}]
+buy me a ticket to boston
+PRED
+[{'type': 'place_name', 'filler': 'boston'}, {'type': 'transport_type', 'filler': 'train'}]
+[{'type': 'currency_name', 'filler': 'british pound'}]
+what is the exchange rate with in one british pound
+PRED
+[{'type': 'currency_name', 'filler': 'euro'}]
+[{'type': 'currency_name', 'filler': 'british pound'}]
+what is the exchange rate with in one british pound
+PRED
+[]
+[{'type': 'place_name', 'filler': 'kazakhstan'}]
+what 's the capital of kazakhstan
+PRED
+[{'type': 'place_name', 'filler': 'cadastan'}]
+[{'type': 'event_name', 'filler': 'dentist appointment'}, {'type': 'time', 'filler': 'two hours'}]
+will you remind me of the dentist appointment i have in two hours
+PRED
+[{'type': 'date', 'filler': 'august'}, {'type': 'event_name', 'filler': 'dentist appointment'}]
+[{'type': 'business_name', 'filler': 'hdfc'}]
+what is the stock price of hdfc
+PRED
+[{'type': 'business_name', 'filler': 'hdmc'}]
+[{'type': 'time', 'filler': 'ten'}]
+is it ten
+PRED
+[]
+[{'type': 'currency_name', 'filler': 'dollar'}]
+dollar rate at present
+PRED
+[]
+[]
+do i have any new emails from my contact q
+PRED
+[{'type': 'person', 'filler': 'keith'}]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+decrease twenty percent
+PRED
+[]
+[{'type': 'list_name', 'filler': 'old english'}]
+delete from playlist my old english songs list
+PRED
+[{'type': 'list_name', 'filler': 'old angry songs'}]
+[{'type': 'date', 'filler': 'the fourth of july'}, {'type': 'date', 'filler': 'this year'}]
+do i have anything set for the fourth of july this year
+PRED
+[{'type': 'date', 'filler': 'fourth of july'}, {'type': 'date', 'filler': 'this year'}]
+[{'type': 'person', 'filler': 'cassie'}, {'type': 'person', 'filler': 'tom'}]
+has cassie sent me any emails about tom
+PRED
+[{'type': 'person', 'filler': 'kathy'}, {'type': 'person', 'filler': 'tom'}]
+[{'type': 'person', 'filler': 'cassie'}, {'type': 'person', 'filler': 'tom'}]
+has cassie sent me any emails about tom
+PRED
+[{'type': 'person', 'filler': 'cassie'}]
+[{'type': 'time_zone', 'filler': 'eastern'}]
+what is eastern standard time right noe
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+play next episode of podcast
+PRED
+[]
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+play next episode of podcast
+PRED
+[]
+[{'type': 'date', 'filler': 'thursday'}, {'type': 'time', 'filler': 'seven am'}]
+set wake up Thursday seven am
+PRED
+[{'type': 'date', 'filler': 'tuesday'}, {'type': 'time', 'filler': 'seven am'}]
+[{'type': 'device_type', 'filler': 'wemo plug socket'}]
+switch wemo plug socket off
+PRED
+[{'type': 'device_type', 'filler': 'plug socket'}]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please play clash of clans
+PRED
+[{'type': 'audiobook_name', 'filler': 'clash of clans'}]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please play clash of clans
+PRED
+[{'type': 'audiobook_name', 'filler': 'clash of clans'}]
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+please play clash of clans
+PRED
+[{'type': 'audiobook_name', 'filler': 'clash of clans'}]
+[{'type': 'player_setting', 'filler': 'start'}]
+start next podcast
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+[{'type': 'news_topic', 'filler': 'political'}]
+tell me about the latest political news
+PRED
+[]
+[{'type': 'relation', 'filler': 'wife'}]
+can you cook something special for me and my wife
+PRED
+[]
+[{'type': 'relation', 'filler': 'wife'}]
+can you cook something special for me and my wife
+PRED
+[]
+[{'type': 'business_name', 'filler': 'china on the go'}]
+how many minutes do i need to wait to pick up my food from china on the go
+PRED
+[{'type': 'business_name', 'filler': 'china or lagos'}]
+[]
+it 's dirty here make some noise
+PRED
+[{'type': 'weather_descriptor', 'filler': 'dirty'}]
+[]
+what sound does a dog make
+PRED
+[{'type': 'definition_word', 'filler': 'dog'}]
+[{'type': 'song_name', 'filler': 'bohemian raphsody'}]
+i want you to play bohemian raphsody for me
+PRED
+[{'type': 'song_name', 'filler': 'bohemian rhapsody'}]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'personal_info', 'filler': 'email'}]
+add this person 's email
+PRED
+[]
+[{'type': 'relation', 'filler': 'dad'}]
+check to see if i have any new emails from my dad
+PRED
+[]
+[{'type': 'relation', 'filler': 'dad'}]
+check to see if i have any new emails from my dad
+PRED
+[]
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+so clean news in past six hours is what
+PRED
+[{'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+so clean news in past six hours is what
+PRED
+[{'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+so clean news in past six hours is what
+PRED
+[{'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+so clean news in past six hours is what
+PRED
+[{'type': 'time', 'filler': 'six hours'}]
+[{'type': 'date', 'filler': 'today'}]
+today is which date
+PRED
+[{'type': 'date', 'filler': "today's"}]
+[{'type': 'date', 'filler': 'today'}]
+today is which date
+PRED
+[{'type': 'date', 'filler': "today's"}]
+[{'type': 'time', 'filler': 'after one'}, {'type': 'time', 'filler': 'before three pm'}]
+what is happening after one and before three pm
+PRED
+[{'type': 'time', 'filler': 'after one and before three pm'}]
+[{'type': 'time', 'filler': 'after one'}, {'type': 'time', 'filler': 'before three pm'}]
+what is happening after one and before three pm
+PRED
+[{'type': 'time', 'filler': 'after one and before three pm'}]
+[]
+remove my car payment on my calendar
+PRED
+[{'type': 'event_name', 'filler': 'car payment'}]
+[]
+remove my car payment on my calendar
+PRED
+[{'type': 'event_name', 'filler': 'car payment'}]
+[{'type': 'song_name', 'filler': 'summer lovin'}]
+next play summer lovin
+PRED
+[{'type': 'song_name', 'filler': 'my lovin'}]
+[{'type': 'coffee_type', 'filler': 'creamy'}]
+hey olly can you please make me a creamy coffee
+PRED
+[{'type': 'coffee_type', 'filler': 'cream'}]
+[{'type': 'relation', 'filler': 'valet service'}]
+is there valet service at the event
+PRED
+[{'type': 'event_name', 'filler': 'valet service'}]
+[]
+turn off overhead light
+PRED
+[{'type': 'device_type', 'filler': 'overhead'}]
+[]
+turn on my playlist and play third song in the queue
+PRED
+[{'type': 'playlist_name', 'filler': 'third song in vacuum'}]
+[]
+where is a walking trail near me
+PRED
+[{'type': 'transport_type', 'filler': 'train'}]
+[{'type': 'email_address', 'filler': 'tim@hotmail dot com'}]
+send email to tim@hotmail dot com
+PRED
+[{'type': 'email_address', 'filler': 'tim@heartmail dot com'}]
+[{'type': 'business_type', 'filler': 'clothing stores'}]
+tell me what clothing stores are within five miles of me
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'electronic emissions system'}]
+what is an electronic emissions system
+PRED
+[{'type': 'definition_word', 'filler': 'electronic emission system'}]
+[]
+what is the make up of the chair
+PRED
+[{'type': 'person', 'filler': 'cher'}]
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+remind me to wash the windows
+PRED
+[]
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+remind me to wash the windows
+PRED
+[]
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+remind me to wash the windows
+PRED
+[]
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+remind me to wash the windows
+PRED
+[]
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+remind me to wash the windows
+PRED
+[]
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+make an order for noodles one pack make it as takeaway order
+PRED
+[{'type': 'food_type', 'filler': 'noodles one pack'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[{'type': 'house_place', 'filler': 'this room'}]
+increase the brightness in this room
+PRED
+[{'type': 'house_place', 'filler': 'room'}]
+[{'type': 'list_name', 'filler': 'current'}]
+what are my current list
+PRED
+[]
+[{'type': 'date', 'filler': 'today'}]
+do not speak today
+PRED
+[]
+[{'type': 'house_place', 'filler': 'living room'}]
+robot vacuum the living room now
+PRED
+[{'type': 'device_type', 'filler': 'robot'}, {'type': 'house_place', 'filler': 'living room'}]
+[{'type': 'house_place', 'filler': 'living room'}]
+robot vacuum the living room now
+PRED
+[{'type': 'device_type', 'filler': 'robot vacuum'}, {'type': 'house_place', 'filler': 'living room'}]
+[{'type': 'player_setting', 'filler': 'go back'}, {'type': 'podcast_descriptor', 'filler': 'last episode'}]
+go back to the last episode in this podcast
+PRED
+[]
+[{'type': 'player_setting', 'filler': 'go back'}, {'type': 'podcast_descriptor', 'filler': 'last episode'}]
+go back to the last episode in this podcast
+PRED
+[]
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+please play the song every time i see you
+PRED
+[]
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+please play the song every time i see you
+PRED
+[]
+[{'type': 'house_place', 'filler': 'bedroom'}]
+turn my bedroom lights off
+PRED
+[]
+[{'type': 'transport_name', 'filler': 'bagmati express'}]
+what is the timing of bagmati express
+PRED
+[{'type': 'place_name', 'filler': 'bagmati express'}]
+[{'type': 'transport_name', 'filler': 'bagmati express'}]
+what is the timing of bagmati express
+PRED
+[{'type': 'place_name', 'filler': 'bagmati express'}]
+[{'type': 'game_name', 'filler': 'tic tac toe'}]
+play me in tic tac toe
+PRED
+[{'type': 'radio_name', 'filler': 'tic tac toe'}]
+[{'type': 'business_type', 'filler': 'theatre'}]
+where is a theatre in my area
+PRED
+[]
+[{'type': 'place_name', 'filler': 'town'}]
+what s happening around my town
+PRED
+[]
+[{'type': 'food_type', 'filler': 'biryani'}]
+list of famous biryani recipes
+PRED
+[{'type': 'food_type', 'filler': 'biriyani'}]
+[{'type': 'ingredient', 'filler': 'baking soda for baking powder'}]
+can you substitute baking soda for baking powder
+PRED
+[{'type': 'food_type', 'filler': 'baking soda for baking powder'}]
+[{'type': 'business_name', 'filler': 'mcd'}]
+i 've cancelled the order placed at mcd did it go through
+PRED
+[{'type': 'business_name', 'filler': 'mcdonalds'}]
+[{'type': 'list_name', 'filler': 'grocery'}]
+please update my grocery list with one gallon of two percent milk
+PRED
+[{'type': 'list_name', 'filler': 'groceries'}]
+[{'type': 'news_topic', 'filler': 'france'}]
+let me know when you hear about france
+PRED
+[]
+[{'type': 'date', 'filler': 'ten day'}]
+what is the ten day forecast
+PRED
+[{'type': 'time', 'filler': 'ten day'}]
+[{'type': 'date', 'filler': 'ten day'}]
+what is the ten day forecast
+PRED
+[{'type': 'time', 'filler': 'ten day'}]
+[{'type': 'date', 'filler': 'ten day'}]
+what is the ten day forecast
+PRED
+[{'type': 'time', 'filler': 'ten day'}]
+[{'type': 'date', 'filler': 'ten day'}]
+what is the ten day forecast
+PRED
+[{'type': 'time', 'filler': 'ten day'}]
+[{'type': 'date', 'filler': 'ten day'}]
+what is the ten day forecast
+PRED
+[{'type': 'time', 'filler': 'ten day'}]
+[{'type': 'artist_name', 'filler': 'celine dion'}]
+start celine dion songs
+PRED
+[{'type': 'music_genre', 'filler': 'celine dion'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'the library'}]
+i want to make a note on my calendar for the event tomorrow at the library
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'library'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'the library'}]
+i want to make a note on my calendar for the event tomorrow at the library
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'library'}]
+[{'type': 'date', 'filler': 'this friday'}, {'type': 'timeofday', 'filler': 'afternoon'}]
+show me my calendar event this Friday afternoon
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'date', 'filler': 'friday'}, {'type': 'timeofday', 'filler': 'afternoon'}]
+[{'type': 'definition_word', 'filler': 'forensic'}]
+please define forensic
+PRED
+[{'type': 'definition_word', 'filler': 'currency'}]
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'place_name', 'filler': 'pondichery'}]
+any events this weekend in pondichery
+PRED
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'place_name', 'filler': 'home country'}]
+[{'type': 'player_setting', 'filler': 'play and shuffle'}]
+play and shuffle all slow music songs
+PRED
+[{'type': 'player_setting', 'filler': 'shuffle'}]
+[{'type': 'player_setting', 'filler': 'play and shuffle'}]
+play and shuffle all slow music songs
+PRED
+[{'type': 'player_setting', 'filler': 'slow'}]
+[{'type': 'event_name', 'filler': 'appointments'}]
+cancel all my appointments
+PRED
+[]
+[]
+i do n't have enough money to buy the nintendo switch right now can you please remove it on my amazon wishlist
+PRED
+[{'type': 'list_name', 'filler': 'amazon rich list'}]
+[]
+i do n't have enough money to buy the nintendo switch right now can you please remove it on my amazon wishlist
+PRED
+[{'type': 'list_name', 'filler': 'amazon wish list'}]
+[{'type': 'podcast_descriptor', 'filler': 'favourite'}]
+hey play my favourite podcast from list
+PRED
+[]
+[{'type': 'radio_name', 'filler': 'vitaly channel'}]
+vitaly channel
+PRED
+[{'type': 'radio_name', 'filler': 'video channel'}]
+[{'type': 'radio_name', 'filler': 'radio mirchi'}]
+play radio mirchi for me
+PRED
+[{'type': 'radio_name', 'filler': 'radio milky'}]
+[{'type': 'house_place', 'filler': 'bedroom'}]
+can i get delilah on the radio in the bedroom
+PRED
+[]
+[{'type': 'house_place', 'filler': 'bedroom'}]
+can i get delilah on the radio in the bedroom
+PRED
+[{'type': 'device_type', 'filler': 'lamp'}, {'type': 'house_place', 'filler': 'bedroom'}]
+[]
+please set this date to repeat
+PRED
+[{'type': 'general_frequency', 'filler': 'repeat'}]
+[{'type': 'event_name', 'filler': 'supper'}]
+what should i cook for supper
+PRED
+[{'type': 'food_type', 'filler': 'supper'}]
+[{'type': 'order_type', 'filler': 'takeaway'}]
+can they provide takeaway
+PRED
+[{'type': 'food_type', 'filler': 'takeaway'}]
+[{'type': 'event_name', 'filler': 'swimming'}]
+swimming
+PRED
+[]
+[{'type': 'event_name', 'filler': 'swimming'}]
+swimming
+PRED
+[]
+[{'type': 'media_type', 'filler': 'social networks'}]
+check my social networks
+PRED
+[]
+[{'type': 'media_type', 'filler': 'social networks'}]
+check my social networks
+PRED
+[]
+[{'type': 'music_genre', 'filler': 'nineties hip hop'}]
+play nineties hip hop
+PRED
+[{'type': 'music_genre', 'filler': 'nineties'}, {'type': 'music_genre', 'filler': 'hip hop'}]
+[{'type': 'music_genre', 'filler': 'nineties hip hop'}]
+play nineties hip hop
+PRED
+[{'type': 'music_genre', 'filler': 'nineties'}, {'type': 'music_genre', 'filler': 'hip hop'}]
+[{'type': 'music_genre', 'filler': 'nineties hip hop'}]
+play nineties hip hop
+PRED
+[{'type': 'music_genre', 'filler': 'nineties'}, {'type': 'music_genre', 'filler': 'hip hop'}]
+[]
+i need good ideas for cooking
+PRED
+[{'type': 'food_type', 'filler': 'cookies'}]
+[]
+play my radio station
+PRED
+[{'type': 'radio_name', 'filler': 'radio station'}]
+[]
+play my radio station
+PRED
+[{'type': 'radio_name', 'filler': 'radio station'}]
+[{'type': 'place_name', 'filler': 'russia'}, {'type': 'place_name', 'filler': 'alaska'}]
+can you really see russia from alaska
+PRED
+[{'type': 'place_name', 'filler': 'alaska'}]
+[{'type': 'event_name', 'filler': 'upcoming events'}]
+upcoming events in calendar
+PRED
+[{'type': 'event_name', 'filler': 'events'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+remove my next scheduled appointment please
+PRED
+[{'type': 'event_name', 'filler': 'schedule appointment'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+remove my next scheduled appointment please
+PRED
+[{'type': 'event_name', 'filler': 'schedule appointment'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+remove my next scheduled appointment please
+PRED
+[{'type': 'event_name', 'filler': 'next scheduled appointment'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+remove my next scheduled appointment please
+PRED
+[{'type': 'event_name', 'filler': 'next schedule appointment'}]
+[{'type': 'device_type', 'filler': 'car radio'}]
+play prairie home companion on the car radio
+PRED
+[{'type': 'radio_name', 'filler': 'car radio'}]
+[{'type': 'place_name', 'filler': 'canada'}]
+please change time zone to canada
+PRED
+[{'type': 'place_name', 'filler': 'canada'}, {'type': 'transport_type', 'filler': 'train'}]
+[{'type': 'place_name', 'filler': 'china'}]
+what 's the currency exchange rate for china
+PRED
+[{'type': 'currency_name', 'filler': 'china'}]
+[{'type': 'radio_name', 'filler': 'sirius xm radio channel'}]
+start sirius xm radio channel
+PRED
+[{'type': 'radio_name', 'filler': 'usxm'}]
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'eggs'}]
+olly how long should i boil the eggs
+PRED
+[{'type': 'food_type', 'filler': 'eggs'}]
+[{'type': 'definition_word', 'filler': 'flabbergasted'}]
+define flabbergasted
+PRED
+[{'type': 'definition_word', 'filler': 'forecasted'}]
+[{'type': 'movie_type', 'filler': 'drama'}, {'type': 'time', 'filler': 'weekend'}]
+olly what are new drama movies opening this weekend
+PRED
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'movie_type', 'filler': 'drama'}]
+[{'type': 'movie_type', 'filler': 'drama'}, {'type': 'time', 'filler': 'weekend'}]
+olly what are new drama movies opening this weekend
+PRED
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'movie_type', 'filler': 'drama'}]
+[{'type': 'transport_agency', 'filler': 'uber'}]
+can you book an uber after i left for office
+PRED
+[]
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+what 's the temperature outside
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'weather_descriptor', 'filler': 'temperature'}]
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+what 's the temperature outside
+PRED
+[]
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'date', 'filler': 'this weekend'}]
+what is the wake up time for my alarm i have set for the flight this weekend
+PRED
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'time', 'filler': 'weekend'}]
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'date', 'filler': 'this weekend'}]
+what is the wake up time for my alarm i have set for the flight this weekend
+PRED
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'time', 'filler': 'weekend'}]
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'date', 'filler': 'this weekend'}]
+what is the wake up time for my alarm i have set for the flight this weekend
+PRED
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'time', 'filler': 'weekend'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+open davinci code audiobook
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+open davinci code audiobook
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+open davinci code audiobook
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+open davinci code audiobook
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code audiobook'}]
+[{'type': 'song_name', 'filler': 'purple haze'}]
+i want to hear purple haze
+PRED
+[{'type': 'song_name', 'filler': 'purple hair'}]
+[{'type': 'time', 'filler': 'twelve months'}]
+which contact have n't i called in twelve months
+PRED
+[]
+[{'type': 'person', 'filler': 'naty'}]
+find naty from my contacts and send her an email
+PRED
+[{'type': 'person', 'filler': 'netty'}]
+[{'type': 'podcast_name', 'filler': 'mike and mike'}]
+i want to listen to the latest mike and mike podcast
+PRED
+[{'type': 'person', 'filler': 'mike'}]
+[{'type': 'podcast_name', 'filler': 'mike and mike'}]
+i want to listen to the latest mike and mike podcast
+PRED
+[{'type': 'person', 'filler': 'mike'}]
+[]
+search in the web for buying bakeware for muffins
+PRED
+[{'type': 'artist_name', 'filler': 'bbc'}]
+[]
+get rid of the list google
+PRED
+[{'type': 'list_name', 'filler': 'google'}]
+[]
+get rid of the list google
+PRED
+[{'type': 'list_name', 'filler': 'google'}]
+[]
+i want to hear any songs that got grammys this year
+PRED
+[{'type': 'artist_name', 'filler': "grandma's"}]
+[]
+where are the rocky mountains
+PRED
+[{'type': 'place_name', 'filler': 'the rocky mountains'}]
+[]
+where are the rocky mountains
+PRED
+[{'type': 'place_name', 'filler': 'the rocky mountains'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'song_name', 'filler': 'silent'}]
+play silent song
+PRED
+[{'type': 'music_descriptor', 'filler': 'silent'}]
+[{'type': 'place_name', 'filler': 'world'}]
+which is the highest peak in the world
+PRED
+[]
+[{'type': 'currency_name', 'filler': 'u. s. d.'}, {'type': 'currency_name', 'filler': 'pound'}]
+find exchange rate for u. s. d. to pound
+PRED
+[{'type': 'currency_name', 'filler': 'us dollars'}, {'type': 'currency_name', 'filler': 'pounds'}]
+[{'type': 'date', 'filler': 'today'}]
+i helped a poor needy today olly
+PRED
+[]
+[{'type': 'event_name', 'filler': 'super bowl'}]
+when does the super bowl officially start
+PRED
+[]
+[{'type': 'food_type', 'filler': 'red velvet cake'}]
+what all goes into a red velvet cake
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'capricious'}]
+check definition of capricious
+PRED
+[{'type': 'definition_word', 'filler': 'capra'}]
+[{'type': 'artist_name', 'filler': 'third day'}]
+music third day
+PRED
+[]
+[]
+find an oscar nominee movie
+PRED
+[{'type': 'movie_name', 'filler': 'oscar'}]
+[{'type': 'place_name', 'filler': 'amazon forest'}]
+can you tell me about animal kingdom in amazon forest
+PRED
+[]
+[{'type': 'place_name', 'filler': 'amazon forest'}]
+can you tell me about animal kingdom in amazon forest
+PRED
+[]
+[{'type': 'game_name', 'filler': 'global thermonuclear war'}]
+let 's play global thermonuclear war
+PRED
+[{'type': 'game_name', 'filler': 'global thermal nuclear war'}]
+[]
+stop start the juice
+PRED
+[{'type': 'coffee_type', 'filler': 'start the juice'}]
+[]
+stop start the juice
+PRED
+[{'type': 'coffee_type', 'filler': 'start the juice'}]
+[]
+stop start the juice
+PRED
+[{'type': 'song_name', 'filler': 'stop the juice'}]
+[]
+stop start the juice
+PRED
+[{'type': 'song_name', 'filler': 'stop the juice'}]
+[{'type': 'list_name', 'filler': 'five star hotels'}, {'type': 'place_name', 'filler': 'paris'}]
+may i have a list of five star hotels in paris
+PRED
+[{'type': 'business_type', 'filler': 'five star hotels'}, {'type': 'place_name', 'filler': 'paris'}]
+[{'type': 'list_name', 'filler': 'five star hotels'}, {'type': 'place_name', 'filler': 'paris'}]
+may i have a list of five star hotels in paris
+PRED
+[{'type': 'business_type', 'filler': 'five star hotels'}, {'type': 'place_name', 'filler': 'paris'}]
+[{'type': 'time', 'filler': 'after ten minutes'}]
+remind me after ten minutes
+PRED
+[]
+[{'type': 'time', 'filler': 'after ten minutes'}]
+remind me after ten minutes
+PRED
+[]
+[{'type': 'music_genre', 'filler': 'dance and country'}]
+i 'd like to listen to hear a music of dance and country
+PRED
+[{'type': 'music_descriptor', 'filler': 'dance and country'}]
+[{'type': 'music_genre', 'filler': 'dance and country'}]
+i 'd like to listen to hear a music of dance and country
+PRED
+[{'type': 'music_descriptor', 'filler': 'dance and country'}]
+[{'type': 'event_name', 'filler': 'birthday'}, {'type': 'person', 'filler': 'martin'}]
+set a birthday event for martin
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}, {'type': 'relation', 'filler': 'mom'}]
+[{'type': 'game_name', 'filler': 'competitive crossword'}]
+start a competitive crossword for us
+PRED
+[]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa mesa'}]
+can i please have the weather for tomorrow here in costa mesa
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa moessa'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa mesa'}]
+can i please have the weather for tomorrow here in costa mesa
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa moesa'}]
+[{'type': 'definition_word', 'filler': 'rock sand'}]
+give details of rock sand
+PRED
+[{'type': 'definition_word', 'filler': 'rock song'}]
+[{'type': 'date', 'filler': 'last two months'}]
+what 's been happening for the last two months
+PRED
+[{'type': 'time', 'filler': 'last two months'}]
+[{'type': 'business_name', 'filler': '@companyname'}]
+two thumbs down @companyname
+PRED
+[{'type': 'business_name', 'filler': '@companynameart'}]
+[{'type': 'place_name', 'filler': 'west virginia'}]
+what is the capitol of west virginia
+PRED
+[{'type': 'place_name', 'filler': 'virginia'}]
+[{'type': 'event_name', 'filler': 'meeting'}]
+please schedule a meeting with this person
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'this person'}]
+[{'type': 'event_name', 'filler': 'pre season baseball'}]
+i bought pre season baseball tickets
+PRED
+[]
+[{'type': 'event_name', 'filler': 'pre season baseball'}]
+i bought pre season baseball tickets
+PRED
+[]
+[{'type': 'place_name', 'filler': 'china'}]
+what is the most current exchange rate in china
+PRED
+[{'type': 'currency_name', 'filler': 'china'}]

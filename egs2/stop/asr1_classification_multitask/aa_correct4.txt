@@ -1,0 +1,648 @@
+[in:create_alarm [sl:date_time on alternative days for eight am ] ]	(alarm_test_00000125.wav_1-alarm_test_00000125.wav)
+[in:create_alarm [sl:date_time_recurring on alternative days for eight am ] ]	(alarm_test_00000125.wav_1-alarm_test_00000125.wav)
+NEXT
+[in:create_alarm [sl:date_time daily ] [sl:date_time for five am ] ]	(alarm_test_00000596.wav_1-alarm_test_00000596.wav)
+[in:create_alarm [sl:period daily ] [sl:date_time for five am ] ]	(alarm_test_00000596.wav_1-alarm_test_00000596.wav)
+NEXT
+[in:create_alarm [sl:date_time for the next five minutes in a row ] ]	(alarm_test_00001104.wav_1-alarm_test_00001104.wav)
+[in:create_alarm [sl:duration for the next five minutes ] ]	(alarm_test_00001104.wav_1-alarm_test_00001104.wav)
+NEXT
+[in:create_alarm [sl:date_time weekly ] ]	(alarm_test_00001278.wav_1-alarm_test_00001278.wav)
+[in:create_alarm [sl:period weekly ] ]	(alarm_test_00001278.wav_1-alarm_test_00001278.wav)
+NEXT
+[in:create_alarm [sl:period every weekday ] ]	(alarm_test_00002120.wav_1-alarm_test_00002120.wav)
+[in:create_alarm [sl:date_time_recurring every weekday ] ]	(alarm_test_00002120.wav_1-alarm_test_00002120.wav)
+NEXT
+[in:create_alarm [sl:date_time daily ] [sl:date_time for eight am ] ]	(alarm_test_00002225.wav_1-alarm_test_00002225.wav)
+[in:create_alarm [sl:period daily ] [sl:date_time for eight am ] ]	(alarm_test_00002225.wav_1-alarm_test_00002225.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring to eight am for saturday and sunday mornings ] ]	(alarm_test_00002394.wav_1-alarm_test_00002394.wav)
+[in:create_alarm [sl:date_time to eight am for saturday and sunday mornings ] ]	(alarm_test_00002394.wav_1-alarm_test_00002394.wav)
+NEXT
+[in:create_alarm [sl:period every weekday ] ]	(alarm_test_00002603.wav_1-alarm_test_00002603.wav)
+[in:create_alarm [sl:date_time_recurring every weekday ] ]	(alarm_test_00002603.wav_1-alarm_test_00002603.wav)
+NEXT
+[in:snooze_alarm [sl:date_time for the next twenty four hours ] ]	(alarm_test_00002717.wav_1-alarm_test_00002717.wav)
+[in:delete_alarm [sl:duration for the next twenty four hours ] ]	(alarm_test_00002717.wav_1-alarm_test_00002717.wav)
+NEXT
+[in:create_alarm [sl:alarm_name holiday ] [sl:date_time for eight am ] ]	(alarm_test_00003181.wav_1-alarm_test_00003181.wav)
+[in:create_alarm [sl:date_time holiday ] [sl:date_time for eight am ] ]	(alarm_test_00003181.wav_1-alarm_test_00003181.wav)
+NEXT
+[in:create_alarm [sl:period weekly ] [sl:date_time on thursday at seven pm ] [sl:duration for the rest of the year ] ]	(alarm_test_00003373.wav_1-alarm_test_00003373.wav)
+[in:create_alarm [sl:period weekly ] [sl:date_time_recurring on thursday at seven pm ] [sl:duration for the rest of the year ] ]	(alarm_test_00003373.wav_1-alarm_test_00003373.wav)
+NEXT
+[in:snooze_alarm [sl:date_time until the next alarm ] ]	(alarm_test_00003561.wav_1-alarm_test_00003561.wav)
+[in:snooze_alarm [sl:ordinal next ] ]	(alarm_test_00003561.wav_1-alarm_test_00003561.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring on saturday mornings ] ]	(alarm_test_00004288.wav_1-alarm_test_00004288.wav)
+[in:create_alarm [sl:date_time on saturday mornings ] ]	(alarm_test_00004288.wav_1-alarm_test_00004288.wav)
+NEXT
+[in:create_alarm [sl:date_time weekly ] [sl:date_time for seven am ] ]	(alarm_test_0_00000047.wav_1-alarm_test_0_00000047.wav)
+[in:create_alarm [sl:period weekly ] [sl:date_time for seven am ] ]	(alarm_test_0_00000047.wav_1-alarm_test_0_00000047.wav)
+NEXT
+[in:create_alarm [sl:date_time for daily at five am ] ]	(alarm_test_0_00000262.wav_1-alarm_test_0_00000262.wav)
+[in:create_alarm [sl:date_time_recurring for daily at five am ] ]	(alarm_test_0_00000262.wav_1-alarm_test_0_00000262.wav)
+NEXT
+[in:create_alarm [sl:date_time daily ] [sl:date_time for five am ] ]	(alarm_test_0_00000596.wav_1-alarm_test_0_00000596.wav)
+[in:create_alarm [sl:period daily ] [sl:date_time for five am ] ]	(alarm_test_0_00000596.wav_1-alarm_test_0_00000596.wav)
+NEXT
+[in:create_alarm [sl:alarm_name night time alarm ] [sl:date_time for seven pm ] ]	(alarm_test_0_00000951.wav_1-alarm_test_0_00000951.wav)
+[in:create_alarm [sl:date_time night time ] [sl:date_time for seven pm ] ]	(alarm_test_0_00000951.wav_1-alarm_test_0_00000951.wav)
+NEXT
+[in:create_alarm [sl:date_time for the next five minutes in a row ] ]	(alarm_test_0_00001104.wav_1-alarm_test_0_00001104.wav)
+[in:create_alarm [sl:duration for the next five minutes ] ]	(alarm_test_0_00001104.wav_1-alarm_test_0_00001104.wav)
+NEXT
+[in:create_alarm [sl:date_time weekly ] ]	(alarm_test_0_00001278.wav_1-alarm_test_0_00001278.wav)
+[in:create_alarm [sl:period weekly ] ]	(alarm_test_0_00001278.wav_1-alarm_test_0_00001278.wav)
+NEXT
+[in:create_alarm [sl:date_time monday through friday at noon ] ]	(alarm_test_0_00002199.wav_1-alarm_test_0_00002199.wav)
+[in:create_alarm [sl:date_time_recurring monday through friday at noon ] ]	(alarm_test_0_00002199.wav_1-alarm_test_0_00002199.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring for friday mornings at five ] ]	(alarm_test_0_00002474.wav_1-alarm_test_0_00002474.wav)
+[in:create_alarm [sl:date_time for friday mornings at five ] ]	(alarm_test_0_00002474.wav_1-alarm_test_0_00002474.wav)
+NEXT
+[in:create_alarm [sl:period every weekday ] ]	(alarm_test_0_00002603.wav_1-alarm_test_0_00002603.wav)
+[in:create_alarm [sl:date_time_recurring every weekday ] ]	(alarm_test_0_00002603.wav_1-alarm_test_0_00002603.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring every hour on the hour ] ]	(alarm_test_0_00002690.wav_1-alarm_test_0_00002690.wav)
+[in:create_alarm [sl:period every hour on the hour ] ]	(alarm_test_0_00002690.wav_1-alarm_test_0_00002690.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring for monday mornings at six am ] ]	(alarm_test_0_00003304.wav_1-alarm_test_0_00003304.wav)
+[in:create_alarm [sl:date_time for monday mornings at six am ] ]	(alarm_test_0_00003304.wav_1-alarm_test_0_00003304.wav)
+NEXT
+[in:snooze_alarm [sl:date_time for the next thirty minutes ] ]	(alarm_test_0_00003593.wav_1-alarm_test_0_00003593.wav)
+[in:snooze_alarm [sl:duration for the next thirty minutes ] ]	(alarm_test_0_00003593.wav_1-alarm_test_0_00003593.wav)
+NEXT
+[in:create_alarm [sl:date_time for friday two pm and three pm ] [sl:duration for a month ] ]	(alarm_test_0_00004061.wav_1-alarm_test_0_00004061.wav)
+[in:create_alarm [sl:date_time_recurring for friday two pm and three pm ] [sl:duration for a month ] ]	(alarm_test_0_00004061.wav_1-alarm_test_0_00004061.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring for every friday night at six pm ] ]	(alarm_test_0_00004136.wav_1-alarm_test_0_00004136.wav)
+[in:create_alarm [sl:date_time for every friday night at six pm ] ]	(alarm_test_0_00004136.wav_1-alarm_test_0_00004136.wav)
+NEXT
+[in:create_alarm [sl:alarm_name dinner ] [sl:date_time at seven tonight ] ]	(alarm_test_0_00004203.wav_1-alarm_test_0_00004203.wav)
+[in:create_reminder [sl:todo dinner ] [sl:date_time at seven tonight ] ]	(alarm_test_0_00004203.wav_1-alarm_test_0_00004203.wav)
+NEXT
+[in:create_alarm [sl:date_time for seven am saturday ] [sl:duration for next three weeks ] ]	(alarm_test_0_00004622.wav_1-alarm_test_0_00004622.wav)
+[in:create_alarm [sl:date_time_recurring for seven am saturday ] [sl:duration for next three weeks ] ]	(alarm_test_0_00004622.wav_1-alarm_test_0_00004622.wav)
+NEXT
+[in:create_alarm [sl:date_time_recurring daily six am ] ]	(alarm_test_0_00004953.wav_1-alarm_test_0_00004953.wav)
+[in:create_alarm [sl:date_time daily six am ] ]	(alarm_test_0_00004953.wav_1-alarm_test_0_00004953.wav)
+NEXT
+[in:snooze_alarm [sl:date_time five more minutes ] ]	(alarm_test_0_00005573.wav_1-alarm_test_0_00005573.wav)
+[in:snooze_alarm [sl:duration five more minutes ] ]	(alarm_test_0_00005573.wav_1-alarm_test_0_00005573.wav)
+NEXT
+[in:create_alarm [sl:period every four weekends ] ]	(alarm_test_0_00007082.wav_1-alarm_test_0_00007082.wav)
+[in:create_alarm [sl:date_time_recurring for every four weekends ] ]	(alarm_test_0_00007082.wav_1-alarm_test_0_00007082.wav)
+NEXT
+[in:get_event [sl:category_event the eclipse ] ]	(event_test_00000049.wav_1-event_test_00000049.wav)
+[in:get_weather [sl:weather_attribute eclipse ] ]	(event_test_00000049.wav_1-event_test_00000049.wav)
+NEXT
+[in:get_event [sl:category_event dog events ] [sl:location [in:get_location [sl:search_radius near ] [sl:location_user me ] ] ] ]	(event_test_00000296.wav_1-event_test_00000296.wav)
+[in:get_event [sl:attribute_event dog ] [sl:location [in:get_location [sl:search_radius near ] [sl:location_user me ] ] ] ]	(event_test_00000296.wav_1-event_test_00000296.wav)
+NEXT
+[in:get_event [sl:attribute_event inside ] ]	(event_test_00000473.wav_1-event_test_00000473.wav)
+[in:get_event [sl:date_time inside ] ]	(event_test_00000473.wav_1-event_test_00000473.wav)
+NEXT
+[in:get_event [sl:name_event garth brooks ] [sl:category_event concerts ] ]	(event_test_00000856.wav_1-event_test_00000856.wav)
+[in:get_event [sl:location garth brook ] [sl:category_event concerts ] ]	(event_test_00000856.wav_1-event_test_00000856.wav)
+NEXT
+[in:get_event [sl:category_event five k events ] [sl:location [in:get_location [sl:location_modifier nearby ] ] ] [sl:date_time this month ] ]	(event_test_00001257.wav_1-event_test_00001257.wav)
+[in:get_event [sl:attribute_event five k ] [sl:location [in:get_location [sl:location_modifier nearby ] ] ] [sl:date_time this month ] ]	(event_test_00001257.wav_1-event_test_00001257.wav)
+NEXT
+[in:get_event [sl:category_event vegan events ] ]	(event_test_00001542.wav_1-event_test_00001542.wav)
+[in:get_event [sl:attribute_event vegan ] ]	(event_test_00001542.wav_1-event_test_00001542.wav)
+NEXT
+[in:get_event [sl:location [in:get_location [sl:category_location the homeless shelter ] ] ] [sl:date_time friday ] ]	(event_test_00002073.wav_1-event_test_00002073.wav)
+[in:get_event [sl:location [in:get_location [sl:point_on_map the homeless shelter ] ] ] [sl:date_time friday ] ]	(event_test_00002073.wav_1-event_test_00002073.wav)
+NEXT
+[in:get_event [sl:category_event holiday events ] [sl:date_time sunday ] ]	(event_test_0_00000244.wav_1-event_test_0_00000244.wav)
+[in:get_event [sl:date_time holiday ] [sl:date_time sunday ] ]	(event_test_0_00000244.wav_1-event_test_0_00000244.wav)
+NEXT
+[in:get_event [sl:category_event dog events ] [sl:location [in:get_location [sl:search_radius near ] [sl:location_user me ] ] ] ]	(event_test_0_00000296.wav_1-event_test_0_00000296.wav)
+[in:get_event [sl:attribute_event dog ] [sl:location [in:get_location [sl:search_radius near ] [sl:location_user me ] ] ] ]	(event_test_0_00000296.wav_1-event_test_0_00000296.wav)
+NEXT
+[in:get_event [sl:name_event santa ] [sl:date_time tomorrow afternoon ] ]	(event_test_0_00000650.wav_1-event_test_0_00000650.wav)
+[in:get_weather [sl:location santa ] [sl:date_time tomorrow afternoon ] ]	(event_test_0_00000650.wav_1-event_test_0_00000650.wav)
+NEXT
+[in:get_event [sl:category_event the eclipse ] [sl:location knoxville tennessee ] ]	(event_test_0_00000659.wav_1-event_test_0_00000659.wav)
+[in:get_weather [sl:weather_attribute eclipse ] [sl:location knoxville tennessee ] ]	(event_test_0_00000659.wav_1-event_test_0_00000659.wav)
+NEXT
+[in:get_event [sl:category_event snow related ] [sl:date_time this month ] ]	(event_test_0_00000790.wav_1-event_test_0_00000790.wav)
+[in:get_weather [sl:weather_attribute snow ] [sl:date_time this month ] ]	(event_test_0_00000790.wav_1-event_test_0_00000790.wav)
+NEXT
+[in:get_event [sl:category_event light up night ] ]	(event_test_0_00001085.wav_1-event_test_0_00001085.wav)
+[in:create_alarm [sl:date_time night ] ]	(event_test_0_00001085.wav_1-event_test_0_00001085.wav)
+NEXT
+[in:get_event [sl:category_event holiday happenings ] [sl:location daytona ] [sl:date_time before the twenty fourth ] ]	(event_test_0_00001114.wav_1-event_test_0_00001114.wav)
+[in:get_event [sl:date_time holiday ] [sl:location daytona ] [sl:date_time before the twenty fourth ] ]	(event_test_0_00001114.wav_1-event_test_0_00001114.wav)
+NEXT
+[in:get_event [sl:category_event five k events ] [sl:location [in:get_location [sl:location_modifier nearby ] ] ] [sl:date_time this month ] ]	(event_test_0_00001257.wav_1-event_test_0_00001257.wav)
+[in:get_event [sl:attribute_event five k ] [sl:location [in:get_location [sl:location_modifier nearby ] ] ] [sl:date_time this month ] ]	(event_test_0_00001257.wav_1-event_test_0_00001257.wav)
+NEXT
+[in:get_event [sl:category_event vegan events ] ]	(event_test_0_00001542.wav_1-event_test_0_00001542.wav)
+[in:get_event [sl:attribute_event vegan ] ]	(event_test_0_00001542.wav_1-event_test_0_00001542.wav)
+NEXT
+[in:get_event [sl:location new york ] [sl:category_event fashion week events ] ]	(event_test_0_00002172.wav_1-event_test_0_00002172.wav)
+[in:get_event [sl:location new york ] [sl:date_time fashion week ] ]	(event_test_0_00002172.wav_1-event_test_0_00002172.wav)
+NEXT
+[in:send_message [sl:content_exact congratulations ] ]	(messaging_test_00000238.wav_1-messaging_test_00000238.wav)
+[in:send_message [sl:group congratulations ] ]	(messaging_test_00000238.wav_1-messaging_test_00000238.wav)
+NEXT
+[in:send_message [sl:content_exact congratulations ] ]	(messaging_test_00000827.wav_1-messaging_test_00000827.wav)
+[in:send_message [sl:group congratulations ] ]	(messaging_test_00000827.wav_1-messaging_test_00000827.wav)
+NEXT
+[in:send_message [sl:group family ] [sl:type_content picture ] ]	(messaging_test_00001415.wav_1-messaging_test_00001415.wav)
+[in:send_message [sl:group family ] [sl:content_exact the picture i just took ] ]	(messaging_test_00001415.wav_1-messaging_test_00001415.wav)
+NEXT
+[in:get_message [sl:sender school ] [sl:date_time today ] ]	(messaging_test_00001463.wav_1-messaging_test_00001463.wav)
+[in:get_message [sl:group school ] [sl:date_time today ] ]	(messaging_test_00001463.wav_1-messaging_test_00001463.wav)
+NEXT
+[in:get_message [sl:resource skype ] [sl:tag_message new ] [sl:type_content video ] [sl:date_time from last night ] ]	(messaging_test_00001548.wav_1-messaging_test_00001548.wav)
+[in:get_message [sl:resource skype ] [sl:tag_message new ] [sl:resource video ] [sl:date_time from last night ] ]	(messaging_test_00001548.wav_1-messaging_test_00001548.wav)
+NEXT
+[in:react_message [sl:type_reaction smile ] [sl:type_reaction like ] ]	(messaging_test_00001983.wav_1-messaging_test_00001983.wav)
+[in:react_message [sl:type_reaction smile ] [sl:type_content like ] ]	(messaging_test_00001983.wav_1-messaging_test_00001983.wav)
+NEXT
+[in:send_message [sl:recipient john ] [sl:content_exact six pm ] ]	(messaging_test_00002407.wav_1-messaging_test_00002407.wav)
+[in:send_message [sl:recipient john ] [sl:date_time six pm ] ]	(messaging_test_00002407.wav_1-messaging_test_00002407.wav)
+NEXT
+[in:send_message [sl:content_exact i'm not coming ] ]	(messaging_test_00002858.wav_1-messaging_test_00002858.wav)
+[in:send_message [sl:group i'm not coming ] ]	(messaging_test_00002858.wav_1-messaging_test_00002858.wav)
+NEXT
+[in:send_message [sl:recipient john ] [sl:content_exact next friday ] ]	(messaging_test_00003001.wav_1-messaging_test_00003001.wav)
+[in:send_message [sl:recipient john ] [sl:date_time next friday ] ]	(messaging_test_00003001.wav_1-messaging_test_00003001.wav)
+NEXT
+[in:send_message [sl:content_exact congratulations ] ]	(messaging_test_0_00000238.wav_1-messaging_test_0_00000238.wav)
+[in:send_message [sl:group congratulations ] ]	(messaging_test_0_00000238.wav_1-messaging_test_0_00000238.wav)
+NEXT
+[in:send_message [sl:content_exact congratulations ] ]	(messaging_test_0_00000827.wav_1-messaging_test_0_00000827.wav)
+[in:send_message [sl:group congratulations ] ]	(messaging_test_0_00000827.wav_1-messaging_test_0_00000827.wav)
+NEXT
+[in:send_message [sl:group family ] [sl:type_content picture ] ]	(messaging_test_0_00001415.wav_1-messaging_test_0_00001415.wav)
+[in:send_message [sl:group family ] [sl:content_exact the picture i just took ] ]	(messaging_test_0_00001415.wav_1-messaging_test_0_00001415.wav)
+NEXT
+[in:send_message [sl:recipient juan ] [sl:type_content images ] ]	(messaging_test_0_00001416.wav_1-messaging_test_0_00001416.wav)
+[in:get_message [sl:sender juan ] [sl:type_content images ] ]	(messaging_test_0_00001416.wav_1-messaging_test_0_00001416.wav)
+NEXT
+[in:get_message [sl:date_time from yesterday ] ]	(messaging_test_0_00001455.wav_1-messaging_test_0_00001455.wav)
+[in:get_message [sl:group yesterday ] ]	(messaging_test_0_00001455.wav_1-messaging_test_0_00001455.wav)
+NEXT
+[in:get_message [sl:sender school ] [sl:date_time today ] ]	(messaging_test_0_00001463.wav_1-messaging_test_0_00001463.wav)
+[in:get_message [sl:group school ] [sl:date_time today ] ]	(messaging_test_0_00001463.wav_1-messaging_test_0_00001463.wav)
+NEXT
+[in:get_message [sl:resource skype ] [sl:tag_message new ] [sl:type_content video ] [sl:date_time from last night ] ]	(messaging_test_0_00001548.wav_1-messaging_test_0_00001548.wav)
+[in:get_message [sl:resource skype ] [sl:tag_message new ] [sl:resource video ] [sl:date_time from last night ] ]	(messaging_test_0_00001548.wav_1-messaging_test_0_00001548.wav)
+NEXT
+[in:react_message [sl:type_reaction smile ] [sl:type_reaction like ] ]	(messaging_test_0_00001983.wav_1-messaging_test_0_00001983.wav)
+[in:react_message [sl:type_reaction smile ] [sl:type_content like ] ]	(messaging_test_0_00001983.wav_1-messaging_test_0_00001983.wav)
+NEXT
+[in:send_message [sl:recipient john ] [sl:content_exact six pm ] ]	(messaging_test_0_00002407.wav_1-messaging_test_0_00002407.wav)
+[in:send_message [sl:recipient john ] [sl:date_time six pm ] ]	(messaging_test_0_00002407.wav_1-messaging_test_0_00002407.wav)
+NEXT
+[in:send_message [sl:content_exact i'm not coming ] ]	(messaging_test_0_00002858.wav_1-messaging_test_0_00002858.wav)
+[in:send_message [sl:group i'm not coming ] ]	(messaging_test_0_00002858.wav_1-messaging_test_0_00002858.wav)
+NEXT
+[in:play_music [sl:music_artist_name styx ] [sl:music_type music ] ]	(music_test_00000316.wav_1-music_test_00000316.wav)
+[in:play_music [sl:music_genre sticks ] [sl:music_type music ] ]	(music_test_00000316.wav_1-music_test_00000316.wav)
+NEXT
+[in:play_music [sl:music_playlist_title swing ] [sl:music_type music ] ]	(music_test_00000425.wav_1-music_test_00000425.wav)
+[in:play_music [sl:music_genre swing ] [sl:music_type music ] ]	(music_test_00000425.wav_1-music_test_00000425.wav)
+NEXT
+[in:play_music [sl:music_playlist_title celtic ] [sl:music_type music ] [sl:music_type station ] ]	(music_test_00000539.wav_1-music_test_00000539.wav)
+[in:play_music [sl:music_genre celtic ] [sl:music_type music ] [sl:music_type station ] ]	(music_test_00000539.wav_1-music_test_00000539.wav)
+NEXT
+[in:replay_music [sl:music_track_title bohemian rhapsody ] ]	(music_test_00000565.wav_1-music_test_00000565.wav)
+[in:replay_music [sl:music_artist_name bohemian rhapsody ] ]	(music_test_00000565.wav_1-music_test_00000565.wav)
+NEXT
+[in:play_music [sl:music_artist_name keith urban ] [sl:music_track_title the fighter ] [sl:music_type song ] ]	(music_test_00000623.wav_1-music_test_00000623.wav)
+[in:play_music [sl:music_artist_name keith urban ] [sl:music_album_title the fighter ] [sl:music_type song ] ]	(music_test_00000623.wav_1-music_test_00000623.wav)
+NEXT
+[in:play_music [sl:music_genre exotica ] [sl:music_type music ] ]	(music_test_00000653.wav_1-music_test_00000653.wav)
+[in:play_music [sl:music_artist_name exotica ] [sl:music_type music ] ]	(music_test_00000653.wav_1-music_test_00000653.wav)
+NEXT
+[in:play_music [sl:music_genre women empowerment ] [sl:music_type songs ] ]	(music_test_00000805.wav_1-music_test_00000805.wav)
+[in:play_music [sl:music_artist_name women empowerment ] [sl:music_type songs ] ]	(music_test_00000805.wav_1-music_test_00000805.wav)
+NEXT
+[in:play_music [sl:music_genre country ] [sl:music_type music ] ]	(music_test_00000924.wav_1-music_test_00000924.wav)
+[in:get_event [sl:category_event country music ] [sl:date_time for this week ] ]	(music_test_00000924.wav_1-music_test_00000924.wav)
+NEXT
+[in:play_music [sl:music_genre lullabies ] ]	(music_test_00000929.wav_1-music_test_00000929.wav)
+[in:play_music [sl:music_artist_name lullabies ] ]	(music_test_00000929.wav_1-music_test_00000929.wav)
+NEXT
+[in:start_shuffle_music [sl:music_genre classic rock ] [sl:music_type library ] ]	(music_test_00000980.wav_1-music_test_00000980.wav)
+[in:start_shuffle_music [sl:music_playlist_title classic rock ] [sl:music_type library ] ]	(music_test_00000980.wav_1-music_test_00000980.wav)
+NEXT
+[in:play_music [sl:music_genre classic rock ] ]	(music_test_00000991.wav_1-music_test_00000991.wav)
+[in:get_event [sl:category_event classic rock ] ]	(music_test_00000991.wav_1-music_test_00000991.wav)
+NEXT
+[in:play_music [sl:music_playlist_title rock ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_00001106.wav_1-music_test_00001106.wav)
+[in:play_music [sl:music_genre rock ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_00001106.wav_1-music_test_00001106.wav)
+NEXT
+[in:play_music [sl:music_provider_name spotify ] [sl:music_artist_name coldplay ] [sl:music_type station ] ]	(music_test_00001130.wav_1-music_test_00001130.wav)
+[in:play_music [sl:music_provider_name spotify ] [sl:music_playlist_title coldplay ] [sl:music_type station ] ]	(music_test_00001130.wav_1-music_test_00001130.wav)
+NEXT
+[in:play_music [sl:music_artist_name lady gaga ] [sl:music_type channel ] ]	(music_test_00001140.wav_1-music_test_00001140.wav)
+[in:play_music [sl:music_playlist_title lady gaga ] [sl:music_type channel ] ]	(music_test_00001140.wav_1-music_test_00001140.wav)
+NEXT
+[in:play_music [sl:music_artist_name kendrick lamar ] [sl:music_type playlist ] [sl:music_provider_name spotify ] ]	(music_test_00001582.wav_1-music_test_00001582.wav)
+[in:play_music [sl:music_playlist_title kendrick lamar ] [sl:music_type playlist ] [sl:music_provider_name spotify ] ]	(music_test_00001582.wav_1-music_test_00001582.wav)
+NEXT
+[in:play_music [sl:music_type station ] [sl:music_playlist_title kenny chesney ] [sl:music_provider_name pandora ] ]	(music_test_00001914.wav_1-music_test_00001914.wav)
+[in:play_music [sl:music_type station ] [sl:music_artist_name kenny chastney ] [sl:music_provider_name pandora ] ]	(music_test_00001914.wav_1-music_test_00001914.wav)
+NEXT
+[in:play_music [sl:music_artist_name frank sinatra ] ]	(music_test_00001929.wav_1-music_test_00001929.wav)
+[in:play_music [sl:music_genre french sinatra ] ]	(music_test_00001929.wav_1-music_test_00001929.wav)
+NEXT
+[in:play_music [sl:music_artist_name jack johnson ] [sl:music_type playlist ] ]	(music_test_00002293.wav_1-music_test_00002293.wav)
+[in:play_music [sl:music_playlist_title jack johnson only ] [sl:music_type playlist ] ]	(music_test_00002293.wav_1-music_test_00002293.wav)
+NEXT
+[in:play_music [sl:music_album_title waitress ] [sl:music_type soundtrack ] ]	(music_test_00002320.wav_1-music_test_00002320.wav)
+[in:play_music [sl:music_artist_name waitress ] [sl:music_type soundtrack ] ]	(music_test_00002320.wav_1-music_test_00002320.wav)
+NEXT
+[in:play_music [sl:music_playlist_title bruno mars ] [sl:music_type radio ] ]	(music_test_00002406.wav_1-music_test_00002406.wav)
+[in:play_music [sl:music_artist_name bruno mars ] [sl:music_type radio ] ]	(music_test_00002406.wav_1-music_test_00002406.wav)
+NEXT
+[in:start_shuffle_music [sl:music_genre pop ] [sl:music_type playlist ] ]	(music_test_00002445.wav_1-music_test_00002445.wav)
+[in:start_shuffle_music [sl:music_playlist_title pop ] [sl:music_type playlist ] ]	(music_test_00002445.wav_1-music_test_00002445.wav)
+NEXT
+[in:play_music [sl:music_genre acoustic pop ] [sl:music_type playlist ] ]	(music_test_00002451.wav_1-music_test_00002451.wav)
+[in:play_music [sl:music_playlist_title acoustic pop ] [sl:music_type playlist ] ]	(music_test_00002451.wav_1-music_test_00002451.wav)
+NEXT
+[in:play_music [sl:music_playlist_title justin timberlake ] [sl:music_type playlist ] ]	(music_test_00002452.wav_1-music_test_00002452.wav)
+[in:play_music [sl:music_artist_name justin timberlake ] [sl:music_type playlist ] ]	(music_test_00002452.wav_1-music_test_00002452.wav)
+NEXT
+[in:play_music [sl:music_type artists ] ]	(music_test_00002479.wav_1-music_test_00002479.wav)
+[in:play_music [sl:music_playlist_title my favorite artists ] ]	(music_test_00002479.wav_1-music_test_00002479.wav)
+NEXT
+[in:replay_music [sl:music_album_title the internet ] [sl:music_type album ] ]	(music_test_00002562.wav_1-music_test_00002562.wav)
+[in:replay_music [sl:music_artist_name the internet ] [sl:music_type album ] ]	(music_test_00002562.wav_1-music_test_00002562.wav)
+NEXT
+[in:play_music [sl:music_provider_name spotify ] [sl:music_type songs ] ]	(music_test_00002568.wav_1-music_test_00002568.wav)
+[in:play_music [sl:music_provider_name spotify ] [sl:music_playlist_title my top songs ] ]	(music_test_00002568.wav_1-music_test_00002568.wav)
+NEXT
+[in:pause_music [sl:music_artist_name playback ] ]	(music_test_00002810.wav_1-music_test_00002810.wav)
+[in:pause_music [sl:music_type playback ] ]	(music_test_00002810.wav_1-music_test_00002810.wav)
+NEXT
+[in:play_music [sl:music_playlist_title top hits from the year nineteen eighty three ] ]	(music_test_00002815.wav_1-music_test_00002815.wav)
+[in:play_music [sl:music_type hits ] ]	(music_test_00002815.wav_1-music_test_00002815.wav)
+NEXT
+[in:play_music [sl:music_track_title these days ] ]	(music_test_00003185.wav_1-music_test_00003185.wav)
+[in:play_music [sl:music_genre these days ] ]	(music_test_00003185.wav_1-music_test_00003185.wav)
+NEXT
+[in:play_music [sl:music_artist_name odd future ] ]	(music_test_00003267.wav_1-music_test_00003267.wav)
+[in:play_music [sl:music_genre odd future ] ]	(music_test_00003267.wav_1-music_test_00003267.wav)
+NEXT
+[in:play_music [sl:music_artist_name earth wind and fire ] ]	(music_test_00003271.wav_1-music_test_00003271.wav)
+[in:play_music [sl:music_track_title earth wind and fire ] ]	(music_test_00003271.wav_1-music_test_00003271.wav)
+NEXT
+[in:play_music [sl:music_track_title love song ] [sl:music_artist_name the cure ] ]	(music_test_00003287.wav_1-music_test_00003287.wav)
+[in:play_music [sl:music_type song ] [sl:music_artist_name the cure ] ]	(music_test_00003287.wav_1-music_test_00003287.wav)
+NEXT
+[in:play_music [sl:music_track_title poker face ] [sl:music_provider_name iheartradio ] ]	(music_test_00003449.wav_1-music_test_00003449.wav)
+[in:play_music [sl:music_radio_id poker face ] [sl:music_provider_name iheartradio ] ]	(music_test_00003449.wav_1-music_test_00003449.wav)
+NEXT
+[in:play_music [sl:music_genre baby ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_00004170.wav_1-music_test_00004170.wav)
+[in:play_music [sl:music_playlist_title baby ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_00004170.wav_1-music_test_00004170.wav)
+NEXT
+[in:play_music [sl:music_type music ] [sl:music_genre babies ] [sl:music_provider_name iheartradio ] ]	(music_test_00004171.wav_1-music_test_00004171.wav)
+[in:play_music [sl:music_type music ] [sl:music_playlist_title babies ] [sl:music_provider_name iheartradio ] ]	(music_test_00004171.wav_1-music_test_00004171.wav)
+NEXT
+[in:play_music [sl:music_genre disney ] [sl:music_type radio ] ]	(music_test_00004180.wav_1-music_test_00004180.wav)
+[in:play_music [sl:music_playlist_title disney ] [sl:music_type radio ] ]	(music_test_00004180.wav_1-music_test_00004180.wav)
+NEXT
+[in:play_music [sl:music_playlist_title top fifty songs ] [sl:music_provider_name iheartradio ] ]	(music_test_00004181.wav_1-music_test_00004181.wav)
+[in:play_music [sl:music_type songs ] [sl:music_provider_name iheartradio ] ]	(music_test_00004181.wav_1-music_test_00004181.wav)
+NEXT
+[in:play_music [sl:music_type playlist ] [sl:music_playlist_title rihanna ] ]	(music_test_0_00000345.wav_1-music_test_0_00000345.wav)
+[in:play_music [sl:music_type playlist ] [sl:music_artist_name rihanna ] ]	(music_test_0_00000345.wav_1-music_test_0_00000345.wav)
+NEXT
+[in:play_music [sl:music_playlist_title swing ] [sl:music_type music ] ]	(music_test_0_00000425.wav_1-music_test_0_00000425.wav)
+[in:play_music [sl:music_genre swing ] [sl:music_type music ] ]	(music_test_0_00000425.wav_1-music_test_0_00000425.wav)
+NEXT
+[in:play_music [sl:music_playlist_title celtic ] [sl:music_type music ] [sl:music_type station ] ]	(music_test_0_00000539.wav_1-music_test_0_00000539.wav)
+[in:play_music [sl:music_genre celtic ] [sl:music_type music ] [sl:music_type station ] ]	(music_test_0_00000539.wav_1-music_test_0_00000539.wav)
+NEXT
+[in:play_music [sl:music_artist_name keith urban ] [sl:music_track_title the fighter ] [sl:music_type song ] ]	(music_test_0_00000623.wav_1-music_test_0_00000623.wav)
+[in:play_music [sl:music_artist_name keith urban ] [sl:music_album_title the fighter ] [sl:music_type song ] ]	(music_test_0_00000623.wav_1-music_test_0_00000623.wav)
+NEXT
+[in:play_music [sl:music_genre bluegrass ] ]	(music_test_0_00000837.wav_1-music_test_0_00000837.wav)
+[in:play_music [sl:music_artist_name bluegrass ] ]	(music_test_0_00000837.wav_1-music_test_0_00000837.wav)
+NEXT
+[in:play_music [sl:music_genre country ] [sl:music_type music ] ]	(music_test_0_00000924.wav_1-music_test_0_00000924.wav)
+[in:get_event [sl:category_event country music ] [sl:date_time for this week ] ]	(music_test_0_00000924.wav_1-music_test_0_00000924.wav)
+NEXT
+[in:play_music [sl:music_artist_name lady gaga ] [sl:music_type channel ] ]	(music_test_0_00001140.wav_1-music_test_0_00001140.wav)
+[in:play_music [sl:music_playlist_title lady gaga ] [sl:music_type channel ] ]	(music_test_0_00001140.wav_1-music_test_0_00001140.wav)
+NEXT
+[in:play_music [sl:music_type soundtrack ] [sl:music_album_title spotless ] ]	(music_test_0_00001259.wav_1-music_test_0_00001259.wav)
+[in:play_music [sl:music_type soundtrack ] [sl:music_artist_name spotless ] ]	(music_test_0_00001259.wav_1-music_test_0_00001259.wav)
+NEXT
+[in:play_music [sl:music_genre reggae ] ]	(music_test_0_00001475.wav_1-music_test_0_00001475.wav)
+[in:play_music [sl:music_artist_name reggae ] ]	(music_test_0_00001475.wav_1-music_test_0_00001475.wav)
+NEXT
+[in:play_music [sl:music_track_title secret lovers ] [sl:music_provider_name itunes ] ]	(music_test_0_00001497.wav_1-music_test_0_00001497.wav)
+[in:play_music [sl:music_artist_name secret lovers ] [sl:music_provider_name itunes ] ]	(music_test_0_00001497.wav_1-music_test_0_00001497.wav)
+NEXT
+[in:play_music [sl:music_type soundtrack ] [sl:music_album_title moana ] ]	(music_test_0_00001539.wav_1-music_test_0_00001539.wav)
+[in:play_music [sl:music_type soundtrack ] [sl:music_artist_name moana ] ]	(music_test_0_00001539.wav_1-music_test_0_00001539.wav)
+NEXT
+[in:play_music [sl:music_artist_name kendrick lamar ] [sl:music_type playlist ] [sl:music_provider_name spotify ] ]	(music_test_0_00001582.wav_1-music_test_0_00001582.wav)
+[in:play_music [sl:music_playlist_title kendrick lamar ] [sl:music_type playlist ] [sl:music_provider_name spotify ] ]	(music_test_0_00001582.wav_1-music_test_0_00001582.wav)
+NEXT
+[in:play_music [sl:music_type station ] [sl:music_playlist_title kenny chesney ] [sl:music_provider_name pandora ] ]	(music_test_0_00001914.wav_1-music_test_0_00001914.wav)
+[in:play_music [sl:music_type station ] [sl:music_artist_name kenny chesney ] [sl:music_provider_name pandora ] ]	(music_test_0_00001914.wav_1-music_test_0_00001914.wav)
+NEXT
+[in:play_music [sl:music_artist_name jack johnson ] [sl:music_type playlist ] ]	(music_test_0_00002293.wav_1-music_test_0_00002293.wav)
+[in:play_music [sl:music_playlist_title jack johnson only ] [sl:music_type playlist ] ]	(music_test_0_00002293.wav_1-music_test_0_00002293.wav)
+NEXT
+[in:play_music [sl:music_artist_name lucio fulci ] [sl:music_genre zombie movie ] [sl:music_type soundtracks ] ]	(music_test_0_00002363.wav_1-music_test_0_00002363.wav)
+[in:play_music [sl:music_artist_name lucio fulci ] [sl:music_album_title zombie movie ] [sl:music_type soundtracks ] ]	(music_test_0_00002363.wav_1-music_test_0_00002363.wav)
+NEXT
+[in:play_music [sl:music_genre r and b ] [sl:music_type channel ] ]	(music_test_0_00002374.wav_1-music_test_0_00002374.wav)
+[in:play_music [sl:music_playlist_title r and b ] [sl:music_type channel ] ]	(music_test_0_00002374.wav_1-music_test_0_00002374.wav)
+NEXT
+[in:play_music [sl:music_playlist_title bruno mars ] [sl:music_type radio ] ]	(music_test_0_00002406.wav_1-music_test_0_00002406.wav)
+[in:play_music [sl:music_artist_name bruno mars ] [sl:music_type radio ] ]	(music_test_0_00002406.wav_1-music_test_0_00002406.wav)
+NEXT
+[in:start_shuffle_music [sl:music_genre pop ] [sl:music_type playlist ] ]	(music_test_0_00002445.wav_1-music_test_0_00002445.wav)
+[in:start_shuffle_music [sl:music_playlist_title pop ] [sl:music_type playlist ] ]	(music_test_0_00002445.wav_1-music_test_0_00002445.wav)
+NEXT
+[in:play_music [sl:music_playlist_title justin timberlake ] [sl:music_type playlist ] ]	(music_test_0_00002452.wav_1-music_test_0_00002452.wav)
+[in:play_music [sl:music_artist_name justin timberlake ] [sl:music_type playlist ] ]	(music_test_0_00002452.wav_1-music_test_0_00002452.wav)
+NEXT
+[in:play_music [sl:music_type artists ] ]	(music_test_0_00002479.wav_1-music_test_0_00002479.wav)
+[in:play_music [sl:music_playlist_title my favorite artists ] ]	(music_test_0_00002479.wav_1-music_test_0_00002479.wav)
+NEXT
+[in:play_music [sl:music_playlist_title billy joel ] [sl:music_type radio ] ]	(music_test_0_00002484.wav_1-music_test_0_00002484.wav)
+[in:play_music [sl:music_artist_name billy joel ] [sl:music_type radio ] ]	(music_test_0_00002484.wav_1-music_test_0_00002484.wav)
+NEXT
+[in:play_music [sl:music_provider_name pandora ] [sl:music_genre alternative rock ] [sl:music_type station ] ]	(music_test_0_00002536.wav_1-music_test_0_00002536.wav)
+[in:play_music [sl:music_provider_name pandora ] [sl:music_playlist_title alternative rock ] [sl:music_type station ] ]	(music_test_0_00002536.wav_1-music_test_0_00002536.wav)
+NEXT
+[in:play_music [sl:music_provider_name spotify ] [sl:music_type songs ] ]	(music_test_0_00002568.wav_1-music_test_0_00002568.wav)
+[in:play_music [sl:music_provider_name spotify ] [sl:music_playlist_title my top songs ] ]	(music_test_0_00002568.wav_1-music_test_0_00002568.wav)
+NEXT
+[in:play_music [sl:music_type mix ] ]	(music_test_0_00002699.wav_1-music_test_0_00002699.wav)
+[in:play_music [sl:music_genre mix ] ]	(music_test_0_00002699.wav_1-music_test_0_00002699.wav)
+NEXT
+[in:pause_music [sl:music_artist_name playback ] ]	(music_test_0_00002810.wav_1-music_test_0_00002810.wav)
+[in:pause_music [sl:music_type playback ] ]	(music_test_0_00002810.wav_1-music_test_0_00002810.wav)
+NEXT
+[in:play_music [sl:music_playlist_title top hits from the year nineteen eighty three ] ]	(music_test_0_00002815.wav_1-music_test_0_00002815.wav)
+[in:play_music [sl:music_type hits ] ]	(music_test_0_00002815.wav_1-music_test_0_00002815.wav)
+NEXT
+[in:play_music [sl:music_playlist_title grunge ] [sl:music_type station ] ]	(music_test_0_00002842.wav_1-music_test_0_00002842.wav)
+[in:play_music [sl:music_genre grunge ] [sl:music_type station ] ]	(music_test_0_00002842.wav_1-music_test_0_00002842.wav)
+NEXT
+[in:play_music [sl:music_artist_name the kicks ] ]	(music_test_0_00003240.wav_1-music_test_0_00003240.wav)
+[in:play_music [sl:music_genre kicks ] ]	(music_test_0_00003240.wav_1-music_test_0_00003240.wav)
+NEXT
+[in:play_music [sl:music_track_title happy ] ]	(music_test_0_00003259.wav_1-music_test_0_00003259.wav)
+[in:play_music [sl:music_genre happy ] ]	(music_test_0_00003259.wav_1-music_test_0_00003259.wav)
+NEXT
+[in:play_music [sl:music_artist_name earth wind and fire ] ]	(music_test_0_00003271.wav_1-music_test_0_00003271.wav)
+[in:play_music [sl:music_track_title earth wind and fire ] ]	(music_test_0_00003271.wav_1-music_test_0_00003271.wav)
+NEXT
+[in:play_music [sl:music_track_title all the small things ] ]	(music_test_0_00003273.wav_1-music_test_0_00003273.wav)
+[in:play_music [sl:music_artist_name the small things ] ]	(music_test_0_00003273.wav_1-music_test_0_00003273.wav)
+NEXT
+[in:play_music [sl:music_track_title dance with somebody ] ]	(music_test_0_00003294.wav_1-music_test_0_00003294.wav)
+[in:play_music [sl:music_genre dance ] ]	(music_test_0_00003294.wav_1-music_test_0_00003294.wav)
+NEXT
+[in:play_music [sl:music_track_title work ] ]	(music_test_0_00003315.wav_1-music_test_0_00003315.wav)
+[in:play_music [sl:music_genre work ] ]	(music_test_0_00003315.wav_1-music_test_0_00003315.wav)
+NEXT
+[in:play_music [sl:music_genre baby ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_0_00004170.wav_1-music_test_0_00004170.wav)
+[in:play_music [sl:music_playlist_title baby ] [sl:music_type station ] [sl:music_provider_name pandora ] ]	(music_test_0_00004170.wav_1-music_test_0_00004170.wav)
+NEXT
+[in:play_music [sl:music_playlist_title top fifty songs ] [sl:music_provider_name iheartradio ] ]	(music_test_0_00004181.wav_1-music_test_0_00004181.wav)
+[in:play_music [sl:music_type songs ] [sl:music_provider_name iheartradio ] ]	(music_test_0_00004181.wav_1-music_test_0_00004181.wav)
+NEXT
+[in:get_estimated_duration [sl:destination [in:get_location [sl:category_location the history museum ] ] ] [sl:date_time_departure now ] ]	(navigation_test_00000234.wav_1-navigation_test_00000234.wav)
+[in:get_estimated_duration [sl:destination [in:get_location [sl:point_on_map the history museum ] ] ] [sl:date_time_departure now ] ]	(navigation_test_00000234.wav_1-navigation_test_00000234.wav)
+NEXT
+[in:get_estimated_duration [sl:destination santa fe ] [sl:method_travel train ] [sl:date_time on thursday morning ] ]	(navigation_test_00000477.wav_1-navigation_test_00000477.wav)
+[in:get_estimated_duration [sl:destination santa fe ] [sl:method_travel train ] [sl:date_time_departure on thursday morning ] ]	(navigation_test_00000477.wav_1-navigation_test_00000477.wav)
+NEXT
+[in:get_info_traffic [sl:path i forty west ] [sl:source oklahoma city ] ]	(navigation_test_00000727.wav_1-navigation_test_00000727.wav)
+[in:get_info_traffic [sl:location i forty west ] [sl:source oklahoma city ] ]	(navigation_test_00000727.wav_1-navigation_test_00000727.wav)
+NEXT
+[in:get_info_traffic [sl:location snoqualmie ] ]	(navigation_test_00001513.wav_1-navigation_test_00001513.wav)
+[in:get_info_traffic [sl:road_condition snow quality ] ]	(navigation_test_00001513.wav_1-navigation_test_00001513.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time today ] ]	(navigation_test_00001829.wav_1-navigation_test_00001829.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time_departure today ] ]	(navigation_test_00001829.wav_1-navigation_test_00001829.wav)
+NEXT
+[in:get_info_traffic [sl:path i seventy five ] [sl:destination gaylord ] ]	(navigation_test_00002004.wav_1-navigation_test_00002004.wav)
+[in:get_info_traffic [sl:location i seventy five ] [sl:destination gaylord ] ]	(navigation_test_00002004.wav_1-navigation_test_00002004.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] [sl:destination fairport ] [sl:date_time tonight ] ]	(navigation_test_00002566.wav_1-navigation_test_00002566.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:destination fairport ] [sl:date_time_departure tonight ] ]	(navigation_test_00002566.wav_1-navigation_test_00002566.wav)
+NEXT
+[in:get_info_road_condition [sl:road_condition icy ] [sl:destination [in:get_location_home [sl:contact tim ] ] ] [sl:date_time tonight ] ]	(navigation_test_00003070.wav_1-navigation_test_00003070.wav)
+[in:get_info_road_condition [sl:road_condition icy ] [sl:destination [in:get_location_home [sl:contact tim ] ] ] [sl:date_time_departure tonight ] ]	(navigation_test_00003070.wav_1-navigation_test_00003070.wav)
+NEXT
+[in:get_estimated_arrival [sl:destination [in:get_location_work ] ] [sl:date_time_departure today ] ]	(navigation_test_00003125.wav_1-navigation_test_00003125.wav)
+[in:get_info_traffic [sl:destination [in:get_location_work ] ] [sl:date_time today ] ]	(navigation_test_00003125.wav_1-navigation_test_00003125.wav)
+NEXT
+[in:get_info_traffic [sl:location the one oh one north ] [sl:source the five freeway ] ]	(navigation_test_00003929.wav_1-navigation_test_00003929.wav)
+[in:get_info_traffic [sl:location the one oh one north ] [sl:location the five freeway ] ]	(navigation_test_00003929.wav_1-navigation_test_00003929.wav)
+NEXT
+[in:get_info_road_condition [sl:road_condition snow ] [sl:destination mariposa ] [sl:date_time this weekend ] ]	(navigation_test_00004388.wav_1-navigation_test_00004388.wav)
+[in:get_weather [sl:weather_attribute snow ] [sl:location mariposa ] [sl:date_time this weekend ] ]	(navigation_test_00004388.wav_1-navigation_test_00004388.wav)
+NEXT
+[in:get_estimated_duration [sl:waypoint [in:get_location [sl:category_location town ] ] ] ]	(navigation_test_00004405.wav_1-navigation_test_00004405.wav)
+[in:get_estimated_duration [sl:destination [in:get_location [sl:category_location town ] ] ] ]	(navigation_test_00004405.wav_1-navigation_test_00004405.wav)
+NEXT
+[in:get_estimated_duration [sl:path my commute ] [sl:date_time_departure today ] ]	(navigation_test_00004867.wav_1-navigation_test_00004867.wav)
+[in:get_estimated_duration [sl:path my commute ] [sl:date_time today ] ]	(navigation_test_00004867.wav_1-navigation_test_00004867.wav)
+NEXT
+[in:get_info_traffic [sl:path the ninety one ] [sl:destination riverside ] ]	(navigation_test_00005070.wav_1-navigation_test_00005070.wav)
+[in:get_info_traffic [sl:location the ninety one ] [sl:destination riverside ] ]	(navigation_test_00005070.wav_1-navigation_test_00005070.wav)
+NEXT
+[in:get_distance [sl:source hawaii ] [sl:destination arizona ] ]	(navigation_test_00005458.wav_1-navigation_test_00005458.wav)
+[in:get_distance [sl:destination hawaii ] [sl:source arizona ] ]	(navigation_test_00005458.wav_1-navigation_test_00005458.wav)
+NEXT
+[in:get_estimated_duration [sl:destination downtown philly ] [sl:date_time_departure around rush hour ] ]	(navigation_test_0_00000204.wav_1-navigation_test_0_00000204.wav)
+[in:get_estimated_duration [sl:source downtown philly ] [sl:date_time_departure around rush hour ] ]	(navigation_test_0_00000204.wav_1-navigation_test_0_00000204.wav)
+NEXT
+[in:get_estimated_duration [sl:destination [in:get_location [sl:category_location the history museum ] ] ] [sl:date_time_departure now ] ]	(navigation_test_0_00000234.wav_1-navigation_test_0_00000234.wav)
+[in:get_estimated_duration [sl:destination [in:get_location [sl:point_on_map the history museum ] ] ] [sl:date_time_departure now ] ]	(navigation_test_0_00000234.wav_1-navigation_test_0_00000234.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time this morning ] ]	(navigation_test_0_00000337.wav_1-navigation_test_0_00000337.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time_departure this morning ] ]	(navigation_test_0_00000337.wav_1-navigation_test_0_00000337.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time today ] ]	(navigation_test_0_00001829.wav_1-navigation_test_0_00001829.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:date_time_departure today ] ]	(navigation_test_0_00001829.wav_1-navigation_test_0_00001829.wav)
+NEXT
+[in:get_info_traffic [sl:path i seventy five ] [sl:destination gaylord ] ]	(navigation_test_0_00002004.wav_1-navigation_test_0_00002004.wav)
+[in:get_info_traffic [sl:location i seventy five ] [sl:destination gaylord ] ]	(navigation_test_0_00002004.wav_1-navigation_test_0_00002004.wav)
+NEXT
+[in:get_info_traffic [sl:location the one oh one north ] [sl:source the five freeway ] ]	(navigation_test_0_00003929.wav_1-navigation_test_0_00003929.wav)
+[in:get_info_traffic [sl:location the a hundred one north ] [sl:location the five freeway ] ]	(navigation_test_0_00003929.wav_1-navigation_test_0_00003929.wav)
+NEXT
+[in:update_directions [sl:destination [in:get_location [sl:category_location the golf course ] ] ] ]	(navigation_test_0_00004066.wav_1-navigation_test_0_00004066.wav)
+[in:update_directions [sl:destination [in:get_event [sl:category_event the golf course ] ] ] ]	(navigation_test_0_00004066.wav_1-navigation_test_0_00004066.wav)
+NEXT
+[in:get_estimated_duration [sl:method_travel drive ] [sl:source vancouver ] [sl:destination salem ] [sl:date_time_departure on the weekend ] ]	(navigation_test_0_00004325.wav_1-navigation_test_0_00004325.wav)
+[in:get_estimated_duration [sl:method_travel drive ] [sl:source vancouver ] [sl:destination salem ] [sl:date_time on the weekend ] ]	(navigation_test_0_00004325.wav_1-navigation_test_0_00004325.wav)
+NEXT
+[in:get_info_road_condition [sl:road_condition snow ] [sl:destination mariposa ] [sl:date_time this weekend ] ]	(navigation_test_0_00004388.wav_1-navigation_test_0_00004388.wav)
+[in:get_weather [sl:weather_attribute snow ] [sl:location mariposa ] [sl:date_time this weekend ] ]	(navigation_test_0_00004388.wav_1-navigation_test_0_00004388.wav)
+NEXT
+[in:get_estimated_duration [sl:waypoint [in:get_location [sl:category_location town ] ] ] ]	(navigation_test_0_00004405.wav_1-navigation_test_0_00004405.wav)
+[in:get_estimated_duration [sl:destination [in:get_location [sl:category_location town ] ] ] ]	(navigation_test_0_00004405.wav_1-navigation_test_0_00004405.wav)
+NEXT
+[in:get_estimated_duration [sl:path my commute ] [sl:date_time_departure today ] ]	(navigation_test_0_00004867.wav_1-navigation_test_0_00004867.wav)
+[in:get_estimated_duration [sl:path my commute ] [sl:date_time today ] ]	(navigation_test_0_00004867.wav_1-navigation_test_0_00004867.wav)
+NEXT
+[in:get_distance [sl:destination [in:get_location_home ] ] ]	(navigation_test_0_00005069.wav_1-navigation_test_0_00005069.wav)
+[in:get_distance [sl:source [in:get_location_home ] ] ]	(navigation_test_0_00005069.wav_1-navigation_test_0_00005069.wav)
+NEXT
+[in:update_reminder_todo [sl:person_reminded my ] [sl:todo dinner ] [sl:todo_new lunch ] ]	(reminder_test_00001090.wav_1-reminder_test_00001090.wav)
+[in:update_reminder [sl:person_reminded my ] [sl:todo dinner ] [sl:todo lunch ] ]	(reminder_test_00001090.wav_1-reminder_test_00001090.wav)
+NEXT
+[in:create_reminder [sl:todo my dentist visit ] [sl:person_reminded ] ]	(reminder_test_00002042.wav_1-reminder_test_00002042.wav)
+[in:update_reminder_todo [sl:person_reminded my ] [sl:todo dentist visit ] ]	(reminder_test_00002042.wav_1-reminder_test_00002042.wav)
+NEXT
+[in:delete_reminder [sl:person_reminded cycling ] [sl:date_time for this weekend ] [sl:date_time next weekend ] ]	(reminder_test_00002284.wav_1-reminder_test_00002284.wav)
+[in:delete_reminder [sl:todo the cycling group ] [sl:date_time for this weekend ] [sl:date_time next weekend ] ]	(reminder_test_00002284.wav_1-reminder_test_00002284.wav)
+NEXT
+[in:update_reminder_date_time [sl:amount all ] [sl:todo dad 's part ] [sl:date_time_new to est ] ]	(reminder_test_00003012.wav_1-reminder_test_00003012.wav)
+[in:update_reminder [sl:amount all ] [sl:todo dad 's party ] [sl:todo est ] ]	(reminder_test_00003012.wav_1-reminder_test_00003012.wav)
+NEXT
+[in:update_reminder_date_time [sl:amount all ] [sl:todo exercise class ] [sl:date_time_new to six am ] [sl:date_time of seven am ] ]	(reminder_test_00003253.wav_1-reminder_test_00003253.wav)
+[in:update_reminder_date_time [sl:amount all ] [sl:todo exercise class ] [sl:date_time at six am ] [sl:date_time_new seven am ] ]	(reminder_test_00003253.wav_1-reminder_test_00003253.wav)
+NEXT
+[in:update_reminder_date_time [sl:todo pilates class ] [sl:date_time this wednesday ] [sl:date_time_new for friday ] ]	(reminder_test_00003625.wav_1-reminder_test_00003625.wav)
+[in:delete_reminder [sl:todo pilates class ] [sl:date_time this wednesday ] [sl:date_time for friday ] ]	(reminder_test_00003625.wav_1-reminder_test_00003625.wav)
+NEXT
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:amount all ] [sl:date_time past ] [sl:date_time from this week ] ]	(reminder_test_00004178.wav_1-reminder_test_00004178.wav)
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:amount all ] [sl:todo past ] [sl:date_time from this week ] ]	(reminder_test_00004178.wav_1-reminder_test_00004178.wav)
+NEXT
+[in:create_reminder [sl:date_time for nine mins ] ]	(reminder_test_00004487.wav_1-reminder_test_00004487.wav)
+[in:create_reminder [sl:todo nine men 's ] ]	(reminder_test_00004487.wav_1-reminder_test_00004487.wav)
+NEXT
+[in:delete_reminder [sl:date_time monday december thirty first ] [sl:todo milk ] ]	(reminder_test_00005258.wav_1-reminder_test_00005258.wav)
+[in:delete_reminder [sl:date_time monday december thirty first ] [sl:person_reminded i ] ]	(reminder_test_00005258.wav_1-reminder_test_00005258.wav)
+NEXT
+[in:get_reminder [sl:amount all ] [sl:person_reminded my ] [sl:todo my aa meetings ] ]	(reminder_test_00005450.wav_1-reminder_test_00005450.wav)
+[in:get_reminder [sl:person_reminded my ] [sl:amount all ] [sl:todo my aa meetings ] ]	(reminder_test_00005450.wav_1-reminder_test_00005450.wav)
+NEXT
+[in:update_reminder [sl:todo withdrawing cash for dad ] ]	(reminder_test_00005663.wav_1-reminder_test_00005663.wav)
+[in:update_reminder_todo [sl:todo_new withdrawing cash for dad ] ]	(reminder_test_00005663.wav_1-reminder_test_00005663.wav)
+NEXT
+[in:update_reminder_todo [sl:person_reminded my ] [sl:date_time for this weekend ] [sl:todo_new check the weather first ] ]	(reminder_test_00005708.wav_1-reminder_test_00005708.wav)
+[in:update_reminder [sl:person_reminded my ] [sl:date_time for this weekend ] [sl:todo check the weather first ] ]	(reminder_test_00005708.wav_1-reminder_test_00005708.wav)
+NEXT
+[in:update_reminder_todo [sl:todo dinner ] [sl:person_reminded i ] [sl:todo_new lunch ] ]	(reminder_test_00005714.wav_1-reminder_test_00005714.wav)
+[in:update_reminder [sl:todo dinner ] [sl:person_reminded i ] [sl:todo lunch ] ]	(reminder_test_00005714.wav_1-reminder_test_00005714.wav)
+NEXT
+[in:update_reminder [sl:person_reminded my ] [sl:todo my appointment ] [sl:date_time on tuesday ] ]	(reminder_test_0_00000273.wav_1-reminder_test_0_00000273.wav)
+[in:update_reminder_date_time [sl:person_reminded my ] [sl:todo my appointment ] [sl:date_time_new on tuesday ] ]	(reminder_test_0_00000273.wav_1-reminder_test_0_00000273.wav)
+NEXT
+[in:update_reminder_todo [sl:date_time for this weekend ] [sl:todo_new check the weather first ] ]	(reminder_test_0_00000839.wav_1-reminder_test_0_00000839.wav)
+[in:update_reminder [sl:date_time for this weekend ] [sl:todo check the weather first ] ]	(reminder_test_0_00000839.wav_1-reminder_test_0_00000839.wav)
+NEXT
+[in:update_reminder_todo [sl:person_reminded my ] [sl:todo dinner ] [sl:todo_new lunch ] ]	(reminder_test_0_00001090.wav_1-reminder_test_0_00001090.wav)
+[in:update_reminder [sl:person_reminded my ] [sl:todo dinner ] [sl:todo lunch ] ]	(reminder_test_0_00001090.wav_1-reminder_test_0_00001090.wav)
+NEXT
+[in:update_reminder_todo [sl:person_reminded my ] [sl:todo work ] [sl:todo_new work meeting ] ]	(reminder_test_0_00001879.wav_1-reminder_test_0_00001879.wav)
+[in:update_reminder [sl:person_reminded my ] [sl:todo work ] [sl:todo the subject line work meeting ] ]	(reminder_test_0_00001879.wav_1-reminder_test_0_00001879.wav)
+NEXT
+[in:create_reminder [sl:todo my dentist visit ] [sl:person_reminded ] ]	(reminder_test_0_00002042.wav_1-reminder_test_0_00002042.wav)
+[in:update_reminder_todo [sl:person_reminded my ] [sl:todo dentist visit ] ]	(reminder_test_0_00002042.wav_1-reminder_test_0_00002042.wav)
+NEXT
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:ordinal first ] [sl:person_reminded i ] [sl:date_time for today ] ]	(reminder_test_0_00002167.wav_1-reminder_test_0_00002167.wav)
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:person_reminded me ] [sl:ordinal first ] [sl:date_time for today ] ]	(reminder_test_0_00002167.wav_1-reminder_test_0_00002167.wav)
+NEXT
+[in:update_reminder [sl:person_reminded my ] [sl:todo work ] [sl:date_time in the morning ] ]	(reminder_test_0_00002299.wav_1-reminder_test_0_00002299.wav)
+[in:update_reminder_date_time [sl:person_reminded my ] [sl:todo work ] [sl:date_time_new in the morning ] ]	(reminder_test_0_00002299.wav_1-reminder_test_0_00002299.wav)
+NEXT
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:person_reminded me ] [sl:date_time past ] [sl:todo my dog ] ]	(reminder_test_0_00002502.wav_1-reminder_test_0_00002502.wav)
+[in:get_reminder [sl:method_retrieval_reminder show ] [sl:person_reminded me ] [sl:ordinal past ] [sl:todo my dog ] ]	(reminder_test_0_00002502.wav_1-reminder_test_0_00002502.wav)
+NEXT
+[in:update_reminder_todo [sl:todo_new charcoal pills ] [sl:todo shopping ] ]	(reminder_test_0_00002604.wav_1-reminder_test_0_00002604.wav)
+[in:update_reminder_todo [sl:todo_new charcoal pills ] [sl:todo_new shopping ] ]	(reminder_test_0_00002604.wav_1-reminder_test_0_00002604.wav)
+NEXT
+[in:create_reminder [sl:person_reminded i ] [sl:todo get school supplies ] [sl:date_time today ] ]	(reminder_test_0_00002868.wav_1-reminder_test_0_00002868.wav)
+[in:update_reminder_todo [sl:person_reminded i ] [sl:todo_new get school supplies ] [sl:date_time today ] ]	(reminder_test_0_00002868.wav_1-reminder_test_0_00002868.wav)
+NEXT
+[in:update_reminder_todo [sl:date_time sunday ] [sl:todo_new bring music ] ]	(reminder_test_0_00002876.wav_1-reminder_test_0_00002876.wav)
+[in:update_reminder [sl:date_time sunday ] [sl:todo bring music ] ]	(reminder_test_0_00002876.wav_1-reminder_test_0_00002876.wav)
+NEXT
+[in:update_reminder_todo [sl:todo dinner ] [sl:person_reminded i ] [sl:todo_new lunch ] ]	(reminder_test_0_00005714.wav_1-reminder_test_0_00005714.wav)
+[in:update_reminder [sl:todo dinner ] [sl:person_reminded i ] [sl:todo lunch ] ]	(reminder_test_0_00005714.wav_1-reminder_test_0_00005714.wav)
+NEXT
+[in:add_time_timer [sl:date_time five minutes ] ]	(timer_test_00002296.wav_1-timer_test_00002296.wav)
+[in:snooze_alarm [sl:duration five minutes ] ]	(timer_test_00002296.wav_1-timer_test_00002296.wav)
+NEXT
+[in:restart_timer [sl:timer_name workout ] ]	(timer_test_00004099.wav_1-timer_test_00004099.wav)
+[in:restart_timer [sl:method_timer workout ] ]	(timer_test_00004099.wav_1-timer_test_00004099.wav)
+NEXT
+[in:restart_timer [sl:timer_name workout ] ]	(timer_test_0_00004101.wav_1-timer_test_0_00004101.wav)
+[in:replay_music [sl:music_type workout ] ]	(timer_test_0_00004101.wav_1-timer_test_0_00004101.wav)
+NEXT
+[in:get_weather [sl:weather_attribute icy ] ]	(weather_test_00000731.wav_1-weather_test_00000731.wav)
+[in:get_info_road_condition [sl:road_condition icy ] ]	(weather_test_00000731.wav_1-weather_test_00000731.wav)
+NEXT
+[in:get_weather [sl:weather_attribute ice ] ]	(weather_test_00000739.wav_1-weather_test_00000739.wav)
+[in:get_info_road_condition [sl:road_condition ice ] ]	(weather_test_00000739.wav_1-weather_test_00000739.wav)
+NEXT
+[in:unsupported_weather [sl:weather_attribute pollen ] [sl:date_time today ] ]	(weather_test_00000829.wav_1-weather_test_00000829.wav)
+[in:get_weather [sl:location pollen ] [sl:date_time today ] ]	(weather_test_00000829.wav_1-weather_test_00000829.wav)
+NEXT
+[in:get_weather [sl:weather_attribute icy ] ]	(weather_test_00001082.wav_1-weather_test_00001082.wav)
+[in:get_info_road_condition [sl:road_condition icy ] ]	(weather_test_00001082.wav_1-weather_test_00001082.wav)
+NEXT
+[in:get_weather [sl:location seven six one two oh ] ]	(weather_test_00001240.wav_1-weather_test_00001240.wav)
+[in:get_weather [sl:date_time seven six one two oh ] ]	(weather_test_00001240.wav_1-weather_test_00001240.wav)
+NEXT
+[in:get_weather [sl:weather_attribute icy ] ]	(weather_test_00001728.wav_1-weather_test_00001728.wav)
+[in:get_info_road_condition [sl:road_condition icy ] ]	(weather_test_00001728.wav_1-weather_test_00001728.wav)
+NEXT
+[in:get_weather [sl:weather_temperature_unit fahrenheit ] [sl:date_time tomorrow ] ]	(weather_test_00003111.wav_1-weather_test_00003111.wav)
+[in:get_weather [sl:weather_attribute fahrenheit ] [sl:date_time tomorrow ] ]	(weather_test_00003111.wav_1-weather_test_00003111.wav)
+NEXT
+[in:get_weather [sl:weather_attribute ice ] ]	(weather_test_00003130.wav_1-weather_test_00003130.wav)
+[in:get_info_road_condition [sl:road_condition ice ] ]	(weather_test_00003130.wav_1-weather_test_00003130.wav)
+NEXT
+[in:get_weather [sl:weather_attribute ice ] ]	(weather_test_00003192.wav_1-weather_test_00003192.wav)
+[in:get_info_road_condition [sl:road_condition ice ] ]	(weather_test_00003192.wav_1-weather_test_00003192.wav)
+NEXT
+[in:unsupported_weather [sl:date_time spring ] ]	(weather_test_00004328.wav_1-weather_test_00004328.wav)
+[in:get_weather [sl:weather_attribute spring ] ]	(weather_test_00004328.wav_1-weather_test_00004328.wav)
+NEXT
+[in:get_weather [sl:weather_attribute black ice ] [sl:date_time tonight ] ]	(weather_test_00005206.wav_1-weather_test_00005206.wav)
+[in:get_info_road_condition [sl:road_condition black ice ] [sl:date_time tonight ] ]	(weather_test_00005206.wav_1-weather_test_00005206.wav)
+NEXT
+[in:get_weather [sl:weather_attribute icy ] ]	(weather_test_0_00000731.wav_1-weather_test_0_00000731.wav)
+[in:get_info_road_condition [sl:road_condition icy ] ]	(weather_test_0_00000731.wav_1-weather_test_0_00000731.wav)
+NEXT
+[in:get_weather [sl:weather_attribute icy ] ]	(weather_test_0_00001082.wav_1-weather_test_0_00001082.wav)
+[in:get_info_road_condition [sl:road_condition icy ] ]	(weather_test_0_00001082.wav_1-weather_test_0_00001082.wav)
+NEXT
+[in:get_weather [sl:location seven six one two oh ] ]	(weather_test_0_00001240.wav_1-weather_test_0_00001240.wav)
+[in:get_weather [sl:date_time seven six one two oh ] ]	(weather_test_0_00001240.wav_1-weather_test_0_00001240.wav)
+NEXT
+[in:get_weather [sl:weather_attribute freeze ] [sl:date_time tonight ] ]	(weather_test_0_00001354.wav_1-weather_test_0_00001354.wav)
+[in:get_info_road_condition [sl:road_condition freeze ] [sl:date_time tonight ] ]	(weather_test_0_00001354.wav_1-weather_test_0_00001354.wav)
+NEXT
+[in:get_weather [sl:weather_temperature_unit fahrenheit ] [sl:date_time tomorrow ] ]	(weather_test_0_00003111.wav_1-weather_test_0_00003111.wav)
+[in:get_weather [sl:weather_attribute fahrenheit ] [sl:date_time tomorrow ] ]	(weather_test_0_00003111.wav_1-weather_test_0_00003111.wav)
+NEXT
+[in:get_weather [sl:weather_attribute ice ] ]	(weather_test_0_00003130.wav_1-weather_test_0_00003130.wav)
+[in:get_info_road_condition [sl:road_condition ice ] ]	(weather_test_0_00003130.wav_1-weather_test_0_00003130.wav)
+NEXT
+[in:get_weather [sl:weather_attribute ice ] ]	(weather_test_0_00003192.wav_1-weather_test_0_00003192.wav)
+[in:get_info_road_condition [sl:road_condition ice ] ]	(weather_test_0_00003192.wav_1-weather_test_0_00003192.wav)
+NEXT
+[in:unsupported_weather [sl:date_time spring ] ]	(weather_test_0_00004328.wav_1-weather_test_0_00004328.wav)
+[in:get_weather [sl:weather_attribute spring ] ]	(weather_test_0_00004328.wav_1-weather_test_0_00004328.wav)
+NEXT
+[in:get_weather [sl:weather_temperature_unit degrees ] [sl:location norway ] ]	(weather_test_0_00005090.wav_1-weather_test_0_00005090.wav)
+[in:get_weather [sl:location degrees ] [sl:location norway ] ]	(weather_test_0_00005090.wav_1-weather_test_0_00005090.wav)
+NEXT
+[in:get_weather [sl:weather_attribute black ice ] [sl:date_time tonight ] ]	(weather_test_0_00005206.wav_1-weather_test_0_00005206.wav)
+[in:get_info_road_condition [sl:road_condition black ice ] [sl:date_time tonight ] ]	(weather_test_0_00005206.wav_1-weather_test_0_00005206.wav)
+NEXT

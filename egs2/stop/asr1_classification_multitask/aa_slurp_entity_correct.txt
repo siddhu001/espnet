@@ -1,0 +1,2799 @@
+[{'type': 'event_name', 'filler': 'movie'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'movie'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'appointments'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+PRED
+[{'type': 'event_name', 'filler': 'appointments'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+PRED
+[{'type': 'game_name', 'filler': 'super mario'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'leonardo'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[{'type': 'date', 'filler': 'two days prior'}]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[{'type': 'date', 'filler': 'two days prior'}]
+PRED
+[{'type': 'media_type', 'filler': 'insta'}]
+[{'type': 'media_type', 'filler': 'instagram'}]
+PRED
+[{'type': 'media_type', 'filler': 'insta'}]
+[{'type': 'media_type', 'filler': 'instagram'}]
+PRED
+[{'type': 'media_type', 'filler': 'insta'}]
+[{'type': 'media_type', 'filler': 'instagram'}]
+PRED
+[{'type': 'event_name', 'filler': 'marathon'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'marathon'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'marathon'}]
+[]
+PRED
+[{'type': 'movie_name', 'filler': 'kung fu panda three'}]
+[{'type': 'app_name', 'filler': 'pandora'}]
+PRED
+[{'type': 'person', 'filler': 'madison'}]
+[{'type': 'person', 'filler': 'president madison'}]
+PRED
+[{'type': 'person', 'filler': 'madison'}]
+[{'type': 'person', 'filler': 'president madison'}]
+PRED
+[{'type': 'food_type', 'filler': 'oatmeal cookies'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'oatmeal cookies'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'contact list'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'six pm'}]
+[{'type': 'event_name', 'filler': 'take out the garbage'}, {'type': 'time', 'filler': 'six pm'}]
+PRED
+[{'type': 'time', 'filler': 'six pm'}]
+[{'type': 'event_name', 'filler': 'take out the garbage'}, {'type': 'time', 'filler': 'six pm'}]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[{'type': 'joke_type', 'filler': 'final'}]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'world news'}]
+[{'type': 'place_name', 'filler': 'world'}]
+PRED
+[{'type': 'music_descriptor', 'filler': 'upbeat'}]
+[]
+PRED
+[{'type': 'device_type', 'filler': 'vacuum cleaner'}]
+[{'type': 'event_name', 'filler': 'vacuum'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'vacuum convertor'}]
+PRED
+[]
+[{'type': 'date', 'filler': 'tuesday'}]
+PRED
+[{'type': 'list_name', 'filler': 'things i need to buy'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'things i need to buy'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'things i need to buy'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'half an hour'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'stock market'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'stock market'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'brunch'}, {'type': 'person', 'filler': 'jennifer'}]
+[{'type': 'meal_type', 'filler': 'brunch'}, {'type': 'person', 'filler': 'jennifer'}]
+PRED
+[{'type': 'date', 'filler': 'thirteenth'}, {'type': 'meal_type', 'filler': 'lunch'}]
+[{'type': 'date', 'filler': 'thirteenth'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'person', 'filler': 'dale'}]
+PRED
+[{'type': 'date', 'filler': 'thirteenth'}, {'type': 'meal_type', 'filler': 'lunch'}]
+[{'type': 'date', 'filler': 'thirteenth'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'person', 'filler': 'dale'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'date', 'filler': 'this weekend'}]
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'event_name', 'filler': 'the fair'}]
+PRED
+[{'type': 'date', 'filler': 'this weekend'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+[{'type': 'business_name', 'filler': 'shibaru sushi'}, {'type': 'order_type', 'filler': 'deliver'}]
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+[{'type': 'food_type', 'filler': 'shibaru sushi'}]
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+[{'type': 'food_type', 'filler': 'shibaru sushi'}]
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+[{'type': 'food_type', 'filler': 'shibaru sushi'}]
+PRED
+[{'type': 'business_name', 'filler': 'shibaru sushi'}]
+[{'type': 'food_type', 'filler': 'shibaru sushi'}]
+PRED
+[{'type': 'podcast_name', 'filler': 'young turks'}]
+[{'type': 'podcast_name', 'filler': 'diana turks'}]
+PRED
+[{'type': 'place_name', 'filler': 'california'}]
+[{'type': 'news_topic', 'filler': 'the dam breaking in california'}]
+PRED
+[]
+[{'type': 'business_name', 'filler': 'dominoes'}]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'darkness'}]
+PRED
+[]
+[{'type': 'person', 'filler': 'david bowie'}]
+PRED
+[{'type': 'definition_word', 'filler': 'sphere'}]
+[{'type': 'definition_word', 'filler': 'sophies'}]
+PRED
+[{'type': 'definition_word', 'filler': 'sphere'}]
+[{'type': 'definition_word', 'filler': 'fuel'}]
+PRED
+[{'type': 'event_name', 'filler': 'appointments'}]
+[{'type': 'event_name', 'filler': 'appointment'}]
+PRED
+[{'type': 'business_type', 'filler': 'shops'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'shops'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'the twenty third of this month'}]
+[{'type': 'date', 'filler': 'twenty third of this month'}]
+PRED
+[{'type': 'date', 'filler': 'the twenty third of this month'}]
+[{'type': 'date', 'filler': 'twenty third of this month'}]
+PRED
+[{'type': 'date', 'filler': 'the twenty third of this month'}]
+[{'type': 'date', 'filler': 'twenty third of this month'}]
+PRED
+[{'type': 'radio_name', 'filler': 'classic hits'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'classic hits'}]
+[{'type': 'music_genre', 'filler': 'classic'}]
+PRED
+[{'type': 'house_place', 'filler': 'bedroom'}]
+[{'type': 'house_place', 'filler': 'bathroom'}]
+PRED
+[{'type': 'coffee_type', 'filler': 'usual'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'veg pulav'}]
+[{'type': 'food_type', 'filler': 'vegan pull up'}]
+PRED
+[{'type': 'place_name', 'filler': 'downtown'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'downtown'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'orange'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'station gx'}]
+[{'type': 'radio_name', 'filler': 'gx'}]
+PRED
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+[]
+PRED
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+[]
+PRED
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+[]
+PRED
+[{'type': 'coffee_type', 'filler': 'without sweetener'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'pav bhaji'}]
+[{'type': 'food_type', 'filler': 'bhaji'}]
+PRED
+[{'type': 'food_type', 'filler': 'pav bhaji'}]
+[{'type': 'food_type', 'filler': 'bhaji'}]
+PRED
+[{'type': 'game_name', 'filler': 'chess'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'chess'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'chess'}]
+[{'type': 'game_name', 'filler': 'cheese app'}]
+PRED
+[{'type': 'business_name', 'filler': 'italian cafe'}]
+[{'type': 'business_name', 'filler': 'italian cafe'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'meal_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'business_name', 'filler': 'italian cafe'}]
+[{'type': 'business_name', 'filler': 'italian cafe'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'meal_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'business_name', 'filler': 'italian cafe'}]
+[{'type': 'business_name', 'filler': 'italian cafe'}, {'type': 'meal_type', 'filler': 'lunch'}, {'type': 'meal_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'saturday'}]
+PRED
+[{'type': 'food_type', 'filler': 'spicy'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'spicy'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'spicy'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'floor'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'floor'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'floor'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'floor'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'shed'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'shed'}]
+[]
+PRED
+[{'type': 'artist_name', 'filler': 'led zeppelin'}]
+[]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}, {'type': 'timeofday', 'filler': 'tonight'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'mexico'}]
+[{'type': 'currency_name', 'filler': 'mexican'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'business_name', 'filler': 'mcdonalds'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'business_name', 'filler': 'mcdonalds'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'business_name', 'filler': 'mcdonalds'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[{'type': 'business_name', 'filler': 'mcdonalds'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'time', 'filler': 'eight am'}]
+[{'type': 'time', 'filler': 'five am'}]
+PRED
+[{'type': 'currency_name', 'filler': 'g. b. p.'}, {'type': 'currency_name', 'filler': 'u. s. d.'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'g. b. p.'}, {'type': 'currency_name', 'filler': 'u. s. d.'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'g. b. p.'}, {'type': 'currency_name', 'filler': 'u. s. d.'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'g. b. p.'}, {'type': 'currency_name', 'filler': 'u. s. d.'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'jazz'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'jazz'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'jazz'}]
+[]
+PRED
+[{'type': 'podcast_name', 'filler': 'sports podcast'}]
+[{'type': 'podcast_name', 'filler': 'sports'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'time', 'filler': 'nine am'}]
+[{'type': 'time', 'filler': 'nine am'}]
+PRED
+[{'type': 'music_genre', 'filler': 'smooth jazz'}]
+[]
+PRED
+[{'type': 'playlist_name', 'filler': 'wacky'}]
+[{'type': 'app_name', 'filler': 'gana'}]
+PRED
+[{'type': 'news_topic', 'filler': 'terrorism'}]
+[{'type': 'news_topic', 'filler': 'terrorist'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'pda'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'pda'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'pda'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'pda'}]
+PRED
+[{'type': 'food_type', 'filler': 'steak'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'circus'}, {'type': 'place_name', 'filler': 'city'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'circus'}, {'type': 'place_name', 'filler': 'city'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'dollar'}, {'type': 'currency_name', 'filler': 'pounds'}]
+[{'type': 'currency_name', 'filler': 'dollar'}, {'type': 'currency_name', 'filler': 'pound'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'object'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'supermarket'}, {'type': 'food_type', 'filler': 'gluten free bread'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'bolshoi theatre'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'bolshoi theatre'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'bolshoi theatre'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'layfayette st and canal'}]
+[{'type': 'place_name', 'filler': 'lafette street'}, {'type': 'place_name', 'filler': 'canal'}]
+PRED
+[{'type': 'place_name', 'filler': 'layfayette st and canal'}]
+[{'type': 'place_name', 'filler': 'lafette street'}, {'type': 'place_name', 'filler': 'canal'}]
+PRED
+[{'type': 'list_name', 'filler': 'shopping'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'clash of clans'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'wayne gretszky'}]
+[{'type': 'person', 'filler': 'wayne gretschke'}]
+PRED
+[{'type': 'person', 'filler': 'wayne gretszky'}]
+[{'type': 'person', 'filler': 'willie gretzky'}]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'news_topic', 'filler': 'premier league'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'news_topic', 'filler': 'premier league'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'furniture store'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'california'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'california'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'california'}]
+[]
+PRED
+[]
+[{'type': 'color_type', 'filler': 'dim'}]
+PRED
+[]
+[{'type': 'color_type', 'filler': 'dim'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'rock songs having good rating'}]
+[{'type': 'podcast_name', 'filler': 'rock songs'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'rock songs having good rating'}]
+[{'type': 'podcast_name', 'filler': 'rock songs'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'rock songs having good rating'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'rock songs having good rating'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'converse shoes'}]
+[{'type': 'definition_word', 'filler': 'convert shoes'}]
+PRED
+[]
+[{'type': 'person', 'filler': "leonardo dicaprio's"}]
+PRED
+[]
+[{'type': 'person', 'filler': "leonardo dicaprio's"}]
+PRED
+[]
+[{'type': 'person', 'filler': "leonardo capri's"}]
+PRED
+[]
+[{'type': 'timeofday', 'filler': 'afternoon'}]
+PRED
+[]
+[{'type': 'timeofday', 'filler': 'afternoon'}]
+PRED
+[]
+[{'type': 'timeofday', 'filler': 'afternoon'}]
+PRED
+[{'type': 'business_name', 'filler': 'twitter'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+PRED
+[{'type': 'business_name', 'filler': 'twitter'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'twitter'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+PRED
+[{'type': 'business_name', 'filler': 'twitter'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+PRED
+[{'type': 'business_name', 'filler': 'twitter'}]
+[{'type': 'media_type', 'filler': 'twitter'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'open the sun roof'}]
+[{'type': 'weather_descriptor', 'filler': 'sunroof'}]
+PRED
+[{'type': 'person', 'filler': 'clint eastwood'}]
+[{'type': 'person', 'filler': 'selena gomez'}]
+PRED
+[{'type': 'movie_name', 'filler': 'swat'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'pop'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'next month'}, {'type': 'event_name', 'filler': 'oil changed'}]
+[{'type': 'date', 'filler': 'next month'}, {'type': 'event_name', 'filler': 'get my oil changed'}]
+PRED
+[{'type': 'food_type', 'filler': 'eggs'}, {'type': 'food_type', 'filler': 'omelette'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'shuffle'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'shuffle'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'rest of the day'}]
+[{'type': 'time', 'filler': 'rest of the day'}, {'type': 'weather_descriptor', 'filler': 'sun is shining bright'}]
+PRED
+[{'type': 'time', 'filler': 'rest of the day'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'rest of the day'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'environmental'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[{'type': 'media_type', 'filler': 'book'}, {'type': 'player_setting', 'filler': 'pause'}]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[{'type': 'food_type', 'filler': 'pasta book'}]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'pause'}]
+[]
+PRED
+[{'type': 'artist_name', 'filler': 'major lazer'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'us'}]
+[]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'game_name', 'filler': 'nine plus two'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'spotify'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'spotify'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'spotify'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast episode'}]
+[]
+PRED
+[]
+[{'type': 'radio_name', 'filler': 'howard stern'}]
+PRED
+[]
+[{'type': 'radio_name', 'filler': 'howard stern'}]
+PRED
+[]
+[{'type': 'radio_name', 'filler': 'howard stern'}]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'breaking news'}]
+PRED
+[{'type': 'definition_word', 'filler': 'mango'}]
+[{'type': 'definition_word', 'filler': 'mangrove'}]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'j. k. rowling'}]
+[{'type': 'person', 'filler': 'jk rolling'}]
+PRED
+[{'type': 'person', 'filler': 'j. k. rowling'}]
+[{'type': 'person', 'filler': 'jlo'}]
+PRED
+[{'type': 'person', 'filler': 'j. k. rowling'}]
+[{'type': 'person', 'filler': 'jk roger'}]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'vegan'}]
+PRED
+[{'type': 'place_name', 'filler': 'madison st'}]
+[{'type': 'place_name', 'filler': 'madison'}]
+PRED
+[{'type': 'date', 'filler': 'this week'}]
+[{'type': 'date', 'filler': 'this week'}, {'type': 'timeofday', 'filler': 'night'}]
+PRED
+[{'type': 'device_type', 'filler': 'coffee machine'}, {'type': 'time', 'filler': 'seven am'}]
+[{'type': 'time', 'filler': 'seven am'}]
+PRED
+[{'type': 'device_type', 'filler': 'coffee machine'}, {'type': 'time', 'filler': 'seven am'}]
+[{'type': 'time', 'filler': 'seven am'}]
+PRED
+[{'type': 'person', 'filler': 'tom'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'saturday'}, {'type': 'timeofday', 'filler': 'night'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'cnn radio'}]
+[{'type': 'radio_name', 'filler': 'cnn'}]
+PRED
+[{'type': 'radio_name', 'filler': 'cnn radio'}]
+[{'type': 'radio_name', 'filler': 'cnn'}]
+PRED
+[{'type': 'food_type', 'filler': 'chicken noodle soup'}]
+[{'type': 'food_type', 'filler': 'homemade chicken noodle soup'}]
+PRED
+[{'type': 'food_type', 'filler': 'chicken noodle soup'}]
+[{'type': 'food_type', 'filler': 'homemade chicken noodle soup'}]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[]
+[{'type': 'audiobook_name', 'filler': 'music lights'}, {'type': 'player_setting', 'filler': 'continue'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipsterhood'}]
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipster hood'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipsterhood'}]
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}, {'type': 'podcast_name', 'filler': 'hipster hood'}]
+PRED
+[{'type': 'house_place', 'filler': 'overhead'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'chinese'}, {'type': 'order_type', 'filler': 'takeout'}]
+[{'type': 'food_type', 'filler': 'chinese'}]
+PRED
+[{'type': 'food_type', 'filler': 'chinese'}, {'type': 'order_type', 'filler': 'takeout'}]
+[{'type': 'food_type', 'filler': 'chinese'}]
+PRED
+[{'type': 'radio_name', 'filler': 'xmtune'}]
+[]
+PRED
+[{'type': 'email_folder', 'filler': 'inbox'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'groceries'}]
+[{'type': 'list_name', 'filler': 'grocery'}]
+PRED
+[{'type': 'person', 'filler': 'kellogg'}]
+[{'type': 'person', 'filler': 'kelly'}]
+PRED
+[{'type': 'date', 'filler': 'this month'}]
+[]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'itunes'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'itunes'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'itunes'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'downtown'}, {'type': 'timeofday', 'filler': 'tonight'}]
+[{'type': 'timeofday', 'filler': 'tonight'}]
+PRED
+[{'type': 'place_name', 'filler': 'downtown'}, {'type': 'timeofday', 'filler': 'tonight'}]
+[{'type': 'timeofday', 'filler': 'tonight'}]
+PRED
+[{'type': 'person', 'filler': 'emma watson'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'politics'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next show'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'jaipur'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'jaipur'}]
+[{'type': 'person', 'filler': 'jaipur'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'pizza'}, {'type': 'order_type', 'filler': 'delivery'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'food_type', 'filler': 'pizza'}, {'type': 'order_type', 'filler': 'delivery'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'transport_type', 'filler': 'train'}]
+[]
+PRED
+[{'type': 'ingredient', 'filler': 'saffron'}]
+[{'type': 'food_type', 'filler': 'saffron'}]
+PRED
+[{'type': 'ingredient', 'filler': 'saffron'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'thanksgiving turkey'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funny'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'amazon'}]
+[{'type': 'business_name', 'filler': 'amazon'}]
+PRED
+[{'type': 'business_name', 'filler': 'comcastcom'}]
+[{'type': 'email_address', 'filler': 'comcast dot com'}]
+PRED
+[{'type': 'business_name', 'filler': 'comcastcom'}]
+[{'type': 'email_address', 'filler': 'comcastcom'}]
+PRED
+[{'type': 'color_type', 'filler': 'pink'}]
+[{'type': 'person', 'filler': 'obie'}]
+PRED
+[{'type': 'color_type', 'filler': 'pink'}]
+[]
+PRED
+[{'type': 'color_type', 'filler': 'pink'}]
+[]
+PRED
+[]
+[{'type': 'time', 'filler': 'hour'}]
+PRED
+[{'type': 'media_type', 'filler': 'cnn'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'bbc'}]
+[{'type': 'radio_name', 'filler': 'bbc radio'}]
+PRED
+[{'type': 'radio_name', 'filler': 'bbc'}]
+[{'type': 'radio_name', 'filler': 'bbc radio'}]
+PRED
+[{'type': 'radio_name', 'filler': 'bbc'}]
+[{'type': 'radio_name', 'filler': 'bbc radio'}]
+PRED
+[{'type': 'radio_name', 'filler': 'bbc'}]
+[{'type': 'radio_name', 'filler': 'star bbc'}]
+PRED
+[{'type': 'radio_name', 'filler': 'bbc'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'donald trump'}]
+[{'type': 'person', 'filler': 'don trump'}]
+PRED
+[{'type': 'food_type', 'filler': 'lamb pathia'}]
+[{'type': 'food_type', 'filler': 'lamb biriyani'}]
+PRED
+[{'type': 'time', 'filler': 'last ten minutes'}]
+[{'type': 'time', 'filler': 'ten minutes'}]
+PRED
+[{'type': 'time', 'filler': 'last ten minutes'}]
+[{'type': 'time', 'filler': 'ten minutes'}]
+PRED
+[{'type': 'time', 'filler': 'last ten minutes'}]
+[{'type': 'time', 'filler': 'ten minutes'}]
+PRED
+[{'type': 'house_place', 'filler': 'hallway'}]
+[{'type': 'place_name', 'filler': 'hallway'}]
+PRED
+[{'type': 'house_place', 'filler': 'hallway'}]
+[{'type': 'place_name', 'filler': 'hallway'}]
+PRED
+[{'type': 'house_place', 'filler': 'hallway'}]
+[{'type': 'place_name', 'filler': 'hallway'}]
+PRED
+[{'type': 'house_place', 'filler': 'hallway'}]
+[{'type': 'place_name', 'filler': 'hallway'}]
+PRED
+[{'type': 'currency_name', 'filler': 'us'}, {'type': 'currency_name', 'filler': 'mexico'}]
+[{'type': 'place_name', 'filler': 'us'}, {'type': 'place_name', 'filler': 'mexico'}]
+PRED
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+[{'type': 'date', 'filler': 'year one thousand nine hundred and ninety two'}, {'type': 'music_genre', 'filler': 'old'}]
+PRED
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'one thousand nine hundred and ninety'}, {'type': 'date', 'filler': 'two thousand'}]
+[]
+PRED
+[]
+[{'type': 'weather_descriptor', 'filler': 'cold'}]
+PRED
+[{'type': 'song_name', 'filler': 'jingle bells'}]
+[{'type': 'game_name', 'filler': 'jingle bells'}]
+PRED
+[{'type': 'song_name', 'filler': 'jingle bells'}]
+[{'type': 'game_name', 'filler': 'jiggle bells'}]
+PRED
+[{'type': 'date', 'filler': 'fifteenth march'}]
+[{'type': 'date', 'filler': 'third fifteen march'}]
+PRED
+[{'type': 'place_name', 'filler': 'canada'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'india'}, {'type': 'place_name', 'filler': 'china'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'india'}, {'type': 'place_name', 'filler': 'china'}]
+[]
+PRED
+[{'type': 'podcast_name', 'filler': 'reason'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'water my plants'}, {'type': 'general_frequency', 'filler': 'every tuesday thursday and saturday'}]
+[{'type': 'date', 'filler': 'every tuesday thursday and saturday'}]
+PRED
+[{'type': 'event_name', 'filler': 'water my plants'}, {'type': 'general_frequency', 'filler': 'every tuesday thursday and saturday'}]
+[{'type': 'date', 'filler': 'every tuesday thursday and saturday'}]
+PRED
+[{'type': 'place_name', 'filler': 'delhi'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'paradise'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'music_descriptor', 'filler': 'good song'}]
+[]
+PRED
+[{'type': 'music_descriptor', 'filler': 'good song'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'weather_descriptor', 'filler': 'nice weather'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'weather_descriptor', 'filler': 'nice weather'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'weather_descriptor', 'filler': 'nice weather'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}, {'type': 'weather_descriptor', 'filler': 'nice weather'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'radio_name', 'filler': 'hot one hundred and five'}]
+[{'type': 'radio_name', 'filler': 'hot one oh five'}]
+PRED
+[{'type': 'time', 'filler': 'the moment'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'the moment'}]
+[]
+PRED
+[{'type': 'time_zone', 'filler': 'g. m. t.'}, {'type': 'time_zone', 'filler': 'est'}]
+[{'type': 'time_zone', 'filler': 'gmt'}, {'type': 'time_zone', 'filler': 'est'}]
+PRED
+[{'type': 'playlist_name', 'filler': 'jogging playlist'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'concert'}]
+[{'type': 'date', 'filler': 'today'}]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'concert'}]
+[{'type': 'date', 'filler': 'today'}]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'concert'}]
+[{'type': 'date', 'filler': 'today'}]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'concert'}]
+[{'type': 'date', 'filler': 'today'}]
+PRED
+[{'type': 'time', 'filler': 'another hour'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'another hour'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'soft cheese'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'soft cheese'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'soft cheese'}]
+[]
+PRED
+[]
+[{'type': 'person', 'filler': 'daniel'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'timeofday', 'filler': 'tonight'}]
+[{'type': 'event_name', 'filler': 'hockey games'}, {'type': 'timeofday', 'filler': 'tonight'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'degree'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'degree'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'new york'}]
+[{'type': 'place_name', 'filler': 'york'}]
+PRED
+[]
+[{'type': 'date', 'filler': "last year's"}]
+PRED
+[{'type': 'time', 'filler': 'an hour'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'megatel'}, {'type': 'date', 'filler': 'last week'}]
+[{'type': 'date', 'filler': 'last week'}, {'type': 'person', 'filler': 'megatel'}]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'musical events'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'facebook live'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook live'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook live'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook live'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook live'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'timeofday', 'filler': 'morning'}]
+[{'type': 'alarm_type', 'filler': 'morning alarm'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[]
+[{'type': 'email_folder', 'filler': 'mailbox'}]
+PRED
+[{'type': 'news_topic', 'filler': 'president trump'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'place_name', 'filler': 'usa'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}]
+[{'type': 'business_name', 'filler': 'aircel'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}]
+[{'type': 'business_name', 'filler': 'aircel'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}]
+[{'type': 'business_name', 'filler': 'airsof'}]
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}]
+[{'type': 'business_name', 'filler': 'airso'}]
+PRED
+[{'type': 'business_name', 'filler': 'aircel'}]
+[{'type': 'business_name', 'filler': 'airso'}, {'type': 'media_type', 'filler': 'tweet'}]
+PRED
+[{'type': 'artist_name', 'filler': 'rihana'}]
+[{'type': 'business_name', 'filler': 'rihanna'}]
+PRED
+[{'type': 'game_name', 'filler': 'papa pear saga'}]
+[{'type': 'game_name', 'filler': 'couple fair'}]
+PRED
+[{'type': 'definition_word', 'filler': 'sloth'}]
+[{'type': 'definition_word', 'filler': 'loss'}]
+PRED
+[{'type': 'food_type', 'filler': 'burgers'}, {'type': 'food_type', 'filler': 'coke'}]
+[]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'iphone'}]
+PRED
+[{'type': 'artist_name', 'filler': 'adele'}]
+[{'type': 'app_name', 'filler': 'pandora'}, {'type': 'radio_name', 'filler': 'adele'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'list_name', 'filler': 'to do'}]
+PRED
+[{'type': 'person', 'filler': 'mary s.'}]
+[{'type': 'person', 'filler': "mary's"}]
+PRED
+[{'type': 'business_type', 'filler': 'pizza places'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'business_type', 'filler': 'pizza places'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'business_type', 'filler': 'pizza places'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'business_type', 'filler': 'pizza places'}]
+[{'type': 'food_type', 'filler': 'pizza'}]
+PRED
+[{'type': 'music_genre', 'filler': 'retro'}]
+[{'type': 'music_genre', 'filler': 'metro'}]
+PRED
+[{'type': 'music_genre', 'filler': 'retro'}]
+[]
+PRED
+[{'type': 'transport_type', 'filler': 'train'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'walmart'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'walmart'}]
+[{'type': 'business_type', 'filler': 'walmart'}]
+PRED
+[{'type': 'business_name', 'filler': 'walmart'}]
+[{'type': 'business_type', 'filler': 'walmart'}]
+PRED
+[{'type': 'color_type', 'filler': 'dark'}, {'type': 'house_place', 'filler': 'house'}]
+[{'type': 'color_type', 'filler': 'dark'}]
+PRED
+[{'type': 'color_type', 'filler': 'dark'}, {'type': 'house_place', 'filler': 'house'}]
+[{'type': 'color_type', 'filler': 'dark'}]
+PRED
+[{'type': 'general_frequency', 'filler': 'every year'}]
+[]
+PRED
+[{'type': 'general_frequency', 'filler': 'every year'}]
+[]
+PRED
+[{'type': 'device_type', 'filler': 'vacuum'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'cnn'}]
+[{'type': 'media_type', 'filler': 'cnn website'}]
+PRED
+[{'type': 'food_type', 'filler': 'poor boy sandwich'}]
+[{'type': 'food_type', 'filler': 'pool boy sandwich'}]
+PRED
+[{'type': 'food_type', 'filler': 'poor boy sandwich'}]
+[{'type': 'food_type', 'filler': 'pool boy sandwich'}]
+PRED
+[{'type': 'list_name', 'filler': 'favorite albums'}]
+[{'type': 'list_name', 'filler': 'favorite album'}]
+PRED
+[{'type': 'device_type', 'filler': 'smart socket'}]
+[]
+PRED
+[{'type': 'artist_name', 'filler': 'mf doom'}]
+[{'type': 'song_name', 'filler': 'mf doom anything'}]
+PRED
+[{'type': 'artist_name', 'filler': 'mf doom'}]
+[{'type': 'artist_name', 'filler': 'mfdoom'}]
+PRED
+[{'type': 'place_name', 'filler': 'theater'}]
+[{'type': 'place_name', 'filler': 'theatre'}]
+PRED
+[{'type': 'place_name', 'filler': 'delhi'}]
+[]
+PRED
+[]
+[{'type': 'business_name', 'filler': 'service a'}]
+PRED
+[]
+[{'type': 'timeofday', 'filler': 'noon'}]
+PRED
+[]
+[{'type': 'business_type', 'filler': 'shops'}]
+PRED
+[]
+[{'type': 'business_type', 'filler': 'shops'}]
+PRED
+[]
+[{'type': 'business_type', 'filler': 'shops'}]
+PRED
+[]
+[{'type': 'date', 'filler': 'august'}]
+PRED
+[{'type': 'definition_word', 'filler': 'pontificate'}]
+[{'type': 'definition_word', 'filler': 'the world pontificate'}]
+PRED
+[{'type': 'definition_word', 'filler': 'pontificate'}]
+[{'type': 'definition_word', 'filler': 'world politics'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'bill and malinda'}]
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'bill'}, {'type': 'person', 'filler': 'melinda'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'bill and malinda'}]
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'bill'}, {'type': 'person', 'filler': 'melinda'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'diet'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'diet'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'steak'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'umbrellas'}]
+[{'type': 'weather_descriptor', 'filler': 'umbrella'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'umbrellas'}]
+[{'type': 'weather_descriptor', 'filler': 'umbrella'}]
+PRED
+[{'type': 'radio_name', 'filler': 'country radio'}]
+[]
+PRED
+[]
+[{'type': 'list_name', 'filler': 'list of five'}]
+PRED
+[{'type': 'time', 'filler': 'six am'}]
+[{'type': 'time', 'filler': 'six sixty'}]
+PRED
+[{'type': 'media_type', 'filler': 'newsource'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'newsource'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'place_name', 'filler': 'world'}]
+PRED
+[]
+[{'type': 'place_name', 'filler': 'wales'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'weather_descriptor', 'filler': 'umbrella'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'weather_descriptor', 'filler': 'umbrella'}]
+PRED
+[{'type': 'date', 'filler': 'today'}, {'type': 'relation', 'filler': 'clients'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'meeting'}]
+PRED
+[{'type': 'business_name', 'filler': 'dominos'}]
+[{'type': 'business_name', 'filler': 'dominos'}, {'type': 'order_type', 'filler': 'delivery'}]
+PRED
+[{'type': 'artist_name', 'filler': 'billy joel'}]
+[{'type': 'artist_name', 'filler': 'dolly joel'}]
+PRED
+[]
+[{'type': 'change_amount', 'filler': 'by ninety decimals'}]
+PRED
+[{'type': 'event_name', 'filler': 'dance class'}]
+[{'type': 'alarm_type', 'filler': 'dance class'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next podcast'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'gallery'}]
+[{'type': 'person', 'filler': 'gary'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'boss'}, {'type': 'time', 'filler': 'one hour'}]
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'boss'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'boss'}, {'type': 'time', 'filler': 'one hour'}]
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'relation', 'filler': 'boss'}]
+PRED
+[{'type': 'list_name', 'filler': 'stationary'}]
+[{'type': 'audiobook_name', 'filler': 'pencil from stationery'}]
+PRED
+[{'type': 'general_frequency', 'filler': 'hourly'}, {'type': 'news_topic', 'filler': 'sports'}]
+[{'type': 'news_topic', 'filler': 'sports'}]
+PRED
+[{'type': 'general_frequency', 'filler': 'hourly'}, {'type': 'news_topic', 'filler': 'sports'}]
+[{'type': 'news_topic', 'filler': 'sports'}]
+PRED
+[{'type': 'place_name', 'filler': 'miami'}]
+[]
+PRED
+[{'type': 'artist_name', 'filler': 'beatles'}]
+[{'type': 'artist_name', 'filler': 'the beatles'}]
+PRED
+[{'type': 'artist_name', 'filler': 'beatles'}]
+[{'type': 'artist_name', 'filler': 'the beatles'}]
+PRED
+[{'type': 'food_type', 'filler': 'dish'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'sophia vergara'}]
+[{'type': 'person', 'filler': 'sophie verger'}]
+PRED
+[]
+[{'type': 'transport_agency', 'filler': 'mikes'}]
+PRED
+[]
+[{'type': 'artist_name', 'filler': 'marx'}]
+PRED
+[]
+[{'type': 'artist_name', 'filler': 'kid markz'}]
+PRED
+[{'type': 'time', 'filler': 'eight pm'}]
+[{'type': 'event_name', 'filler': 'laundry'}, {'type': 'time', 'filler': 'eight pm'}]
+PRED
+[{'type': 'person', 'filler': 'joe'}]
+[{'type': 'person', 'filler': 'jo'}]
+PRED
+[{'type': 'business_type', 'filler': 'theaters'}, {'type': 'place_name', 'filler': 'vicinity'}]
+[{'type': 'business_type', 'filler': 'theaters'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'tv'}]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[{'type': 'date', 'filler': 'two days ago'}]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[{'type': 'date', 'filler': 'two days ago'}]
+PRED
+[{'type': 'date', 'filler': 'two days'}]
+[{'type': 'date', 'filler': 'two days ago'}]
+PRED
+[{'type': 'person', 'filler': 'trump'}, {'type': 'place_name', 'filler': 'russia'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'person', 'filler': 'trump'}, {'type': 'place_name', 'filler': 'russia'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'music_genre', 'filler': 'indie rock'}]
+[{'type': 'music_genre', 'filler': 'indian rock'}]
+PRED
+[{'type': 'music_genre', 'filler': 'indie rock'}]
+[{'type': 'music_genre', 'filler': 'indian rock'}]
+PRED
+[]
+[{'type': 'media_type', 'filler': 'front page news'}]
+PRED
+[{'type': 'business_name', 'filler': 'giant eagle'}, {'type': 'list_name', 'filler': 'contact list'}]
+[{'type': 'person', 'filler': 'giant eagle'}]
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'deliver'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'deliver'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'order_type', 'filler': 'deliver'}]
+PRED
+[{'type': 'person', 'filler': 'mike'}, {'type': 'timeofday', 'filler': 'morning'}]
+[{'type': 'person', 'filler': 'mike'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[{'type': 'player_setting', 'filler': 'skip'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'skip'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'the capital city'}]
+[{'type': 'place_name', 'filler': 'capital city'}]
+PRED
+[{'type': 'place_name', 'filler': 'the capital city'}]
+[{'type': 'place_name', 'filler': 'capital city'}]
+PRED
+[]
+[{'type': 'music_genre', 'filler': 'disco'}]
+PRED
+[{'type': 'place_name', 'filler': 'library'}]
+[{'type': 'event_name', 'filler': 'library'}]
+PRED
+[{'type': 'event_name', 'filler': 'weather disasters'}, {'type': 'place_name', 'filler': 'america'}]
+[{'type': 'place_name', 'filler': 'america'}]
+PRED
+[{'type': 'event_name', 'filler': 'weather disasters'}, {'type': 'place_name', 'filler': 'america'}]
+[{'type': 'place_name', 'filler': 'america'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'netflix'}]
+PRED
+[]
+[{'type': 'app_name', 'filler': 'netflix'}]
+PRED
+[{'type': 'place_name', 'filler': 'home'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'crime statistics'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'crime statistics'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'work'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'bbc world'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'bbc world'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'bbc world'}]
+[{'type': 'media_type', 'filler': 'bbc world headlines'}]
+PRED
+[{'type': 'media_type', 'filler': 'bbc world'}]
+[{'type': 'media_type', 'filler': 'bbc'}]
+PRED
+[{'type': 'place_name', 'filler': 'disney land'}]
+[{'type': 'place_name', 'filler': 'disneyland'}]
+PRED
+[{'type': 'place_name', 'filler': 'disney land'}]
+[{'type': 'place_name', 'filler': 'disneyland'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'business_name', 'filler': 'google'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'rain'}]
+[{'type': 'weather_descriptor', 'filler': 'rained out'}]
+PRED
+[{'type': 'color_type', 'filler': 'red'}]
+[]
+PRED
+[{'type': 'color_type', 'filler': 'red'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'public library'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[]
+PRED
+[]
+[{'type': 'place_name', 'filler': 'the united states'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'food'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'food'}]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'i heart radio'}]
+[{'type': 'app_name', 'filler': 'iheartradio'}]
+PRED
+[{'type': 'timeofday', 'filler': 'morning'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'resin tooth filling'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[]
+PRED
+[]
+[{'type': 'person', 'filler': 'jo'}]
+PRED
+[]
+[{'type': 'person', 'filler': 'jo'}]
+PRED
+[]
+[{'type': 'person', 'filler': 'joe'}]
+PRED
+[]
+[{'type': 'person', 'filler': 'joe'}]
+PRED
+[{'type': 'date', 'filler': 'tuesday'}]
+[{'type': 'date', 'filler': 'next tuesday'}]
+PRED
+[{'type': 'event_name', 'filler': 'easter'}]
+[{'type': 'date', 'filler': 'easter'}]
+PRED
+[{'type': 'person', 'filler': 'emma watson'}]
+[{'type': 'person', 'filler': "emma watson's"}]
+PRED
+[{'type': 'person', 'filler': 'emma watson'}]
+[{'type': 'person', 'filler': "emma watson's"}]
+PRED
+[{'type': 'time', 'filler': 'eight pm'}]
+[{'type': 'event_name', 'filler': 'laundry'}, {'type': 'time', 'filler': 'eight pm'}]
+PRED
+[{'type': 'time', 'filler': 'eight pm'}]
+[{'type': 'event_name', 'filler': 'laundry'}, {'type': 'time', 'filler': 'eight pm'}]
+PRED
+[{'type': 'place_name', 'filler': 'chennai'}]
+[{'type': 'place_name', 'filler': 'chennai'}, {'type': 'transport_type', 'filler': 'trains'}]
+PRED
+[{'type': 'place_name', 'filler': 'chennai'}]
+[{'type': 'place_name', 'filler': 'chennai'}, {'type': 'transport_type', 'filler': 'train'}]
+PRED
+[{'type': 'place_name', 'filler': 'chennai'}]
+[{'type': 'place_name', 'filler': 'chennai'}, {'type': 'transport_type', 'filler': 'trains'}]
+PRED
+[{'type': 'place_name', 'filler': 'chennai'}]
+[{'type': 'place_name', 'filler': 'chennai'}, {'type': 'transport_type', 'filler': 'trains'}]
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'news_topic', 'filler': 'trump'}]
+[{'type': 'person', 'filler': 'trump'}]
+PRED
+[{'type': 'definition_word', 'filler': 'book'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'book'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'book'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'book'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'book'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'flood'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'tequila'}, {'type': 'food_type', 'filler': 'mexican'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'tequila'}, {'type': 'food_type', 'filler': 'mexican'}]
+[]
+PRED
+[{'type': 'currency_name', 'filler': 'british pound'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'supervision'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'supervision'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'rock n roll'}]
+[{'type': 'music_genre', 'filler': 'rock and roll'}]
+PRED
+[{'type': 'business_name', 'filler': 'hdfc'}]
+[{'type': 'business_name', 'filler': 'hdfs'}]
+PRED
+[{'type': 'business_name', 'filler': 'hdfc'}]
+[{'type': 'business_name', 'filler': 'hdfs'}]
+PRED
+[{'type': 'place_name', 'filler': 'japan'}, {'type': 'place_name', 'filler': 'south korea'}]
+[{'type': 'place_name', 'filler': 'japan'}, {'type': 'place_name', 'filler': 'south korea'}, {'type': 'transport_type', 'filler': 'train'}]
+PRED
+[{'type': 'definition_word', 'filler': 'timeliness'}]
+[{'type': 'definition_word', 'filler': 'timeness'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'day of the week'}, {'type': 'event_name', 'filler': 'halloween'}]
+[{'type': 'date', 'filler': 'halloween'}]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[{'type': 'date', 'filler': 'today'}]
+PRED
+[{'type': 'relation', 'filler': 'coworker'}]
+[{'type': 'relation', 'filler': 'co worker'}]
+PRED
+[{'type': 'relation', 'filler': 'coworker'}]
+[{'type': 'relation', 'filler': 'co worker'}]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'twenty percent'}]
+[]
+PRED
+[]
+[{'type': 'currency_name', 'filler': 'dollars'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english song'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english song'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english song'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english song'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english songs'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english songs'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english song'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english songs'}]
+PRED
+[{'type': 'list_name', 'filler': 'old english'}]
+[{'type': 'list_name', 'filler': 'old english songs'}]
+PRED
+[{'type': 'date', 'filler': 'month of may'}]
+[{'type': 'date', 'filler': 'the month of may'}]
+PRED
+[{'type': 'person', 'filler': 'elvis'}]
+[{'type': 'timeofday', 'filler': 'tonight'}]
+PRED
+[{'type': 'person', 'filler': 'cassie'}, {'type': 'person', 'filler': 'tom'}]
+[{'type': 'person', 'filler': 'kathy'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'next episode'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'chelsea'}]
+[{'type': 'person', 'filler': 'charles'}]
+PRED
+[{'type': 'date', 'filler': 'thursday'}, {'type': 'time', 'filler': 'seven am'}]
+[{'type': 'date', 'filler': 'thursdays'}, {'type': 'time', 'filler': 'seven am'}]
+PRED
+[{'type': 'date', 'filler': 'thursday'}, {'type': 'time', 'filler': 'seven am'}]
+[{'type': 'date', 'filler': 'thursdays'}, {'type': 'time', 'filler': 'seven am'}]
+PRED
+[{'type': 'date', 'filler': 'week'}]
+[{'type': 'time', 'filler': 'week'}]
+PRED
+[{'type': 'date', 'filler': 'week'}]
+[{'type': 'time', 'filler': 'week'}]
+PRED
+[{'type': 'media_type', 'filler': 'nytimescom'}]
+[{'type': 'media_type', 'filler': 'ny timescom'}]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'device_type', 'filler': 'robot vacuum cleaner'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'george'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'george'}]
+PRED
+[{'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'george'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'event_name', 'filler': 'meeting'}, {'type': 'person', 'filler': 'george'}]
+PRED
+[{'type': 'date', 'filler': 'day before'}, {'type': 'event_name', 'filler': 'car'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'day before'}, {'type': 'event_name', 'filler': 'car'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'amal clooney'}]
+[{'type': 'person', 'filler': 'ahmed khani'}]
+PRED
+[{'type': 'device_type', 'filler': 'wemo plug socket'}]
+[{'type': 'device_type', 'filler': 'plug socket'}]
+PRED
+[{'type': 'person', 'filler': 'barack obama'}]
+[{'type': 'person', 'filler': 'obama'}]
+PRED
+[{'type': 'place_name', 'filler': 'bazaar highway'}]
+[{'type': 'place_name', 'filler': 'azhar highway'}]
+PRED
+[{'type': 'event_name', 'filler': 'check the stew'}, {'type': 'time', 'filler': 'six'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'check the stew'}, {'type': 'time', 'filler': 'six'}]
+[{'type': 'event_name', 'filler': 'check the stew'}, {'type': 'time', 'filler': "six o'clock"}]
+PRED
+[{'type': 'person', 'filler': 'hemingway'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'heart stone card game'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'bill simmons'}]
+[{'type': 'person', 'filler': 'bill simons'}]
+PRED
+[{'type': 'email_address', 'filler': 'joe@aol dot com'}]
+[{'type': 'email_address', 'filler': 'joe@aolccom'}]
+PRED
+[{'type': 'relation', 'filler': 'wife'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'reggae'}]
+[{'type': 'artist_name', 'filler': 'reggae'}]
+PRED
+[{'type': 'business_name', 'filler': 'china on the go'}]
+[{'type': 'food_type', 'filler': 'chinese'}]
+PRED
+[{'type': 'business_name', 'filler': 'china on the go'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'pandora nineties dance party'}]
+[{'type': 'radio_name', 'filler': 'pandora nineties dance party'}]
+PRED
+[]
+[{'type': 'place_name', 'filler': 'saint louis'}, {'type': 'time', 'filler': 'thirty pm'}]
+PRED
+[{'type': 'event_name', 'filler': 'pick up my dry cleaning'}, {'type': 'time', 'filler': 'eight pm'}]
+[{'type': 'date', 'filler': 'tonight'}, {'type': 'event_name', 'filler': 'pick up my dry cleaning'}, {'type': 'time', 'filler': 'eight pm'}]
+PRED
+[{'type': 'song_name', 'filler': 'bohemian raphsody'}]
+[{'type': 'song_name', 'filler': 'bohemian rhapsody'}]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[{'type': 'personal_info', 'filler': 'email'}]
+[]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'trending'}]
+PRED
+[]
+[{'type': 'definition_word', 'filler': 'friendly'}]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}, {'type': 'time', 'filler': 'next hour'}]
+[{'type': 'music_genre', 'filler': 'rock'}]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}, {'type': 'time', 'filler': 'next hour'}]
+[{'type': 'music_genre', 'filler': 'rock'}]
+PRED
+[{'type': 'music_genre', 'filler': 'rock'}, {'type': 'time', 'filler': 'next hour'}]
+[{'type': 'music_genre', 'filler': 'rock'}]
+PRED
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'time', 'filler': 'past six hours'}]
+PRED
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'time', 'filler': 'past six hours'}]
+PRED
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'time', 'filler': 'past six hours'}]
+PRED
+[{'type': 'media_type', 'filler': 'so clean'}, {'type': 'time', 'filler': 'past six hours'}]
+[{'type': 'time', 'filler': 'past six hours'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[{'type': 'time', 'filler': 'after one'}, {'type': 'time', 'filler': 'before three pm'}]
+[{'type': 'time', 'filler': 'one and before three pm'}]
+PRED
+[{'type': 'time', 'filler': 'after one'}, {'type': 'time', 'filler': 'before three pm'}]
+[{'type': 'time', 'filler': 'one and before three pm'}]
+PRED
+[{'type': 'house_place', 'filler': 'hallway'}]
+[{'type': 'house_place', 'filler': 'hall'}]
+PRED
+[{'type': 'change_amount', 'filler': 'to maximum'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'to maximum'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'to maximum'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'to maximum'}]
+[]
+PRED
+[{'type': 'change_amount', 'filler': 'to maximum'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'december thirteenth'}]
+[{'type': 'date', 'filler': 'december fourteenth'}]
+PRED
+[{'type': 'date', 'filler': 'december thirteenth'}]
+[{'type': 'date', 'filler': 'december fourteenth'}]
+PRED
+[{'type': 'coffee_type', 'filler': 'creamy'}]
+[]
+PRED
+[{'type': 'coffee_type', 'filler': 'creamy'}]
+[]
+PRED
+[{'type': 'relation', 'filler': 'valet service'}]
+[{'type': 'event_name', 'filler': 'valley service'}]
+PRED
+[{'type': 'timeofday', 'filler': 'tonight'}]
+[]
+PRED
+[]
+[{'type': 'relation', 'filler': 'friends'}]
+PRED
+[{'type': 'relation', 'filler': 'grandma'}]
+[{'type': 'date', 'filler': 'saturday'}, {'type': 'relation', 'filler': 'grandma'}]
+PRED
+[{'type': 'news_topic', 'filler': 'the mexican american border wall'}]
+[{'type': 'news_topic', 'filler': 'mexican american border wall'}]
+PRED
+[{'type': 'news_topic', 'filler': 'the mexican american border wall'}]
+[{'type': 'news_topic', 'filler': 'mexican american border wall'}]
+PRED
+[{'type': 'news_topic', 'filler': 'tech'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'tech'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'tech'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'tech'}]
+[]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'sports'}]
+PRED
+[]
+[{'type': 'news_topic', 'filler': 'sports'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'previous podcast'}]
+[]
+PRED
+[{'type': 'relation', 'filler': 'employer'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'locations'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'locations'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'locations'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'nine hundred and eighty nine'}]
+[{'type': 'radio_name', 'filler': 'nine hundred eighty nine'}]
+PRED
+[{'type': 'radio_name', 'filler': 'nine hundred and eighty nine'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'nine hundred and eighty nine'}]
+[]
+PRED
+[]
+[{'type': 'person', 'filler': 'george r r martin'}]
+PRED
+[{'type': 'email_address', 'filler': 'tim@hotmail dot com'}]
+[{'type': 'email_address', 'filler': 'tim@heartmail dot com'}]
+PRED
+[{'type': 'email_address', 'filler': 'tim@hotmail dot com'}]
+[{'type': 'email_address', 'filler': 'tib@heartmail dot com'}]
+PRED
+[{'type': 'person', 'filler': 'john'}]
+[{'type': 'person', 'filler': 'joe'}]
+PRED
+[{'type': 'definition_word', 'filler': 'electronic emissions system'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'electronic emissions system'}]
+[]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'chocolate chip cookies'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'chocolate chip cookies'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'chocolate chip cookies'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'chocolate chip cookies'}]
+PRED
+[]
+[{'type': 'food_type', 'filler': 'chocolate chip cookies'}]
+PRED
+[{'type': 'radio_name', 'filler': 'one hundred and one point nine'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'one hundred and one point nine'}]
+[]
+PRED
+[]
+[{'type': 'song_name', 'filler': 'word song for the commute'}]
+PRED
+[]
+[{'type': 'business_name', 'filler': 'jen'}]
+PRED
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'wash the windows'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'new year'}]
+[]
+PRED
+[]
+[{'type': 'podcast_name', 'filler': 'reply all'}]
+PRED
+[{'type': 'relation', 'filler': 'coworker'}]
+[{'type': 'relation', 'filler': 'co worker'}]
+PRED
+[{'type': 'relation', 'filler': 'coworker'}]
+[{'type': 'relation', 'filler': 'co worker'}]
+PRED
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'every time i see you'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'noodles'}, {'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'love songs'}]
+[{'type': 'music_genre', 'filler': 'love songs'}]
+PRED
+[{'type': 'person', 'filler': 'jane'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'facebook'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'bedroom'}]
+[]
+PRED
+[{'type': 'transport_name', 'filler': 'bagmati express'}]
+[{'type': 'place_name', 'filler': 'bagmati express'}]
+PRED
+[{'type': 'transport_name', 'filler': 'bagmati express'}]
+[{'type': 'place_name', 'filler': 'bagmati express'}]
+PRED
+[{'type': 'transport_name', 'filler': 'bagmati express'}]
+[{'type': 'place_name', 'filler': 'bagmati express'}]
+PRED
+[{'type': 'place_name', 'filler': 'one hundred and one'}]
+[{'type': 'place_name', 'filler': 'the one hundred and one'}]
+PRED
+[{'type': 'place_name', 'filler': 'one hundred and one'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'tic tac toe'}]
+[{'type': 'song_name', 'filler': 'tic tac toe'}]
+PRED
+[{'type': 'game_name', 'filler': 'tic tac toe'}]
+[{'type': 'radio_name', 'filler': 'tic tac toe'}]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'rohit'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'person', 'filler': 'rohit'}]
+PRED
+[{'type': 'media_type', 'filler': 'facebook account'}]
+[{'type': 'media_type', 'filler': 'facebook'}]
+PRED
+[{'type': 'time', 'filler': 'next three months'}]
+[{'type': 'date', 'filler': 'next three months'}]
+PRED
+[{'type': 'business_type', 'filler': 'theatre'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'seven am'}, {'type': 'time_zone', 'filler': 'pacific'}]
+[{'type': 'time', 'filler': 'seven am'}]
+PRED
+[{'type': 'playlist_name', 'filler': 'big band playlist'}]
+[]
+PRED
+[{'type': 'food_type', 'filler': 'biryani'}]
+[{'type': 'food_type', 'filler': 'biriyani'}]
+PRED
+[{'type': 'food_type', 'filler': 'biryani'}]
+[{'type': 'food_type', 'filler': 'biriyani'}]
+PRED
+[{'type': 'person', 'filler': 'steph curry'}]
+[{'type': 'person', 'filler': 'steve carrey'}]
+PRED
+[{'type': 'person', 'filler': 'steph curry'}]
+[{'type': 'person', 'filler': 'steve curry'}]
+PRED
+[{'type': 'person', 'filler': 'steph curry'}]
+[{'type': 'food_type', 'filler': 'curry'}]
+PRED
+[{'type': 'ingredient', 'filler': 'butter'}]
+[{'type': 'food_type', 'filler': 'butter'}]
+PRED
+[{'type': 'relation', 'filler': 'mom'}]
+[{'type': 'person', 'filler': 'mon'}]
+PRED
+[{'type': 'list_name', 'filler': 'grocery'}]
+[{'type': 'list_name', 'filler': 'groceries'}]
+PRED
+[{'type': 'radio_name', 'filler': 'ninety one point three fm'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'ninety one point three fm'}]
+[]
+PRED
+[{'type': 'news_topic', 'filler': 'france'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'date', 'filler': 'thursday'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'date', 'filler': 'ten day'}]
+[{'type': 'time', 'filler': 'ten day'}]
+PRED
+[{'type': 'media_type', 'filler': 'cnn'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funniest'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'this friday'}, {'type': 'timeofday', 'filler': 'afternoon'}]
+[{'type': 'date', 'filler': 'friday'}, {'type': 'timeofday', 'filler': 'afternoon'}]
+PRED
+[{'type': 'event_name', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+[{'type': 'news_topic', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+PRED
+[{'type': 'event_name', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+[{'type': 'news_topic', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+PRED
+[{'type': 'event_name', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'election'}, {'type': 'time', 'filler': 'one hour'}]
+[{'type': 'time', 'filler': 'one hour'}]
+PRED
+[{'type': 'person', 'filler': 'jeffrey burnette'}]
+[{'type': 'person', 'filler': 'jeffrey brunette'}]
+PRED
+[{'type': 'playlist_name', 'filler': 'midnight love'}]
+[{'type': 'playlist_name', 'filler': 'midnight laugh'}]
+PRED
+[{'type': 'time', 'filler': 'last ten minutes'}]
+[{'type': 'time', 'filler': 'ten minutes'}]
+PRED
+[{'type': 'business_name', 'filler': 'pizza hut'}, {'type': 'order_type', 'filler': 'delivery'}]
+[{'type': 'business_name', 'filler': 'pizza hut'}]
+PRED
+[{'type': 'date', 'filler': 'yesterday'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'place_name', 'filler': 'pondichery'}]
+[{'type': 'date', 'filler': 'this weekend'}, {'type': 'place_name', 'filler': 'pantry'}]
+PRED
+[{'type': 'player_setting', 'filler': 'play and shuffle'}]
+[]
+PRED
+[{'type': 'player_setting', 'filler': 'play and shuffle'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'international'}]
+[{'type': 'news_topic', 'filler': 'international'}]
+PRED
+[{'type': 'place_name', 'filler': 'international'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'friday'}, {'type': 'date', 'filler': 'the thirteenth'}]
+[{'type': 'date', 'filler': 'friday'}, {'type': 'date', 'filler': 'thirteenth'}]
+PRED
+[{'type': 'date', 'filler': 'friday'}, {'type': 'date', 'filler': 'the thirteenth'}]
+[{'type': 'date', 'filler': 'friday'}, {'type': 'date', 'filler': 'thirteenth'}]
+PRED
+[{'type': 'event_name', 'filler': 'appointments'}]
+[]
+PRED
+[]
+[{'type': 'list_name', 'filler': 'amazon wish list'}]
+PRED
+[]
+[{'type': 'list_name', 'filler': 'amazon wish list'}]
+PRED
+[]
+[{'type': 'list_name', 'filler': 'amazon wish list'}]
+PRED
+[{'type': 'radio_name', 'filler': 'kiss fm'}]
+[{'type': 'game_name', 'filler': 'kiss fm'}]
+PRED
+[{'type': 'radio_name', 'filler': 'kiss fm'}]
+[{'type': 'game_name', 'filler': 'kiss of ham'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'favourite'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'tweet'}]
+[]
+PRED
+[{'type': 'radio_name', 'filler': 'radio mirchi'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'bedroom'}]
+[{'type': 'person', 'filler': 'delilah'}]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'takeaway'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'good'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'dress shows'}, {'type': 'place_name', 'filler': 'within one mile'}]
+[{'type': 'business_type', 'filler': 'dress shows'}]
+PRED
+[{'type': 'business_type', 'filler': 'dress shows'}, {'type': 'place_name', 'filler': 'within one mile'}]
+[{'type': 'business_type', 'filler': 'clothing stores'}]
+PRED
+[{'type': 'media_type', 'filler': 'social networks'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'social networks'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'chess'}]
+[]
+PRED
+[{'type': 'game_name', 'filler': 'chess'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'appointment'}]
+[{'type': 'event_name', 'filler': 'next drug scheduled appointment'}]
+PRED
+[{'type': 'device_type', 'filler': 'car radio'}]
+[{'type': 'radio_name', 'filler': 'car radio'}]
+PRED
+[{'type': 'device_type', 'filler': 'car radio'}]
+[{'type': 'radio_name', 'filler': 'car radio'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'china'}]
+[{'type': 'currency_name', 'filler': 'china'}]
+PRED
+[{'type': 'place_name', 'filler': 'grand rapids mi'}]
+[{'type': 'place_name', 'filler': 'grand rapids'}]
+PRED
+[{'type': 'place_name', 'filler': 'grand rapids mi'}]
+[{'type': 'place_name', 'filler': 'grand rapids'}]
+PRED
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'eggs'}]
+[{'type': 'cooking_type', 'filler': 'brew'}, {'type': 'food_type', 'filler': 'eggs'}]
+PRED
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'eggs'}]
+[]
+PRED
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'eggs'}]
+[]
+PRED
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'eggs'}]
+[{'type': 'food_type', 'filler': 'eggs'}]
+PRED
+[{'type': 'definition_word', 'filler': 'flabbergasted'}]
+[{'type': 'definition_word', 'filler': 'flagged'}]
+PRED
+[{'type': 'definition_word', 'filler': 'flabbergasted'}]
+[{'type': 'definition_word', 'filler': 'fabricate'}]
+PRED
+[{'type': 'currency_name', 'filler': 'pounds'}]
+[]
+PRED
+[{'type': 'meal_type', 'filler': 'lunch'}, {'type': 'person', 'filler': 'mike'}]
+[{'type': 'person', 'filler': 'mike'}]
+PRED
+[{'type': 'date', 'filler': 'the nineteenth'}, {'type': 'time', 'filler': 'two pm'}]
+[{'type': 'date', 'filler': 'nineteenth'}, {'type': 'time', 'filler': 'two pm'}]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'temperature'}]
+[]
+PRED
+[{'type': 'alarm_type', 'filler': 'wake up'}, {'type': 'date', 'filler': 'this weekend'}]
+[{'type': 'date', 'filler': 'this weekend'}]
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'da vinci code'}]
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}]
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'the vinci code'}]
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+[{'type': 'audiobook_name', 'filler': 'davinci code'}]
+PRED
+[{'type': 'audiobook_name', 'filler': 'davinci code'}, {'type': 'media_type', 'filler': 'audiobook'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'pubs'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'pubs'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'youtube'}]
+[{'type': 'playlist_name', 'filler': 'youtube playlist blank'}]
+PRED
+[{'type': 'media_type', 'filler': 'youtube'}]
+[{'type': 'playlist_name', 'filler': 'youtube playlist blank'}]
+PRED
+[{'type': 'person', 'filler': 'dan'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'purple haze'}]
+[{'type': 'song_name', 'filler': 'purple hills'}]
+PRED
+[{'type': 'song_name', 'filler': 'purple haze'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'purple haze'}]
+[{'type': 'artist_name', 'filler': 'bruno mars'}]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'company name'}]
+[]
+PRED
+[{'type': 'house_place', 'filler': 'room'}]
+[{'type': 'news_topic', 'filler': 'rap'}]
+PRED
+[{'type': 'date', 'filler': 'rest of the year'}]
+[{'type': 'time', 'filler': 'rest of the year'}]
+PRED
+[{'type': 'date', 'filler': 'rest of the year'}]
+[{'type': 'time', 'filler': 'rest of the year'}]
+PRED
+[{'type': 'song_name', 'filler': 'let it go'}]
+[]
+PRED
+[{'type': 'song_name', 'filler': 'let it go'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'ajay devgn'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'pick up mark'}, {'type': 'place_name', 'filler': 'airport'}, {'type': 'time', 'filler': 'six pm'}]
+[{'type': 'event_name', 'filler': 'pick up mark at the airport'}, {'type': 'time', 'filler': 'six pm'}]
+PRED
+[{'type': 'artist_name', 'filler': 'creed'}, {'type': 'music_genre', 'filler': 'rock'}]
+[{'type': 'playlist_name', 'filler': 'rock playlist'}]
+PRED
+[]
+[{'type': 'artist_name', 'filler': "grandma's"}]
+PRED
+[{'type': 'person', 'filler': 'john abraham lincon'}]
+[{'type': 'person', 'filler': 'john abraham lincoln'}]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'list_name', 'filler': 'to do'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'tonights dinner with shelly'}]
+[{'type': 'meal_type', 'filler': 'dinner'}, {'type': 'person', 'filler': 'shelly'}, {'type': 'timeofday', 'filler': "tonight's"}]
+PRED
+[{'type': 'event_name', 'filler': 'tonights dinner with shelly'}]
+[{'type': 'meal_type', 'filler': 'dinner'}, {'type': 'person', 'filler': 'charlie'}, {'type': 'timeofday', 'filler': "tonight's"}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'weather_descriptor', 'filler': 'bad'}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': 'today'}, {'type': 'weather_descriptor', 'filler': 'fun'}]
+PRED
+[{'type': 'song_name', 'filler': 'silent'}]
+[{'type': 'music_genre', 'filler': 'silent'}]
+PRED
+[{'type': 'place_name', 'filler': 'world'}]
+[]
+PRED
+[{'type': 'playlist_name', 'filler': 'nirvana playlist'}]
+[{'type': 'artist_name', 'filler': 'nirvana'}]
+PRED
+[{'type': 'place_name', 'filler': 'san francisco'}]
+[]
+PRED
+[]
+[{'type': 'person', 'filler': 'bill'}]
+PRED
+[]
+[{'type': 'person', 'filler': 'bill'}]
+PRED
+[]
+[{'type': 'artist_name', 'filler': 'given artist'}]
+PRED
+[{'type': 'place_name', 'filler': 'best tourist places'}, {'type': 'place_name', 'filler': 'america'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'city'}]
+[]
+PRED
+[{'type': 'podcast_name', 'filler': 'the united states of anxiety'}]
+[{'type': 'podcast_name', 'filler': 'united states of anxiety'}]
+PRED
+[{'type': 'definition_word', 'filler': 'capricious'}]
+[{'type': 'definition_word', 'filler': 'capricorn'}]
+PRED
+[{'type': 'definition_word', 'filler': 'capricious'}]
+[{'type': 'definition_word', 'filler': 'capricorn'}]
+PRED
+[{'type': 'device_type', 'filler': 'wemo'}]
+[]
+PRED
+[{'type': 'device_type', 'filler': 'wemo'}]
+[]
+PRED
+[{'type': 'device_type', 'filler': 'wemo'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'audiobook'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'audiobook'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'audiobook'}]
+[]
+PRED
+[{'type': 'media_type', 'filler': 'audiobook'}]
+[]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[{'type': 'food_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[{'type': 'food_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[{'type': 'food_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'meal_type', 'filler': 'dinner'}]
+[]
+PRED
+[{'type': 'person', 'filler': 'bob'}]
+[{'type': 'person', 'filler': 'paul'}]
+PRED
+[{'type': 'place_name', 'filler': 'amazon forest'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'amazon forest'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'amazon forest'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[]
+PRED
+[{'type': 'cooking_type', 'filler': 'boiling'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[{'type': 'date', 'filler': 'today'}]
+[{'type': 'date', 'filler': "today's"}]
+PRED
+[{'type': 'date', 'filler': 'saturday'}]
+[]
+PRED
+[{'type': 'artist_name', 'filler': 'beatles'}]
+[{'type': 'artist_name', 'filler': 'the beatles'}]
+PRED
+[{'type': 'cooking_type', 'filler': 'boil'}, {'type': 'food_type', 'filler': 'egg'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'birthday'}]
+[]
+PRED
+[]
+[{'type': 'place_name', 'filler': 'empire state building'}]
+PRED
+[{'type': 'time', 'filler': 'after ten minutes'}]
+[]
+PRED
+[{'type': 'time', 'filler': 'after ten minutes'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'event_name', 'filler': 'shopping'}]
+PRED
+[{'type': 'song_name', 'filler': 'bilando'}]
+[{'type': 'artist_name', 'filler': 'bilando'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'device_type', 'filler': 'socket'}]
+PRED
+[]
+[{'type': 'place_name', 'filler': 'malibu'}]
+PRED
+[{'type': 'event_name', 'filler': 'wedding'}]
+[]
+PRED
+[{'type': 'event_name', 'filler': 'wedding'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'dance and country'}]
+[]
+PRED
+[{'type': 'music_genre', 'filler': 'dance and country'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'raincoat'}]
+[]
+PRED
+[{'type': 'weather_descriptor', 'filler': 'raincoat'}]
+[]
+PRED
+[{'type': 'date', 'filler': 'last year'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'consumer service'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'consumer service'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': 'consumer service'}]
+[]
+PRED
+[{'type': 'business_type', 'filler': 'stores'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'exorbitant'}]
+[]
+PRED
+[{'type': 'definition_word', 'filler': 'exorbitant'}]
+[]
+PRED
+[]
+[{'type': 'meal_type', 'filler': 'dinner'}]
+PRED
+[{'type': 'place_name', 'filler': 'sydney'}]
+[{'type': 'place_name', 'filler': 'cindy'}]
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa mesa'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa moessa'}]
+PRED
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa mesa'}]
+[{'type': 'date', 'filler': 'tomorrow'}, {'type': 'place_name', 'filler': 'costa moosa'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'started last night'}]
+[{'type': 'date', 'filler': 'last night'}]
+PRED
+[{'type': 'podcast_descriptor', 'filler': 'started last night'}]
+[{'type': 'date', 'filler': 'last night'}]
+PRED
+[{'type': 'artist_name', 'filler': 'michael jackson'}]
+[{'type': 'person', 'filler': 'michael jackson'}]
+PRED
+[{'type': 'artist_name', 'filler': 'michael jackson'}]
+[{'type': 'person', 'filler': 'michael jackson'}]
+PRED
+[{'type': 'artist_name', 'filler': 'michael jackson'}]
+[{'type': 'person', 'filler': 'michael jackson'}]
+PRED
+[{'type': 'artist_name', 'filler': 'michael jackson'}]
+[{'type': 'person', 'filler': 'michael jackson'}]
+PRED
+[]
+[{'type': 'music_genre', 'filler': 'rap'}]
+PRED
+[{'type': 'date', 'filler': 'last two months'}]
+[{'type': 'time', 'filler': 'last two months'}]
+PRED
+[{'type': 'date', 'filler': 'last two months'}]
+[{'type': 'time', 'filler': 'last two months'}]
+PRED
+[]
+[{'type': 'media_type', 'filler': 'wikipedia'}]
+PRED
+[{'type': 'business_name', 'filler': '@companyname'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': '@companyname'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': '@companyname'}]
+[]
+PRED
+[{'type': 'business_name', 'filler': '@companyname'}]
+[]
+PRED
+[{'type': 'place_name', 'filler': 'west virginia'}]
+[{'type': 'place_name', 'filler': 'west virginia kansas'}]
+PRED
+[{'type': 'place_name', 'filler': 'west virginia'}]
+[{'type': 'place_name', 'filler': 'west virginia kansas'}]
+PRED
+[]
+[{'type': 'weather_descriptor', 'filler': 'humidity'}]
+PRED
+[{'type': 'place_name', 'filler': 'pyramids'}]
+[]
+PRED
+[{'type': 'joke_type', 'filler': 'funny'}]
+[]
+PRED
+[{'type': 'order_type', 'filler': 'delivery'}]
+[]
+PRED

@@ -1,0 +1,450 @@
+can many seashells did sally sell by the seashore
+qa_factoid
+PRED
+slurp_ME-345_1490182823  in
+in_
+play something from keane 's hopes and fears album
+play_music
+PRED
+slurp_FE-141_1490021002  in
+in_
+what 's the date of the winter solstice two years from now
+datetime_query
+PRED
+slurp_FE-349_1490264616  in
+in_
+add selected song
+play_music
+PRED
+add select song
+music_likeness
+resume harry potter from the place i have stopped listening to last time
+play_audiobook
+PRED
+slurp_MO-494_-1506078152  in
+in_
+how much mehta willing to invest in my company in meeting which held today at five hundred and twenty pm
+calendar_query
+PRED
+slurp_FE-347_1490198229-headset  in
+in_
+play track one from my david bowie playlist
+play_music
+PRED
+slurp_FO-180_1497271426  in
+in_
+i feel like jazz right now how about you
+play_music
+PRED
+i feel like jazz right now how about you
+music_likeness
+i feel like jazz right now how about you
+play_music
+PRED
+i feel like jazz right now how about you
+music_likeness
+i feel like jazz right now how about you
+play_music
+PRED
+i feel like just right now how about you
+music_likeness
+tweet to google costumer service my new nexus phone stop working help please
+social_post
+PRED
+slurp_MO-156_1490957695  in
+in_
+please schedule a meeting with derrick in haysi at noon
+calendar_set
+PRED
+slurp_FE-348_1490201815-headset  in
+in_
+please schedule a meeting with derrick in haysi at noon
+calendar_set
+PRED
+slurp_FO-462_1502199063-headset  in
+in_
+did angelina jolie leave brad pitt
+qa_factoid
+PRED
+slurp_ME-473_1502376102 in
+in_
+open twitter send message
+social_post
+PRED
+slurp_FE-353_1501758302 [in:send_message_STOP ]
+[send_message_STOP
+i feel like having soup for lunch order from wangs kitchen restaurant a chicken manchow soup
+takeaway_order
+PRED
+slurp_FO-125_1488986411 the
+the_
+coordinate all pop song genres
+play_music
+PRED
+coordinate all pop song genres
+music_likeness
+play all songs on shuffle
+play_music
+PRED
+play all songs on shuffle
+music_settings
+play all songs on shuffle
+play_music
+PRED
+play all songs on shuffle
+music_settings
+what is the menu today add some boiled vegetables also to it
+cooking_recipe
+PRED
+slurp_FE-452_1501753016  in
+in_
+check time of ten thousand eight hundred and eighty seven train from luni station on tuesday
+transport_query
+PRED
+slurp_MO-431_1501150880-headset  in
+in_
+check time of ten thousand eight hundred and eighty seven train from luni station on tuesday
+transport_query
+PRED
+slurp_MO-431_1501150880  in
+in_
+olly there 's a good band playing tonight at nine at jazz bar i want to go
+calendar_set
+PRED
+slurp_MO-038_1488554032  in
+in_
+i want tickets to the sold out concert on saturday night
+general_quirky
+PRED
+slurp_ME-414_1499692146-headset  in
+in_
+add jane 's birthday party for tomorrow two pm at one hundred and twenty three main on my calendar
+calendar_set
+PRED
+slurp_UNK-336_1495733835-headset  in
+in_
+add jane 's birthday party for tomorrow two pm at one hundred and twenty three main on my calendar
+calendar_set
+PRED
+slurp_UNK-336_1495733835  in
+in_
+Song title
+music_query
+PRED
+song title
+music_likeness
+what movies has emma watson acted in
+qa_factoid
+PRED
+slurp_FE-452_1501754154 [in:unsupported_event_STOP ]
+[unsupported_event_STOP
+what is the temperature
+weather_query
+PRED
+slurp_MO-156_1490956811 [in:get_weather_STOP [sl:weather_attribute_STOP temperature ] ]
+[get_weather_STOP
+play ella fitzgerals get happy
+play_music
+PRED
+slurp_FE-347_1490200500-headset  in
+in_
+i want to set an alarm when i 'm driving home tomorrow to remember to stop at the store and get food
+alarm_set
+PRED
+slurp_FO-234_1498483490-headset  in
+in_
+i want to set an alarm when i 'm driving home tomorrow to remember to stop at the store and get food
+alarm_set
+PRED
+slurp_FO-234_1498483490  in
+in_
+resume my audio book from karl pilkington
+play_audiobook
+PRED
+slurp_FO-493_-1505407632-headset  in
+in_
+where do most celebrities hang out
+qa_factoid
+PRED
+slurp_UNK-326_1494418052 [in:unsupported_navigation_STOP ]
+[unsupported_navigation_STOP
+is there anything i should be reminded about
+calendar_query
+PRED
+slurp_MO-156_1490956936 [in:delete_reminder_STOP [sl:person_reminded_STOP i ] ]
+[delete_reminder_STOP
+set lights brightness higher
+iot_hue_lightup
+PRED
+slurp_FO-462_1502199564 [in:create_alarm_STOP ]
+[create_alarm_STOP
+shuffle songs by coldplay
+play_music
+PRED
+shuffle songs by coldplay
+music_settings
+shuffle songs by coldplay
+play_music
+PRED
+shuffle songs by coldplay
+music_settings
+make march eighteen a repeating appointment for pearl 's birthday
+calendar_set
+PRED
+slurp_ME-369_1501688128  in
+in_
+please set a meeting to discuss terrorism with fred on the next available meeting day
+calendar_set
+PRED
+slurp_FO-126_1488984143  in
+in_
+please set a meeting to discuss terrorism with fred on the next available meeting day
+calendar_set
+PRED
+slurp_ME-218_1434530058-headset  in
+in_
+comfort my ears with arijit singh
+play_music
+PRED
+comfort my ears with arijit singh
+music_likeness
+can you remind me to order the turkey three weeks before thanksgiving
+calendar_set
+PRED
+slurp_FE-348_1490204493  in
+in_
+will the weather be less than ten degree in paris
+weather_query
+PRED
+slurp_UNK-200_1497495664-headset  in
+in_
+find an interesting podcast about last pritzker price winners
+play_podcasts
+PRED
+slurp_MO-051_1488634952  in
+in_
+make me a cup of coffee with salted carmel flavored cream
+iot_coffee
+PRED
+slurp_FO-234_1497883127  in
+in_
+book a train ticket from baltimore maryland to new york new york
+transport_ticket
+PRED
+slurp_FE-353_1490355033  in
+in_
+check if default alarm is set
+alarm_query
+PRED
+slurp_MO-431_1501152080  in
+in_
+song info
+music_query
+PRED
+song info
+music_likeness
+set a reminder to notify me one hour before lunch meeting
+calendar_set
+PRED
+slurp_FE-351_1490287739  in
+in_
+read some more of the daisy goodwin book for me
+play_audiobook
+PRED
+slurp_FO-488_-1504192211-headset  in
+in_
+read some more of the daisy goodwin book for me
+play_audiobook
+PRED
+slurp_FO-488_-1504192211  in
+in_
+read some more of the daisy goodwin book for me
+play_audiobook
+PRED
+slurp_FO-488_-1504197998-headset  in
+in_
+read some more of the daisy goodwin book for me
+play_audiobook
+PRED
+slurp_FO-493_-1505405859  in
+in_
+show me the train schedules to the metropolitan opera house
+transport_query
+PRED
+slurp_ME-373_1499089570  in
+in_
+i will require full cover jacket if it is too stormy in evening
+weather_query
+PRED
+slurp_FO-475_1502891045  in
+in_
+i will require full cover jacket if it is too stormy in evening
+weather_query
+PRED
+slurp_MO-431_1501150404-headset  in
+in_
+i will require full cover jacket if it is too stormy in evening
+weather_query
+PRED
+slurp_MO-431_1501150404  in
+in_
+did I set an alarm to have tablets in the noon
+alarm_query
+PRED
+slurp_FO-488_-1504193307  in
+in_
+tweet that there was an insect in the chocolate packet
+social_post
+PRED
+slurp_UNK-323_1492784992  in
+in_
+remind me of rita 's birthday twenty four hours in advance
+calendar_set
+PRED
+slurp_MO-463_1502216607  in
+in_
+where can i get a shot of tequila and some to go mexican food
+takeaway_query
+PRED
+slurp_FE-452_1501754492  in
+in_
+how long will it take to travel to japan from south korea
+qa_factoid
+PRED
+slurp_MO-222_1434540734  in
+in_
+what is todays weather
+weather_query
+PRED
+slurp_ME-369_1501686898 in:weather_qu
+weather_qu
+play nine hundred and eighty nine the radio station
+play_radio
+PRED
+slurp_FE-250_1498572835-headset [in:play_radio_STOP ]
+[play_radio_STOP
+olly book me a ticket to paris on eurostar this weekend
+transport_ticket
+PRED
+slurp_FE-353_1490354500 [in:unsupported_event_STOP ]
+[unsupported_event_STOP
+please summarize the latest george r r martin ice and fire book
+qa_factoid
+PRED
+slurp_UNK-334_1495372191-headset  in
+in_
+please summarize the latest george r r martin ice and fire book
+qa_factoid
+PRED
+slurp_UNK-334_1495372191  in
+in_
+one thousand two hundred and thirty pm already you will have a meeting in ten mins
+calendar_query
+PRED
+slurp_FO-462_1502201307 the
+the_
+what else is missing in the diary
+lists_query
+PRED
+slurp_FE-454_1501766458  in
+in_
+will you send a calendar invite out to james and alice for brunch at eleven am on tuesday
+calendar_set
+PRED
+slurp_MO-463_1502215751-headset  in
+in_
+will you send a calendar invite out to james and alice for brunch at eleven am on tuesday
+calendar_set
+PRED
+slurp_MO-463_1502215751  in
+in_
+will you send a calendar invite out to james and alice for brunch at eleven am on tuesday
+calendar_set
+PRED
+slurp_MO-463_1502218410  in
+in_
+noodles one pack make it as takeaway
+takeaway_order
+PRED
+slurp_FO-474_1502461854  in
+in_
+turn my bedroom lights off
+iot_hue_lightoff
+PRED
+slurp_ME-144_1490007754-headset in:iot_hue_
+iot_hue_
+order a twelve piece honey mustard wing combo with seasonimg altnon the fries and a sprite as the drink
+takeaway_order
+PRED
+slurp_FE-141_1490020058-headset  in
+in_
+order a twelve piece honey mustard wing combo with seasonimg altnon the fries and a sprite as the drink
+takeaway_order
+PRED
+slurp_FE-141_1490020058  in
+in_
+order a twelve piece honey mustard wing combo with seasonimg altnon the fries and a sprite as the drink
+takeaway_order
+PRED
+slurp_FE-353_1490357214-headset  in
+in_
+order a twelve piece honey mustard wing combo with seasonimg altnon the fries and a sprite as the drink
+takeaway_order
+PRED
+slurp_UNK-336_1495734578-headset in
+in_
+play bhuli bisri yaadien program on ninety one point three fm
+play_radio
+PRED
+slurp_UNK-334_1495370138-headset  in
+in_
+play bhuli bisri yaadien program on ninety one point three fm
+play_radio
+PRED
+slurp_UNK-334_1495370138  in
+in_
+remind me i take mom to the hairdresser 's thursday at one thousand one hundred am
+calendar_set
+PRED
+slurp_FE-454_1501764076-headset  in
+in_
+remind me i take mom to the hairdresser 's thursday at one thousand one hundred am
+calendar_set
+PRED
+slurp_FE-454_1501764076  in
+in_
+remind me i take mom to the hairdresser 's thursday at one thousand one hundred am
+calendar_set
+PRED
+slurp_FO-124_1488974512  in
+in_
+remind me the wedding on time to buy a present
+calendar_set
+PRED
+slurp_FE-146_1490195692  in
+in_
+search in the web for buying bakeware for muffins
+cooking_recipe
+PRED
+slurp_UNK-323_1492783811-headset  in
+in_
+put my dinner at red lobster on the calendar for today at nine
+calendar_set
+PRED
+slurp_FE-351_1490288992  in
+in_
+i want to hear any songs that got grammys this year
+play_music
+PRED
+slurp_FO-462_1502201256  in
+in_
+how is the weather in san francisco
+weather_query
+PRED
+slurp_UNK-331_1494608106 [in:get_weather_STOP [sl:location_STOP san francisco ] ]
+[get_weather_STOP
+let 's play global thermonuclear war
+play_game
+PRED
+slurp_FE-353_1490354260-headset  in
+in_

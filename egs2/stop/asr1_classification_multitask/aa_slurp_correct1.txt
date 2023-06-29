@@ -1,0 +1,1600 @@
+can you give me the movie schedule
+calendar_query
+PRED
+can you give me the movie schedule
+recommendation_movies
+can you give me the movie schedule
+calendar_query
+PRED
+can you give me the movie schedule
+recommendation_movies
+can you give me the movie schedule
+calendar_query
+PRED
+can you give me the movie schedule
+recommendation_movies
+can you give me the movie schedule
+calendar_query
+PRED
+can you give me the movie schedule
+recommendation_movies
+i want the status on my screen brightness
+general_quirky
+PRED
+i want the status on my screen brightness
+iot_hue_lightup
+i want the status on my screen brightness
+general_quirky
+PRED
+i want the status on my screen brightness
+iot_hue_lightup
+i want the status on my screen brightness
+general_quirky
+PRED
+i want the status on my screen brightness
+iot_hue_lightup
+find me info on cars
+news_query
+PRED
+find me info on cars
+general_quirky
+launch super mario
+play_game
+PRED
+launch super mario
+general_quirky
+could you please confirm if leonardo is married
+qa_factoid
+PRED
+could you please confirm if leonardo is married
+general_quirky
+tell me something to remind this week
+calendar_set
+PRED
+tell me something to remind this week
+calendar_query
+speak softer please
+audio_volume_down
+PRED
+speak softer please
+audio_volume_up
+bring me the title of current music
+music_query
+PRED
+bring me the title of current music
+play_music
+is this program is scheduled
+calendar_query
+PRED
+is this program is scheduled
+play_radio
+please tell me news related to the stock market
+qa_stock
+PRED
+please tell me news related to the stock market
+news_query
+could you reschedule my meeting
+calendar_query
+PRED
+could you reschedule my meeting
+calendar_set
+could you reschedule my meeting
+calendar_query
+PRED
+could you reschedule my meeting
+calendar_set
+will it be a sticky night
+weather_query
+PRED
+will it be a sticky night
+general_quirky
+will it be a sticky night
+weather_query
+PRED
+will it be a sticky night
+general_quirky
+i want to know more about the fair this weekend
+general_quirky
+PRED
+i want to know more about the fair this weekend
+calendar_query
+what is the minimum temperature of london
+weather_query
+PRED
+what is the minimum temperature of london
+qa_factoid
+what is the minimum temperature of london
+weather_query
+PRED
+what is the minimum temperature of london
+qa_factoid
+i occasionally pay attention
+weather_query
+PRED
+i occasionally pay attention
+general_quirky
+i occasionally pay attention
+weather_query
+PRED
+i occasionally pay attention
+general_quirky
+tune to classic hits
+play_radio
+PRED
+tune to classic hits
+play_music
+tune to classic hits
+play_radio
+PRED
+tune to classic hits
+play_music
+make my usual
+iot_coffee
+PRED
+make my usual
+general_quirky
+can i know what i have to do the next saturday at six pm
+calendar_set
+PRED
+can i know what i have to do the next saturday at six pm
+calendar_query
+look up
+general_quirky
+PRED
+look up
+qa_definition
+consequences to actions
+qa_definition
+PRED
+consequences to actions
+general_quirky
+consequences to actions
+qa_definition
+PRED
+consequences to actions
+general_quirky
+get me match highlights
+news_query
+PRED
+get me match highlights
+iot_hue_lightchange
+do not play rock metal
+music_dislikeness
+PRED
+do not play rock metal
+play_music
+clean the floor
+iot_cleaning
+PRED
+clean the floor
+lists_remove
+read that back
+play_audiobook
+PRED
+read that back
+general_repeat
+read that back
+play_audiobook
+PRED
+read that back
+general_repeat
+what is the difference between bake and broil
+cooking_recipe
+PRED
+what is the difference between bake and broil
+general_quirky
+what is the difference between bake and broil
+cooking_recipe
+PRED
+what is the difference between bake and broil
+general_quirky
+i feel like jazz right now how about you
+play_music
+PRED
+i feel like jazz right now how about you
+music_likeness
+i feel like jazz right now how about you
+play_music
+PRED
+i feel like jazz right now how about you
+music_likeness
+show me latest notifications
+social_query
+PRED
+show me latest notifications
+news_query
+show me latest notifications
+social_query
+PRED
+show me latest notifications
+news_query
+i want to know what supermarket near me has the best price on gluten free bread
+recommendation_locations
+PRED
+i want to know what supermarket near me has the best price on gluten free bread
+general_quirky
+i want to know what supermarket near me has the best price on gluten free bread
+recommendation_locations
+PRED
+i want to know what supermarket near me has the best price on gluten free bread
+general_quirky
+is this true about this date
+calendar_query
+PRED
+is this true about this date
+general_quirky
+which teams are playing today in the premier league
+news_query
+PRED
+which teams are playing today in the premier league
+qa_factoid
+which teams are playing today in the premier league
+news_query
+PRED
+which teams are playing today in the premier league
+qa_factoid
+can you find me a furniture store near me
+recommendation_locations
+PRED
+can you find me a furniture store near me
+recommendation_events
+change the lights to dim
+iot_hue_lightdim
+PRED
+change the lights to dim
+iot_hue_lightchange
+change the lights to dim
+iot_hue_lightdim
+PRED
+change the lights to dim
+iot_hue_lightchange
+search nandy
+email_query
+PRED
+search nandy
+qa_factoid
+search nandy
+email_query
+PRED
+search nandy
+qa_factoid
+search nandy
+email_query
+PRED
+search nandy
+qa_factoid
+coordinate all pop song genres
+play_music
+PRED
+coordinate all pop song genres
+music_likeness
+remember this email
+email_addcontact
+PRED
+remember this email
+email_query
+remember this email
+email_addcontact
+PRED
+remember this email
+email_query
+remember this email
+email_addcontact
+PRED
+remember this email
+email_query
+remember this email
+email_addcontact
+PRED
+remember this email
+email_query
+play all songs on shuffle
+play_music
+PRED
+play all songs on shuffle
+music_settings
+play all songs on shuffle
+play_music
+PRED
+play all songs on shuffle
+music_settings
+pause the book
+play_audiobook
+PRED
+pause the book
+audio_volume_mute
+pause the book
+play_audiobook
+PRED
+pause the book
+audio_volume_mute
+pause the book
+play_audiobook
+PRED
+pause the book
+audio_volume_mute
+pause the book
+play_audiobook
+PRED
+pause the book
+audio_volume_mute
+here is a new email address to be added to the contacts
+email_sendemail
+PRED
+here is a new email address to be added to the contacts
+email_addcontact
+location
+qa_definition
+PRED
+location
+qa_factoid
+can you do nine plus two
+qa_maths
+PRED
+can you do nine plus two
+play_game
+how do i book a train ticket online
+transport_query
+PRED
+how do i book a train ticket online
+transport_ticket
+how do i book a train ticket online
+transport_query
+PRED
+how do i book a train ticket online
+transport_ticket
+unmute after
+audio_volume_up
+PRED
+unmute after
+audio_volume_mute
+what does obama do in his day to day life
+general_quirky
+PRED
+what does obama do in his day to day life
+qa_factoid
+what does obama do in his day to day life
+general_quirky
+PRED
+what does obama do in his day to day life
+qa_factoid
+i mostly pay attention
+weather_query
+PRED
+i mostly pay attention
+general_quirky
+i mostly pay attention
+weather_query
+PRED
+i mostly pay attention
+general_quirky
+i mostly pay attention
+weather_query
+PRED
+i mostly pay attention
+general_quirky
+instructions to make a meal
+cooking_recipe
+PRED
+instructions to make a meal
+general_quirky
+what is on my playlist
+lists_query
+PRED
+what is on my playlist
+music_query
+what is on my playlist
+lists_query
+PRED
+what is on my playlist
+music_query
+pink is all we need
+iot_hue_lightchange
+PRED
+pink is all we need
+general_quirky
+set the alarm off
+alarm_remove
+PRED
+set the alarm off
+alarm_set
+set the alarm off
+alarm_remove
+PRED
+set the alarm off
+alarm_set
+play one more time
+play_music
+PRED
+play one more time
+general_repeat
+tell me a place that has snow now
+general_quirky
+PRED
+tell me a place that has snow now
+recommendation_locations
+tell me a place that has snow now
+general_quirky
+PRED
+tell me a place that has snow now
+recommendation_locations
+can you raise the lights for me please
+iot_hue_lightup
+PRED
+can you raise the lights for me please
+iot_hue_lightdim
+hoover the hallway
+iot_cleaning
+PRED
+hoover the hallway
+transport_taxi
+hoover the hallway
+iot_cleaning
+PRED
+hoover the hallway
+transport_taxi
+hoover the hallway
+iot_cleaning
+PRED
+hoover the hallway
+transport_taxi
+hoover the hallway
+iot_cleaning
+PRED
+hoover the hallway
+transport_taxi
+give me the details on purchase order
+lists_query
+PRED
+give me the details on purchase order
+general_quirky
+give me the details on purchase order
+lists_query
+PRED
+give me the details on purchase order
+takeaway_query
+what is the best oven temperature to roast potatoes
+cooking_recipe
+PRED
+what is the best oven temperature to roast potatoes
+general_quirky
+what is the best oven temperature to roast potatoes
+cooking_recipe
+PRED
+what is the best oven temperature to roast potatoes
+general_quirky
+what is the best oven temperature to roast potatoes
+cooking_recipe
+PRED
+what is the best oven temperature to roast potatoes
+general_quirky
+what is the best oven temperature to roast potatoes
+cooking_recipe
+PRED
+what is the best oven temperature to roast potatoes
+general_quirky
+open media play jingle bells
+play_music
+PRED
+open media play jingle bells
+play_game
+check for all the movie theater prices and availability for a newly released movie in my location
+recommendation_movies
+PRED
+check for all the movie theater prices and availability for a newly released movie in my location
+general_quirky
+how far is canada from my current location
+qa_factoid
+PRED
+how far is canada from my current location
+transport_query
+tell me when it is five pm
+alarm_set
+PRED
+tell me when it is five pm
+datetime_query
+tell me when it is five pm
+alarm_set
+PRED
+tell me when it is five pm
+alarm_query
+tell me when it is five pm
+alarm_set
+PRED
+tell me when it is five pm
+datetime_query
+how do i get to the mall
+transport_query
+PRED
+how do i get to the mall
+transport_traffic
+tell me how are the results of assembly elections in delhi going to come out
+news_query
+PRED
+tell me how are the results of assembly elections in delhi going to come out
+general_quirky
+could you please confirm if paradise does takeaway
+takeaway_query
+PRED
+could you please confirm if paradise does takeaway
+general_quirky
+could you please confirm if paradise does takeaway
+takeaway_query
+PRED
+could you please confirm if paradise does takeaway
+general_quirky
+could you please confirm if paradise does takeaway
+takeaway_query
+PRED
+could you please confirm if paradise does takeaway
+general_quirky
+is there anything i should be reminded about
+calendar_query
+PRED
+is there anything i should be reminded about
+recommendation_events
+shuffle songs by coldplay
+play_music
+PRED
+shuffle songs by coldplay
+music_settings
+shuffle songs by coldplay
+play_music
+PRED
+shuffle songs by coldplay
+music_settings
+i hate how long the traffic jams get
+general_quirky
+PRED
+i hate how long the traffic jams get
+transport_traffic
+i hate how long the traffic jams get
+general_quirky
+PRED
+i hate how long the traffic jams get
+transport_traffic
+is soft cheese better than hard
+cooking_recipe
+PRED
+is soft cheese better than hard
+general_quirky
+is soft cheese better than hard
+cooking_recipe
+PRED
+is soft cheese better than hard
+general_quirky
+is soft cheese better than hard
+cooking_recipe
+PRED
+is soft cheese better than hard
+general_quirky
+what day does my birthday fall on this year june twenty seventh
+datetime_query
+PRED
+what day does my birthday fall on this year june twenty seventh
+calendar_query
+what day does my birthday fall on this year june twenty seventh
+datetime_query
+PRED
+what day does my birthday fall on this year june twenty seventh
+calendar_query
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_music
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_game
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_game
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_music
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_game
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_game
+keep playing secret garden
+play_audiobook
+PRED
+keep playing secret garden
+play_game
+i need to get up at ten tomorrow
+alarm_set
+PRED
+i need to get up at ten tomorrow
+calendar_set
+i need to get up at ten tomorrow
+alarm_set
+PRED
+i need to get up at ten tomorrow
+calendar_set
+i need to get up at ten tomorrow
+alarm_set
+PRED
+i need to get up at ten tomorrow
+calendar_set
+explain how is usa better than other countries
+general_quirky
+PRED
+explain how is usa better than other countries
+qa_factoid
+explain how is usa better than other countries
+general_quirky
+PRED
+explain how is usa better than other countries
+qa_factoid
+do i need to do anything today
+calendar_query
+PRED
+do i need to do anything today
+general_quirky
+color of light should be dimmed bright
+iot_hue_lightdim
+PRED
+color of light should be dimmed bright
+iot_hue_lightchange
+comfort my ears with arijit singh
+play_music
+PRED
+comfort my ears with arijit singh
+music_likeness
+prepare the order as soon as possible
+takeaway_query
+PRED
+prepare the order as soon as possible
+lists_createoradd
+how many tornadoes have there been this month
+general_quirky
+PRED
+how many tornadoes have there been this month
+qa_factoid
+ticket for delhi
+transport_ticket
+PRED
+ticket for delhi
+general_quirky
+web searches
+general_quirky
+PRED
+web searches
+news_query
+add a new email for julie smith
+email_sendemail
+PRED
+add a new email for julie smith
+email_addcontact
+add a new email for julie smith
+email_sendemail
+PRED
+add a new email for julie smith
+email_addcontact
+how to get somewhere
+transport_query
+PRED
+how to get somewhere
+general_quirky
+sticking to diet
+general_quirky
+PRED
+sticking to diet
+cooking_recipe
+sticking to diet
+general_quirky
+PRED
+sticking to diet
+cooking_recipe
+song info
+music_query
+PRED
+song info
+music_likeness
+i like the songs of yeshudas please play it
+music_likeness
+PRED
+i like the songs of yeshudas please play it
+play_music
+i like the songs of yeshudas please play it
+music_likeness
+PRED
+i like the songs of yeshudas please play it
+play_music
+brightness ninety percent
+iot_hue_lightchange
+PRED
+brightness ninety percent
+iot_hue_lightup
+brightness ninety percent
+iot_hue_lightchange
+PRED
+brightness ninety percent
+iot_hue_lightdim
+brightness ninety percent
+iot_hue_lightchange
+PRED
+brightness ninety percent
+iot_hue_lightdim
+can you change the volume at
+audio_volume_other
+PRED
+can you change the volume at
+audio_volume_up
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+is my reminder alarm set for dance class
+alarm_query
+PRED
+is my reminder alarm set for dance class
+calendar_query
+go backward thirty seconds
+play_podcasts
+PRED
+go backward thirty seconds
+audio_volume_mute
+go backward thirty seconds
+play_podcasts
+PRED
+go backward thirty seconds
+audio_volume_mute
+are sunglasses a good choice for today
+weather_query
+PRED
+are sunglasses a good choice for today
+general_quirky
+what store is having sales tomorrow
+general_quirky
+PRED
+what store is having sales tomorrow
+recommendation_locations
+will trump visit russia anytime soon
+news_query
+PRED
+will trump visit russia anytime soon
+qa_factoid
+will trump visit russia anytime soon
+news_query
+PRED
+will trump visit russia anytime soon
+qa_factoid
+locate the email to giant eagle and put it into my contact list
+email_addcontact
+PRED
+locate the email to giant eagle and put it into my contact list
+email_sendemail
+birthday
+calendar_set
+PRED
+birthday
+general_quirky
+birthday
+calendar_set
+PRED
+birthday
+general_quirky
+please skip two songs
+music_settings
+PRED
+please skip two songs
+play_music
+please skip two songs
+music_settings
+PRED
+please skip two songs
+play_music
+send a reply if it is very important
+email_query
+PRED
+send a reply if it is very important
+email_sendemail
+knowledge about food processing
+cooking_recipe
+PRED
+knowledge about food processing
+general_quirky
+knowledge about food processing
+cooking_recipe
+PRED
+knowledge about food processing
+general_quirky
+knowledge about food processing
+cooking_recipe
+PRED
+knowledge about food processing
+general_quirky
+knowledge about food processing
+cooking_recipe
+PRED
+knowledge about food processing
+general_quirky
+can i get takeout from pf changs
+takeaway_query
+PRED
+can i get takeout from pf changs
+takeaway_order
+can i get takeout from pf changs
+takeaway_query
+PRED
+can i get takeout from pf changs
+takeaway_order
+can i get takeout from pf changs
+takeaway_query
+PRED
+can i get takeout from pf changs
+takeaway_order
+set notifications on the current weather disasters in america
+calendar_set
+PRED
+set notifications on the current weather disasters in america
+weather_query
+set notifications on the current weather disasters in america
+calendar_set
+PRED
+set notifications on the current weather disasters in america
+weather_query
+show meetings
+calendar_set
+PRED
+show meetings
+calendar_query
+show meetings
+calendar_set
+PRED
+show meetings
+calendar_query
+how do i get home from here
+transport_query
+PRED
+how do i get home from here
+transport_traffic
+i need to add a new email to my contacts
+email_sendemail
+PRED
+i need to add a new email to my contacts
+email_addcontact
+what is the top searches in google today
+general_quirky
+PRED
+what is the top searches in google today
+qa_stock
+do i have any notifications from social media
+calendar_query
+PRED
+do i have any notifications from social media
+social_query
+opinion pb
+music_likeness
+PRED
+opinion pb
+general_quirky
+fast
+audio_volume_up
+PRED
+fast
+general_quirky
+fast
+audio_volume_up
+PRED
+fast
+general_quirky
+plan for tomorrow
+calendar_query
+PRED
+plan for tomorrow
+calendar_set
+why is the earth round
+general_quirky
+PRED
+why is the earth round
+qa_factoid
+can you check the facts on this issue
+calendar_query
+PRED
+can you check the facts on this issue
+general_quirky
+start playing
+play_music
+PRED
+start playing
+play_game
+start playing
+play_music
+PRED
+start playing
+play_game
+dictate email
+email_sendemail
+PRED
+dictate email
+email_query
+tell me about trump
+news_query
+PRED
+tell me about trump
+qa_factoid
+tell me about trump
+news_query
+PRED
+tell me about trump
+qa_factoid
+tell me about trump
+news_query
+PRED
+tell me about trump
+qa_factoid
+tell me about trump
+news_query
+PRED
+tell me about trump
+qa_factoid
+vacation spots
+general_quirky
+PRED
+vacation spots
+recommendation_locations
+can you show me a list of all my recent commands
+general_quirky
+PRED
+can you show me a list of all my recent commands
+lists_query
+where can i get a shot of tequila and some to go mexican food
+takeaway_query
+PRED
+where can i get a shot of tequila and some to go mexican food
+general_quirky
+tell me the percentage of the chance of rain in seattle washington for today
+weather_query
+PRED
+tell me the percentage of the chance of rain in seattle washington for today
+qa_factoid
+find me the cheapest train ticket to spain
+transport_ticket
+PRED
+find me the cheapest train ticket to spain
+transport_query
+topic
+email_query
+PRED
+topic
+general_quirky
+how long will it take to travel to japan from south korea
+qa_factoid
+PRED
+how long will it take to travel to japan from south korea
+transport_query
+how long will it take to travel to japan from south korea
+qa_factoid
+PRED
+how long will it take to travel to japan from south korea
+transport_query
+how long will it take to travel to japan from south korea
+qa_factoid
+PRED
+how long will it take to travel to japan from south korea
+transport_query
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+recommendation_events
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+general_quirky
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+general_quirky
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+recommendation_events
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+recommendation_events
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+recommendation_events
+what should i watch today
+recommendation_movies
+PRED
+what should i watch today
+general_quirky
+hot topic
+news_query
+PRED
+hot topic
+general_quirky
+hot topic
+news_query
+PRED
+hot topic
+general_quirky
+navigation search
+transport_query
+PRED
+navigation search
+qa_factoid
+hi you there
+general_quirky
+PRED
+hi you there
+general_greet
+hi you there
+general_quirky
+PRED
+hi you there
+general_greet
+have you heard any good music lately
+general_quirky
+PRED
+have you heard any good music lately
+music_query
+have you heard any good music lately
+general_quirky
+PRED
+have you heard any good music lately
+music_query
+tell me the profession of celebrity
+qa_factoid
+PRED
+tell me the profession of celebrity
+general_quirky
+tell me the profession of celebrity
+qa_factoid
+PRED
+tell me the profession of celebrity
+general_quirky
+tell me the profession of celebrity
+qa_factoid
+PRED
+tell me the profession of celebrity
+general_quirky
+am i going to be able to mow the grass this evening
+weather_query
+PRED
+am i going to be able to mow the grass this evening
+general_quirky
+what is going on on december fourth
+calendar_query
+PRED
+what is going on on december fourth
+news_query
+how do i start the robot vacuum cleaner
+iot_cleaning
+PRED
+how do i start the robot vacuum cleaner
+general_quirky
+please make the lights natural
+iot_hue_lightchange
+PRED
+please make the lights natural
+iot_hue_lightdim
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_game
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_music
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_music
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_game
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_game
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_music
+keep playing war and peace
+play_audiobook
+PRED
+keep playing war and peace
+play_game
+new gadgets
+general_quirky
+PRED
+new gadgets
+news_query
+new gadgets
+general_quirky
+PRED
+new gadgets
+news_query
+search the item
+lists_createoradd
+PRED
+search the item
+lists_query
+search the item
+lists_createoradd
+PRED
+search the item
+lists_query
+search the item
+lists_createoradd
+PRED
+search the item
+lists_query
+search the item
+lists_createoradd
+PRED
+search the item
+lists_query
+make a call to
+email_querycontact
+PRED
+make a call to
+email_sendemail
+make a call to
+email_querycontact
+PRED
+make a call to
+email_sendemail
+make a call to
+email_querycontact
+PRED
+make a call to
+calendar_set
+change volume level to maximum
+audio_volume_other
+PRED
+change volume level to maximum
+audio_volume_up
+change volume level to maximum
+audio_volume_other
+PRED
+change volume level to maximum
+audio_volume_up
+where can i go tonight
+recommendation_events
+PRED
+where can i go tonight
+recommendation_locations
+hey what has been happening interesting in sports lately
+general_quirky
+PRED
+hey what has been happening interesting in sports lately
+news_query
+reset my locations list
+lists_remove
+PRED
+reset my locations list
+lists_createoradd
+please summarize the latest george r r martin ice and fire book
+qa_factoid
+PRED
+please summarize the latest george r r martin ice and fire book
+general_quirky
+please summarize the latest george r r martin ice and fire book
+qa_factoid
+PRED
+please summarize the latest george r r martin ice and fire book
+general_quirky
+what is the best chocolate chip cookies recipe
+general_quirky
+PRED
+what is the best chocolate chip cookies recipe
+cooking_recipe
+what is the best chocolate chip cookies recipe
+general_quirky
+PRED
+what is the best chocolate chip cookies recipe
+cooking_recipe
+what is the best chocolate chip cookies recipe
+general_quirky
+PRED
+what is the best chocolate chip cookies recipe
+cooking_recipe
+what is the best chocolate chip cookies recipe
+general_quirky
+PRED
+what is the best chocolate chip cookies recipe
+cooking_recipe
+what is the best chocolate chip cookies recipe
+general_quirky
+PRED
+what is the best chocolate chip cookies recipe
+cooking_recipe
+hey tell me more about my meetings today
+general_quirky
+PRED
+hey tell me more about my meetings today
+calendar_query
+hey tell me more about my meetings today
+general_quirky
+PRED
+hey tell me more about my meetings today
+calendar_query
+please play thirteen
+play_music
+PRED
+please play thirteen
+play_game
+please play thirteen
+play_music
+PRED
+please play thirteen
+play_game
+please play thirteen
+play_music
+PRED
+please play thirteen
+play_game
+please play thirteen
+play_music
+PRED
+please play thirteen
+play_game
+what is the geology of this location
+general_quirky
+PRED
+what is the geology of this location
+qa_factoid
+what is the geology of this location
+general_quirky
+PRED
+what is the geology of this location
+qa_factoid
+play me in tic tac toe
+play_game
+PRED
+play me in tic tac toe
+play_music
+play me in tic tac toe
+play_game
+PRED
+play me in tic tac toe
+play_radio
+please power down
+iot_wemo_off
+PRED
+please power down
+audio_volume_down
+please power down
+iot_wemo_off
+PRED
+please power down
+iot_hue_lightdim
+it is seven am in pacific standard time
+datetime_convert
+PRED
+it is seven am in pacific standard time
+datetime_query
+new updates
+social_query
+PRED
+new updates
+news_query
+what is the ten day forecast
+weather_query
+PRED
+what is the ten day forecast
+datetime_query
+what does priyanka chopra do to look beautiful
+general_quirky
+PRED
+what does priyanka chopra do to look beautiful
+qa_factoid
+play kiss fm for me
+play_radio
+PRED
+play kiss fm for me
+play_game
+initiate polling for new email
+email_query
+PRED
+initiate polling for new email
+email_sendemail
+initiate polling for new email
+email_query
+PRED
+initiate polling for new email
+email_sendemail
+trash the current list
+lists_remove
+PRED
+trash the current list
+lists_query
+olly how long should i boil the eggs
+cooking_recipe
+PRED
+olly how long should i boil the eggs
+general_quirky
+details on person
+qa_factoid
+PRED
+details on person
+general_quirky
+details on person
+qa_factoid
+PRED
+details on person
+general_quirky
+what are the climatic conditions in that area
+qa_factoid
+PRED
+what are the climatic conditions in that area
+weather_query
+what are the climatic conditions in that area
+qa_factoid
+PRED
+what are the climatic conditions in that area
+general_quirky
+this new email should be added to my contact
+email_sendemail
+PRED
+this new email should be added to my contact
+email_addcontact
+this new email should be added to my contact
+email_sendemail
+PRED
+this new email should be added to my contact
+email_addcontact
+what i am going to do today
+lists_query
+PRED
+what i am going to do today
+calendar_query
+what i am going to do today
+lists_query
+PRED
+what i am going to do today
+general_quirky
+how hot is it in quebec
+weather_query
+PRED
+how hot is it in quebec
+qa_factoid
+did i leave the light on in the garage
+iot_hue_lightoff
+PRED
+did i leave the light on in the garage
+iot_hue_lighton
+did i leave the light on in the garage
+iot_hue_lightoff
+PRED
+did i leave the light on in the garage
+iot_hue_lighton
+the weather was bad today
+general_quirky
+PRED
+the weather was bad today
+weather_query
+tell me some best tourist places to visit in america
+recommendation_locations
+PRED
+tell me some best tourist places to visit in america
+general_quirky
+tell me some best tourist places to visit in america
+recommendation_locations
+PRED
+tell me some best tourist places to visit in america
+general_quirky
+boiling
+cooking_recipe
+PRED
+boiling
+general_quirky
+boiling
+cooking_recipe
+PRED
+boiling
+general_quirky
+boiling
+cooking_recipe
+PRED
+boiling
+general_quirky
+what groups are listed in my contacts
+lists_query
+PRED
+what groups are listed in my contacts
+email_querycontact
+what groups are listed in my contacts
+lists_query
+PRED
+what groups are listed in my contacts
+email_querycontact
+what groups are listed in my contacts
+lists_query
+PRED
+what groups are listed in my contacts
+email_querycontact
+what groups are listed in my contacts
+lists_query
+PRED
+what groups are listed in my contacts
+email_querycontact
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+general_quirky
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+i can barely hear you
+audio_volume_up
+PRED
+i can barely hear you
+audio_volume_mute
+olly i need to hear some sad songs today
+play_music
+PRED
+olly i need to hear some sad songs today
+general_quirky
+i need to know more about the parade this weekend
+general_quirky
+PRED
+i need to know more about the parade this weekend
+calendar_query
+i want to thank everyone for the birthday wishes
+social_post
+PRED
+i want to thank everyone for the birthday wishes
+general_quirky
+i want to thank everyone for the birthday wishes
+social_post
+PRED
+i want to thank everyone for the birthday wishes
+general_quirky
+i want to thank everyone for the birthday wishes
+social_post
+PRED
+i want to thank everyone for the birthday wishes
+general_quirky
+clear my activities list for today
+lists_remove
+PRED
+clear my activities list for today
+calendar_remove
+how much will be the world population after twenty years
+general_quirky
+PRED
+how much will be the world population after twenty years
+qa_factoid
+how much will be the world population after twenty years
+general_quirky
+PRED
+how much will be the world population after twenty years
+qa_factoid
+wedding wishes
+social_post
+PRED
+wedding wishes
+general_quirky
+wedding wishes
+social_post
+PRED
+wedding wishes
+general_quirky
+retrieve the light for me
+iot_hue_lightup
+PRED
+retrieve the light for me
+iot_hue_lightdim
+retrieve the light for me
+iot_hue_lightup
+PRED
+retrieve the light for me
+iot_hue_lightoff
+retrieve the light for me
+iot_hue_lightup
+PRED
+retrieve the light for me
+iot_hue_lightdim
+could you explain the meaning of exorbitant for me please
+qa_definition
+PRED
+could you explain the meaning of exorbitant for me please
+general_quirky
+could you explain the meaning of exorbitant for me please
+qa_definition
+PRED
+could you explain the meaning of exorbitant for me please
+general_quirky
+any special events on my list
+lists_query
+PRED
+any special events on my list
+calendar_query
+any special events on my list
+lists_query
+PRED
+any special events on my list
+recommendation_events
+please pull up the wikipedia article on glass blowing
+general_quirky
+PRED
+please pull up the wikipedia article on glass blowing
+news_query
