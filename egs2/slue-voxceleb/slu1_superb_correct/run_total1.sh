@@ -1,0 +1,4 @@
+./run.sh --stop_stage 11 --stage 11 --ngpu 4 --slu_config conf/train_asr_wavlm_large_0.1.yaml --inference_config conf/decode_asr.yaml --inference_nj 1 --gpu_inference true --inference_slu_model valid.loss.ave.pth --stop_stage 13
+./run.sh --stop_stage 11 --stage 11 --ngpu 4 --slu_config conf/train_asr_wavlm_large_0.01.yaml --inference_config conf/decode_asr.yaml --inference_nj 1 --gpu_inference true --inference_slu_model valid.loss.ave.pth --stop_stage 13
+./run.sh --stop_stage 11 --stage 11 --ngpu 4 --slu_config conf/train_asr_wavlm_large_0.001.yaml --inference_config conf/decode_asr.yaml --inference_nj 1 --gpu_inference true --inference_slu_model valid.loss.ave.pth --stop_stage 13
+./run.sh --stop_stage 11 --stage 11 --ngpu 4 --slu_config conf/train_asr_wavlm_large_0.0001.yaml --inference_config conf/decode_asr.yaml --inference_nj 1 --gpu_inference true --inference_slu_model valid.loss.ave.pth --stop_stage 13

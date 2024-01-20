@@ -16,6 +16,7 @@ from espnet2.asr.specaug.abs_specaug import AbsSpecAug
 from espnet2.asr.transducer.error_calculator import ErrorCalculatorTransducer
 from espnet2.layers.abs_normalize import AbsNormalize
 from espnet2.slu.postdecoder.abs_postdecoder import AbsPostDecoder
+from espnet2.slu.postencoder.Featurizer import Featurizer
 from espnet2.torch_utils.device_funcs import force_gatherable
 from espnet2.train.abs_espnet_model import AbsESPnetModel
 from espnet.nets.e2e_asr_common import ErrorCalculator
@@ -55,6 +56,8 @@ class ESPnetSLUModel(ESPnetASRModel):
         interctc_weight: float = 0.0,
         ignore_id: int = -1,
         lsm_weight: float = 0.0,
+        num_class: int = 0,
+        ssl_input_size: int = 0,
         length_normalized_loss: bool = False,
         report_cer: bool = True,
         report_wer: bool = True,
@@ -63,6 +66,9 @@ class ESPnetSLUModel(ESPnetASRModel):
         extract_feats_in_collect_stats: bool = True,
         two_pass: bool = False,
         pre_postencoder_norm: bool = False,
+        superb_setup_encoder: bool = False,
+        superb_setup: bool = False,
+        weighted_sum: bool = False,
     ):
         assert check_argument_types()
         assert 0.0 <= ctc_weight <= 1.0, ctc_weight
@@ -81,6 +87,9 @@ class ESPnetSLUModel(ESPnetASRModel):
         if transcript_token_list is not None:
             self.transcript_token_list = transcript_token_list.copy()
         self.two_pass = two_pass
+        self.superb_setup = superb_setup
+        self.superb_setup_encoder = superb_setup_encoder
+        self.weighted_sum = weighted_sum
         self.pre_postencoder_norm = pre_postencoder_norm
         self.frontend = frontend
         self.specaug = specaug
@@ -166,6 +175,29 @@ class ESPnetSLUModel(ESPnetASRModel):
             self.ctc = ctc
 
         self.extract_feats_in_collect_stats = extract_feats_in_collect_stats
+        if self.superb_setup:
+            self.encoder=None
+            self.decoder=None
+            self.act_fn = torch.nn.Tanh()
+            self.num_class=num_class
+            self.transform_mean = torch.nn.Linear(
+                ssl_input_size,ssl_input_size
+            )
+            self.transform_linear = torch.nn.Linear(
+                ssl_input_size,num_class
+            )
+        if self.superb_setup_encoder:
+            self.decoder=None
+            self.act_fn = torch.nn.Tanh()
+            self.num_class=num_class
+            self.transform_mean = torch.nn.Linear(
+                ssl_input_size,ssl_input_size
+            )
+            self.transform_linear = torch.nn.Linear(
+                ssl_input_size,num_class
+            )
+        if self.weighted_sum:
+            self.featurizer=Featurizer(len(self.encoder.encoders),self.encoder._output_size)
 
     def forward(
         self,
@@ -203,6 +235,22 @@ class ESPnetSLUModel(ESPnetASRModel):
         encoder_out, encoder_out_lens = self.encode(
             speech, speech_lengths, transcript, transcript_lengths
         )
+        if self.weighted_sum:
+            # import pdb;pdb.set_trace()
+            encoder_out, encoder_out_lens = self.featurizer(encoder_out[1],[encoder_out_lens for i in encoder_out[1]])
+        if self.superb_setup or self.superb_setup_encoder:
+            if self.superb_setup_encoder:
+                encoder_out=self.transform_mean(self.act_fn(encoder_out))
+                feats_mean_out = []
+                for k in range(encoder_out.shape[0]):
+                    feats_mean_out.append(torch.mean(encoder_out[k,:encoder_out_lens[k]],dim=0))
+                feats=torch.stack(feats_mean_out)
+                encoder_out=self.transform_linear(feats)
+            
+
+            text = text.reshape(-1) - 2
+            loss_lightweight=torch.nn.functional.cross_entropy(encoder_out, text)
+            acc_lightweight=None
         intermediate_outs = None
         if isinstance(encoder_out, tuple):
             intermediate_outs = encoder_out[1]
@@ -273,13 +321,16 @@ class ESPnetSLUModel(ESPnetASRModel):
 
         else:
             # 2b. Attention decoder branch
-            if self.ctc_weight != 1.0:
+            if self.ctc_weight != 1.0  and self.superb_setup==False and self.superb_setup_encoder==False:
                 loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
                     encoder_out, encoder_out_lens, text, text_lengths
                 )
 
             # 3. CTC-Att loss definition
-            if self.ctc_weight == 0.0:
+            if self.superb_setup or self.superb_setup_encoder:
+                loss=loss_lightweight
+                acc_att=acc_lightweight
+            elif self.ctc_weight == 0.0:
                 loss = loss_att
             elif self.ctc_weight == 1.0:
                 loss = loss_ctc
@@ -340,12 +391,24 @@ class ESPnetSLUModel(ESPnetASRModel):
         if self.preencoder is not None:
             feats, feats_lengths = self.preencoder(feats, feats_lengths)
 
+        if self.superb_setup:
+            feats=self.transform_mean(self.act_fn(feats))
+            feats_mean_out = []
+            for k in range(feats.shape[0]):
+                feats_mean_out.append(torch.mean(feats[k,:feats_lengths[k]],dim=0))
+            feats=torch.stack(feats_mean_out)
+            feats=self.transform_linear(feats)
+            return feats,feats_lengths
         # 4. Forward encoder
         # feats: (Batch, Length, Dim)
         # -> encoder_out: (Batch, Length2, Dim2)
         if self.encoder.interctc_use_conditioning:
             encoder_out, encoder_out_lens, _ = self.encoder(
                 feats, feats_lengths, ctc=self.ctc
+            )
+        elif self.weighted_sum:
+            encoder_out, encoder_out_lens, _ = self.encoder(
+                feats, feats_lengths, return_all_hs=True
             )
         else:
             encoder_out, encoder_out_lens, _ = self.encoder(
