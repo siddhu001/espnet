@@ -45,6 +45,7 @@ class ESPnetSLUModel(ESPnetASRModel):
         normalize: Optional[AbsNormalize],
         preencoder: Optional[AbsPreEncoder],
         encoder: AbsEncoder,
+        prepostencoder: Optional[AbsPreEncoder],
         postencoder: Optional[AbsPostEncoder],
         decoder: AbsDecoder,
         ctc: CTC,
@@ -95,6 +96,7 @@ class ESPnetSLUModel(ESPnetASRModel):
         self.specaug = specaug
         self.normalize = normalize
         self.preencoder = preencoder
+        self.prepostencoder = prepostencoder
         self.postencoder = postencoder
         self.postdecoder = postdecoder
         self.encoder = encoder
@@ -196,8 +198,17 @@ class ESPnetSLUModel(ESPnetASRModel):
             self.transform_linear = torch.nn.Linear(
                 ssl_input_size,num_class
             )
+        self.is_encoder_whisper = "Whisper" in type(self.encoder).__name__
+
+        if self.is_encoder_whisper:
+            assert (
+                self.frontend is None
+            ), "frontend should be None when using full Whisper model"
         if self.weighted_sum:
-            self.featurizer=Featurizer(len(self.encoder.encoders),self.encoder._output_size)
+            if self.is_encoder_whisper:
+                self.featurizer=Featurizer(len(self.encoder.encoders.blocks),self.encoder.output_size())
+            else:
+                self.featurizer=Featurizer(len(self.encoder.encoders),self.encoder._output_size)
 
     def forward(
         self,
@@ -235,9 +246,6 @@ class ESPnetSLUModel(ESPnetASRModel):
         encoder_out, encoder_out_lens = self.encode(
             speech, speech_lengths, transcript, transcript_lengths
         )
-        if self.weighted_sum:
-            # import pdb;pdb.set_trace()
-            encoder_out, encoder_out_lens = self.featurizer(encoder_out[1],[encoder_out_lens for i in encoder_out[1]])
         if self.superb_setup or self.superb_setup_encoder:
             if self.superb_setup_encoder:
                 encoder_out=self.transform_mean(self.act_fn(encoder_out))
@@ -415,6 +423,11 @@ class ESPnetSLUModel(ESPnetASRModel):
                 feats,
                 feats_lengths,
             )
+        if self.weighted_sum:
+            # import pdb;pdb.set_trace()
+            encoder_out, encoder_out_lens = self.featurizer(encoder_out[1],[encoder_out_lens for i in encoder_out[1]])
+            if self.prepostencoder is not None:
+                encoder_out, encoder_out_lens = self.prepostencoder(encoder_out, encoder_out_lens)
         intermediate_outs = None
         if isinstance(encoder_out, tuple):
             intermediate_outs = encoder_out[1]

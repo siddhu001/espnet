@@ -293,9 +293,9 @@ class Speech2Understand:
 
         # b. Forward Encoder
         enc, enc_lens = self.asr_model.encode(**batch)
-        if self.asr_model.weighted_sum:
-            # import pdb;pdb.set_trace()
-            enc, enc_lens = self.asr_model.featurizer(enc[1],[enc_lens for i in enc[1]])
+        # if self.asr_model.weighted_sum:
+        #     # import pdb;pdb.set_trace()
+        #     enc, enc_lens = self.asr_model.featurizer(enc[1],[enc_lens for i in enc[1]])
         if self.asr_model.superb_setup:
             m = torch.nn.Softmax()
             token_int=[torch.argmax(m(enc[0])).tolist()]

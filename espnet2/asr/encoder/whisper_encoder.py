@@ -127,6 +127,7 @@ class OpenAIWhisperEncoder(AbsEncoder):
         self,
         input: torch.Tensor,
         ilens: torch.Tensor = None,
+        return_all_hs: bool = False,
     ) -> torch.Tensor:
         x = F.gelu(self.encoders.conv1(input))
         x = F.gelu(self.encoders.conv2(x))
@@ -141,13 +142,17 @@ class OpenAIWhisperEncoder(AbsEncoder):
             x = x[:, :max_pos, :] + self.encoders.positional_embedding
 
         x = self.dropout(x)
-
+        intermediate_outs = []
         for layer, block in enumerate(self.encoders.blocks):
             x = block(x)
             if layer < len(self.encoders.blocks) - 1:
                 x = self.dropout(x)
+                if return_all_hs:
+                    intermediate_outs.append(x)
 
         x = self.encoders.ln_post(x)
+        if return_all_hs:
+            intermediate_outs.append(x)
 
         if ilens is not None:
             olens = (
@@ -163,6 +168,9 @@ class OpenAIWhisperEncoder(AbsEncoder):
         else:
             olens = None
 
+        if len(intermediate_outs) > 0:
+            return (x, intermediate_outs), olens
+
         return x, olens
 
     def forward(
@@ -170,6 +178,7 @@ class OpenAIWhisperEncoder(AbsEncoder):
         xs_pad: torch.Tensor,
         ilens: torch.Tensor,
         prev_states: torch.Tensor = None,
+        return_all_hs: bool = False,
     ) -> Tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor]]:
         if self.do_pad_trim:
             xs_pad = self.pad_or_trim(xs_pad, self.pad_samples)
@@ -181,6 +190,6 @@ class OpenAIWhisperEncoder(AbsEncoder):
             feats, feats_lens = self.specaug(feats, feats_lens)
             feats = torch.transpose(feats, 1, 2)
 
-        xs_pad, olens = self.whisper_encode(feats, feats_lens)
+        xs_pad, olens = self.whisper_encode(feats, feats_lens,return_all_hs=return_all_hs)
 
         return xs_pad, olens, None
