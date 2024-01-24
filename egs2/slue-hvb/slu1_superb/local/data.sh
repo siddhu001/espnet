@@ -25,7 +25,7 @@ if [ $# -ne 0 ]; then
     log "Error: No positional arguments are required."
     exit 2
 fi
-
+HARPERVALLEY=/ocean/projects/cis210027p/shared/corpora/slue-hvb
 if [ -z "${HARPERVALLEY}" ]; then
     log "Fill the value of 'HARPERVALLEY' of db.sh"
     exit 1
