@@ -69,6 +69,7 @@ class ESPnetSLUModel(ESPnetASRModel):
         pre_postencoder_norm: bool = False,
         superb_setup_encoder: bool = False,
         superb_setup: bool = False,
+        superb_da: bool = False,
         weighted_sum: bool = False,
     ):
         assert check_argument_types()
@@ -90,6 +91,7 @@ class ESPnetSLUModel(ESPnetASRModel):
         self.two_pass = two_pass
         self.superb_setup = superb_setup
         self.superb_setup_encoder = superb_setup_encoder
+        self.superb_da = superb_da
         self.weighted_sum = weighted_sum
         self.pre_postencoder_norm = pre_postencoder_norm
         self.frontend = frontend
@@ -255,10 +257,21 @@ class ESPnetSLUModel(ESPnetASRModel):
                 feats=torch.stack(feats_mean_out)
                 encoder_out=self.transform_linear(feats)
             
-
-            text = text.reshape(-1) - 2
-            loss_lightweight=torch.nn.functional.cross_entropy(encoder_out, text)
-            acc_lightweight=None
+            if self.superb_da:
+                text_onehot = torch.zeros(text.shape[0],self.num_class).to(device=text.device)
+                for i in range(len(text)):
+                    text_onehot[i] = torch.sum(torch.nn.functional.one_hot(text[i,:text_lengths[i]]-2,self.num_class),dim=0)
+                # import pdb;pdb.set_trace()
+                m = torch.nn.Sigmoid()
+                logits=m(encoder_out)
+                loss_lightweight=torch.nn.functional.binary_cross_entropy(logits,text_onehot.float(), reduction='sum')
+                pred=(logits>0.5).int()
+                # import pdb;pdb.set_trace()
+                acc_lightweight=(pred[text_onehot==1]==1).sum()/(text_onehot.shape[0]*text_onehot.shape[1])
+            else:
+                text = text.reshape(-1) - 2
+                loss_lightweight=torch.nn.functional.cross_entropy(encoder_out, text)
+                acc_lightweight=None
         intermediate_outs = None
         if isinstance(encoder_out, tuple):
             intermediate_outs = encoder_out[1]

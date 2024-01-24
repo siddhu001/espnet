@@ -1,0 +1,2 @@
+./run.sh --stage 11 --stop_stage 13 --gpu_inference true --inference_nj 1 --slu_config conf/tuning/train_asr_hubert_superb.yaml --inference_config conf/decode_asr.yaml --token_type bpe --nbpe 1000 --inference_slu_model valid.cer_ctc.ave.pth --ngpu 4
+./run.sh --stage 11 --stop_stage 13 --gpu_inference true --inference_nj 1 --slu_config conf/tuning/train_asr_hubert_superb_0.001.yaml --inference_config conf/decode_asr.yaml --token_type bpe --nbpe 1000 --inference_slu_model valid.cer_ctc.ave.pth --ngpu 4

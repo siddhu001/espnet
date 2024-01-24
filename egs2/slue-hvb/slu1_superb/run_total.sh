@@ -1,0 +1,3 @@
+./run_wavlm_conv2d2_ctc0.1.sh --inference_config conf/decode_asr.yaml --slu_config conf/tuning/train_asr_whisper_weighted_0.01.yaml --stage 11 --ngpu 4 --inference_slu_model valid.loss.ave.pth --inference_nj 1 --stage 12 --stop_stage 13 
+./run_wavlm_conv2d2_ctc0.1.sh --inference_config conf/decode_asr.yaml --slu_config conf/tuning/train_asr_whisper_weighted_0.001.yaml --stage 11 --ngpu 4 --inference_slu_model valid.loss.ave.pth --inference_nj 1 --stage 12 --stop_stage 13 
+./run_wavlm_conv2d2_ctc0.1.sh --inference_config conf/decode_asr.yaml --slu_config conf/tuning/train_asr_whisper_weighted_0.0001.yaml --stage 11 --ngpu 4 --inference_slu_model valid.loss.ave.pth --inference_nj 1 --stage 12 --stop_stage 13 

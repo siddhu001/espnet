@@ -297,8 +297,13 @@ class Speech2Understand:
         #     # import pdb;pdb.set_trace()
         #     enc, enc_lens = self.asr_model.featurizer(enc[1],[enc_lens for i in enc[1]])
         if self.asr_model.superb_setup:
-            m = torch.nn.Softmax()
-            token_int=[torch.argmax(m(enc[0])).tolist()]
+            if self.asr_model.superb_da:
+                m = torch.nn.Sigmoid()
+                # import pdb;pdb.set_trace()
+                token_int=(m(encoder_out[0])>0.5).nonzero(as_tuple=True)[0].tolist()
+            else:
+                m = torch.nn.Softmax()
+                token_int=[torch.argmax(m(enc[0])).tolist()]
             token_int=[k+2 for k in token_int]
             token = self.converter.ids2tokens(token_int)
             text = self.tokenizer.tokens2text(token)
@@ -314,10 +319,13 @@ class Speech2Understand:
             # import pdb;pdb.set_trace()
             feats=torch.stack(feats_mean_out)
             encoder_out=self.asr_model.transform_linear(feats)
-            m = torch.nn.Softmax() # change to softmax here 
-            
-            # token_int=(m(enc[0])>0.5).nonzero(as_tuple=True)[0].tolist() # do argmax here 
-            token_int=[torch.argmax(m(encoder_out[0])).tolist()]
+            if self.asr_model.superb_da:
+                m = torch.nn.Sigmoid()
+                # import pdb;pdb.set_trace()
+                token_int=(m(encoder_out[0])>0.5).nonzero(as_tuple=True)[0].tolist()
+            else:
+                m = torch.nn.Softmax()
+                token_int=[torch.argmax(m(encoder_out[0])).tolist()]
             token_int=[k+2 for k in token_int]
             token = self.converter.ids2tokens(token_int)
             # import pdb;pdb.set_trace()

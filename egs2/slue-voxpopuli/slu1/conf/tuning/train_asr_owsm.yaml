@@ -1,13 +1,18 @@
-# network architecture
-
-optim: adam
-optim_conf:
-    lr: 0.001
-scheduler: warmuplr     # pytorch v1.1.0+ required #Tune warmup steps
-scheduler_conf:
-    warmup_steps: 1000
-max_epoch: 50
-batch_size: 320
+specaug: specaug
+specaug_conf:
+    apply_time_warp: true
+    time_warp_window: 5
+    time_warp_mode: bicubic
+    apply_freq_mask: true
+    freq_mask_width_range:
+    - 0
+    - 27
+    num_freq_mask: 2
+    apply_time_mask: true
+    time_mask_width_ratio_range:
+    - 0.
+    - 0.05
+    num_time_mask: 2
 
 normalize: global_mvn
 normalize_conf:
@@ -46,42 +51,46 @@ frontend_conf:
     win_length: 400
     hop_length: 160
     fs: 16k
-specaug: specaug
-specaug_conf:
-    apply_time_warp: false
-    time_warp_window: 5
-    time_warp_mode: bicubic
-    apply_freq_mask: true
-    freq_mask_width_range:
-    - 0
-    - 27
-    num_freq_mask: 2
-    apply_time_mask: true
-    time_mask_width_ratio_range:
-    - 0.0
-    - 0.05
-    num_time_mask: 10
+
+decoder: transformer
+decoder_conf:
+    attention_heads: 4
+    linear_units: 2048
+    num_blocks: 2
+    dropout_rate: 0.1
+    positional_dropout_rate: 0.1
+    self_attention_dropout_rate: 0.1
+    src_attention_dropout_rate: 0.1
 
 model_conf:
-    ctc_weight: 0.0
+    ctc_weight: 0.3
     lsm_weight: 0.1
     length_normalized_loss: false
-    superb_setup_encoder: true
-    num_class: 3
-    ssl_input_size: 1024
-    weighted_sum: true
-    extract_feats_in_collect_stats: false   # Note: "False" means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend.
+    extract_feats_in_collect_stats: false   # Note: false means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend
 unused_parameters: true
 
+seed: 2022
+log_interval: 100
+num_workers: 2
+batch_type: numel
+batch_bins: 6000000
+accum_grad: 2
+max_epoch: 70
+patience: none
+init: none
 best_model_criterion:
 -   - valid
-    - loss
-    - min
+    - acc
+    - max
 keep_nbest_models: 10
 
-# init_param: [
-#     "/ocean/projects/cis220031p/hyd/espnet-1/egs2/slue-voxceleb/asr1/owsm_v3/exp/s2t_train_s2t_transformer_conv2d_size1024_e24_d24_lr2.5e-4_warmup10k_finetune_raw_bpe50000/valid.acc.ave_5best.till50epoch.pth:encoder:encoder",
-# ]
+optim: adam
+optim_conf:
+    lr: 0.0005
+    weight_decay: 0.000001
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 5000
 
 init_param: [
     "/scratch/bbjs/arora1/new_download_espnet_egs2/harpervalley/slu1_superb_onlyda/owsm_v3.1_ebf/exp/s2t_train_s2t_ebf_conv2d_size1024_e18_d18_piecewise_lr2e-4_warmup60k_flashattn_raw_bpe50000/valid.total_count.ave_5best.till45epoch.pth:encoder:encoder",

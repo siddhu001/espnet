@@ -6,7 +6,7 @@ optim_conf:
 scheduler: warmuplr     # pytorch v1.1.0+ required #Tune warmup steps
 scheduler_conf:
     warmup_steps: 1000
-max_epoch: 50
+max_epoch: 27
 batch_size: 320
 
 normalize: global_mvn
@@ -67,9 +67,8 @@ model_conf:
     lsm_weight: 0.1
     length_normalized_loss: false
     superb_setup_encoder: true
-    num_class: 3
+    num_class: 18
     ssl_input_size: 1024
-    weighted_sum: true
     extract_feats_in_collect_stats: false   # Note: "False" means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend.
 unused_parameters: true
 
@@ -78,10 +77,6 @@ best_model_criterion:
     - loss
     - min
 keep_nbest_models: 10
-
-# init_param: [
-#     "/ocean/projects/cis220031p/hyd/espnet-1/egs2/slue-voxceleb/asr1/owsm_v3/exp/s2t_train_s2t_transformer_conv2d_size1024_e24_d24_lr2.5e-4_warmup10k_finetune_raw_bpe50000/valid.acc.ave_5best.till50epoch.pth:encoder:encoder",
-# ]
 
 init_param: [
     "/scratch/bbjs/arora1/new_download_espnet_egs2/harpervalley/slu1_superb_onlyda/owsm_v3.1_ebf/exp/s2t_train_s2t_ebf_conv2d_size1024_e18_d18_piecewise_lr2e-4_warmup60k_flashattn_raw_bpe50000/valid.total_count.ave_5best.till45epoch.pth:encoder:encoder",
