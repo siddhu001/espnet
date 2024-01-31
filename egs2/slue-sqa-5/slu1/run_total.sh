@@ -1,0 +1,2 @@
+./run.sh --stage 11 --stop_stage 12 --ngpu 4 --inference_config conf/decode_asr_full_path.yaml --gpu_inference true --inference_nj 4 --slu_config conf//train_asr_wav2vec2_superb.yaml --inference_slu_model valid.loss.ave.pth
+./run.sh --stage 11 --stop_stage 12 --ngpu 4 --inference_config conf/decode_asr_full_path.yaml --gpu_inference true --inference_nj 4 --slu_config conf//train_asr_hubert_superb_0.001.yaml
