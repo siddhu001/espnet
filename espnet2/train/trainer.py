@@ -255,7 +255,10 @@ class Trainer:
                         else None
                     ),
                     find_unused_parameters=trainer_options.unused_parameters,
+                    gradient_as_bucket_view=True,
                 )
+                from torch.distributed.algorithms.ddp_comm_hooks.default_hooks import bf16_compress_hook
+                dp_model.register_comm_hook(None, bf16_compress_hook)
         elif distributed_option.ngpu > 1:
             dp_model = torch.nn.parallel.DataParallel(
                 model,
