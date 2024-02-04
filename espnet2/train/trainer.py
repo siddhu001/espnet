@@ -795,7 +795,12 @@ class Trainer:
             if no_forward_run:
                 continue
 
-            retval = model(**batch)
+            with autocast(
+                options.use_amp,
+                **autocast_args,
+            ):
+                retval = model(**batch)
+
             if isinstance(retval, dict):
                 stats = retval["stats"]
                 weight = retval["weight"]

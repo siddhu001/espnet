@@ -40,6 +40,7 @@ from espnet2.schedulers.noam_lr import NoamLR
 from espnet2.schedulers.warmup_lr import WarmupLR
 from espnet2.schedulers.warmup_reducelronplateau import WarmupReduceLROnPlateau
 from espnet2.schedulers.warmup_step_lr import WarmupStepLR
+from espnet2.schedulers.piecewise_linear_warmup_lr import PiecewiseLinearWarmupLR
 from espnet2.torch_utils.load_pretrained_model import load_pretrained_model
 from espnet2.torch_utils.model_summary import model_summary
 from espnet2.torch_utils.pytorch_version import pytorch_cudnn_version
@@ -158,6 +159,7 @@ scheduler_classes = dict(
     onecyclelr=torch.optim.lr_scheduler.OneCycleLR,
     CosineAnnealingWarmRestarts=torch.optim.lr_scheduler.CosineAnnealingWarmRestarts,
     CosineAnnealingWarmupRestarts=CosineAnnealingWarmupRestarts,
+    piecewiselinearwarmuplr=PiecewiseLinearWarmupLR,
 )
 # To lower keys
 optim_classes = {k.lower(): v for k, v in optim_classes.items()}

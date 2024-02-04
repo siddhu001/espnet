@@ -24,7 +24,7 @@ def get_parser():
         "--log-name",
         type=str,
         default="decode",
-        choices=["decode", "asr_inference"],
+        choices=["decode", "asr_inference", "s2t_inference"],
         help="name of logfile, e.g., 'decode' (espnet1) and "
         "'asr_inference' (espnet2)",
     )

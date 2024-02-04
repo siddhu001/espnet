@@ -7,21 +7,6 @@ import torch
 from typeguard import check_argument_types, check_return_type
 
 from espnet2.asr.ctc import CTC
-from espnet2.asr.decoder.abs_decoder import AbsDecoder
-from espnet2.asr.decoder.hugging_face_transformers_decoder import (  # noqa: H301
-    HuggingFaceTransformersDecoder,
-)
-from espnet2.asr.decoder.mlm_decoder import MLMDecoder
-from espnet2.asr.decoder.rnn_decoder import RNNDecoder
-from espnet2.asr.decoder.s4_decoder import S4Decoder
-from espnet2.asr.decoder.transformer_decoder import (
-    DynamicConvolution2DTransformerDecoder,
-    DynamicConvolutionTransformerDecoder,
-    LightweightConvolution2DTransformerDecoder,
-    LightweightConvolutionTransformerDecoder,
-    TransformerDecoder,
-)
-from espnet2.asr.decoder.whisper_decoder import OpenAIWhisperDecoder
 from espnet2.asr.encoder.abs_encoder import AbsEncoder
 from espnet2.asr.encoder.branchformer_encoder import BranchformerEncoder
 from espnet2.asr.encoder.conformer_encoder import ConformerEncoder
@@ -46,32 +31,28 @@ from espnet2.asr.encoder.transformer_encoder_multispkr import (
 from espnet2.asr.encoder.vgg_rnn_encoder import VGGRNNEncoder
 from espnet2.asr.encoder.wav2vec2_encoder import FairSeqWav2Vec2Encoder
 from espnet2.asr.encoder.whisper_encoder import OpenAIWhisperEncoder
+from espnet2.asr.encoder.e_branchformer_ctc_encoder import EBranchformerCTCEncoder
+from espnet2.asr.encoder.e_branchformer_downsample_ctc_encoder import EBranchformerDownsampleCTCEncoder
 from espnet2.asr.frontend.abs_frontend import AbsFrontend
 from espnet2.asr.frontend.default import DefaultFrontend
 from espnet2.asr.frontend.fused import FusedFrontends
 from espnet2.asr.frontend.s3prl import S3prlFrontend
 from espnet2.asr.frontend.whisper import WhisperFrontend
 from espnet2.asr.frontend.windowing import SlidingWindow
-from espnet2.asr.postencoder.abs_postencoder import AbsPostEncoder
-from espnet2.asr.postencoder.hugging_face_transformers_postencoder import (
-    HuggingFaceTransformersPostEncoder,
-)
-from espnet2.asr.preencoder.abs_preencoder import AbsPreEncoder
-from espnet2.asr.preencoder.linear import LinearProjection
-from espnet2.asr.preencoder.sinc import LightweightSincConvs
 from espnet2.asr.specaug.abs_specaug import AbsSpecAug
 from espnet2.asr.specaug.specaug import SpecAug
 from espnet2.layers.abs_normalize import AbsNormalize
 from espnet2.layers.global_mvn import GlobalMVN
 from espnet2.layers.utterance_mvn import UtteranceMVN
 from espnet2.s2t.espnet_model import ESPnetS2TModel
+from espnet2.s2t.espnet_ctc_model import ESPnetS2TCTCModel
 from espnet2.tasks.abs_task import AbsTask
 from espnet2.text.phoneme_tokenizer import g2p_choices
 from espnet2.torch_utils.initialize import initialize
 from espnet2.train.abs_espnet_model import AbsESPnetModel
 from espnet2.train.class_choices import ClassChoices
 from espnet2.train.collate_fn import CommonCollateFn
-from espnet2.train.preprocessor import AbsPreprocessor, S2TPreprocessor
+from espnet2.train.preprocessor import AbsPreprocessor, S2TPreprocessor, S2TCTCPreprocessor, S2TCTCVarLenPreprocessor
 from espnet2.train.trainer import Trainer
 from espnet2.utils.get_default_kwargs import get_default_kwargs
 from espnet2.utils.nested_dict_action import NestedDictAction
@@ -112,19 +93,10 @@ model_choices = ClassChoices(
     name="model",
     classes=dict(
         espnet=ESPnetS2TModel,
+        espnet_ctc=ESPnetS2TCTCModel,
     ),
     type_check=AbsESPnetModel,
-    default="espnet",
-)
-preencoder_choices = ClassChoices(
-    name="preencoder",
-    classes=dict(
-        sinc=LightweightSincConvs,
-        linear=LinearProjection,
-    ),
-    type_check=AbsPreEncoder,
-    default=None,
-    optional=True,
+    default="espnet_ctc",
 )
 encoder_choices = ClassChoices(
     "encoder",
@@ -144,44 +116,32 @@ encoder_choices = ClassChoices(
         branchformer=BranchformerEncoder,
         whisper=OpenAIWhisperEncoder,
         e_branchformer=EBranchformerEncoder,
+        e_branchformer_ctc=EBranchformerCTCEncoder,
+        e_branchformer_downsample_ctc=EBranchformerDownsampleCTCEncoder,
     ),
     type_check=AbsEncoder,
-    default="rnn",
+    default="e_branchformer_ctc",
 )
-postencoder_choices = ClassChoices(
-    name="postencoder",
+promptencoder_choices = ClassChoices(
+    "promptencoder",
     classes=dict(
-        hugging_face_transformers=HuggingFaceTransformersPostEncoder,
+        conformer=ConformerEncoder,
+        transformer=TransformerEncoder,
+        branchformer=BranchformerEncoder,
+        e_branchformer=EBranchformerEncoder,
     ),
-    type_check=AbsPostEncoder,
-    default=None,
-    optional=True,
-)
-decoder_choices = ClassChoices(
-    "decoder",
-    classes=dict(
-        transformer=TransformerDecoder,
-        lightweight_conv=LightweightConvolutionTransformerDecoder,
-        lightweight_conv2d=LightweightConvolution2DTransformerDecoder,
-        dynamic_conv=DynamicConvolutionTransformerDecoder,
-        dynamic_conv2d=DynamicConvolution2DTransformerDecoder,
-        rnn=RNNDecoder,
-        mlm=MLMDecoder,
-        whisper=OpenAIWhisperDecoder,
-        hugging_face_transformers=HuggingFaceTransformersDecoder,
-        s4=S4Decoder,
-    ),
-    type_check=AbsDecoder,
-    default=None,
-    optional=True,
+    type_check=AbsEncoder,
+    default="transformer",
 )
 preprocessor_choices = ClassChoices(
     "preprocessor",
     classes=dict(
         s2t=S2TPreprocessor,
+        s2t_ctc=S2TCTCPreprocessor,
+        s2t_ctc_var_len=S2TCTCVarLenPreprocessor,
     ),
     type_check=AbsPreprocessor,
-    default="s2t",
+    default="s2t_ctc",
 )
 
 
@@ -199,14 +159,10 @@ class S2TTask(AbsTask):
         normalize_choices,
         # --model and --model_conf
         model_choices,
-        # --preencoder and --preencoder_conf
-        preencoder_choices,
+        # --promptencoder and --promptencoder_conf
+        promptencoder_choices,
         # --encoder and --encoder_conf
         encoder_choices,
-        # --postencoder and --postencoder_conf
-        postencoder_choices,
-        # --decoder and --decoder_conf
-        decoder_choices,
         # --preprocessor and --preprocessor_conf
         preprocessor_choices,
     ]
@@ -447,7 +403,7 @@ class S2TTask(AbsTask):
         return retval
 
     @classmethod
-    def build_model(cls, args: argparse.Namespace) -> ESPnetS2TModel:
+    def build_model(cls, args: argparse.Namespace):
         assert check_argument_types()
         if isinstance(args.token_list, str):
             with open(args.token_list, encoding="utf-8") as f:
@@ -461,7 +417,7 @@ class S2TTask(AbsTask):
             raise RuntimeError("token_list must be str or list")
 
         vocab_size = len(token_list)
-        logging.info(f"Vocabulary size: {vocab_size }")
+        logging.info(f"Vocabulary size: {vocab_size}")
 
         # 1. frontend
         if args.input_size is None:
@@ -490,61 +446,32 @@ class S2TTask(AbsTask):
         else:
             normalize = None
 
-        # 4. Pre-encoder input block
-        # NOTE(kan-bayashi): Use getattr to keep the compatibility
-        if getattr(args, "preencoder", None) is not None:
-            preencoder_class = preencoder_choices.get_class(args.preencoder)
-            preencoder = preencoder_class(**args.preencoder_conf)
-            input_size = preencoder.output_size()
-        else:
-            preencoder = None
-
         # 4. Encoder
         encoder_class = encoder_choices.get_class(args.encoder)
         encoder = encoder_class(input_size=input_size, **args.encoder_conf)
 
-        # 5. Post-encoder block
-        # NOTE(kan-bayashi): Use getattr to keep the compatibility
-        encoder_output_size = encoder.output_size()
-        if getattr(args, "postencoder", None) is not None:
-            postencoder_class = postencoder_choices.get_class(args.postencoder)
-            postencoder = postencoder_class(
-                input_size=encoder_output_size, **args.postencoder_conf
-            )
-            encoder_output_size = postencoder.output_size()
-        else:
-            postencoder = None
-
-        # 5. Decoder
-        if getattr(args, "decoder", None) is not None:
-            decoder_class = decoder_choices.get_class(args.decoder)
-            decoder = decoder_class(
-                vocab_size=vocab_size,
-                encoder_output_size=encoder_output_size,
-                **args.decoder_conf,
-            )
-        else:
-            decoder = None
+        # 5. Prompt Encoder
+        promptencoder_class = promptencoder_choices.get_class(args.promptencoder)
+        promptencoder = promptencoder_class(
+            input_size=args.promptencoder_conf['output_size'],
+            input_layer=None,
+            **args.promptencoder_conf
+        )
 
         # 6. CTC
         ctc = CTC(
-            odim=vocab_size, encoder_output_size=encoder_output_size, **args.ctc_conf
+            odim=vocab_size, encoder_output_size=encoder.output_size(), **args.ctc_conf
         )
 
         # 7. Build model
-        try:
-            model_class = model_choices.get_class(args.model)
-        except AttributeError:
-            model_class = model_choices.get_class("espnet")
+        model_class = model_choices.get_class(args.model)
         model = model_class(
             vocab_size=vocab_size,
             frontend=frontend,
             specaug=specaug,
             normalize=normalize,
-            preencoder=preencoder,
             encoder=encoder,
-            postencoder=postencoder,
-            decoder=decoder,
+            prompt_encoder=promptencoder,
             ctc=ctc,
             token_list=token_list,
             **args.model_conf,
@@ -555,5 +482,4 @@ class S2TTask(AbsTask):
         if args.init is not None:
             initialize(model, args.init)
 
-        assert check_return_type(model)
         return model

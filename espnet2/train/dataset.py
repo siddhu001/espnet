@@ -551,7 +551,12 @@ class ESPnetDataset(AbsDataset):
         # 1. Load data from each loaders
         for name, loader in self.loader_dict.items():
             try:
-                value = loader[uid]
+                try:
+                    value = loader[uid]
+                except:
+                    import time; time.sleep(5)  # avoid filesystem access error
+                    value = loader[uid]
+
                 if isinstance(value, (list)):
                     value = np.array(value)
                 if not isinstance(

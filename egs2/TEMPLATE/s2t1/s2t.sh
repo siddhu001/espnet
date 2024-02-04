@@ -1535,7 +1535,7 @@ if [ ${stage} -le 12 ] && [ ${stop_stage} -ge 12 ] && ! [[ " ${skip_stages} " =~
         rm -f "${_logdir}/*.log"
         # shellcheck disable=SC2046,SC2086
         ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/s2t_inference.JOB.log \
-            ${python} -m espnet2.bin.s2t_inference${inference_bin_tag} \
+            ${python} -m espnet2.bin.s2t_inference_ctc \
                 --batch_size ${batch_size} \
                 --ngpu "${_ngpu}" \
                 --data_path_and_name_and_type "${_data}/${_scp},speech,${_type}" \
