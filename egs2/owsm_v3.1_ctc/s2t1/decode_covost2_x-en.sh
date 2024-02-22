@@ -10,12 +10,13 @@ log() {
 
 tgt_case=lc.rm
 s2t_exp=exp/s2t_train_s2t_multitask-ctc_ebf27_conv2d8_size1024_raw_bpe50000
-inference_s2t_model=16epoch.pth
+inference_s2t_model=valid.total_count.ave_5best.till40epoch.pth
 beam_size=1
-inference_tag=st_covost2_beam${beam_size}_${inference_s2t_model}
+inference_tag=ST_beam${beam_size}_${inference_s2t_model}
 
 # for src in de es fr ca ja zh-CN; do
-for src in de es fr ca; do
+# for src in de es fr ca; do
+for src in ca; do
     case ${src} in
         "cy")
             download_id=cym ;;
@@ -68,7 +69,7 @@ for src in de es fr ca; do
         --inference_s2t_model ${inference_s2t_model} \
         --s2t_exp ${s2t_exp} \
         --cleaner none --hyp_cleaner none \
-        --inference_nj 8 \
+        --inference_nj 1 \
         --inference_args "--beam_size ${beam_size} --lang_sym ${download_id} --task_sym st_eng" \
         --inference_tag ${inference_tag}
 

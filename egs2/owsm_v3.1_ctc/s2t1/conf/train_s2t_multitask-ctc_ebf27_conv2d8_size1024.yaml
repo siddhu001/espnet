@@ -101,7 +101,7 @@ best_model_criterion:
     - total_count
     - max
 keep_nbest_models: 5
-# nbest_averaging_interval: 5     # average ckpt every 5 epochs
+nbest_averaging_interval: 5     # average ckpt every 5 epochs
 use_amp: true
 num_workers: 4
 unused_parameters: false

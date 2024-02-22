@@ -4,7 +4,7 @@ from sklearn.metrics import classification_report
 
 
 if __name__ == "__main__":
-    pred = "exp/s2t_train_s2t_multitask-ctc_ebf27_conv2d8_size1024_raw_bpe50000/LID_16epoch.pth/test/FLEURS/test/text"
+    pred = "exp/s2t_train_s2t_multitask-ctc_ebf27_conv2d8_size1024_raw_bpe50000/LID_valid.total_count.ave_5best.till40epoch.pth/test/FLEURS/test/text"
     outfile = Path(pred).parent / "result.txt"
 
     all_true, all_pred = [], []
