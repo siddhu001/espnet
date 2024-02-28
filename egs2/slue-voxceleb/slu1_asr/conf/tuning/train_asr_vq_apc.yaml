@@ -19,11 +19,11 @@ encoder_conf:
     output_size: 256
     attention_heads: 4
     linear_units: 1024
-    num_blocks: 4
+    num_blocks: 12
     dropout_rate: 0.1
     positional_dropout_rate: 0.1
     attention_dropout_rate: 0.1
-    input_layer: conv2d2
+    input_layer: conv2d
     normalize_before: true
     macaron_style: true
     rel_pos_type: latest
@@ -44,7 +44,7 @@ decoder_conf:
     src_attention_dropout_rate: 0.1
 
 model_conf:
-    ctc_weight: 1.0
+    ctc_weight: 0.3
     lsm_weight: 0.1
     length_normalized_loss: false
     extract_feats_in_collect_stats: false   # Note: false means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend
@@ -52,13 +52,13 @@ model_conf:
 frontend: s3prl
 frontend_conf:
     frontend_conf:
-        upstream: wavlm_large  # Note: If the upstream is changed, please change the input_size in the preencoder.
+        upstream: vq_apc_960hr  # Note: If the upstream is changed, please change the input_size in the preencoder.
     download_dir: ./hub
     multilayer_feature: true
 
 preencoder: linear
 preencoder_conf:
-    input_size: 1024  # Note: If the upstream is changed, please change this value accordingly.
+    input_size: 512  # Note: If the upstream is changed, please change this value accordingly.
     output_size: 80
 
 freeze_param:
@@ -68,23 +68,21 @@ seed: 2022
 log_interval: 100
 num_workers: 2
 batch_type: numel
-batch_bins: 12000000
-accum_grad: 1
-max_epoch: 28
+batch_bins: 6000000
+accum_grad: 2
+max_epoch: 70
 patience: none
 init: none
 best_model_criterion:
 -   - valid
-    - cer_ctc
-    - min
--   - valid
-    - loss
-    - min
+    - acc
+    - max
 keep_nbest_models: 10
+# nbest_averaging_interval: 10
 
 optim: adam
 optim_conf:
-    lr: 0.001
+    lr: 0.002
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:

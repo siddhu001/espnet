@@ -2060,7 +2060,7 @@ class AbsTask(ABC):
             try:
                 model.load_state_dict(
                     torch.load(model_file, map_location=device),
-                    strict=False,
+                    strict=not use_lora,
                 )
             except RuntimeError:
                 # Note(simpleoier): the following part is to be compatible with
@@ -2082,8 +2082,18 @@ class AbsTask(ABC):
                         }
                         model.load_state_dict(state_dict, strict=not use_lora)
                     else:
-                        raise
+                        if any(["postdecoder" in k for k in state_dict.keys()]):
+                            model.load_state_dict(
+                                state_dict, strict=False,
+                            )
+                        else:
+                            raise
                 else:
-                    raise
+                    if any(["postdecoder" in k for k in state_dict.keys()]):
+                        model.load_state_dict(
+                            state_dict, strict=False,
+                        )
+                    else:
+                        raise
 
         return model, args

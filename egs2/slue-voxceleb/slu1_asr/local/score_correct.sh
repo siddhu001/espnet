@@ -25,8 +25,8 @@ if [ $# -gt 1 ]; then
 	valid_inference_folder=$2
 	test_inference_folder=$3
 	# python local/score.py --exp_root ${asr_expdir} --valid_folder ${valid_inference_folder} --test_folder ${test_inference_folder}
-	python local/generate_asr_files.py --exp_root ${asr_expdir} --valid_folder ${valid_inference_folder} --test_folder ${test_inference_folder}
-	python local/f1_score.py --exp_root ${asr_expdir} --valid_folder ${valid_inference_folder} --test_folder ${test_inference_folder}
+	python local/generate_asr_files_correct.py --exp_root ${asr_expdir} --valid_folder ${valid_inference_folder} --test_folder ${test_inference_folder}
+	# python local/f1_score.py --exp_root ${asr_expdir} --valid_folder ${valid_inference_folder} --test_folder ${test_inference_folder}
 else
 	valid_inference_folder="inference_asr_model_valid.acc.ave_10best/devel/"
 	test_inference_folder="inference_asr_model_valid.acc.ave_10best/test/"

@@ -34,7 +34,7 @@ postencoder_conf:
     dropout_rate: 0.1
     positional_dropout_rate: 0.1
     attention_dropout_rate: 0.1
-    input_layer: conv2d2
+    input_layer: conv2d1
     normalize_before: true
     macaron_style: true
     pos_enc_layer_type: "rel_pos"
@@ -85,6 +85,7 @@ model_conf:
     ctc_weight: 0.1
     lsm_weight: 0.1
     length_normalized_loss: false
+    weighted_sum: true
     extract_feats_in_collect_stats: false   # Note: "False" means during collect stats (stage 10), generating dummy stats files rather than extract_feats by forward frontend.
 
 specaug: specaug

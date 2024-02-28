@@ -21,6 +21,7 @@ from espnet2.tasks.lm import LMTask
 from espnet2.tasks.slu import SLUTask
 from espnet2.text.build_tokenizer import build_tokenizer
 from espnet2.text.token_id_converter import TokenIDConverter
+from espnet2.text.whisper_token_id_converter import OpenAIWhisperTokenIDConverter
 from espnet2.torch_utils.device_funcs import to_device
 from espnet2.torch_utils.set_all_random_seed import set_all_random_seed
 from espnet2.utils import config_argparse
@@ -215,6 +216,12 @@ class Speech2Understand:
             token_type = asr_train_args.token_type
         if bpemodel is None:
             bpemodel = asr_train_args.bpemodel
+        
+        # compatibility for whisper tokenizer
+        # preprocessor_conf = getattr(asr_train_args, "preprocessor_conf", {})
+        # preprocessor_conf = {}
+        # whisper_language = "en"
+        # whisper_task="transcribe"
 
         if token_type is None:
             tokenizer = None
@@ -223,9 +230,37 @@ class Speech2Understand:
                 tokenizer = build_tokenizer(token_type=token_type, bpemodel=bpemodel)
             else:
                 tokenizer = None
+        # elif "whisper" in token_type:
+        #     tokenizer_language = whisper_language
+        #     tokenizer = build_tokenizer(
+        #         token_type=token_type,
+        #         bpemodel=bpemodel,
+        #         whisper_language=whisper_language,
+        #         whisper_task=whisper_task,
+        #         non_linguistic_symbols=prompt_token_file,
+        #     )
         else:
             tokenizer = build_tokenizer(token_type=token_type)
         converter = TokenIDConverter(token_list=token_list)
+        # if bpemodel not in ["whisper_en", "whisper_multilingual"]:
+        #     converter = TokenIDConverter(token_list=token_list)
+        # else:
+        #     if "speaker_change_symbol" in preprocessor_conf:
+        #         sot_asr = True
+        #     else:
+        #         sot_asr = False
+        #     converter = OpenAIWhisperTokenIDConverter(
+        #         model_type=bpemodel,
+        #         added_tokens_txt=prompt_token_file,
+        #         language=whisper_language or "en",
+        #         task=whisper_task or "transcribe",
+        #         sot=sot_asr,
+        #     )
+        #     # print(prompt_token_file)
+        #     # import pdb;pdb.set_trace()
+        #     beam_search.set_hyp_primer(
+        #         list(converter.tokenizer.sot_sequence_including_notimestamps)
+        #     )
         logging.info(f"Text tokenizer: {tokenizer}")
 
         self.asr_model = asr_model
@@ -299,8 +334,7 @@ class Speech2Understand:
         if self.asr_model.superb_setup:
             if self.asr_model.superb_da:
                 m = torch.nn.Sigmoid()
-                # import pdb;pdb.set_trace()
-                token_int=(m(encoder_out[0])>0.5).nonzero(as_tuple=True)[0].tolist()
+                token_int=(m(enc[0])>0.5).nonzero(as_tuple=True)[0].tolist()
             else:
                 m = torch.nn.Softmax()
                 token_int=[torch.argmax(m(enc[0])).tolist()]
@@ -336,7 +370,6 @@ class Speech2Understand:
         if isinstance(enc, tuple):
             enc = enc[0]
         assert len(enc) == 1, len(enc)
-
         if self.greedy_ctc:
             hyp_pred= torch.argmax(self.asr_model.ctc.ctc_lo(enc), dim=-1).data
             seq_hat_total=hyp_pred
@@ -432,7 +465,6 @@ class Speech2Understand:
             kwargs.update(**d.download_and_unpack(model_tag))
 
         return Speech2Understand(**kwargs)
-
 
 def inference(
     output_dir: str,

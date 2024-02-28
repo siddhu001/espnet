@@ -1,6 +1,6 @@
 import copy
 from typing import Optional, Tuple, Union
-
+import numpy as np
 import torch
 import torch.nn.functional as F
 from typeguard import check_argument_types
@@ -8,6 +8,13 @@ from typeguard import check_argument_types
 from espnet2.asr.encoder.abs_encoder import AbsEncoder
 from espnet2.asr.specaug.specaug import SpecAug
 
+def sinusoids(length, channels, max_timescale=10000):
+    """Returns sinusoids for positional embedding"""
+    assert channels % 2 == 0
+    log_timescale_increment = np.log(max_timescale) / (channels // 2 - 1)
+    inv_timescales = torch.exp(-log_timescale_increment * torch.arange(channels // 2))
+    scaled_time = torch.arange(length)[:, np.newaxis] * inv_timescales[np.newaxis, :]
+    return torch.cat([torch.sin(scaled_time), torch.cos(scaled_time)], dim=1)
 
 class OpenAIWhisperEncoder(AbsEncoder):
     """Transformer-based Speech Encoder from OpenAI's Whisper Model:
@@ -24,6 +31,7 @@ class OpenAIWhisperEncoder(AbsEncoder):
         use_specaug: bool = False,
         specaug_conf: Union[dict, None] = None,
         do_pad_trim: bool = False,
+        no_truncate_fix: bool=False,
     ):
         try:
             import whisper
@@ -65,6 +73,9 @@ class OpenAIWhisperEncoder(AbsEncoder):
 
         self.do_pad_trim = do_pad_trim
         self.pad_samples = N_SAMPLES
+        self.no_truncate_fix = no_truncate_fix
+        if (self.no_truncate_fix):
+            self.register_buffer("positional_embedding", sinusoids(6000, 1024))
 
     def output_size(self) -> int:
         return self.encoders.ln_post.normalized_shape[-1]
@@ -135,11 +146,17 @@ class OpenAIWhisperEncoder(AbsEncoder):
 
         n_frames = x.size(1)
         max_pos = self.encoders.positional_embedding.size(0)
-        if n_frames <= max_pos:
-            x = (x + self.encoders.positional_embedding[: x.size(1), :]).to(x.dtype)
+        if self.no_truncate_fix:
+            if n_frames <= self.positional_embedding.size(0):
+                x = (x + self.positional_embedding[: x.size(1), :]).to(x.dtype)
+            else:
+                import pdb;pdb.set_trace()
         else:
-            # due to positional encoding, audios >30 sec won't be accepted
-            x = x[:, :max_pos, :] + self.encoders.positional_embedding
+            if n_frames <= max_pos:
+                x = (x + self.encoders.positional_embedding[: x.size(1), :]).to(x.dtype)
+            else:
+                # due to positional encoding, audios >30 sec won't be accepted
+                x = x[:, :max_pos, :] + self.encoders.positional_embedding
 
         x = self.dropout(x)
         intermediate_outs = []
@@ -164,7 +181,10 @@ class OpenAIWhisperEncoder(AbsEncoder):
                 )
                 // self.encoders.conv2.stride[0]
             )
-            olens = torch.clamp(olens, max=max_pos)
+            if (self.no_truncate_fix):
+                olens = torch.clamp(olens, max=6000)
+            else:
+                olens = torch.clamp(olens, max=max_pos)
         else:
             olens = None
 

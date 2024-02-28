@@ -1,0 +1,4 @@
+./run.sh --stage 11 --slu_config conf/tuning/train_asr_hubert_superb_finetune.yaml --ngpu 4 --stop_stage 11 --test_sets 'org/devel test' --inference_slu_model valid.cer_ctc.ave.pth --inference_config conf/decode_asr_ctc.yaml --inference_nj 1
+./run.sh --stage 11 --slu_config conf/tuning/train_asr_wavlm_superb_finetune.yaml --ngpu 4 --stop_stage 11 --test_sets 'org/devel test' --inference_slu_model valid.cer_ctc.ave.pth --inference_config conf/decode_asr_ctc.yaml --inference_nj 1
+./run.sh --stage 12 --slu_config conf/tuning/train_asr_hubert_superb_finetune.yaml --ngpu 4 --stop_stage 13 --test_sets 'org/devel test' --inference_slu_model valid.cer_ctc.ave.pth --inference_config conf/decode_asr_ctc.yaml --inference_nj 1
+./run.sh --stage 12 --slu_config conf/tuning/train_asr_wavlm_superb_finetune.yaml --ngpu 4 --stop_stage 13 --test_sets 'org/devel test' --inference_slu_model valid.cer_ctc.ave.pth --inference_config conf/decode_asr_ctc.yaml --inference_nj 1
