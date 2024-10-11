@@ -10,8 +10,6 @@ import math
 
 import torch
 from torch import nn
-from flash_attn import flash_attn_func, flash_attn_varlen_func
-from flash_attn.bert_padding import unpad_input, pad_input
 
 
 class MultiHeadedAttention(nn.Module):
