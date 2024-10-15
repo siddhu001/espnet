@@ -69,6 +69,8 @@ class ESPnetASRModel(AbsESPnetModel):
         sym_eos: str = "<sos/eos>",
         extract_feats_in_collect_stats: bool = True,
         lang_token_id: int = -1,
+        loss_only_target: bool = False,
+        target_token: str = "<|notimestamps|>",
     ):
         assert 0.0 <= ctc_weight <= 1.0, ctc_weight
         assert 0.0 <= interctc_weight < 1.0, interctc_weight

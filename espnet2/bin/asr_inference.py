@@ -114,6 +114,7 @@ class Speech2Text:
         lid_prompt: bool = False,
         lang_prompt_token: Optional[str] = None,
         nlp_prompt_token: Optional[str] = None,
+        nlp_prompt_prev_token: Optional[str] = None,
         prompt_token_file: Optional[str] = None,
         partial_ar: bool = False,
         threshold_probability: float = 0.99,
@@ -451,6 +452,17 @@ class Speech2Text:
                 beam_search.set_hyp_primer(
                     list(converter.tokenizer.tokenizer.convert_tokens_to_ids(a1))
                 )
+            elif nlp_prompt_prev_token is not None:
+                a1=converter.tokenizer.tokenizer.convert_ids_to_tokens(converter.tokenizer.sot_sequence_including_notimestamps)
+                prompt_tokens = tokenizer.text2tokens(" ".join(nlp_prompt_prev_token.split()[:-2]))
+                if nlp_prompt_prev_token.split()[-2]=="<|startoftranscript|>":
+                    a1=["<|startofprev|>"]+prompt_tokens+nlp_prompt_prev_token.split()[-2:]+a1[2:]
+                else:
+                    prompt_tokens = tokenizer.text2tokens(" ".join(nlp_prompt_prev_token.split()[:-1]))
+                    a1=["<|startofprev|>"]+prompt_tokens+nlp_prompt_prev_token.split()[-1:]
+                beam_search.set_hyp_primer(
+                    list(converter.tokenizer.tokenizer.convert_tokens_to_ids(a1))
+                )
             elif lid_prompt:
                 a1 = converter.tokenizer.tokenizer.convert_ids_to_tokens(
                     converter.tokenizer.sot_sequence_including_notimestamps
@@ -742,6 +754,7 @@ def inference(
     multi_asr: bool,
     lang_prompt_token: Optional[str],
     nlp_prompt_token: Optional[str],
+    nlp_prompt_prev_token: Optional[str],
     prompt_token_file: Optional[str],
     partial_ar: bool,
     threshold_probability: float,
@@ -806,6 +819,7 @@ def inference(
         threshold_probability=threshold_probability,
         max_seq_len=max_seq_len,
         max_mask_parallel=max_mask_parallel,
+        nlp_prompt_prev_token=nlp_prompt_prev_token,
     )
     speech2text = Speech2Text.from_pretrained(
         model_tag=model_tag,
@@ -1113,6 +1127,12 @@ def get_parser():
         type=str,
         default=None,
         help="Prompt token for natural language phrases as prompting",
+    )
+    group.add_argument(
+        "--nlp_prompt_prev_token",
+        type=str,
+        default=None,
+        help="Prompt token for natural language phrases as prompting added as previous context text",
     )
     group.add_argument(
         "--prompt_token_file",
