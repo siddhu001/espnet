@@ -2564,15 +2564,27 @@ class SpeechLMPreprocessor(AbsPreprocessor):
         # (2) modality-specific processing. 
         seqs, loss_masks, conti_feats = [], [], []
         cache = dict(task_name=task_name)
+        sft_loss_masks = []
+        audio_sft_loss_masks = []
         for idx, data_tuple in enumerate(data_tuples):
             name, modality, role, content, target = data_tuple
+            role_og = role
             
             # NOTE(Jinchuan): We only need the end token for the generated content
             # but not for user-input content or system prompt.
-            if not target:
-                end_tok = None
+            new_compatible=False
+            if new_compatible:
+                if not target:
+                    end_tok = None
+                else:
+                    end_tok = "<sos/eos>"
             else:
-                end_tok = "<sos/eos>"
+                if not target:
+                    end_tok = None
+                elif idx == len(data_tuples) - 1:
+                    end_tok = "<sos/eos>"
+                else:
+                    end_tok = "<eou>" # end-of-utterance
             
             value, conti_feat, conti_len = self.modality_specific_processing(
                 content,
@@ -2604,6 +2616,12 @@ class SpeechLMPreprocessor(AbsPreprocessor):
             seqs.append(value)
             target = True if self.loss_region == "whole" else target
             loss_masks.append(value * 0 + int(target and conti_feat is None))
+            sft_loss_masks.append(
+                value * 0 + int(role_og == "user" and target and conti_feat is None) + int(role_og == "assistant" and modality == "codec_ssl" and target and conti_feat is None)
+            )
+            audio_sft_loss_masks.append(
+                value * 0 + int(role_og == "assistant" and modality == "codec_ssl" and target and conti_feat is None)
+            )
             conti_feats.append([conti_feat, modality, idx, conti_len])
         
         # (3) splice
@@ -2625,6 +2643,18 @@ class SpeechLMPreprocessor(AbsPreprocessor):
             loss_mask = np.concatenate(loss_masks, axis=0).reshape(dec_seq.shape)
             loss_mask[dec_seq == 0] = 0
 
+            sft_loss_masks = [np.zeros_like(sos_eos), np.zeros_like(task_identifier)] + sft_loss_masks
+            sft_loss_mask = np.concatenate(sft_loss_masks, axis=0).reshape(
+                dec_seq.shape
+            )
+            sft_loss_mask[dec_seq == 0] = 0
+
+            audio_sft_loss_masks = [np.zeros_like(sos_eos), np.zeros_like(task_identifier)] + audio_sft_loss_masks
+            audio_sft_loss_mask = np.concatenate(audio_sft_loss_masks, axis=0).reshape(
+                dec_seq.shape
+            )
+            audio_sft_loss_mask[dec_seq == 0] = 0
+
             dec_seq, loss_mask = dec_seq[:self.n_ctx], loss_mask[:self.n_ctx]
 
             # NOTE(Jinchuan): remove these special tokens to full preserve text LLM format.
@@ -2632,9 +2662,13 @@ class SpeechLMPreprocessor(AbsPreprocessor):
             if task_name == "textlm":
                 dec_seq = dec_seq[3:]
                 loss_mask = loss_mask[3:]
+                sft_loss_mask = sft_loss_mask[:self.n_ctx]
+                audio_sft_loss_mask = audio_sft_loss_mask[:self.n_ctx]
 
         new_data["dec_seq"] = dec_seq
         new_data["loss_mask"] = loss_mask
+        new_data["sft_loss_mask"] = sft_loss_mask
+        new_data["audio_sft_loss_mask"] = audio_sft_loss_mask
 
         # (4) continuous features
         new_conti_feats = []
@@ -2811,17 +2845,18 @@ class SpeechLMPreprocessor(AbsPreprocessor):
         messages = data['dialogue']
         assert len(messages) % 2 == 0, "messages should be in even numbers"
         n_messages = len(messages) // 2
-        for n in range(n_messages - 1):
-            assert messages[n] == messages[n + n_messages], "prompt not equal"
-            assert messages[n][2] == False, "don't compute loss on prompt"
+        # for n in range(n_messages - 3):
+        #     if messages[n][1]=="text_bpe":
+        #         assert messages[n] == messages[n + n_messages], "prompt not equal"
+        #     assert messages[n][2] == False, "don't compute loss on prompt"
 
         chosen_dict = deepcopy(data)
-        chosen_dict['dialogue'] = messages[:2]
+        chosen_dict['dialogue'] = messages[:int(len(messages)/2)]
         chosen_dict['skip_dpo'] = True
         chosen_dict = self.__call__(uid, chosen_dict)
 
         rej_dict = deepcopy(data)
-        rej_dict['dialogue'] = messages[2:]
+        rej_dict['dialogue'] = messages[int(len(messages)/2):]
         rej_dict['skip_dpo'] = True
         rej_dict = self.__call__(uid, rej_dict)
 
@@ -2845,6 +2880,14 @@ class SpeechLMPreprocessor(AbsPreprocessor):
         chosen_dict['loss_mask'] = pad_and_stack(
             chosen_dict['loss_mask'], 
             rej_dict['loss_mask'],
+        )
+        chosen_dict['sft_loss_mask'] = pad_and_stack(
+            chosen_dict['sft_loss_mask'],
+            rej_dict['sft_loss_mask'],
+        )
+        chosen_dict['audio_sft_loss_mask'] = pad_and_stack(
+            chosen_dict['audio_sft_loss_mask'],
+            rej_dict['audio_sft_loss_mask'],
         )
 
         if len(chosen_dict['conti_feats']) > 0:

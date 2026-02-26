@@ -1,0 +1,105 @@
+import re
+import sys
+
+
+def remove_repeated_phrases(text, min_words=2, max_repeats=2):
+    """
+    Removes consecutive repeated phrases from ASR text.
+
+    Args:
+        text (str): ASR output text.
+        min_words (int): Minimum number of words to consider as a repeated phrase.
+        max_repeats (int): Maximum allowed repetitions before removal.
+
+    Returns:
+        str: Cleaned text with reduced hallucinations.
+    """
+    # Normalize spaces
+    # text = re.sub(r'\s+', ' ', text).strip()
+
+    words = text.split()
+    cleaned_words = []
+    phrase_counts = {}
+    for phrase_length in range(min_words, len(words)):
+        i = 0
+        
+        while i < len(words)-phrase_length:
+        # Check for repeated phrases (from min_words up to the full remaining sentence)
+
+        
+            phrase = " ".join(words[i:i + phrase_length])
+            next_phrase = " ".join(words[i + phrase_length:i + phrase_length+ phrase_length])
+
+            # Check if phrase has been repeated consecutively
+            if phrase==next_phrase:
+                if i + phrase_length+ phrase_length+ phrase_length>=len(words):
+                    # print(i)
+                    if i==1:
+                        return " ".join(words[:i + phrase_length])
+                    else:
+                        return " ".join(words[:i])
+                else:
+                   next_phrase_2 = " ".join(words[i + phrase_length+ phrase_length:i + phrase_length+ phrase_length+ phrase_length])
+                   if phrase==next_phrase_2:
+                    if i==1:
+                        return " ".join(words[:i + phrase_length])
+                    else:
+                        return " ".join(words[:i])
+            i+=1
+
+
+    return text
+
+def remove_trailing_repetitions(text):
+    """
+    Removes consecutive single-word repetitions at the end of a sentence.
+
+    Args:
+        text (str): ASR output sentence.
+
+    Returns:
+        str: Cleaned sentence without trailing repetitions.
+    """
+    words = text.strip().split()
+
+    # Edge case: If there's only one word or an empty string, return as is
+    if len(words) <= 2:
+        return text
+
+    # Identify the last unique word before the repetition starts
+    last_unique_word = words[-2]
+    found=False
+    for i in range(len(words) - 3, -1, -1):  # Traverse backwards
+        if words[i] != last_unique_word:
+            break
+        last_unique_word = words[i]
+        found=True
+
+    # Remove trailing repeated words
+    if found:
+        if i==-1:
+            i=0
+        cleaned_words = words[:(i+1)]
+    else:
+        cleaned_words = words[:i+3]
+
+    return " ".join(cleaned_words)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <input_file> <output_file>")
+        sys.exit(1)
+    
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+    
+    with open(output_file, "w") as file_write:
+        with open(input_file, "r") as file_read:
+            for generated_text in file_read:
+                filtered_text = remove_repeated_phrases(generated_text.strip())
+                filtered_text = remove_repeated_phrases(filtered_text)
+                filtered_text = remove_trailing_repetitions(filtered_text)
+                file_write.write(filtered_text + "\n")
+    
+    print(f"Processing complete. Output written to {output_file}")

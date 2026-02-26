@@ -358,7 +358,7 @@ class SpeechLMTask(AbsTask):
     def optional_data_names(
         cls, train: bool = True, inference: bool = False
     ) -> Tuple[str, ...]:
-        retval = ("enc_seq", "prefix_len")
+        retval = ("enc_seq", "prefix_len", "sft_loss_mask")
         return retval
 
     @classmethod

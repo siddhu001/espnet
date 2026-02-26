@@ -170,6 +170,7 @@ class Trainer:
         states = torch.load(
             checkpoint,
             map_location=f"cuda:{torch.cuda.current_device()}" if ngpu > 0 else "cpu",
+            weights_only=False,
         )
         if isinstance(model, FSDP):
             states = prepare_for_resume_fsdp(states, model, optimizers)

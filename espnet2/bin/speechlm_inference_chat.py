@@ -79,8 +79,8 @@ class SpeechLM:
         self.inference_last_segment = inference_last_segment
         self.nbest = nbest
 
-        if self.inference_mode == "chat":
-            assert self.nbest == 1, "Batch inference in chat mode is not supported."
+        # if self.inference_mode == "chat":
+        #     assert self.nbest == 1, "Batch inference in chat mode is not supported."
     
     @torch.no_grad()
     def __call__(self, data):
@@ -107,6 +107,9 @@ class SpeechLM:
             mode=self.inference_mode,
             inference_last_segment=self.inference_last_segment,
         )
+        if self.inference_last_segment==False:
+            is_prefills=[True for k in is_prefills[:-30]]+ is_prefills[-30:]
+            
 
         # (3) Inference on each segments
         prefill_buffer, all_segments = [], []
@@ -337,6 +340,7 @@ def inference(
             output_dir=output_dir, 
             rank=rank,
             inference_config=speechlm.inference_config,
+            nbest=nbest,
         )
     # (5) Inference loop
     for iiter, (keys, batch) in enumerate(loader, 1):

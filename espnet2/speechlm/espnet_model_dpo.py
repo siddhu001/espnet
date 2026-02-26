@@ -23,13 +23,23 @@ class ESPnetSpeechLMDPOModel(AbsESPnetModel):
         corelm: AbsCoreLM,
         criterion,
         beta: float = 0.1,
+        sft_weight: float = 0.0,
+        use_sft_loss_mask: bool = False,
+        no_dpo_when_sft: bool = False,
+        debug: bool = False,
         extract_feats_in_collect_stats: bool = False,
+        mean_on_sft: bool = True,
     ):
         super().__init__()
 
         self.corelm = corelm
         self.criterion = criterion
         self.beta = beta
+        self.sft_weight = sft_weight
+        self.use_sft_loss_mask = use_sft_loss_mask
+        self.no_dpo_when_sft = no_dpo_when_sft
+        self.debug = debug
+        self.mean_on_sft = mean_on_sft
         self.extract_feats_in_collect_stats = extract_feats_in_collect_stats
 
         # Currently, always use itself as the reference LM. Freeze it
@@ -44,9 +54,16 @@ class ESPnetSpeechLMDPOModel(AbsESPnetModel):
         **kwargs,
     ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor], torch.Tensor]:
 
+        sft_loss_mask = kwargs.pop("sft_loss_mask", None)
+
+        pos_dec_seq = dec_seq[..., 0]
+        neg_dec_seq = dec_seq[..., 1]
+        pos_loss_mask = loss_mask[..., 0]
+        neg_loss_mask = loss_mask[..., 1]
+
         # [B, T, nq, 2] -> [2 * B, T, nq]
-        dec_seq = torch.cat([dec_seq[..., 0], dec_seq[..., 1]], dim=0)
-        loss_mask = torch.cat([loss_mask[..., 0], loss_mask[..., 1]], dim=0)
+        dec_seq = torch.cat([pos_dec_seq, neg_dec_seq], dim=0)
+        loss_mask = torch.cat([pos_loss_mask, neg_loss_mask], dim=0)
 
         # (1) LM forward
         policy_ce_loss, policy_elem_logp, _, _ = self.criterion(
@@ -57,11 +74,31 @@ class ESPnetSpeechLMDPOModel(AbsESPnetModel):
             ref_ce_loss, ref_elem_logp, _, _ = self.criterion(
                 *self.reflm(dec_seq, loss_mask)
             )
-        
-        # (2) DPO
-        # neg-log-likelihood -> log-likelihood
-        policy_logp = - policy_elem_logp.sum(dim=(1, 2))
-        ref_logp = - ref_elem_logp.sum(dim=(1, 2))
+        if sft_loss_mask is not None:
+            if sft_loss_mask.dim() == 4:
+                pos_sft_mask = sft_loss_mask[..., 0]
+                neg_sft_mask = sft_loss_mask[..., 1]
+            else:
+                pos_sft_mask = sft_loss_mask
+        if self.no_dpo_when_sft and pos_sft_mask is not None:
+            if self.debug:
+                import pdb;pdb.set_trace()
+            pos_sft_mask = pos_sft_mask[:,:pos_loss_mask.shape[1],:]
+            neg_sft_mask = neg_sft_mask[:,:neg_loss_mask.shape[1],:]
+            pos_dpo_mask = pos_loss_mask.bool() & (~pos_sft_mask.bool())
+            neg_dpo_mask = neg_loss_mask.bool() & (~neg_sft_mask.bool())
+            dpo_loss_mask = torch.cat([pos_dpo_mask, neg_dpo_mask], dim=0)
+            policy_logp = - (
+                policy_elem_logp * dpo_loss_mask[:,1:,:].to(policy_elem_logp.dtype)
+            ).sum(dim=(1, 2))
+            ref_logp = - (ref_elem_logp * dpo_loss_mask[:,1:,:].to(ref_elem_logp.dtype)).sum(
+                dim=(1, 2)
+            )
+        else:
+            # (2) DPO
+            # neg-log-likelihood -> log-likelihood
+            policy_logp = - policy_elem_logp.sum(dim=(1, 2))
+            ref_logp = - ref_elem_logp.sum(dim=(1, 2))
 
         num = len(policy_logp) // 2
         pos_policy_logp = policy_logp[:num]
@@ -75,6 +112,35 @@ class ESPnetSpeechLMDPOModel(AbsESPnetModel):
             pos_ref_logp=pos_ref_logp,
             neg_ref_logp=neg_ref_logp,
         )
+
+        # (3) optional supervised fine-tuning (SFT) objective on positive samples
+        if self.sft_weight > 0:
+            sft_elem_loss = policy_elem_logp[:num]
+            if self.use_sft_loss_mask and sft_loss_mask is not None:
+                # Accept either a per-sample mask [B, T, nq] or a paired mask
+                # [B, T, nq, 2]; only the positive side contributes to SFT.
+                sft_mask = pos_sft_mask.bool() & pos_loss_mask.bool()
+            else:
+                sft_mask = pos_loss_mask
+            sft_weight = sft_mask.sum().float()
+            if sft_weight > 0:
+                # import pdb;pdb.set_trace()
+                masked_loss = sft_elem_loss * sft_mask[:,1:,:].to(sft_elem_loss.dtype)
+                if self.criterion.loss_type == "mean" and self.mean_on_sft:
+                    sft_loss = masked_loss.sum() / sft_weight
+                else:
+                    sft_loss = masked_loss.sum()
+            else:
+                # zero gradient contribution if no positive samples are present
+                sft_loss = torch.zeros_like(sft_elem_loss.sum())
+            # import pdb;pdb.set_trace()
+            if self.debug:
+                import pdb;pdb.set_trace()
+            loss = loss + self.sft_weight * sft_loss
+            stats.update({
+                "loss_sft": sft_loss.clone().detach(),
+                "sft_weight": sft_weight.clone().detach(),
+            })
 
         loss, stats, num = force_gatherable((loss, stats, num), loss.device)
 

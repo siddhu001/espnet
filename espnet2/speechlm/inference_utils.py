@@ -238,6 +238,7 @@ class ChatOrientedWriter:
         output_dir: Path, 
         rank: int = 0,
         inference_config: Dict[str, AbsInferenceConfig] = None,
+        nbest: int = 1,
     ):
         self.token_list = train_args.token_list
         self.token_bias = train_args.token_bias
@@ -245,6 +246,8 @@ class ChatOrientedWriter:
         self.output_dir = output_dir / 'dialogue'
         self.task = task
         self.rank = rank
+        self.nbest = nbest
+        self.pad = self.token_list.index("<pad>")
 
         self.output_dir.mkdir(parents=True, exist_ok=True)
         file_name = str(self.output_dir / f"rank{rank}_dialogue")
@@ -255,6 +258,9 @@ class ChatOrientedWriter:
     
     @torch.no_grad()
     def write(self, name, all_segments):
+        if self.nbest>1:
+            return self.write_nbest(name, all_segments)
+
         dialogue = []
 
         for idx, segments in enumerate(all_segments):
@@ -339,6 +345,113 @@ class ChatOrientedWriter:
                     "utf_8"
                 )
             )
+    
+    @torch.no_grad()
+    def write_nbest(self, name, all_segments):
+        dialogues = [[] for _ in range(self.nbest)]
+        uid_prefixes = [
+            name if self.nbest == 1 else f"{name}_sample{idx}"
+            for idx in range(self.nbest)
+        ]
+
+        for idx, segments in enumerate(all_segments):
+            is_prefill = not isinstance(segments, list)
+            segment_list = self._normalize_segments(segments)
+            for sample_idx, segment in enumerate(segment_list):
+                segment_name = f"{uid_prefixes[sample_idx]}_segment{idx}"
+                role, modality, segment, detokenized = self._process_segment(
+                    segment, idx
+                )
+                self.writer[segment_name] = segment.int().flatten().cpu().numpy()
+
+                if modality == "codec_ssl":
+                    audio_path = str(self.output_dir / f"{segment_name}.wav")
+                    save_audio(audio_path, detokenized)
+                    detokenized = audio_path
+
+                dialogues[sample_idx].append(
+                    [role, modality, is_prefill, detokenized]
+                )
+                logging.info(
+                    f"Index: {idx}, Sample={sample_idx}, Role={role}, "
+                    f"Modality={modality}, is_prefill={is_prefill}, "
+                    f"Content={detokenized}"
+                )        
+        for uid, dialogue in zip(uid_prefixes, dialogues):
+            self.buffer.append({uid: dialogue})
+        if len(self.buffer) % 1 == 0: # save results periodically
+            json_writer = open(
+                self.output_dir / f"rank{self.rank}_dialogue.json", 'wb'
+            )
+            json_writer.write(
+                json.dumps(self.buffer, indent=4, ensure_ascii=False, sort_keys=False).encode(
+                    "utf_8"
+                )
+            )
+
+    def _normalize_segments(self, segments):
+        """Ensure we always iterate over nbest candidates, even for prefills."""
+        if isinstance(segments, list):
+            if len(segments) < self.nbest:
+                raise ValueError(
+                    f"Expect {self.nbest} candidates but get {len(segments)}"
+                )
+            segment_list = segments[: self.nbest]
+        else:
+            # Prefill tensors are shaped [B, T, nq]; duplicate if fewer than nbest.
+            segment_list = [
+                segments[min(s, segments.size(0) - 1)] for s in range(self.nbest)
+            ]
+        return segment_list
+
+    def _process_segment(self, segment, idx):
+        if idx == 0: # exclude <sos> and <task_specifier>
+            segment = segment[2:]
+
+        role = segment[0][0]
+        if role == 8:
+            role = "system"
+        elif role == 9:
+            role = "user"
+        elif role == 10:
+            role = "assistant"
+        else:
+            raise ValueError("Invalid role token")
+        
+        modality = segment[1][0]
+        modality = self.token_list[modality]
+        modality = modality.removeprefix("<").removesuffix("_start/end>")
+        modality = "codec_ssl" if modality == "spk" else modality
+
+        segment = segment[2:] # exclude role and modality token
+        segment = segment[segment[:, 0] != self.pad] # exclude padding
+
+        if modality == "codec_ssl":
+            segment_codec = segment[:, 1:] - self.token_bias["codec"][0]
+            segment_codec = segment_codec.view(-1).contiguous()
+            tokenizer = self.inference_config[modality].tokenizer
+            detokenized = tokenizer.detokenize(
+                segment_codec.clone(),
+                n_codebook=self.inference_config[modality].nq - 1,
+            )
+
+            segment = segment - self.token_bias["ssl"][0]
+        
+        elif modality == "text_bpe":
+            segment = segment[:, 0]
+            segment = segment.view(-1).contiguous()
+            tokenizer = self.inference_config[modality].tokenizer
+            detokenized = tokenizer.tokens2text(
+                [self.token_list[tok] for tok in segment]
+            ).strip()
+            segment = segment - self.token_bias['text_bpe'][0]
+        
+        else:
+            raise NotImplementedError(
+                f"modality detokenization on {modality} is not supported yet."
+            )
+
+        return role, modality, segment, detokenized
         
 def parse_sequence(dec_seq, token_list, mode="task", inference_last_segment=False):
     """
@@ -398,6 +511,7 @@ def parse_sequence(dec_seq, token_list, mode="task", inference_last_segment=Fals
     if inference_last_segment:
         for n in range(len(is_prefills) - 1):
             is_prefills[n] = True
+        is_prefills[-1]=False
 
     return all_segments, is_prefills
 

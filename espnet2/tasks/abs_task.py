@@ -2307,7 +2307,7 @@ class AbsTask(ABC):
                     state_dict = state_dict['module'] # deepspeed
                 model.load_state_dict(
                     state_dict,
-                    strict=True,
+                    strict=False
                 )
             except RuntimeError:
                 # Note(simpleoier): the following part is to be compatible with
