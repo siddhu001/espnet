@@ -1,0 +1,14 @@
+./run_codec_ssl_tts_jinchuan.sh\
+ --skip_train false \
+ --task "audio_dialogue" \
+ --data_name "fisher" \
+ --train_config conf/train_delay_olmo2_7b_dpo_dialogue_combined_full.yaml \
+ --train_set train_dpo_intelligibility_final \
+ --valid_set valid_dpo_intelligibility_final \
+ --inference_model 2epoch.pth \
+ --nbest 10 \
+ --inference_config conf/decode_general_limit_tts2.yaml \
+ --train_jsons "dump/raw_audio_dialogue_fisher/train_dpo_aggressive/data.json dump/raw_audio_dialogue_fisher/train_dpo_utmos_final/data.json dump/raw_audio_dialogue_fisher/train_dpo_emotion_final/data.json " \
+ --valid_jsons "dump/raw_audio_dialogue_fisher/valid_dpo_aggressive/data.json " \
+ --data_combo_name "audio_dialogue_fisher" \
+ --test_sets eval2000_text_response_dpo_combined_full_2epoch
